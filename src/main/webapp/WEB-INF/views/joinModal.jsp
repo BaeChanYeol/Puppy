@@ -4,10 +4,10 @@
 
 
 
-    <div class="modal-wrap">
+    <div class="joinModal-wrap">
 
-        <div class="modal">
-            <div class="modal_close">
+        <div class="joinModal">
+            <div class="joinModal_close">
                 <a href="#"><img src="./img/close.png" alt="close"></a>
             </div>
             <div class="join-title">

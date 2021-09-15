@@ -22,13 +22,13 @@
             <div class="header_top">
                 <div class="header_top_area">
                     <div class="hright">
-                        <a href="/join" style="font-weight: normal;">회원가입</a>
-                        <a href="/login" style="font-weight: normal;">로그인</a>
-                        <a href="/sitemap" style="font-weight: normal;">사이트맵</a>
+                        <a href="#" style="font-weight: normal;" id="join">회원가입</a>
+                        <a href="#" style="font-weight: normal;" id="login">로그인</a>
+                        <a href=<c:url value='/sitemap'/> style="font-weight: normal;">사이트맵</a>
                     </div>
                     <div class="hleft">
 
-                        <a href="<c:url value='/puppy'/>" class="move"><img src="<c:url value='/img/simbol.png'/>" alt="댕댕이 유치원"></a>
+                        <a href="<c:url value='/'/>" class="move"><img src="<c:url value='/img/simbol.png'/>" alt="댕댕이 유치원"></a>
                         <a href="/" class="move"><img src="<c:url value='/img/facebook.png'/>" alt="페이스북"></a>
                         <a href="/" class="move"><img src="<c:url value='/img/insta.png'/>" alt="instar"></a>
                         <a href="/" class="move"><img src="<c:url value='/img/tube.png'/>" alt="유튜브"></a>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="logo">
-                    <a href="<c:url value='/puppy'/>" target="_blank"><img src="<c:url value='/img/logo.png'/>" alt="댕댕이 유치원"></a>
+                    <a href="<c:url value='/'/>" target="_blank"><img src="<c:url value='/img/logo.png'/>" alt="댕댕이 유치원"></a>
             </div>
             <nav>
                 <div class="menu_area">

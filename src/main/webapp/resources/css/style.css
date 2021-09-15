@@ -81,7 +81,7 @@ table, tr, td, th {
 	background: rgba(255, 255, 255, 0.8);
 	border-bottom: 1px solid #c6c6c6;
 	box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.1);
-	z-index: 99999;
+	z-index: 10;
 }
 
 .header_top {
@@ -171,7 +171,7 @@ table, tr, td, th {
 	position: absolute;
 	top: 90%;
 	display: none;
-	z-index: 10000;
+	z-index: 10;
 }
 
 .menu li:hover .second {
@@ -619,6 +619,7 @@ footer {
 	border-bottom: 0px;
 	padding: 1em;
 }
+
 
 /*================ 픽업서비스 ==================*/
 .pick-title {
@@ -1766,7 +1767,7 @@ footer {
 
 /* boastDetail*/
 .modal-wrap {
-	/*display: none;*/
+	display: none;
 	position: absolute;
 	content: "";
 	width: 100%;
@@ -1778,7 +1779,6 @@ footer {
 }
 
 .modal {
-	/*display: none;*/
 	width: 1000px;
 	height: 600px;
 	position: absolute;
@@ -2877,7 +2877,7 @@ footer {
 }
 
 .basket-button {
-	/* background-color: cyan; */
+	
 	width: 340px;
 	height: auto;
 	margin: auto;
@@ -3275,19 +3275,19 @@ footer {
 }
 
 /*joinModal*/
-.modal-wrap {
-	/*display: none;*/
-	position: absolute;
+.joinModal-wrap {
+	display: none;
+	position: fixed;
 	content: "";
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	top: 0;
 	left: 0;
-	z-index: 1;
+	z-index: 20;
 }
 
-.modal {
+.joinModal {
 	/*display: none;*/
 	width: 500px;
 	height: 800px;
@@ -3296,10 +3296,10 @@ footer {
 	left: 50%;
 	margin: -250px 0 0 -250px;
 	background: rgb(255, 254, 254);
-	z-index: 2;
+	z-index: 21;
 }
 
-.modal_close {
+.joinModal_close {
 	width: 15px;
 	height: 15px;
 	position: absolute;
@@ -3399,9 +3399,10 @@ footer {
 	border: none;
 	color: white;
 	padding-bottom: 2px;
+	cursor : pointer;
 }
 
-.joinform input[id="address"] {
+.joinform-address #address1 {
 	margin-top: 8px;
 	margin-bottom: 8px;
 }
@@ -3417,19 +3418,20 @@ footer {
 }
 
 /*loginModal*/
-.modal-wrap {
-	/*display: none;*/
-	position: absolute;
+
+.loginModal-wrap {
+	display: none;
+	position: fixed;
 	content: "";
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	top: 0;
 	left: 0;
-	z-index: 1;
+	z-index: 20;
 }
 
-.modal {
+.loginModal {
 	/*display: none;*/
 	width: 500px;
 	height: 500px;
@@ -3438,10 +3440,10 @@ footer {
 	left: 50%;
 	margin: -250px 0 0 -250px;
 	background: rgb(255, 254, 254);
-	z-index: 2;
+	z-index: 30;
 }
 
-.modal_close {
+.loginModal_close {
 	width: 15px;
 	height: 15px;
 	position: absolute;
@@ -3449,7 +3451,7 @@ footer {
 	right: 10px;
 }
 
-.modal h2 {
+.loginModal h2 {
 	text-align: center;
 	padding: 50px;
 	margin-bottom: 25px;

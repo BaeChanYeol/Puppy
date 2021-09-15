@@ -7,7 +7,7 @@
     <div class="modal-wrap">
         <div class="modal">
             <div class="modal_close">
-                <a href="#"><img src="./img/close.png" alt="close"></a>
+                <a href="#"><img src="./img/close.png" alt="close" id="close"></a>
             </div>
             <h2>로그인</h2>
 
@@ -46,8 +46,6 @@
                     <div class="modal-bottom"><a href="#">비밀번호찾기</a></div>
                 </div>
             </div>
-
-
 
         </div>
     </div>
