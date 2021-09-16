@@ -1358,84 +1358,119 @@ footer {
 }
 
 /*=======================마이페이지===========================*/
+aside h2 {
+    padding: 10px 50px;
+    width: 220px;
+}
+.mysidemenu {
+
+    width: 220px;
+}
+.mysidemenu li a {
+    display: block;
+    height: 70px;
+    border-top: 1px solid #ccc;
+    padding:25px 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+
+    color: #000;
+}
+.mysidemenu li a:hover {
+    color: #996633;
+}
+
 .mypage-wrap {
-	border-bottom: 1px gray solid;
-	padding-bottom: 30px;
-	box-sizing: border-box;
+    border-bottom: 1px gray solid;
+    padding-bottom: 30px;
+    box-sizing: border-box;
 }
 
-.mypage-wrap1 {
-	border-bottom: 1px gray solid;
-	padding-bottom: 25px;
-	box-sizing: border-box;
-	text-align: center;
+.profile {
+    border: 1px #ccc solid;
+    position: relative;    
 }
-
-.mypage-title {
-	margin-bottom: 100px;
+.profile .out {
+    position: absolute;
+    right: 30px;
+    bottom:10px;
 }
-
-.mypage-title h2 {
-	text-align: center;
-	font-size: 28px;
+.out a {
+    color:#999
 }
-
 .mypage-profile {
-	display: inline-block;
-	margin-left: 50px;
+    display: inline-block;
+    text-align: left;
+}
+.mypage-profile .name {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #000;
+}
+.profile-text {
+    position: absolute;
+    top:30px;
+}
+.profile-text p {
+   margin-bottom: 10px;
+   font-size: 18px;
+   color: #666;
+   font-weight: 600;
 }
 
-.mypage-profile img {
-	width: 50px;
+.profile-img {
+    border-radius: 50%;
+    margin: 0 50px ;
+}
+.profile-img img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px;
+}
+.profile-img button {
+    display: block;
+    margin: 0 0 20px 45px;
+    padding: 5px 16px;
+    background: #996633;
+    outline: 0;
+    border: 1px solid #ccc;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
-.mypage-bucket {
-	float: right;
-	width: 50px;
-	margin-right: 50px;
+.mypage-centent {
+    border-bottom: 1px gray solid;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 70px auto;
 }
 
 .mypage-menu {
-	width: 25%;
-	float: left;
-	padding: 50px;
+    width: 265px;
+    float: left;
+    margin: 30px 10px 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+.mypage-menu a {
+    display: block;
+    width: 265px;
+    padding: 35px 20px;
+    color:#000;
+}
+.mypage-menu a:hover {
+    color:#000; 
+    background: rgba(212, 212, 212,0.2);
 }
 
 .mypage-menu img {
-	width: 70px;
+    width: 50px;
+    padding-bottom: 5px;
 }
-/*======= 마이페이지 - 내가 쓴 글, 댓글 목록 =======*/
-.myArticle h3, .myComment h3 {
-	text-align: center;
-	padding-bottom: 30px;
-}
-
-.myArticle table, .myArticle td, .myArticle th {
-	border: 1px solid black;
-	border-collapse: collapse;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.myArticle th {
-	background-color: lightgray;
-}
-
-.myArticle td, .myArticle th {
-	height: 40px;
-}
-
-.myArticle table {
-	width: 700px;
-	margin-bottom: 30px;
-}
-
-.pagination {
-	text-align: center;
-	padding-bottom: 50px;
-	margin-bottom: 30px;
-}
-
 /*======= 마이페이지 - 예약 내역 =======*/
 .myReserve h3 {
 	text-align: center;
