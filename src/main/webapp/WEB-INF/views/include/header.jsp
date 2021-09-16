@@ -81,7 +81,7 @@
                             <ul class="second">
                                 <li><a href="board/freeboard">자유게시판</a></li>
                                 <li><a href="/community/showboard">뽐내기게시판</a></li>
-                                <li><a href="/community/showboard">QnA</a></li>
+                                <li><a href="<c:url value='/qnaBoard/qna'/>">QnA</a></li>
                             </ul>
                         </li>
                         <li class="menu-li">
