@@ -71,7 +71,7 @@
 	* 약도의 수 만큼 소스를 새로 생성, 삽입해야 합니다.
 -->
 		<!-- 1. 약도 노드 -->
-		<div class="wrap">
+		<div class="wrap" style="padding-bottom: 100px;">
 			<div id="daumRoughmapContainer1631693519383"
 				class="root_daum_roughmap root_daum_roughmap_landing">
 			</div>
