@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.puppy.qnaboard.mapper.IQnaBoardMapper">
+	
+	<!-- 
+	<resultMap type="com.spring.puppy.command.QnaBoardVO" id="qnaMap">
+		
+		<result property="replyId" column="reply_id" />
+		<result property="replyPw" column="reply_pw" />
+		<result property="replyDate" column="reply_date" />
+		<result property="updateDate" column="update_date" />
+		 
+		
+	</resultMap>
+	-->
+
+	<insert id="qnaRegist">
+		INSERT INTO qnaboard(qno, title, content)
+		VALUES(qnaboard_seq.NEXTVAL, #{title}, #{content})
+	</insert>
+	
+	
+	<select id="getList" resultType="com.spring.puppy.command.QnaBoardVO">
+		SELECT * FROM qnaboard
+		ORDER BY qno DESC
+	</select>
+	<!--  
+	<select id="getList" resultMap="qnaMap">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM	
+				(
+				SELECT * FROM qnaboard
+				WHERE bno = #{bno}
+				ORDER BY rno DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{paging.pageNum} - 1) * #{paging.countPerPage}
+		AND rn <= #{paging.pageNum} * #{paging.countPerPage}
+		]]>
+	</select>
+	-->
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM qnaboard
+		WHERE qno = #{qno}
+	</select>
+	
+	
+	<update id="update">
+		UPDATE freereply
+		SET reply = #{reply}, update_date = sysdate
+		WHERE rno = #{rno}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM freereply
+		WHERE rno = #{rno}
+	</delete>
+
+</mapper>
