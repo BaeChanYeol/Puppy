@@ -3,18 +3,16 @@
     
     <%@ include file="./include/header.jsp" %>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 
     
     <section>
         <article class="main-container">
-            <div class="wrap sitemap-title">
-                <h2>사이트맵</h2>
+            <div style="padding-top: 100px;">
+                <h2 style="font-size: 30px;">사이트맵</h2>
             </div>
         </article>
-
         <article class="main-container">
-            <div class="wrap sitemap-map clearfix">
+            <div class="wrap clearfix">
                 <div class="sitemap-map-group">
                     <div class="sitemap-map-group-item">
                         <h4>이용안내</h4>
@@ -34,8 +32,8 @@
                         <li><a href="#">그루밍</a></li>
                         <li><a href="#">스튜디오</a></li>
                         <li><a href="#">메디컬센터</a></li>
-                    </div>
-                
+                	</ul>
+                </div>
                 <div class="sitemap-map-group">
                     <div class="sitemap-map-group-item">
                         <h4>예약하기</h4>

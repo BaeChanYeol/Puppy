@@ -7,13 +7,13 @@
      <section>   
         <article class="main-contanier">
             <div class="pick-title">
-                <h2><u>멍멍택시 픽업 서비스</u></h2>
+                <h2>멍멍택시 픽업 서비스</h2>
                 <p>바우라움 회원님들에게는 저렴한 가격으로 제공됩니다.</p>
             </div>
         </article>
         
         <article class="main-contanier">
-            <div class="wrap clearfix">
+            <div class="wrap mainBody clearfix">
                 <div class="left">
                     <ul>
                         <li class="info clearfix">
