@@ -627,7 +627,43 @@ footer {
 	padding: 1em;
 }
 
+/* myQna */
+		.myQnA wrap{
+			width: 1000px;
+		}
+		.myQnA .myQnA-minititle{
+            margin-top: 5em;
+            margin-right: 50%;
+            margin-left: 20%;
+    		margin-bottom: 30px;
+        }
+        .myQnA-list {
+            margin-top: 3em;
+            margin-bottom: 3em;
+            margin: 0 auto;
+            width: 60%;
+            height: 8em;
+        }
 
+        .myQnA-list td{
+            padding: 1em;
+        }
+        .myQnA-num{
+        	text-align: center;
+            width: 5em;
+        }
+        .question {
+            text-align: left;
+        }
+        .answer{
+            text-align: left;    
+        }
+        .myQnA-time {
+            font-size: small;
+        }
+        .myQnA-time{
+            width: 15%;
+        }
 /*================ 픽업서비스 ==================*/
 .pick-title {
 	width: 1140px;
