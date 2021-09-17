@@ -44,7 +44,6 @@
 		AND rn <= #{paging.pageNum} * #{paging.countPerPage}
 		]]>
 	</select>
-	-->
 	
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) FROM qnaboard
@@ -62,5 +61,6 @@
 		DELETE FROM freereply
 		WHERE rno = #{rno}
 	</delete>
+	-->
 
 </mapper>

@@ -495,7 +495,7 @@ footer {
 }
 
 /*======= 예약안내/이용안내 페이지 =======*/
-.title {
+.reserve-title {
 	padding-top: 120px;
 	line-height: 40px;
 	margin-bottom: 50px;
@@ -1814,7 +1814,7 @@ aside h2 {
 }
 
 /* boastDetail*/
-.modal-wrap {
+.boast-modal-wrap {
 	display: none;
 	position: absolute;
 	content: "";
@@ -1823,10 +1823,10 @@ aside h2 {
 	background-color: rgba(0, 0, 0, 0.5);
 	top: 0;
 	left: 0;
-	z-index: 1;
+	z-index: 20;
 }
 
-.modal {
+.boast-modal {
 	width: 1000px;
 	height: 600px;
 	position: absolute;
@@ -1834,7 +1834,7 @@ aside h2 {
 	left: 35%;
 	margin: -250px 0 0 -250px;
 	background: #fff;
-	z-index: 2;
+	z-index: 21;
 }
 
 .modal_close {

@@ -8,7 +8,7 @@
 
     <section>
         <article class="main-container">
-            <div class="title">
+            <div class="reserve-title">
                 <h2>어떤 서비스를 받아야 할 지 고민이신가요?</h2>
                 <p>상담 신청해 주시면 영업일 기준 1~2일 이내로 전화 드립니다.</p>
             </div>
