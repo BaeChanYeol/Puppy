@@ -43,7 +43,7 @@
                 <div class="menu_area">
                     <ul class="menu">
                         <li class="menu-li">
-                            <a href="<c:url value='/reserve'/>" class="menu-li-a">예약하기</a>
+                            <a href="<c:url value='/reserveBoard/reserve'/>" class="menu-li-a">예약하기</a>
                         </li>
                         <li class="menu-li">
                             <a href="<c:url value='/notice'/>" class="menu-li-a">이용안내</a>

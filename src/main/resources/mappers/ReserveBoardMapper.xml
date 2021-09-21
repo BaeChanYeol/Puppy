@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.puppy.reserveboard.mapper.IReserveBoardMapper">
+	 
+	<resultMap type="com.spring.puppy.command.ReserveBoardVO" id="reserveMap">
+		<result property="resNo" column="res_no" />
+		<result property="chkIn" column="chk_in" />
+		<result property="chkOut" column="chk_out" />
+	</resultMap>
+
+	<insert id="reserveRegist" >
+		INSERT INTO reserveboard(res_no, service, chk_in, chk_out, breed, age)
+		VALUES(reserveboard_seq.NEXTVAL, #{service}, #{chkIn}, #{chkOut}, #{breed}, #{age})
+	</insert>
+	
+	
+	<select id="getList" resultMap="reserveMap">
+		SELECT * FROM reserveboard
+		ORDER BY res_no DESC
+	</select>
+	<!--  
+	<select id="getList" resultMap="qnaMap">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM	
+				(
+				SELECT * FROM qnaboard
+				WHERE bno = #{bno}
+				ORDER BY rno DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{paging.pageNum} - 1) * #{paging.countPerPage}
+		AND rn <= #{paging.pageNum} * #{paging.countPerPage}
+		]]>
+	</select>
+	-->
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM qnaboard
+		WHERE qno = #{qno}
+	</select>
+	
+	
+	<update id="update">
+		UPDATE reserveboard
+		SET service=#{service}, chk_in=#{chkIn}, chk_out=#{chkOut}, breed=#{breed}, age=#{age}
+		WHERE res_no = #{resNo}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM reserveboard
+		WHERE res_no = #{resNo}
+	</delete>
+
+</mapper>

@@ -48,6 +48,7 @@
 		인터페이스를 자동으로 스캔해서 빈으로 등록하기 위한 설정.
 	 -->
 	<mybatis-spring:scan base-package="com.spring.puppy.qnaboard.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.puppy.reserveboard.mapper"/>
 
 	
 

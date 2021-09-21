@@ -29,7 +29,7 @@ public class QnaBoardController {
 //		System.out.println("/qnaboard/list: GET");
 //	}
 	
-	//글 DB 등록 요청
+	//qna DB 등록 요청
 	@PostMapping("/registForm")
 	public String registForm(QnaBoardVO vo, RedirectAttributes ra) {
 		service.qnaRegist(vo);
@@ -39,7 +39,7 @@ public class QnaBoardController {
 		return "redirect:/qnaBoard/myQna";//등록 후에 글 목록 요청으로 리다이렉트
 	}
 	
-	//목록 화면 (링크는 모두 겟맵핑)
+	//qna 목록 화면 (링크는 모두 겟맵핑)
 	@GetMapping("/myQna")
 	public String qnaList(Model model) {
 			

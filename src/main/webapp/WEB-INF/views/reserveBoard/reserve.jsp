@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ include file="./include/header.jsp" %>
+    <%@ include file="../include/header.jsp" %>
 	
 	
 
@@ -19,7 +19,7 @@
                     <ul>
                         <li class="noti-info clearfix">
                             <div class="img_block">
-                                <img src="./img/phone.png" alt="call">
+                                <img src="<c:url value='/img/phone.png'/>" alt="call">
                             </div>
                             <div class="info_block">
                                 <h4>댕댕이 서울숲 캠퍼스</h4>
@@ -28,7 +28,7 @@
                         </li>
                         <li class="noti-info clearfix">
                             <div class="img_block">
-                                <img src="./img/clock.png" alt="call">
+                                <img src="<c:url value='/img/clock.png'/>" alt="call">
                             </div>
                             <div class="info_block">
                                 <h4>예약 및 상담 시간</h4>
@@ -37,7 +37,7 @@
                         </li>
                         <li class="noti-info clearfix">
                             <div class="img_block">
-                                <img src="./img/plus.png" alt="call">
+                                <img src="<c:url value='/img/plus.png'/>" alt="call">
                             </div>
                             <div class="info_block">
                                 <h4>플러스 친구</h4>
@@ -46,7 +46,7 @@
                         </li>
                         <li class="noti-info clearfix">
                             <div class="img_block">
-                                <img src="./img/notice.png" alt="call">
+                                <img src="<c:url value='/img/notice.png'/>" alt="call">
                             </div>
                             <div class="info_block">
                                 <h4>안내 사항</h4>
@@ -70,33 +70,33 @@
                     
                 </div>
                 <div class="right">
-                    <form action="#" method="post" class="reserve_form">
+                    <form action="<c:url value='/reserveBoard/registForm' />" name="registForm" method="post">
                         <label for="">희망서비스</label>
                         <div class="reserve_input">
-                            <select name="" id="">
-                                <option value="#">호텔 & 데이케어</option>
-                                <option value="#">유치원</option>
-                                <option value="#">그루밍</option>
-                                <option value="#">스튜디오</option>
-                                <option value="#">메디컬센터</option>
-                                <option value="#">스페셜케어</option>
+                            <select name="service" id="">
+                                <option value="호텔&데이케어">호텔&데이케어</option>
+                                <option value="유치원">유치원</option>
+                                <option value="그루밍">그루밍</option>
+                                <option value="스튜디오">스튜디오</option>
+                                <option value="메디컬센터">메디컬센터</option>
+                                <option value="스페셜케어">스페셜케어</option>
                             </select>
                         </div>
                         <label for="">체크인</label>
                         <div class="reserve_input">
-                            <input type="text" id="datepicker1" name="checkIn">
+                            <input type="text" id="datepicker1" name="chkIn">
                         </div>
                         <label for="">체크아웃</label>
                         <div class="reserve_input">
-                            <input type="text" id="datepicker2" name="checkOut">
+                            <input type="text" id="datepicker2" name="chkOut">
                         </div>
                         <label for="">반려견종</label>
                         <div class="reserve_input">
-                            <input type="text" id="" name="kinds">
+                            <input type="text" id="" name="breed">
                         </div>
                         <label for="">반려견나이</label>
                         <div class="reserve_input">
-                            <input type="text" id="" name="dogAge">
+                            <input type="text" id="" name="age">
                         </div>
                         <label for="">기타</label>
                         <div class="reserve_input">
@@ -104,7 +104,7 @@
                                 placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등 자세한 사항을 작성해 주세요."></textarea>
                         </div>
                         <div class="reserve_input">
-                            <button class="reserve_btn" type="submit" onclick="confirm('상담신청 하시겠습니까?')" >상담 신청</button>
+                            <button class="reserve_btn" id="res_btn" type="submit" onclick="confirm('상담신청 하시겠습니까?')" >상담 신청</button>
                         </div>
 
                     </form>
@@ -113,9 +113,14 @@
         </article>
     </section>
 
-<%@ include file="./include/footer.jsp" %>
+<%@ include file="../include/footer.jsp" %>
 
 <script>
+
+const registBtn = document.getElementById('res_btn');
+registBtn.onclick = function() {
+	document.registForm.submit();
+}
 
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd',
