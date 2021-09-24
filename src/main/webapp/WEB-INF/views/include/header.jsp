@@ -153,7 +153,7 @@
     $('#join').click(function() {
     	$('#join_modal').show();
     	
-    	$(document).click(function(e) {
+    	$(document).mousedown(function(e) {
     		
     		if($('#join_modal').is(e.target)){
     			$('#join_modal').hide();

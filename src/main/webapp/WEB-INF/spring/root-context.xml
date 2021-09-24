@@ -42,12 +42,15 @@
 			해당 구현체 xml의 경로를 알려줘야 한다. 
 		 -->
 		<property name="mapperLocations" value="classpath:/mappers/*.xml" />
+		<property name="configLocation" value="classpath:/db-config/mybatis-config.xml" />    
 	</bean>
 	
 	<!-- 위의 구현체 xml을 빈으로 등록하기 위해서는 타입이 필요하니까
 		인터페이스를 자동으로 스캔해서 빈으로 등록하기 위한 설정.
 	 -->
 	<mybatis-spring:scan base-package="com.spring.puppy.qnaboard.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.puppy.reserveboard.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.puppy.user.mapper"/>
 
 	
 

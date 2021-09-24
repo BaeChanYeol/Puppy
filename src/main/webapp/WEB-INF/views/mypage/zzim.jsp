@@ -1,147 +1,130 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ include file="../include/header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../include/header.jsp"%>
 
 
 
-    <section class="zzimList">
-        <div class="myZzim">
+<div class="mypage">
+	<aside class="side">
+		<h2>마이페이지</h2>
+		<ul class="mysidemenu">
+			<li><a href="#"> 예약 내역</a></li>
+			<li><a href="#"> 회원정보 수정</a></li>
+			<li><a href="#"> 내가 쓴 글</a></li>
+			<li><a href="#"> 좋아요 누른글</a></li>
+			<li><a href="#"> 문의내역</a></li>
+			<li><a href="#"> 장바구니</a></li>
+			<li><a href="#" class="myhover"> <img
+					src="../img/mypageheart.png" alt="구매내역">찜한 상품
+			</a></li>
+			<li><a href="#"> 구매 내역</a></li>
+		</ul>
+	</aside>
+	<section class="side-content">
+		<article class="main-container">
+			<div class="mytitle">
+				<h2>찜한상품</h2>
+			</div>
+		</article>
 
-            <h3>찜한 상품♥</h3>
-            
-            <div class="zzim-info clearfix" >
-                <div class="zzim-left">
-                    <p>전체(4)</p>
-                </div>
-                <div class="zzim-right">
-                    <p>편집&nbsp;</p>
-                </div>
+		<article class="main-container">
+			<div class="side-wrap myZzim">
 
-            </div>
+				<table>
+					<tr>
+						<th>번호</th>
+						<th colspan="2">상품 정보</th>
+						<th>삭제</th>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td id="left"><img src="../img/snack1.jpg" alt="zzimItem4"></td>
+						<td id="right">
+							<!--상품정보-->
+							<p>
+								<span> 한입뚝딱<br> 4,900원<br> 무료배송
+								</span>
+							</p>
 
-            <table>
-
-
-                <tr>
-                    <th>번호</th>
-                    <th colspan="2">상품 정보</th>
-                    <th>삭제</th>
-                </tr>
-
-
-                <tr>
-                    <td>4</td>
-                    <td id="left"><img src="../img/snack1.jpg" alt="zzimItem4"></td>
-                    <td id="right">
-                        <!--상품정보-->
-                        <p>
-                            <span>
-                                한입뚝딱<br>
-                                4,900원<br>
-                                무료배송
-                            </span>
-                        </p>
-
-                    </td>
-                    <td id="delete">
-                        &nbsp;&nbsp;&nbsp;
-                        <img src="../img/delete.png" id="delBtn" alt="delete-btn">
-                        &nbsp;
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td>3</td>
-                    <td id="left"><img src="../img/snack2.jpg" alt="zzimItem4"></td>
-                    <td id="right">
-                        <!--상품정보-->
-                        <p>
-                            <span>
-                                딸기 비스킷<br>
-                                6,900원<br>
-                                무료배송
-                            </span>
-                        </p>
-
-                    </td>
-                    <td id="delete">
-                        &nbsp;&nbsp;&nbsp;
-                        <img src="../img/delete.png" id="delBtn" alt="delete-btn">
-                        &nbsp;
-                    </td>
-                </tr>
+						</td>
+						<td id="delete"><img src="../img/delete.png" id="delBtn"
+							alt="delete-btn"></td>
+					</tr>
 
 
-                <tr>
-                    <td>2</td>
-                    <td id="left"><img src="../img/snack3.jpg" alt="zzimItem4"></td>
-                    <td id="right">
-                        <!--상품정보-->
-                        <p>
-                            <span>
-                                애견용 연어<br>
-                                8,900원<br>
-                                무료배송
-                            </span>
-                        </p>
+					<tr>
+						<td>3</td>
+						<td id="left"><img src="../img/snack2.jpg" alt="zzimItem4"></td>
+						<td id="right">
+							<!--상품정보-->
+							<p>
+								<span> 딸기 비스킷<br> 6,900원<br> 무료배송
+								</span>
+							</p>
 
-                    </td>
-                    <td id="delete">
-                        &nbsp;&nbsp;&nbsp;
-                        <img src="../img/delete.png" id="delBtn" alt="delete-btn">
-                        &nbsp;
-                    </td>
-                </tr>
+						</td>
+						<td id="delete">&nbsp;&nbsp;&nbsp; <img
+							src="../img/delete.png" id="delBtn" alt="delete-btn">
+							&nbsp;
+						</td>
+					</tr>
 
 
-                <tr>
-                    <td>1</td>
-                    <td id="left"><img src="../img/snack4.jpg" alt="zzimItem4"></td>
-                    <td id="right">
-                        <!--상품정보-->
-                        <p>
-                            <span>
-                                오리순살<br>
-                                3,500원<br>
-                                무료배송
-                            </span>
-                        </p>
+					<tr>
+						<td>2</td>
+						<td id="left"><img src="../img/snack3.jpg" alt="zzimItem4"></td>
+						<td id="right">
+							<!--상품정보-->
+							<p>
+								<span> 애견용 연어<br> 8,900원<br> 무료배송
+								</span>
+							</p>
 
-                    </td>
-                    <td id="delete">
-                        &nbsp;&nbsp;&nbsp;
-                        <img src="../img/delete.png" id="delBtn" alt="delete-btn">
-                        &nbsp;
-                    </td>
-                </tr>
+						</td>
+						<td id="delete">&nbsp;&nbsp;&nbsp; <img
+							src="../img/delete.png" id="delBtn" alt="delete-btn">
+							&nbsp;
+						</td>
+					</tr>
 
 
-            </table>
-        </div>
+					<tr>
+						<td>1</td>
+						<td id="left"><img src="../img/snack4.jpg" alt="zzimItem4"></td>
+						<td id="right">
+							<!--상품정보-->
+							<p>
+								<span> 오리순살<br> 3,500원<br> 무료배송
+								</span>
+							</p>
+
+						</td>
+						<td id="delete">&nbsp;&nbsp;&nbsp; <img
+							src="../img/delete.png" id="delBtn" alt="delete-btn">
+							&nbsp;
+						</td>
+					</tr>
 
 
-        <!-- <div class="pagination">
-
-            <button type="button" onclick="location.href='#'">이전</button>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <button type="button" onclick="location.href='#'">다음</button>
-
-        </div> -->
+				</table>
+			</div>
 
 
-        <div id="paging">
+			<div class="pagination">
 
-        </div>
-    </section>
+				<button type="button" onclick="location.href='#'">&#10094;</button>
+				<a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a>
+				<a href="#">4</a> <a href="#">5</a>
+				<button type="button" onclick="location.href='#'">&#10095;</button>
 
-<%@ include file="../include/footer.jsp" %>
+			</div>
+		</article>
+	</section>
+</div>
 
-    <script>
+<%@ include file="../include/footer.jsp"%>
+
+<script>
         var totalData = 1000;    // 총 데이터 수
         var dataPerPage = 20;    // 한 페이지에 나타낼 데이터 수
         var pageCount = 5;        // 한 화면에 나타낼 페이지 수

@@ -1,12 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     <%@ include file="../include/header.jsp" %>
 
    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
 
+<style>
+	.myQnA-list {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    margin: 0 auto;
+    width: 80%;
+}
 
+	.myQnA-list .question-title {
+	font-size: 18px;
+	height: 50px;
+	border-bottom: #996633 1px solid;
+	padding: 14px 5px;
+	margin: 20px 0;
+}
+
+	.myQnA-list .answer {
+	display: none;
+	background-color: #fafafa;
+	font-size: 18px;
+	height: auto;
+	padding: 14px 20px;
+}
+
+	.myQnA h3{
+	padding-top: 20px;
+	padding-bottom: 40px;
+	font-size: 25px;
+}
+	
+</style>
 
 
     <section>
@@ -56,6 +87,38 @@
             
 
         </article>
+    
+    
+        <article>
+            <!-- <h2 style="text-align:center;">문의내역</h2>  -->
+            <div class="myQnA wrap">
+                <div class="myQnA-minititle">
+                    <h3>문의내역</h3>
+                </div>
+                <div class="myQnA-list"> 
+                    	<div class="list">
+		                    <ul>
+                    <c:forEach var="vo" items="${qnaList}">
+		                        <li class="question-title">
+		                        	${vo.title}<span style="float:right; margin-right:15px;"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd" /></span>
+		                        </li>
+		                        <li class="answer">
+		                        
+		                        	<h4>질문</h4>
+		                        	<br><br>
+		                        	${vo.content}
+		                        	<br><hr><br>
+		                        	<h4>답변</h4>
+		                        	<br><br>
+		                        	답변 영역이다!
+		                        </li>
+                    </c:forEach>
+
+		                    </ul>
+                		</div>     
+                </div>
+            </div>
+        </article>
     </section>
     
     <%@ include file="../include/footer.jsp" %>
@@ -90,6 +153,11 @@
 		        $(this).next().toggle("fast");
 	        });
         });
-
+	
+		$(document).ready(function(){
+		    $("li.question-title").click(function(){
+		        $(this).next().toggle("fast");
+	        });
+        });
     </script>
     

@@ -3,71 +3,112 @@
     <%@ include file="../include/header.jsp" %>
 
 
-    <section>
-        <article class="buylist-wrap">
-            <div class="buylist-title">
-                
+    <div class="mypage">
+    <aside class="side">
+        <h2>마이페이지</h2>
+        <ul class="mysidemenu">
+            <li>
+                <a href="#"> 예약 내역</a>
+            </li>
+            <li>
+                <a href="#"> 회원정보 수정</a>
+            </li>
+            <li>
+                <a href="#"> 내가 쓴 글</a>
+            </li>
+            <li>
+                <a href="#"> 좋아요 누른글</a>
+            </li>
+            <li>
+                <a href="#"> 문의내역</a>
+            </li>
+            <li>
+                <a href="#"> 장바구니</a>
+            </li>
+            <li>
+                <a href="#"> 찜한 상품</a>
+            </li>
+            <li>
+                <a href="#" class="myhover"> <img src="../img/mybuylist.png" alt="구매내역">구매 내역</a>
+            </li>
+        </ul>
+    </aside>
+    <section class="side-content">
+        <article class="main-container">
+            <div class="mytitle">
                 <h2>
                     구매내역
                 </h2>
-                <img src="../img/mp1.jpg" alt="">
-               
             </div>
         </article>
-
-
-        <article class="buylist-wrap1 clearfix">
-            <div class="buylist-list1 clearfix">
-                <div class="buylist1-1 " >
-                    <h5>2021/08/30</h5>
-                    <h5>배송완료</h5>
-                </div>
-                <h6>상품정보</h6>
+        <article class="main-container">
+            <div class="side-wrap">
+                <table>
+                    <tr>
+                        <th>상품이미지</th>
+                        <th>상품정보</th>
+                        <th>구매확정</th>
+                    </tr>
+                    <tr>
+                        <td class="buylist-img">
+                            <img src="../img/basket1.jpg" alt="껌">
+                        </td>
+                        <td class="buylist-content">
+                                <p class="buydate">2021/08/30</p>
+                                <p class="buy">배송완료</p>
+                                <p class="buytitle">유기농 개껌 치석제거 3SET</p>
+                                <p class="buyprice">27,150원</p>
+                                <p class="buyamount">5개</p>
+                        </td>
+                        <td class="buylist-btn">
+                            <button class="buylist-btn">반품신청</button>
+                            <button class="buylist-btn">교환신청</button>
+                            <button class="buylist-btn">구매확정</button>
+                            <button class="buylist-btn">배송조회</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="buylist-img">
+                            <img src="../img/basket2.jpg" alt="껌">
+                        </td>
+                        <td class="buylist-content">
+                                <p class="buydate">2021/08/30</p>
+                                <p class="buy">배송완료</p>
+                                <p class="buytitle">유기농 개껌 치석제거 3SET</p>
+                                <p class="buyprice">27,150원</p>
+                                <p class="buyamount">5개</p>
+                        </td>
+                        <td class="buylist-btn">
+                            <button class="buylist-btn">반품신청</button>
+                            <button class="buylist-btn">교환신청</button>
+                            <button class="buylist-btn">구매확정</button>
+                            <button class="buylist-btn">배송조회</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="buylist-img">
+                            <img src="../img/basket3.jpg" alt="껌">
+                        </td>
+                        <td class="buylist-content">
+                                <p class="buydate">2021/08/30</p>
+                                <p class="buy">배송완료</p>
+                                <p class="buytitle">유기농 개껌 치석제거 3SET</p>
+                                <p class="buyprice">27,150원</p>
+                                <p class="buyamount">5개</p>
+                        </td>
+                        <td class="buylist-btn">
+                            <button class="buylist-btn">반품신청</button>
+                            <button class="buylist-btn">교환신청</button>
+                            <button class="buylist-btn">구매확정</button>
+                            <button class="buylist-btn">배송조회</button>
+                        </td>
+                    </tr>
+                    
+                </table>
             </div>
-            <div class="buylist-main2">
-                <img src="../img/basket1.jpg" alt="껌">
-                <h2>유기농 개껌 치석제거 3SET <br>수량 5개 <br>27,150원</h2>
-            </div>
-            <div class="buylist-button">
-                <button class="buylist-btn">반품신청</button>
-                <button class="buylist-btn">교환신청</button>
-                <button class="buylist-btn">구매확정</button>
-                <button class="buylist-btn">배송조회</button>
-            </div>
-
-        </article>
-        <article class="buylist-wrap1 clearfix">
-            <div class="buylist-main1">
-                <h2>2021/08/17</h2>
-                <h2>구매확정</h2>
-            </div>
-            <div class="buylist-main2">
-                <img src="../img/basket2.jpg" alt="산소발생기">
-                <h2>강아지 의료용 산소발생기 <br>수량 1개 <br>200,000원</h2>
-            </div>
-            <div class="buylist-button">
-                <button class="buylist-btn">판매자 문의</button>
-                <button class="buylist-btn">장바구니 담기</button>
-                <button class="buylist-btn">리뷰작성</button>
-            </div>
-
-        </article>
-        <article class="buylist-wrap1 clearfix">
-            <div class="buylist-main1">
-                <h2>2021/06/23</h2>
-                <h2>반품완료</h2>
-            </div>
-            <div class="buylist-main2">
-                <img src="../img/basket3.jpg" alt="칫솔">
-                <h2>극세사 칫솔 <br>수량 3개 <br>14,700원</h2>
-            </div>
-            <div class="buylist-button">
-                <button class="buylist-btn">결제/환불 내역</button>
-                <button class="buylist-btn">판매자 문의</button>
-            </div>
-
         </article>
 
     </section>
+</div>
     
     <%@ include file="../include/footer.jsp" %>

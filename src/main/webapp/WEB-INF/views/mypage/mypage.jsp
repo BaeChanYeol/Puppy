@@ -3,8 +3,8 @@
     <%@ include file="../include/header.jsp" %>
 
 
-    <section>
-                <article class="main-container">
+   <section>
+        <article class="main-container">
             <div class="wrap title">
                 <h2>마이 페이지</h2>
             </div>

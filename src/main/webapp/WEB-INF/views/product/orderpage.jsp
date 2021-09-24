@@ -10,7 +10,7 @@
             </div>
             <div class="orderPage">
                 <table class="orderPage-table">
-                    <tr>
+                    <tr> 
                         <td>
                             <div class="orderPage-name">
                                 <h3 class="orderPage-name">홍길동 <p class="orderPage-name"

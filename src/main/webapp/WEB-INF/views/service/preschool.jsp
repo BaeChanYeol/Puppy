@@ -47,23 +47,23 @@
                     <table class="pres-table">
                         <tr>
                             <td class="tablebg">기본학습</td>
-                            <td>이리와 앉아 하우스 엎드려</td>
+                            <td class="tablewh">이리와 앉아 하우스 엎드려</td>
                         </tr>
                         <tr>
                             <td class="tablebg">놀이학습</td>
-                            <td>장난감놀이 친구와놀기 선생님과놀기</td>
+                            <td class="tablewh">장난감놀이 친구와놀기 선생님과놀기</td>
                         </tr>
                         <tr>
                             <td class="tablebg">매너학습</td>
-                            <td>산책 집중 사회화</td>
+                            <td class="tablewh">산책 집중 사회화</td>
                         </tr>
                         <tr>
                             <td class="tablebg">교감학습</td>
-                            <td>바디터치 스킨십 그루밍 목줄&하네스</td>
+                            <td class="tablewh">바디터치 스킨십 그루밍 목줄&하네스</td>
                         </tr>
                         <tr>
                             <td class="tablebg">개별학습</td>
-                            <td>반려견 맞춤형 교육</td>
+                            <td class="tablewh">반려견 맞춤형 교육</td>
                         </tr>
                     </table>
                 </div>
@@ -97,7 +97,7 @@
                             <td class="tablebg">주5회(20회)</td>
                             <td class="tablebg">프리형(10회)</td>
                         </tr>
-                        <tr>
+                        <tr class="tablewh">
                             <td>소형(~8kg)</td>
                             <td>216,000원</td>
                             <td>408,000원</td>
@@ -106,7 +106,7 @@
                             <td>840,000원</td>
                             <td>500,000원</td>
                         </tr>
-                        <tr>
+                        <tr class="tablewh">
                             <td>중형(~16kg)</td>
                             <td>324,000원</td>
                             <td>612,000원</td>
@@ -115,7 +115,7 @@
                             <td>1,260,000원</td>
                             <td>750,000원</td>
                         </tr>
-                        <tr>
+                        <tr class="tablewh">
                             <td>대형(~30kg)</td>
                             <td>504,000원</td>
                             <td>952,000원</td>

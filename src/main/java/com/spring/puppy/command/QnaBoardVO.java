@@ -35,6 +35,7 @@ create table boastboard(
 create table qnaboard(
     qno NUMBER(8,0) PRIMARY KEY,
     writer varchar2(50) not null,
+	title varchar2(50) not null,
     content varchar2(2000) not null,
     answer varchar2(2000) not null,
     regdate DATE DEFAULT SYSDATE

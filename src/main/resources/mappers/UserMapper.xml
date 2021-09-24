@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.spring.puppy.user.mapper.IUserMapper">
+ 	
+ 	<resultMap type="com.spring.puppy.command.UserVO" id="UserMap">
+ 		<result property="addrBasic" column="addr_basic"/>
+ 		<result property="addrDetail" column="addr_detail"/>
+ 		<result property="addrZipNum" column="addr_zipnum"/>
+ 	
+ 	</resultMap>
+ 	
+ 	
+ 	<select id="idCheck" resultType="int">
+ 		SELECT COUNT(*) FROM users
+ 		WHERE id = #{id}
+ 	</select>
+ 	
+ 	<insert id="join">
+ 		INSERT INTO users
+ 		(id, pw, name, phone, email, birth, addr_basic, addr_detail, addr_zipnum)
+ 		VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{birth}, #{addrBasic}, #{addrDetail}, #{addrZipNum})
+ 	</insert>
+ 
+ 
+ 
+ </mapper>
