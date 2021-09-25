@@ -12,7 +12,7 @@ import lombok.ToString;
     pw VARCHAR2(50) NOT NULL,
     name VARCHAR2(50) NOT NULL,
     phone VARCHAR2(50) NOT NULL,
-    birth VARCHAR2(50,
+    birth VARCHAR2(50),
     email VARCHAR2(50),
     addrBasic VARCHAR2(300),
     addrDetail VARCHAR2(300),

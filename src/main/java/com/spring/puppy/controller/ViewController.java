@@ -37,5 +37,15 @@ public class ViewController {
 	@GetMapping("/service/studio")
 	public void studio() {}
 	
+	@GetMapping("/product/items")
+	public void items() {}
+	
+	@GetMapping("/product/orderpage")
+	public void orderpage() {}
+	
+	@GetMapping("/product/basket")
+	public void basket() {}
+	
+	
 	
 }

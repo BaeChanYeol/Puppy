@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -69,11 +69,11 @@
                             
                         </li>
                         <li class="menu-li">
-                            <a href="/purchase" class="menu-li-a">공동구매</a>
+                            <a href="<c:url value='/product/items'/>" class="menu-li-a">애견샵</a>
                             <ul class="second">
-                                <li><a href="/purchase/items">강아지용품</a></li>
-                                <li><a href="/purchase/medical">의료기기</a></li>
-                                <li><a href="/purchase/snack">간식,식품</a></li>
+                                <li><a href="<c:url value='/product/items'/>">강아지용품</a></li>
+                                <li><a href="<c:url value='/product/basket'/>">의료기기</a></li>
+                                <li><a href="<c:url value='/product/orderpage'/>">간식,식품</a></li>
                             </ul>
                         </li>
                         <li class="menu-li">
@@ -164,6 +164,7 @@
     	$('#close1').click(function() {
     		$('#join_modal').hide();
     		$('#id, #pw, #pw_check, #phone, #phone_check, #name, #email, #address1, #address2, #addNum').val('');
+    		$('#id_check, #pw_chk, #pw_chk2, #name_check, #email_check').html('');
     		
     	});
 

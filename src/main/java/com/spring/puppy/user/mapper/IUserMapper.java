@@ -1,7 +1,5 @@
 package com.spring.puppy.user.mapper;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.spring.puppy.command.UserVO;
 
 
@@ -13,8 +11,8 @@ public interface IUserMapper {
 		//회원 가입
 		void join(UserVO vo);
 		
-		//로그인
-		UserVO login(@Param("id")String id, @Param("pw")String pw);	
+		//회원정보 조회
+		UserVO selectOne(String id);	
 		
 		//회원 정보 얻어오기
 		UserVO getInfo(String id);

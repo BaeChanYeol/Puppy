@@ -1,6 +1,9 @@
 package com.spring.puppy.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +42,35 @@ public class UserController {
 		service.join(vo);
 		ra.addFlashAttribute("msg", "joinSuccess");
 		return "redirect:/";
+	}
+	
+	@PostMapping("/login")
+	public String login(@RequestBody UserVO inputData,
+						HttpSession session) {
+		
+		System.out.println(inputData.getId() + inputData.getPw());
+
+		String id = inputData.getId();
+		String pw = inputData.getPw();
+		
+		int result = service.idCheck(id);
+		
+		if(result == 0) {
+			return "idFail";
+		}else {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			UserVO dbData = service.selectOne(id);
+			if(en)
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		return "";
 	}
 	
 	

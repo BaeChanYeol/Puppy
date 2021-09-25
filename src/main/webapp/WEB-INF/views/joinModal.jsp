@@ -38,18 +38,25 @@
                         <h5>생년월일</h5>
                         <div class="joinform-wrap">
                             <select name="year" id="year">
-                                <option value="1994">1994</option>
+                            	<c:forEach var="i" begin="1920" end="2020">
+	                                <option value="${i}">${i}년</option>                            	                            	
+                            	</c:forEach>
+                            	
                             </select>
                         </div>
                         <div class="joinform-wrap">
                             <div class="joinform-wrap-left">
                                 <select name="month" id="month" >
-                                    <option value="12">12</option>
+                                	<c:forEach var="i" begin="1" end="12">
+                                    	<option value="${i}">${i}월</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div class="joinform-wrap-right">
                                 <select name="day" id="day">
-                                    <option value="27">27</option>
+                                    <c:forEach var="i" begin="1" end="31">
+                                    	<option value="${i}">${i}일</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                         </div>
@@ -129,6 +136,7 @@ $(document).ready(function() {
 				},
 				error : function() {
 					alert('관리자에게 문의하세요');
+					location.href="<c:url value='/'/>"
 				}
 			
 			});

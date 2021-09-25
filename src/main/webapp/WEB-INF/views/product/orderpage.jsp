@@ -4,85 +4,107 @@
 
 
     <section>
-        <article class="order">
-            <div class="order-title">
+        <article class="main-container">
+            <div class="wrap title">
                 <h2>주문하기</h2>
             </div>
-            <div class="orderPage">
-                <table class="orderPage-table">
-                    <tr> 
-                        <td>
-                            <div class="orderPage-name">
-                                <h3 class="orderPage-name">홍길동 <p class="orderPage-name"
-                                        style="font-size: 0.6em; color: blue;">기본배송지</p>
-                                </h3>
-                                <div class="orderPage-info">
-                                    <p>서울특별시 마포구 신촌로 ㅇㅇㅇ ㅁㅁ아파트 101호</p>
-                                    <p>010-1234-5678</p>
-                                    <select name="orderPage-require" required>
-                                        <option value="orderPage-select1">배송시 요청사항 선택하기</option>
-                                        <option value="orderPage-select2">직접 수령하겠습니다.</option>
-                                        <option value="orderPage-select3">문 앞에 놓아주세요.</option>
-                                        <option value="orderPage-select4">경비실에 맡겨주세요.</option>
-                                        <option value="orderPage-select5">배송 전 휴대폰으로 연락주세요.</option>
-                                        <option value="orderPage-select6">파손위험이 있는 상품이니 조심히 다뤄주세요.</option>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>
-                            <div class="orderPage-productTitle">
-                                <h3 class="orderPage-productTitle">주문상품</h3>
-                            </div>
-                            <div class="orderPage-product1" id="orderPage-product">
-                                <img class="orderPage-photo" src="../img/pad.png">
-                            </div>
-                            <div class="orderPage-product2" id="orderPage-product">
-                                <p>친환경 부드러운 순면 강아지 패드</p>
-                                <p>배송비 2,500원</p>
-                                <h2 class="orderPage-product2-price">19,000원</h2>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="orderPage-account">
-                                <h3 class="orderPage-account">결제금액</h3>
-                            </div>
-                            <div>
-                                <h4 class="orderPage-price">상품금액</h4>
-                                <p class="orderPage-price" id="orderPage-money">20,000</p>
-                            </div>
-                            <div>
-                                <h4 class="orderPage-price2">배송비</h4>
-                                <p class="orderPage-price2" id="orderPage-money2">2,500</p>
-                            </div>
-                            <div>
-                                <h4 class="orderPage-allaccount">총 결제금액</h4>
-                                <p class="orderPage-allaccount" id="orderPage-money3">22,500</p>
-                            </div>
-                        </td>
-
+        </article>
+        <article class="main-container">
+            <div class="wrap orderPage">
+                <h3>구매자정보</h3>
+                <table>
+                    <tr class="orderPagetrtop">
+                        <td class="orderPagetd">이름</td>
+                        <td>홍길동</td>
                     </tr>
                     <tr>
-                        <td class="orderPage-payButtonAll">
-                            <button class="orderPage-payButton">신용카드</button>
-                            <button class="orderPage-payButton">계좌이체</button>
-                            <button class="orderPage-payButton">휴대폰결제</button>
-                        </td>
+                        <td class="orderPagetd">이메일</td>
+                        <td>asd@naver.com</td>
                     </tr>
-
+                    <tr class="orderPagetrbottom">
+                        <td class="orderPagetd">휴대폰 번호</td>
+                        <td>010-1234-5678</td>
+                    </tr>
                 </table>
-            </div> <!-- 주문페이지 끝나는 공간 -->
-            <div class="orderPage-finalButton">
-                <button class="orderPage-finalButton1">결제하기</button>
-                <button class="orderPage-finalButton2">취소하기</button>
+            </div>
+            <div class="wrap orderPage">
+                <h3 class="deliverytitle">받는사람정보</h3>
+                <a href="#" class="deliverybtn"> 배송지변경</a>
+                <table>
+                    <tr class="orderPagetrtop">
+                        <td class="orderPagetd">이름</td>
+                        <td>홍길동 <span class="order-basic">기본배송지</span></td>
+                    </tr>
+                    <tr>
+                        <td class="orderPagetd">배송주소</td>
+                        <td>서울특별시 마포구 흑석동 123-45 미래건물 304호</td>
+                    </tr>
+                    <tr>
+                        <td class="orderPagetd">연락처</td>
+                        <td>010-1234-5678</td>
+                    </tr>
+                    <tr class="orderPagetrbottom">
+                        <td class="orderPagetd">배송 요청사항</td>
+                        <td>
+                            <select name="orderPage-require" required>
+                            <option value="orderPage-select1">배송시 요청사항 선택하기</option>
+                            <option value="orderPage-select2">직접 수령하겠습니다.</option>
+                            <option value="orderPage-select3">문 앞에 놓아주세요.</option>
+                            <option value="orderPage-select4">경비실에 맡겨주세요.</option>
+                            <option value="orderPage-select5">배송 전 휴대폰으로 연락주세요.</option>
+                            <option value="orderPage-select6">파손위험이 있는 상품이니 조심히 다뤄주세요.</option>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="wrap orderPage">
+                <h3>상품정보</h3>
+                <table class="productinfor">
+                    <tr class="orderPagetrtop">
+                        <td class="order_img">상품 이미지</td>
+                        <td>상품 이름</td>
+                        <td>색상</td>
+                        <td>수량</td>
+                    </tr>
+                    <tr class="orderPagetrbottom">
+                        <td class="order_img"><img src="../img/snack1.jpg" alt="#"></td>
+                        <td>개껌맛있는 소가죽 개껌</td>
+                        <td>-</td>
+                        <td>1개</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="wrap orderPage">
+                <h3>결제정보</h3>
+                <table>
+                    <tr class="orderPagetrtop">
+                        <td class="orderPagetd">총상품가격</td>
+                        <td>45,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="orderPagetd">배송비</td>
+                        <td>2,500원</td>
+                    </tr>
+                    <tr>
+                        <td class="orderPagetd">총결제가격</td>
+                        <td>47,500원</td>
+                    </tr>
+                    <tr class="orderPagetrbottom">
+                        <td class="orderPagetd">결제 방법</td>
+                        <td>
+                            <input type="radio" name="size"> 신용카드
+                            <input type="radio" name="size"> 계좌이체
+                            <input type="radio" name="size"> 휴대폰결제
+                            <input type="radio" name="size"> 무통장입금(가상계좌)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="wrap orderPagebtn">
+            <a href="#">결제하기</a>
             </div>
         </article>
+
     </section>
     
     <%@ include file="../include/footer.jsp" %>
