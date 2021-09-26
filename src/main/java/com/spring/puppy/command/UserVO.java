@@ -14,11 +14,19 @@ import lombok.ToString;
     phone VARCHAR2(50) NOT NULL,
     birth VARCHAR2(50),
     email VARCHAR2(50),
-    addrBasic VARCHAR2(300),
-    addrDetail VARCHAR2(300),
-    addrZipNum VARCHAR2(50),
+    addr_basic VARCHAR2(300),
+    addr_detail VARCHAR2(300),
+    addr_zipnum VARCHAR2(50),
     regDate DATE DEFAULT sysdate
 );
+ 
+ ALTER TABLE users
+ADD session_id VARCHAR2(80)
+DEFAULT 'none' NOT NULL;
+
+ALTER TABLE users
+ADD limit_time DATE;
+ 
  
  */
 
@@ -37,4 +45,10 @@ public class UserVO {
 	private String addrDetail;
 	private String addrZipNum;
 	private Timestamp regDate;
+	
+	private String sessionId;
+	private Timestamp limitTime;
+	
+	private boolean idRemember;
+	private boolean autoLogin;
 }

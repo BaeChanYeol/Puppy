@@ -4,8 +4,6 @@
 <%@ include file="./include/header.jsp"%>
 
 
-
-
 <!-- 바디 영역 -->
 
 <section>

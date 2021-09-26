@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
 
 </head>
     <!-- 헤더 영역-->
@@ -22,9 +23,16 @@
             <div class="header_top">
                 <div class="header_top_area">
                     <div class="hright">
-                        <a href="#" style="font-weight: normal;" id="join">회원가입</a>
-                        <a href="#" style="font-weight: normal;" id="login">로그인</a>
-                        <a href=<c:url value='/sitemap'/> style="font-weight: normal;">사이트맵</a>
+                    	<c:if test="${login == null}">
+	                        <a href="#" style="font-weight: normal;" id="join">회원가입</a>
+	                        <a href="#" style="font-weight: normal;" id="login">로그인</a>
+                    	</c:if>
+                    	<c:if test="${login != null}">
+	                        <a href="/user/mypage" style="font-weight: normal;" id="mypage">마이페이지</a>
+	                        <a href="#" style="font-weight: normal;" id="logout">로그아웃</a>
+							
+                    	</c:if>
+	                        <a href=<c:url value='/sitemap'/> style="font-weight: normal;">사이트맵</a>                    	
                     </div>
                     <div class="hleft">
 
@@ -132,9 +140,18 @@
     /* --------------------- 로그인 모달창 -----------------------*/
 
     $('#login').click(function() {
+    	
+    	if($.cookie('idCookie') != undefined){
+    		$('#loginId').val($.cookie('idCookie'));
+    		$("#idRemember").prop("checked", true);
+    	}else{
+    		$('#loginId').val('');
+    		$("#idRemember").prop("checked", false);
+    	}
+    	
     	$('#login_modal').show();
     	
-    	$(document).click(function(e) {
+    	$(document).mousedown(function(e) {
     		
     		if($('#login_modal').is(e.target)){
     			$('#login_modal').hide();
@@ -144,6 +161,7 @@
 
     	$('#close').click(function() {
     		$('#login_modal').hide();
+			$('#loginId, #loginPw').val('');    		
     	});
 
     });

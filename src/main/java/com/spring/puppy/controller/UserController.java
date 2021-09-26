@@ -1,10 +1,15 @@
 package com.spring.puppy.controller;
 
+import java.util.Date;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,32 +50,70 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
+	@ResponseBody
 	public String login(@RequestBody UserVO inputData,
-						HttpSession session) {
+						HttpSession session, HttpServletResponse response) {
 		
 		System.out.println(inputData.getId() + inputData.getPw());
 
 		String id = inputData.getId();
 		String pw = inputData.getPw();
 		
-		int result = service.idCheck(id);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		UserVO dbData = service.selectOne(id);
 		
-		if(result == 0) {
-			return "idFail";
+		if(dbData != null) {
+			if(encoder.matches(pw, dbData.getPw())){
+				
+				session.setAttribute("login", dbData);
+				
+				long limitTime = 60 * 60 * 24 * 90;
+				
+				//아이디 기억하기 체크시 처리
+				if(inputData.isIdRemember()) {
+					Cookie idCookie = new Cookie("idCookie", inputData.getId());
+					idCookie.setPath("/");
+					idCookie.setMaxAge((int) (limitTime));
+					response.addCookie(idCookie);
+				}else {
+					Cookie idCookie = new Cookie("idCookie", "");
+					idCookie.setMaxAge(0);
+					response.addCookie(idCookie);
+				}
+				
+				//자동 로그인 체크 시 처리해야 할 내용.
+				if(inputData.isAutoLogin()) { //자동 로그인을 희망.
+					//쿠키를 이용하여 자동 로그인 정보를 저장.
+					System.out.println("자동 로그인 쿠키 생성 중...");
+					//세션 아이디를 가지고 와서 쿠키에 저장.(고유한 값이 필요해서)
+					Cookie loginCookie = new Cookie("loginCookie", session.getId());
+					loginCookie.setPath("/"); //쿠키가 동작할 수 있는 유효한 url
+					loginCookie.setMaxAge((int) limitTime); //초로 시간을 받음.
+					response.addCookie(loginCookie);
+					
+					//자동 로그인 유지 시간을 날짜 객체로 변환.(DB에 삽입하기 위해, 밀리초)
+					long expiredDate = System.currentTimeMillis() + (limitTime * 1000);
+					//Date 객체의 생성자에 매개값으로 밀리초의 시간을 전달하면 날짜 형태로 변경해 줍니다.
+					Date limitDate = new Date(expiredDate);
+					
+					service.keepLogin(session.getId(), limitDate, inputData.getId());
+					
+				}
+				System.out.println("컨트롤러 작업종료");
+				return "loginSuccess";
+			} else {
+				System.out.println("컨트롤러 작업종료");
+				return "pwFail";
+			}
 		}else {
-			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-			UserVO dbData = service.selectOne(id);
-			if(en)
-			
-			
-			
-		}
-		
-		
-		
-		
-		
-		return "";
+			System.out.println("컨트롤러 작업종료");
+			return "idFail";	
+		}			
+	}
+	
+	@GetMapping("/mypage")
+	public String mypage() {		
+		return "mypage/mypage";
 	}
 	
 	

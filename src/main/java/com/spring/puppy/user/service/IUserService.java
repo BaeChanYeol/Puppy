@@ -1,5 +1,8 @@
 package com.spring.puppy.user.service;
 
+import java.util.Date;
+import java.util.Map;
+
 import com.spring.puppy.command.UserVO;
 
 public interface IUserService {
@@ -13,10 +16,13 @@ public interface IUserService {
 	//회원정보 조회
 	UserVO selectOne(String id);	
 	
-	//회원 정보 얻어오기
-	UserVO getInfo(String id);
+	//자동 로그인 쿠키값 DB저장
+	void keepLogin(String sessionId, Date limitTime, String account);
 	
 	//회원 정보 수정
 	void updateUser(UserVO vo);
+	
+	//자동로그인 처리
+	UserVO getUserWithSessionId(String sessionId);
 
 }

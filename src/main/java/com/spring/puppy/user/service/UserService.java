@@ -1,5 +1,9 @@
 package com.spring.puppy.user.service;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -31,17 +35,30 @@ public class UserService implements IUserService {
 
 	@Override
 	public UserVO selectOne(String id) {
-		return null;
+		return mapper.selectOne(id);
 	}
 
-	@Override
-	public UserVO getInfo(String id) {
-		return null;
-	}
 
 	@Override
 	public void updateUser(UserVO vo) {
 		
+	}
+
+	@Override
+	public void keepLogin(String sessionId, Date limitTime, String id) {
+		
+		Map<String, Object> datas = new HashMap<>();
+		datas.put("sessionId", sessionId);
+		datas.put("limitDate", limitTime);
+		datas.put("id", id);
+		
+		mapper.keepLogin(datas);
+	}
+
+	@Override
+	public UserVO getUserWithSessionId(String sessionId) {
+		
+		return mapper.getUserWithSessionId(sessionId);
 	}
 
 	

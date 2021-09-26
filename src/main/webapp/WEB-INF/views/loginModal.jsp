@@ -15,28 +15,28 @@
 		<div class="loginform-wrap">
 			<form action="#" method="POST">
 				<div class="logininput-wrap">
-					<input type="text" placeholder="아이디를 입력하세요!" name="id" id="id">
+					<input type="text" placeholder="아이디를 입력하세요!" name="loginId" id="loginId">
 				</div>
 				<div class="logininput-wrap">
-					<input type="password" placeholder="비밀번호를 입력하세요!" name="pw" id="pw">
+					<input type="password" placeholder="비밀번호를 입력하세요!" name="loginPw" id="loginPw">
 				</div>
 				<div class="logininput-wrap clearfix">
 					<div class="login-checkbox">
-						<input type="checkbox"> 아이디 저장
+						<input type="checkbox" id="idRemember"> 아이디 저장
 					</div>
 					<div class="login-checkbox">
-						<input type="checkbox"> 자동 로그인
+						<input type="checkbox" id="autoLogin"> 자동 로그인
 					</div>
 				</div>
 				<div class="logininput-wrap-btn">
 					<div class="logininput-wrap">
-						<button class="login-btn" type="submit">로그인</button>
+						<button class="login-btn" type="button">로그인</button>
 					</div>
 					<div class="logininput-wrap">
-						<button class="naver-btn">네이버 로그인</button>
+						<button class="naver-btn" type="button">네이버 로그인</button>
 					</div>
 					<div class="logininput-wrap">
-						<button class="kakao-btn">Kakao 로그인</button>
+						<button class="kakao-btn" type="button">Kakao 로그인</button>
 					</div>
 				</div>
 			</form>
@@ -63,17 +63,22 @@
 		
 		$('.login-btn').click(function() {
 			
-			if($('#id').val()==''){
+			if($('#loginId').val()==''){
 				alert('아이디를 입력해주세요!');
 				return;
-			}else if($('#pw').val()==''){
+			}else if($('#loginPw').val()==''){
 				alert('비밀번호를 입력해주세요!');
 				return;				
 			}else{
 				
+				const idRemember = $('#idRemember').is(':checked');
+				const autoLogin = $('#autoLogin').is(':checked');
+				
 				const userInfo = {
-					"id" : id,
-					"pw" : pw,
+					"id" : $('#loginId').val(),
+					"pw" : $('#loginPw').val(),
+					"autoLogin" : autoLogin,
+					"idRemember" : idRemember
 				};
 				
 				$.ajax({
@@ -85,12 +90,21 @@
 					dataType: "text",
 					data : JSON.stringify(userInfo),
 					success: function(result) {
-						
+						console.log(result);
+						if(result == "idFail" || result == "pwFail"){
+							alert('아이디 혹은 비밀번호가 틀렸습니다.');
+							$('#loginId, #loginPw').val('');
+						}else{
+							alert('로그인 성공!');
+							location.href='<c:url value="/" />';
+						}
+		
 						
 					},
 					erroer: function() {
 						alert('관리자에게 문의하세요');
-						location.href="/";
+						$('#loginId, #loginPw').val('');
+						location.href='<c:url value="/" />';
 					}
 					
 				});
