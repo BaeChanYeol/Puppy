@@ -30,8 +30,8 @@ ADD limit_time DATE;
  
  */
 
-@Getter
 @Setter
+@Getter
 @ToString
 public class UserVO {
 

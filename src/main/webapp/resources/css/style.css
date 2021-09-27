@@ -2838,233 +2838,312 @@ aside h2 {
             float: left;
             margin: 5px 0 0 5px;
         }
-/* detail */
-.detail-wrap {
-	width: 60%;
-	margin: 150px auto 0;
-	box-sizing: border-box;
-}
+
+/*상품 디테일~~~~*/
 
 .detail-img {
-	width: 50%;
-	text-align: center;
-	padding: 5% 5% 5% 5%;
-	float: left;
+    width: 550px;
+    text-align: center;
+    float: left;
 }
 
 .detail-img img {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .detail-explan {
-	width: 50%;
-	float: left;
-	padding: 5% 5% 5% 5%;
+    width: 50%;
+    float: left;
+    padding: 20px 0 0 35px;
+    margin-left: 20px;
 }
 
 .detail-explan>div>.right-sort {
-	margin-top: 15px;
-	text-align: right;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-align: right;
 }
 
 .detail-explan-item {
-	padding-top: 20px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.detail-explan-select {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+
+}
+.detail-explan-select select {
+    width: 100%;
+    height: 40px;
+}
+.detail-explan-exe {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: right;
+    font-size: 15px;
+}
+
+.detail-explan-item h4 {
+    font-size: 35px;
+    text-align: left;
+}
+.detail-explan-item p {
+    font-size: 25px;
 }
 
 .detail-explan-item3 {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid black;
-	margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-color: #eee;
+    font-size: 20px;
+    margin-top: 65px;
 }
-
-.detail-explan-item select {
-	width: 100%;
-	height: 40px;
+.detail-explan-zzim {
+    margin-top: 5px;
+}
+.detail-explan-zzim .heart-zzim {
+    background-image: url(../img/heart2.png);
+    background-size: cover;
+    background-color:#fff;
+    outline: 0;
+    border: 0;
+    width: 30px;
+    height: 30px;
+    display: block;
+    float: right;
+    cursor: pointer;
+}
+.detail-explan-zzim .heart-zzim:hover {
+    background-image: url(../img/heart3.png);
+    background-size: cover;
+    background-color:#fff;
+}
+.detail-explan-product {
+    border-top: 2px #ccc solid;
+    text-align: right;
+    padding: 15px 0;
+    margin: 30px 0;
+    font-size: 18px;
 }
 
 .detail-explan-cnt {
-	width: 50%;
-	float: left;
-	padding: 5% 5% 5% 5%;
+    width: 50%;
+    float: left;
+    padding-left: 5%;
 }
 
-.detail-cntBtn {
-	margin-top: 10px;
-}
 
 .detail-cntBtn div {
-	float: left;
-	text-align: center;
+    float: left;
+    text-align: center;
 }
 
-.detail-cntBtn1, .detail-cntBtn3 {
-	border: 1px solid black;
-	width: 20px;
+.detail-cntBtn1,
+.detail-cntBtn3 {
+    border: 1px solid black;
+    width: 20px;
 }
 
 .detail-cntBtn2 {
-	width: 40px;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
+    width: 40px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .detail-total {
-	width: 50%;
-	float: left;
-	text-align: right;
-	padding: 5% 5% 5% 5%;
+    text-align: right;
+    padding: 5px 10px;
 }
 
 .detail-total h4 {
-	margin-top: 10px;
+    margin: 10px 0;
+    float: right;
 }
-
+.detail-total p {
+    margin: 10px 0;
+    float: left;
+}
 .detail-explan-item4 {
-	width: 100%;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	box-sizing: border-box;
+
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    box-sizing: border-box;
+
 }
 
 .detail-explan-item4>div {
-	float: left;
-	width: 50%;
-	padding: 5px;
+    float: left;
+    width: 50%;
+    padding: 5px;
 }
 
 .detail-explan-item4 button {
-	width: 100%;
-	height: 35px;
+    width: 100%;
+    height: 45px;
+    font-size: 20px;
 }
 
 .detail-btn1 {
-	background-color: white;
-	border: 1px solid crimson;
-	color: crimson;
+    background-color: white;
+    border: 1px solid #996633;
+    color: #996633;
+    cursor: pointer;
 }
 
 .detail-btn2 {
-	background-color: crimson;
-	color: white;
-	border: none;
+    background-color: #996633;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
 .detail-info {
-	width: 60%;
-	margin: 0 auto;
+    width: 60%;
+    margin: 0 auto;
+}
+.detail-menu {
+    margin: 100px 0 50px;
 }
 
 .detail-menu>button {
-	width: 25%;
-	float: left;
-	height: 50px;
+    width: 25%;
+    float: left;
+    height: 50px;
 }
 
 .detail-product {
-	margin: 50px auto;
+    margin: 50px auto;
 }
 
 .detail-product img {
-	width: 100%;
-	height: 400px;
+    width: 100%;
+    height: 400px;
 }
+
 /*=============== 시작! ===================*/
-.reviews table, .qna table, .refund table {
-	border-top: 1px solid gray;
-	border-collapse: collapse;
-	margin: 0 auto;
-	width: 1000px;
-	margin-bottom: 50px;
+
+
+
+
+.reviews table,
+.qna table,
+.refund table {
+
+    border-top: 1px solid gray;
+    border-collapse: collapse;
+    margin: 0 auto;
+
+    width: 1000px;
+    margin-bottom: 50px;
+
 }
 
-.reviews table th, .reviews table td, .qna th, .qna td {
-	text-align: center;
-	border-left: none;
-	border-right: none;
-	border-bottom: 1px solid gray;
-	padding: 10px;
+.reviews table th,
+.reviews table td,
+.qna th,
+.qna td {
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid gray;
+    padding: 10px;
 }
 
-.refund th, .refund td {
-	border-left: none;
-	border-right: none;
-	border-bottom: 1px solid gray;
-	padding: 10px;
+
+
+.refund th,
+.refund td {
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid gray;
+    padding: 10px;
 }
 
 .reviews .review-title {
-	text-align: left;
+    text-align: left;
 }
 
 .qna .qna-title {
-	text-align: left;
-	padding-left: 30px;
-	width: 500px;
+    text-align: left;
+    padding-left: 30px;
+    width: 500px;
 }
 
 .qna-area {
-	margin: 0 auto;
-	width: 1000px;
+    margin: 0 auto;
+    width: 1000px;
 }
+
 /*<상품문의> 버튼*/
 .qna .p-qna {
-	/* position: absolute; */
-	display: block;
-	float: right;
-	text-align: center;
-	padding: 5px;
-	margin: 0 auto;
-	margin-top: -45px;
+    /* position: absolute; */
+    display: block;
+
+    float: right;
+    text-align: center;
+    padding: 5px;
+    margin: 0 auto;
+
+    margin-top: -45px;
+
+
+
 }
 
 .refund .refund-title {
-	width: 200px;
-	text-align: center;
-	background-color: #fafafa;
+    width: 200px;
+    text-align: center;
+    background-color: #fafafa;
 }
 
 .refund .refund-content {
-	font-size: 13.5px;
-	line-height: 1.5em;
-	padding-left: 100px;
+    font-size: 13.5px;
+    line-height: 1.5em;
+    padding-left: 100px;
+    text-align: left;
 }
 
 .qna table button {
-	padding: 3px;
+    padding: 3px;
 }
 
-.reviews .label, .refund .label {
-	/* text-align: center; */
-	padding-top: 70px;
-	margin: 0 auto;
-	width: 1200px;
-	/* border-top: 1px solid gray; */
+.reviews .label,
+.refund .label {
+    /* text-align: center; */
+    padding-top: 70px;
+    margin: 0 auto;
+    width: 1200px;
+    /* border-top: 1px solid gray; */
 }
 
 .qna .label {
-	padding-top: 70px;
-	margin: 0 auto;
-	width: 1200px;
-	/* border-top: 1px solid gray; */
+    padding-top: 70px;
+    margin: 0 auto;
+    width: 1200px;
+    /* border-top: 1px solid gray; */
 }
 
-.reviews h3, .refund h3 {
-	text-align: center;
-	margin-bottom: 70px;
-	/* margin: 0 auto; */
+.reviews h3,
+.refund h3 {
+    text-align: center;
+    margin-bottom: 70px;
+    /* margin: 0 auto; */
 }
 
 .qna h3 {
-	text-align: center;
-	margin-bottom: 130px;
+    text-align: center;
+    margin-bottom: 130px;
 }
 
+
 .refund ul {
-	padding: 30px 0;
+    padding: 30px 0;
 }
 
 /* orderpage*/
