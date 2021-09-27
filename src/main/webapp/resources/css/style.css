@@ -3222,6 +3222,7 @@ aside h2 {
 	top: 0;
 	left: 0;
 	z-index: 20;
+	
 }
 
 .joinModal {
@@ -3229,11 +3230,13 @@ aside h2 {
 	width: 500px;
 	padding-bottom: 30px;
 	position: absolute;
-	top: 30%;
+	top: 40%;
 	left: 50%;
 	margin: -250px 0 0 -250px;
 	background: rgb(255, 254, 254);
 	z-index: 21;
+	height:600px;
+	overflow: auto;
 }
 
 .joinModal_close {

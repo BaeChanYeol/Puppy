@@ -24,6 +24,15 @@
 	
 	<context:component-scan base-package="com.spring.puppy" />
 	
-	
-	
+	<beans:bean id="autoLogin" class="com.spring.puppy.util.interceptor.AutoLoginInterceptor" />
+	   <interceptors>
+	     
+	      <!-- 미리 등록한 인터셉터의 빈을 주입하는 방식 -->
+	      <interceptor>
+	         <mapping path="/"/>
+	         <beans:ref bean="autoLogin" />
+	      </interceptor>
+  
+	   </interceptors>
+		
 </beans:beans>

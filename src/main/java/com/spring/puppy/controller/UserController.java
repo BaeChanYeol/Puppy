@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -77,15 +78,15 @@ public class UserController {
 					response.addCookie(idCookie);
 				}else {
 					Cookie idCookie = new Cookie("idCookie", "");
+					idCookie.setPath("/");
 					idCookie.setMaxAge(0);
 					response.addCookie(idCookie);
 				}
 				
-				//자동 로그인 체크 시 처리해야 할 내용.
+				//자동 로그인 .
 				if(inputData.isAutoLogin()) { //자동 로그인을 희망.
-					//쿠키를 이용하여 자동 로그인 정보를 저장.
-					System.out.println("자동 로그인 쿠키 생성 중...");
-					//세션 아이디를 가지고 와서 쿠키에 저장.(고유한 값이 필요해서)
+					
+					//세션 아이디를 가지고 와서 쿠키에 저장.
 					Cookie loginCookie = new Cookie("loginCookie", session.getId());
 					loginCookie.setPath("/"); //쿠키가 동작할 수 있는 유효한 url
 					loginCookie.setMaxAge((int) limitTime); //초로 시간을 받음.
@@ -112,8 +113,12 @@ public class UserController {
 	}
 	
 	@GetMapping("/mypage")
-	public String mypage() {		
-		return "mypage/mypage";
+	public String mypage(HttpSession session, Model model) {		
+		
+		UserVO vo = (UserVO) session.getAttribute("login");
+		model.addAttribute("user", vo);
+		
+		return "mypage/mypage";		
 	}
 	
 	

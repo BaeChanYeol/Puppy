@@ -28,7 +28,7 @@
 	                        <a href="#" style="font-weight: normal;" id="login">로그인</a>
                     	</c:if>
                     	<c:if test="${login != null}">
-	                        <a href="/user/mypage" style="font-weight: normal;" id="mypage">마이페이지</a>
+	                        <a href="<c:url value='/user/mypage' />" style="font-weight: normal;" id="mypage">마이페이지</a>
 	                        <a href="#" style="font-weight: normal;" id="logout">로그아웃</a>
 							
                     	</c:if>

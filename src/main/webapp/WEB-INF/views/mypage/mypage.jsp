@@ -17,11 +17,11 @@
                         <button> 프로필 편집</button>
                     </div>
                     <div class="mypage-profile profile-text">
-                        <p class="name">홍길동</p>
+                        <p class="name">${user.name}</p>
                         <p class="niname">콩이아빠</p>
-                        <p class="phon">010-1234-5678</p>
-                        <p>가입날짜: <span class="ragdate">2021.09.14</span></p>
-                        <p class="email">aaa1234@naver.com</p>
+                        <p class="phon">${user.phone}</p>
+                        <p>가입날짜: <span class="ragdate">${user.regDate}</span></p>
+                        <p class="email">${user.email}</p>
                     </div>
                     <div class="mypage-profile out">
                         <a href="#">회원탈퇴</a>
