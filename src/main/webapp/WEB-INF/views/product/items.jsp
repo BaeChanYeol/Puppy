@@ -6,19 +6,7 @@
 
 
 
-    <aside class="sidemenu">
-        <ul>
-            <li>
-                <p class="page">강아지 용품</p>
-            </li>
-            <li>
-                <a href="#">의료기기</a>
-            </li>
-            <li>
-                <a href="#">간식, 식품</a>
-            </li>
-        </ul>
-    </aside>
+  
     <section>
 
         <article class="main-container">

@@ -87,6 +87,12 @@ td {
     background: rgb(250, 250, 250);
 }
 
+.title {
+	padding-top:100px;	
+	padding-bottom:80px;	
+}
+
+
 /* 해더 */
 .header {
 	position: fixed;
@@ -407,7 +413,7 @@ footer {
 
 /* 슬라이더 */
 #main-wrap {
-	width: 1900px;
+	width: 100%;
 	position: relative;
 	margin: 0 auto;
 }
@@ -422,14 +428,14 @@ footer {
 
 .prev {
 	position: absolute;
-	top: 300px;
-	left: 250px
+	top: 35%;
+	left: 10%
 }
 
 .next {
 	position: absolute;
-	top: 300px;
-	left: 1650px
+	top: 35%;
+	right: 10%;
 }
 
 #banner {
@@ -478,8 +484,8 @@ footer {
 
 #list_num {
 	position: absolute;
-	top: 650px;
-	left: 900px;
+	top: 70%;
+	left: 45%;
 }
 
 #list_num .btn_brown {
@@ -1030,43 +1036,6 @@ footer {
 .search {
 	float: right;
 	padding-bottom: 30px;
-}
-
-.sidemenu {
-	position: fixed;
-	top: 300px;
-	left: 200px;
-	z-index: 10;
-}
-
-.sidemenu ul li a {
-	display: block;
-	color: #fff;
-	background: #996633;
-	width: 120px;
-	height: 50px;
-	margin-bottom: 2px;
-	padding: 15px 10px;
-}
-
-.sidemenu ul li .page {
-	color: #000;
-	background: #fff;
-	font-weight: bold;
-	width: 120px;
-	height: 50px;
-	margin-bottom: 2px;
-	padding: 15px 10px;
-}
-
-.sidemenu ul li a:hover {
-	color: #000;
-	background: #fff;
-	font-weight: bold;
-	width: 120px;
-	height: 50px;
-	margin-bottom: 2px;
-	padding: 15px 10px;
 }
 
 /*==================== 뽐내기게시판 =======================*/
@@ -2128,7 +2097,7 @@ aside h2 {
 }
 
 .boardWrite .textArea {
-	width: 1140px;
+	width: 1138px;
 	margin-top: 10px;
 	padding: 15px;
 }
@@ -2786,11 +2755,11 @@ aside h2 {
             padding: 5px 10px;
 
         }
-        .basket-table .second {
+        .basket-table .bas-second {
             text-align: left;
             padding-left: 100px;
         }
-        .basket-table .second .bastitle {
+        .basket-table .bas-second .bastitle {
             font-size: 20px;
             font-weight: bold;
             display: block;

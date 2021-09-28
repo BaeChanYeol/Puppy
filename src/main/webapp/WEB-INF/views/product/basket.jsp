@@ -26,11 +26,11 @@
                         <td>
                             <img src="../img/basket1.jpg" alt="basketItem4">
                         </td>
-                        <td class="second">
+                        <td class="bas-second">
                             <p>
-                                <span class="bastitle">순면 배변패드</span><br>
-                                옵션:  <span>중형견용</span><br>
-                                판매가: <span>20,700원</span>
+                               	<span class="bastitle">순면 배변패드</span><br>
+                               	옵션:  <span>중형견용</span><br>
+                              	판매가: <span>20,700원</span>
                             </p>
                         </td>
                         <td>

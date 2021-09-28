@@ -46,6 +46,7 @@ public class ViewController {
 	@GetMapping("/product/basket")
 	public void basket() {}
 	
-	
+	@GetMapping("/board/boardWrite")
+	public void boardWrite() {}
 	
 }
