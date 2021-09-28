@@ -20,7 +20,7 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
+			System.out.println("인터셉터 시작");
 		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
 		HttpSession session = request.getSession();
 		
@@ -31,7 +31,7 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter{
 				session.setAttribute("login", vo);
 			}
 		}
-		
+			System.out.println("인터셉터 종료");
 		return true;
 	}
 	

@@ -9,7 +9,7 @@ import lombok.ToString;
 /*
  CREATE TABLE users(
     id VARCHAR2(50) PRIMARY KEY,
-    pw VARCHAR2(50) NOT NULL,
+    pw VARCHAR2(100) NOT NULL,
     name VARCHAR2(50) NOT NULL,
     phone VARCHAR2(50) NOT NULL,
     birth VARCHAR2(50),
