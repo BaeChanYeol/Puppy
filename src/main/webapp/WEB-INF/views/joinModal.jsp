@@ -69,9 +69,9 @@
                     <h5><label for="phone">휴대전화</label></h5>
                     <div class="joinform-phone clearfix">
                         <input type="text" name="phone" id="phone" placeholder="- 제외하고 입력해주세요!">
-                        <button>인증번호받기</button>
+                        <button onclick="sendSms();">인증번호받기</button>
                         <input type="text" name="phone_check" id="phone_check" placeholder="인증번호를 입력해주세요!">
-                        <button class="check">인증번호확인</button>
+                        <button class="check" onclick="phoneCheck();">인증번호확인</button>
                     </div>
 
                     <h5><label for="address">주소</label></h5>
@@ -218,6 +218,7 @@ $(document).ready(function() {
 	
 	
 	
+	
 }); // jquery 종료
 
 
@@ -232,6 +233,40 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	document.getElementById("addNum").value = zipNo;
 };
 
+//문자전송
+function sendSms() { 
+	$.ajax({ 
+		url: "<%=request.getContextPath()%>/sendSms", 
+		data: { 
+			receiver: $("#phone").val() 
+		}, 
+		type: "post", 
+		success: function(result) { 
+			if (result == "true") { 
+				console.log(result); 
+			} else { 
+				alert("인증번호 전송 실패"); 
+				} 
+			} 
+		}); 
+	} 
 
+function phoneCheck() { 
+	$.ajax({ 
+		url: "<%=request.getContextPath()%>/smsCheck", 
+		type: "post", 
+		data: { 
+			code: $("#phone_check").val() 
+		}, 
+		success: function(result) { 
+			if (result == "ok") { 
+				alert("번호 인증 성공"); 
+			} else { 
+				alert("번호 인증 실패"); 
+			} 
+		} 
+	}); 
+} 
+//문자전송끝
 
 </script>
