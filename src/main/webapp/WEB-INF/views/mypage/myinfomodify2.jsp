@@ -44,57 +44,58 @@
             </article>
             <article class="main-container">
                 <div class="myinfomodifyform">            
-                    <form action="" method="POST">
+                    <form action="<c:url value='/user/update'/>" method="POST" id="updateForm">
                         <div class="myarea">
-                            <label for="">아이디</label>
-                            <input type="text" name="id" id="" placeholder="아이디를 입력해주세요~">
+                            <label for="myId">아이디</label>
+                            <input type="text" name="id" id="myId" readonly value="${user.id}">
+                            
                         </div>
                         <div class="myarea">
-                            <label for="">비밀번호</label>
-                            <input type="password" name="pw" id="" placeholder="비밀번호를 입력해주세요~">
+                            <label for="myPw">비밀번호</label>
+                            <input type="password" name="pw" id="myPw" >
                             <span></span>
                         </div>
                         <div class="myarea">
-                            <label for="">비밀번호 확인</label>
-                            <input type="password" name="pw_check" id="" placeholder="비밀번호를 입력해주세요~">
+                            <label for="myPwChk">비밀번호 확인</label>
+                            <input type="password" name="myPwChk" id="myPwChk">
                             <span></span>
                         </div>
                         <div class="myarea">
-                            <label for="">이름</label>
-                            <input type="text" name="name" id="" placeholder="이름을 입력해주세요~">
+                            <label for="myName">이름</label>
+                            <input type="text" name="name" id="myName" value="${user.name}">
                         </div>
                         <div class="myarea">
-                            <label for="">이메일</label>
-                            <input type="text" name="email" id="" placeholder="이메일을 입력해주세요~">
+                            <label for="myEmail">이메일</label>
+                            <input type="text" name="email" id="myEmail" value="${user.email}">
                             <span></span>
                         </div>
                         <div class="myarea myarea-top">
-                            <label for="phone">휴대전화</label>
+                            <label for="myPhone">휴대전화</label>
                             <div class="myinfomodifyform-phone clearfix">
-                                <input type="text" name="phone" id="phone" placeholder="- 제외하고 입력해주세요!">
+                                <input type="text" name="phone" id="myPhone" value="${user.phone}">
                                 <button>인증번호받기</button>
-                                <input type="text" name="phone_check" id="phone_check" placeholder="인증번호를 입력해주세요!">
+                                <input type="text" name="myPhoneChk" id="myPhoneChk" placeholder="인증번호를 입력해주세요!">
                                 <button class="check">인증번호확인</button>
                             </div>
                         </div>
                         <div class="myarea myarea-top">
                             <label for="address">주소</label>
                             <div class="myinfomodifyform-address">
-                                <input type="text" name="addNum" id="addNum" placeholder="우편번호 찾기">
-                                <button>우편번호찾기</button>
+                                <input type="text" name="addrZipNum" id="myAddrNum" value="${user.addrZipNum}" >
+                                <button type="button" id="search_myAddress" onclick="goPopup();" >주소찾기</button>
                                 <div>
-                                    <input type="text" name="address1" id="address" placeholder="기본 주소" readonly>
-                                    <input type="text" name="address2" placeholder="상세 주소">
+                                    <input type="text" name="addrBasic" id="myAddrBasic" value="${user.addrBasic}" readonly>
+                                    <input type="text" name="addrDetail" id="myAddrDetail" value="${user.addrDetail}">
                                 </div>
                             </div>
                         </div>
                         
                         <div class="myinfomodify-bottom clearfix">
                             <div class="myinfomodify-bottom1">
-                                <button type="submit" class="myinfomodifyBtn1">변경하기</button>
+                                <button type="submit" id="updateBtn" class="myinfomodifyBtn1">변경하기</button>
                             </div>
                             <div class="myinfomodify-bottom2">
-                                <button type="submit" class="myinfomodifyBtn2">취소하기</button>
+                                <button type="button" onclick="history.back();" class="myinfomodifyBtn2">취소하기</button>
                             </div>
                         </div>
                         
@@ -104,9 +105,62 @@
             </article>
         </section>
     </div>
+    
     <%@ include file="../include/footer.jsp" %>
+    
     <script>
+    
     if("${msg}" == "success"){
 		alert('본인인증 성공!');
 	}
+    
+    $(document).ready(function() {
+		
+    	const getPwCheck = RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
+    	const getNameCheck = RegExp(/^[가-힣]+$/);
+    	const getEmailCheck = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
+
+    	$('#updateBtn').click(function(e) {
+			e.preventDefault();
+			if($('#myPw').val() == '' ){
+				alert('비밀번호는 필수정보입니다.');
+				$('#myPw').focus();
+				return;
+			}else if(!getPwCheck.test($('#myPw').val()) && $('#myPw').length < 9 ){
+				alert('비밀번호는 특수문자포함 9자이상입니다.');
+				$('#myPw').focus();				
+				return;
+			}else if($('#myPw').val() !== $('#myPwChk').val()) {
+				alert('비밀번호가 일치하지 않습니다. 확인란을 확인하세요.');
+				$('#myPwChk').focus();
+				return;
+			}else if($('#myName').val() == ''){
+				alert('이름은 필수정보입니다.');
+				$('#myName').focus();
+				return;
+			}else if(!getNameCheck.test($('#myName').val())){
+				alert('이름은 한글로만 작성하세요!');
+				$('#myName').focus();			
+				return;
+			}else if(!getEmailCheck.test($('#myEmail').val())){
+				alert('올바르지 않은 이메일 형식입니다.');
+				$('#myEmail').focus();
+				return;
+			}else if($('#myPhone').val().includes('-')){
+				alert('- 제외하고 입력해주세요!');
+				$('#myPhone').focus();
+				return;
+			}else{
+				$('#updateForm').submit();				
+			}
+	
+		});
+    	
+	});
+    function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+    	document.getElementById("myAddrBasic").value = roadAddrPart1;
+    	document.getElementById("myAddrDetail").value = addrDetail;
+    	document.getElementById("myAddrNum").value = zipNo;
+    };
+    
     </script>

@@ -21,7 +21,9 @@ img {
 	max-width: 100%; /*사이즈가 변해도 넓이를 유지*/
 	height: auto; /* 사이즈가 변해도 비율을 유지 */
 }
-
+button{
+	cursor: pointer;
+}
 /*
 input, textarea, button, select {
      고유하게 적용되어있는 form 관련 요소들을 제거해서

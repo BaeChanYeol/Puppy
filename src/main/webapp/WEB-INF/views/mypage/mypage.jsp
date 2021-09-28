@@ -83,3 +83,10 @@
         </article>
     </section>
     <%@ include file="../include/footer.jsp" %>
+    
+    <script>
+    	if('${msg}' == 'updateSuccess'){
+    		alert('회원정보 수정이 완료되었습니다.');
+    	}
+    
+    </script>

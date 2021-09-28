@@ -42,6 +42,12 @@
 	 	SELECT * FROM users
 	 	WHERE session_id=#{sessionId}
 	 </select>
+	 
+	 <update id="updateUser">
+	 	UPDATE users
+	 	SET pw=#{pw},name=#{name},email=#{email},addr_basic=#{addrBasic},addr_detail=#{addrDetail},addr_zipnum=#{addrZipNum}
+	 	WHERE id=#{id}
+	 </update>
  
  
  </mapper>

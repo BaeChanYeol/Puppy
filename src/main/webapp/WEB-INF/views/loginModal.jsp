@@ -59,6 +59,7 @@
 
 
 <script>
+
 	$(document).ready(function() {
 		
 		$('.login-btn').click(function() {

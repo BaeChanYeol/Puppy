@@ -76,11 +76,11 @@
 
                     <h5><label for="address">주소</label></h5>
                     <div class="joinform-address">
-                        <input type="text" name="addNum" id="addNum" placeholder="우편번호">
+                        <input type="text" name="addrZipNum" id="addNum" placeholder="우편번호">
                         <button type="button" id="search_address" onclick="goPopup();" >주소 찾기</button>
                         <div>
-                            <input type="text" name="address1" id="address1" placeholder="기본 주소" readonly>
-                            <input type="text" name="address2" id="address2" placeholder="상세 주소">
+                            <input type="text" name="addrBasic" id="address1" placeholder="기본 주소" readonly>
+                            <input type="text" name="addrDetail" id="address2" placeholder="상세 주소">
                         </div>
                     </div>
   					<input type="hidden" id="birth" name="birth">
@@ -104,7 +104,7 @@ $(document).ready(function() {
 	const getNameCheck = RegExp(/^[가-힣]+$/);
 	const getEmailCheck = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
 	
-	let chk1 = false, chk2 = false, chk3 = false, chk4 = false;
+	let chk1 = false, chk2 = false, chk3 = false, chk4 = false, chk5 = false, chk6 = false;
 	
 	$('#id').blur(function () {
 		
@@ -201,6 +201,16 @@ $(document).ready(function() {
 		
 	}); //이메일 검증 끝
 	
+	$('#phone').blur(function() {
+		if($(this).val().includes('-')){
+			alert('- 제외하고 입력해주세요!');
+			$(this).focus();
+			chk6=false;
+		}else{
+			chk6=true;
+		}
+	});
+	
 	$('.joinBtn').click(function(e) {
 		e.preventDefault();
 		
@@ -233,40 +243,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	document.getElementById("addNum").value = zipNo;
 };
 
-//문자전송
-function sendSms() { 
-	$.ajax({ 
-		url: "<%=request.getContextPath()%>/sendSms", 
-		data: { 
-			receiver: $("#phone").val() 
-		}, 
-		type: "post", 
-		success: function(result) { 
-			if (result == "true") { 
-				console.log(result); 
-			} else { 
-				alert("인증번호 전송 실패"); 
-				} 
-			} 
-		}); 
-	} 
 
-function phoneCheck() { 
-	$.ajax({ 
-		url: "<%=request.getContextPath()%>/smsCheck", 
-		type: "post", 
-		data: { 
-			code: $("#phone_check").val() 
-		}, 
-		success: function(result) { 
-			if (result == "ok") { 
-				alert("번호 인증 성공"); 
-			} else { 
-				alert("번호 인증 실패"); 
-			} 
-		} 
-	}); 
-} 
-//문자전송끝
 
 </script>

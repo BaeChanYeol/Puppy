@@ -137,6 +137,7 @@ public class UserController {
 		
 		
 		if(encoder.matches(pw, dbData.getPw())) {
+			model.addAttribute("user", vo);
 			model.addAttribute("msg", "success");
 			return "/mypage/myinfomodify2";
 		}else {
@@ -145,4 +146,14 @@ public class UserController {
 		}
 		
 	}
+	
+	@PostMapping("/update")
+	public String update(UserVO vo, HttpSession session, RedirectAttributes ra) {
+		service.updateUser(vo);
+		session.removeAttribute("login");
+		session.setAttribute("login", service.selectOne(vo.getId())); 
+		ra.addFlashAttribute("msg", "updateSuccess");
+		return "redirect:/user/mypage";
+	}
+	
 }
