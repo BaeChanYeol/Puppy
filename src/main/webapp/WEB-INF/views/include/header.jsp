@@ -80,7 +80,7 @@
                         <li class="menu-li">
                             <a href="<c:url value='/product/items'/>" class="menu-li-a">애견샵</a>
                             <ul class="second">
-                                <li><a href="<c:url value='/product/items'/>">강아지용품</a></li>
+                                <li><a href="<c:url value='/product/item'/>">강아지용품</a></li>
                                 <li><a href="<c:url value='/product/basket'/>">의료기기</a></li>
                                 <li><a href="<c:url value='/product/orderpage'/>">간식,식품</a></li>
                             </ul>

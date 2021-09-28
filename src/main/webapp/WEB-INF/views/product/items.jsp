@@ -18,156 +18,19 @@
         <article class="main-container">
             <div class="product wrap">
                 <ul>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div>
-                            <a href="#">
-                                <img src="../img/snack1.jpg" alt="유기농 개껌">
-                                <p class="align category">방석</p>
-                                <p class="align p-title">화장실 그물망 애견 배변판</p>
-                                <p class="align p-price">7,400원<span class="cost">8,000원</span></p>
-                            </a>
-                        </div>
-                    </li>
+                	<c:forEach var="vo" items="${itemList}">
+	                    <li class="item">
+	                        <div>
+	                            <a href="<c:url value='/product/detail?pno=${vo.pno}'/>">
+	                                <img src="../img/snack1.jpg" alt="유기농 개껌">
+	                                <p class="align category">${vo.cate}</p>
+	                                <p class="align p-title">${vo.pname}</p>
+	                                <p class="align p-price">${vo.price}원<span class="cost">8,000원</span></p>
+	                            </a>
+	                        </div>
+	                    </li>
+	                 </c:forEach>
+                    
 
                 </ul>
             </div>
@@ -195,6 +58,7 @@
                     <input type="text" placeholder="검색어 입력">
                     <button type="button" onclick="location.href='#'">검색</button>
                 </div>
+                <br><br><br><br><br>
             </div>
 
         </article>

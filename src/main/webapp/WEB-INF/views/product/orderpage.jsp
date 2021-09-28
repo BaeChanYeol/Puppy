@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="../include/header.jsp" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    
 
 
     <section>
@@ -66,20 +68,30 @@
                         <td>색상</td>
                         <td>수량</td>
                     </tr>
-                    <tr class="orderPagetrbottom">
-                        <td class="order_img"><img src="../img/snack1.jpg" alt="#"></td>
-                        <td>개껌맛있는 소가죽 개껌</td>
-                        <td>-</td>
-                        <td>1개</td>
-                    </tr>
+                    
+                    
+                    
+                    
+                    <c:forEach var = "vo" items="${orderList}" varStatus="st">
+	                    <tr class="orderPagetrbottom">
+	                        <td class="order_img"><img src="../img/snack1.jpg" alt="#"></td>
+	                        <td class="items">${vo.pname}</td>
+	                        <td>${vo.amount}개</td>
+	                        <td>${vo.price}원</td>
+	                    </tr>
+	                        <input type="hidden" id="part_sum${st.count}" name="part_sum" value="${vo.amount * vo.price}">
+	                        
+					</c:forEach>
                 </table>
+              	<input type="hidden" id="length" value="${fn:length(orderList)}">
+                
             </div>
             <div class="wrap orderPage">
                 <h3>결제정보</h3>
                 <table>
                     <tr class="orderPagetrtop">
                         <td class="orderPagetd">총상품가격</td>
-                        <td>45,000원</td>
+                        <td class = "total_price">45,000원</td>
                     </tr>
                     <tr>
                         <td class="orderPagetd">배송비</td>
@@ -87,7 +99,7 @@
                     </tr>
                     <tr>
                         <td class="orderPagetd">총결제가격</td>
-                        <td>47,500원</td>
+                        <td class="final_price" >47,500원</td>
                     </tr>
                     <tr class="orderPagetrbottom">
                         <td class="orderPagetd">결제 방법</td>
@@ -108,3 +120,27 @@
     </section>
     
     <%@ include file="../include/footer.jsp" %>
+    
+    <script>
+    
+    //금액 세자리씩 콤마로 구분하는 함수
+    function numberWithCommas(x) {
+    	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+    
+    $(document).ready(function(){
+    	var totalPrice = 0;
+        var i = 1;
+        while(i <= parseInt($('#length').val())){
+	        totalPrice += parseInt($('#part_sum'+i).val());
+	        console.log(totalPrice);
+	        i++;
+        	
+        }     
+        document.querySelector('.total_price').textContent = numberWithCommas(totalPrice) + '원';
+        document.querySelector('.final_price').textContent = numberWithCommas(totalPrice + 2500) + '원';
+        
+    })
+    
+
+    </script>
