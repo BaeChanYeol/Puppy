@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.puppy.product.mapper.IProductMapper">
+
+	<select id="productList" resultType="com.spring.puppy.command.ProductVO">
+		SELECT * FROM product
+		ORDER BY pno DESC
+	</select>
+	
+	<select id="getContent"
+		resultType="com.spring.puppy.command.ProductVO">
+		SELECT * FROM product
+		WHERE pno = #{pno}
+	</select>
+	
+	<select id="cartCheck" resultType="int">
+		SELECT count(*) 
+		FROM basket 
+		WHERE pno = #{pno}
+		
+	</select>
+	
+	<insert id="regist">
+		INSERT INTO basket(jno, pname, price, pno, amount)
+		VALUES(basket_seq.NEXTVAL, 
+				(SELECT p.pname
+				FROM product p
+       			WHERE p.pno=#{pno}), 
+        		(SELECT p.price
+				FROM product p
+        		WHERE p.pno=#{pno}),#{pno}, #{amount})	
+    </insert>
+
+	<select id="cartList" resultType="com.spring.puppy.command.CartVO">
+		SELECT * FROM basket
+		ORDER BY jno DESC
+	</select>
+	
+	<!--  
+	<select id="getContent"
+		resultType="com.spring.puppy.command.CartVO">
+		SELECT * FROM basket
+		WHERE jno = #{jno}
+	</select>
+	-->
+	
+	<delete id="delete">
+		DELETE FROM basket
+		WHERE pno = #{pno}
+	</delete>
+	
+	<insert id="orderRegist">
+		INSERT INTO orderboard(ono, pname, price,  amount)
+		VALUES(order_seq.NEXTVAL, 
+				
+				(SELECT b.pname
+				FROM basket b
+       			WHERE b.pno=#{pno}), 
+        		
+        		(SELECT b.price
+				FROM basket b
+        		WHERE b.pno=#{pno}),
+        		
+        		 
+        	
+        		)	
+    </insert>
+    
+    <select id="selectByPnum" resultType="com.spring.puppy.command.ProductVO">
+    
+    	SELECT * FROM product
+    	WHERE pno = #{pno}
+    
+    </select>
+
+	<select id="orderList" resultType="com.spring.puppy.command.CartVO">
+		SELECT * FROM basket
+	</select>
+	
+
+</mapper>

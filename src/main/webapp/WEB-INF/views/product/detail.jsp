@@ -1,20 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ include file="../include/header.jsp" %>
 
     <section>
         <article class="main-container">
+        <form class="cart_form" action="<c:url value='/product/registForm' />" name="registForm" method="post">
             <div class="wrap">
                 <div class="clearfix">
                     <div class="detail-img">
                         <img src="../img/toothbrush.jpg" alt="prodect">
                     </div>
                     <div class="detail-explan">
+                    	<input type="hidden" name="pno" value="${item.pno}">
                         <div class="detail-explan-item">
-                            <h4>강아지 실리콘 칫솔</h4>
+                            <h4>${item.pname}</h4>
                             <div class="right-sort">
                                 <p>
-                                    <strong>4900원</strong>
+                                    <strong>${item.price}원</strong>
                                 </p>
                             </div>
                         </div>
@@ -22,10 +25,14 @@
                         
                         <div class="detail-explan-select">
                             <select name="">
-                                <option value="">옵션을 선택하세요~</option>
+                            	<c:forEach var="op" items="">
+ 	                               <option value="">옵션을 선택하세요~</option>
+                            	</c:forEach>
+                            	<!--  
                                 <option value="">강아지 용품에만</option>
                                 <option value="">넣을 생각입니다.</option>
                                 <option value="">고민중이에요</option>
+                                -->
                             </select>
                         </div>
                         <div class="detail-explan-zzim clearfix">
@@ -36,21 +43,22 @@
                         </div>
                         <div class="detail-explan-product clearfix">
                             <div class="detail-cntBtn">
-                                <div class="detail-cntBtn1">-</div>
+                       			<div class="detail-cntBtn1"><a href="javascript:change_cnt('m')">-</a></div>
                                 <div class="detail-cntBtn2">1</div>
-                                <div class="detail-cntBtn3">+</div>
+                                <input type="hidden" name="amount" id="cnt" value="1">
+                        		<div class="detail-cntBtn3"><a href="javascript:change_cnt('p')">+</a></div>
                             </div>
                             <p>강아지 실리콘 칫솔</p>
                         </div>
                         <div class="detail-explan-item3 clearfix">
                             <div class="detail-total">
                                 <p>총 상품금액</p>
-                                <h4>4,900원</h4>
+                                <h4 id="total_amount">${item.price}원</h4>
                             </div>
                         </div>
                         <div class="detail-explan-item4 clearfix">
                             <div>
-                                <button type="submit" class="detail-btn1">장바구니</button>
+                                <button type="submit" class="detail-btn1" id="res_btn">장바구니</button>
                             </div>
                             <div>
                                 <button type="submit" class="detail-btn2">바로구매</button>
@@ -59,7 +67,10 @@
                     </div>
                 </div>
        		</div>
+       				
+       		</form>
         </article>
+        <c:out value="${item.opt}"/>
 
         <article class="main-container">
             <div class="wrap">
@@ -274,14 +285,70 @@
             </div>
         </article>
 
-        <!-- <p>
-        - 상품 수령 후 7일 이내 개봉 전 상품이라면 교환/반품이 가능합니다. <br>
-        - 상품에 하자가 있을 경우 교환/반품의 택배비는 쇼핑몰에서 부담합니다. <br>
-        - 고객 변심으로 교환/반품을 원할 경우, 무료배송으로 상품을 받아 보셨다면 왕복 택배비 6,000원, <br>
-            그러지 않은 경우에는 3,000원을 고객님께서 부담하셔야 합니다. <br>
-            ( 색상이나 디자인, 사이즈 등이 다를 경우에도 고객변심으로 해당 되오니 꼼꼼히 살펴보시고 구입 부탁드립니다. )
-        </p> -->
     </section>
 
     
     <%@ include file="../include/footer.jsp" %>
+    
+     <script>
+    const msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
+    
+    const registBtn = document.getElementById('res_btn');
+    registBtn.onclick = function() {
+    	document.registForm.submit();
+    }
+    
+    
+    Number.prototype.format = function(){ 
+    	if(this==0) return 0;
+    	var reg = /(^[+-]?\d+)(\d{3})/;
+    	var n = (this + ''); 
+    	while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2'); 
+    	return n; 
+    }; 
+    String.prototype.format = function(){ 
+    	var num = parseFloat(this); 
+    	if( isNaN(num) ) return "0"; 
+    	return num.format(); 
+    };
+
+
+    
+	    var basic_amount = "<c:out value='${item.price}' />"; 
+	    
+	    function change_cnt(t){ 
+	    	//var min_qty = '수량버튼'*1; 
+	    	var min_cnt = 1; 
+	    	var this_cnt = $("#cnt").val()*1; 
+	    	var max_cnt = '200'; // 현재 재고 
+	    	if(t=="m"){ 
+	    		this_cnt -= 1; 
+	    		if(this_cnt < min_cnt){ 
+	    			alert("수량은 1개 이상 입력해 주십시오."); 
+	    			return; 
+	    		} 
+	    	} else if(t=="p"){ 
+	    		this_cnt += 1; 
+	    		if(this_cnt > max_cnt){ 
+	    			alert("죄송합니다. 재고가 부족합니다."); 
+	    			return; 
+	    		} 
+	    	} 
+	    	var show_total_amount = basic_amount * this_cnt; 
+	    	$("#cnt").val(this_cnt); 
+	    	$('.detail-cntBtn2').html(this_cnt);
+	    	$("#total_amount").val(show_total_amount); 
+	    	$("#total_amount").html(show_total_amount.format()); 
+	    }
+		/////////////////////////////////////////////////////////////////////
+		
+    	var test = "<c:out value='${item.opt}'/>";
+    	console.log(test);
+    	
+    	const opt_arr = test.split("/");
+    	
+    
+    </script>
