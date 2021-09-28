@@ -18,7 +18,7 @@
                     </div>
                     <div class="mypage-profile profile-text">
                         <p class="name">${user.name}</p>
-                        <p class="niname">콩이아빠</p>
+                        <p class="niname">${user.id}</p>
                         <p class="phon">${user.phone}</p>
                         <p>가입날짜: <span class="ragdate">${user.regDate}</span></p>
                         <p class="email">${user.email}</p>
@@ -30,13 +30,13 @@
             </div>
             <div class="wrap mypage-centent clearfix">
                 <div class="mypage-menu">
-                    <a href="">
+                    <a href="<c:url value='/reserveBoard/reserveList'/>">
                         <img src="../img/myreserve.png" alt="예약 내역">
                         <h5>예약 내역</h5>
                     </a>
                 </div>
                 <div class="mypage-menu">
-                    <a href="">
+                    <a href="<c:url value='/user/passwordCheck'/>">
                         <img src="../img/mymember.png" alt="회원정보 수정">
                         <h5>회원정보 수정</h5>
                     </a>

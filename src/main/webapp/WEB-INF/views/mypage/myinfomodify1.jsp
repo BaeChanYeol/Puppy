@@ -5,7 +5,7 @@
 
 
     <!-- 내 정보 수정에서 비밀번호 확인페이지 -->
-     <div class="mypage">
+     <div class="mypage clearfix">
         <aside class="side">
             <h2>마이페이지</h2>
             <ul class="mysidemenu">
@@ -52,8 +52,8 @@
             
                 
                 <div class="myInfoModify1-passwordOk">
-                    <form action="" method="POST">
-                        <input class="myInfoModify1-password" placeholder="비밀번호를 입력하세요."><br>
+                    <form action="<c:url value='/user/myinfo'/>" method="POST">
+                        <input type="password" name="pw" class="myInfoModify1-password" placeholder="비밀번호를 입력하세요."><br>
                         <button class="myInfoModify1-ok">확인</button>
                     </form>
                 </div>
@@ -61,3 +61,9 @@
     </section>
     </div>
     <%@ include file="../include/footer.jsp" %>
+    
+    <script> 
+    	if("${msg}" == "pwFail"){
+    		alert('비밀번호가 틀렸습니다.');
+    	}
+    </script>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -120,6 +121,28 @@ public class UserController {
 		
 		return "mypage/mypage";		
 	}
+	@GetMapping("/passwordCheck")
+	public String prevMyinfo() {
+		
+		return "mypage/myinfomodify1";
+	}
 	
-	
+	@PostMapping("/myinfo")
+	public String myinfo(HttpSession session, String pw, RedirectAttributes ra, Model model) {
+		
+		UserVO vo =  (UserVO) session.getAttribute("login");
+		UserVO dbData = service.selectOne(vo.getId());
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		
+		if(encoder.matches(pw, dbData.getPw())) {
+			model.addAttribute("msg", "success");
+			return "/mypage/myinfomodify2";
+		}else {
+			ra.addFlashAttribute("msg", "pwFail");
+			return "redirect:/user/passwordCheck";			
+		}
+		
+	}
 }

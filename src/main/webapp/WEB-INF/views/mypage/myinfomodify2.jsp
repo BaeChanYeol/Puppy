@@ -105,3 +105,8 @@
         </section>
     </div>
     <%@ include file="../include/footer.jsp" %>
+    <script>
+    if("${msg}" == "success"){
+		alert('본인인증 성공!');
+	}
+    </script>
