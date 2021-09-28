@@ -52,15 +52,4 @@
 	</select>
 	
 	
-	<update id="update">
-		UPDATE freereply
-		SET reply = #{reply}, update_date = sysdate
-		WHERE rno = #{rno}
-	</update>
-	
-	<delete id="delete">
-		DELETE FROM freereply
-		WHERE rno = #{rno}
-	</delete>
-
 </mapper>

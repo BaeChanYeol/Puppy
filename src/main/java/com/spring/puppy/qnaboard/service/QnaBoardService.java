@@ -27,6 +27,12 @@ public class QnaBoardService implements IQnaBoardService{
 		
 		return mapper.getList();
 	}
+
+
+	@Override
+	public int getTotal(int qno) {
+		return 0;
+	}
 	
 	
 	
