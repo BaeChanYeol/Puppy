@@ -56,7 +56,8 @@
 							<td class="bas-second">
 								<p>
 									<span class="bastitle" id="pname">${vo.pname}</span><br>
-									옵션: <span>중형견용</span><br> 판매가: <span><input
+									옵션: <span>${vo.opt}</span><br> 
+									판매가: <span><input
 										type="hidden" name="p_price" id="price${st.count}"
 										class="p_price" value="${vo.price}">${vo.price}원</span>
 								</p>
