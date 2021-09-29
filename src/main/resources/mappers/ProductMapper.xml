@@ -25,14 +25,14 @@
 	</select>
 	
 	<insert id="regist">
-		INSERT INTO basket(jno, pname, price, pno, amount)
+		INSERT INTO basket(jno, pname, price, pno, amount, opt)
 		VALUES(basket_seq.NEXTVAL, 
 				(SELECT p.pname
 				FROM product p
        			WHERE p.pno=#{pno}), 
         		(SELECT p.price
 				FROM product p
-        		WHERE p.pno=#{pno}),#{pno}, #{amount})	
+        		WHERE p.pno=#{pno}),#{pno}, #{amount}, #{opt})	
     </insert>
 
 	<select id="cartList" resultType="com.spring.puppy.command.CartVO">

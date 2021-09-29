@@ -29,5 +29,6 @@ public class CartVO {
 	private String pname;
 	private int price;
 	private int amount;
+	private String opt;
 	
 }

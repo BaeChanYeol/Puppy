@@ -24,10 +24,20 @@
 
                         
                         <div class="detail-explan-select">
-                            <select name="">
-                            	<c:forEach var="op" items="">
+                            <select name="opt" id="opt" >
+                            	 
+                            	 <c:forTokens var="item" items="${item.opt}" delims="/">
+
+       								<option value="${item}">${item}</option>
+									
+   								 </c:forTokens>
+
+
+                            	<!-- 
+                            	<c:forEach var="op" items="" varStatus="st">
  	                               <option value="">옵션을 선택하세요~</option>
                             	</c:forEach>
+                            	 -->
                             	<!--  
                                 <option value="">강아지 용품에만</option>
                                 <option value="">넣을 생각입니다.</option>
@@ -61,7 +71,7 @@
                                 <button type="submit" class="detail-btn1" id="res_btn">장바구니</button>
                             </div>
                             <div>
-                                <button type="submit" class="detail-btn2">바로구매</button>
+                                <button type="submit" class="detail-btn2" >바로구매</button>
                             </div>
                         </div>
                     </div>
@@ -295,9 +305,13 @@
 	if(msg !== '') {
 		alert(msg);
 	}
+	
+	var sel_op = $("#opt option:selected").val();
+	console.log('a '+ sel_op);
     
     const registBtn = document.getElementById('res_btn');
     registBtn.onclick = function() {
+    	
     	document.registForm.submit();
     }
     
@@ -346,9 +360,10 @@
 		/////////////////////////////////////////////////////////////////////
 		
     	var test = "<c:out value='${item.opt}'/>";
-    	console.log(test);
+    	//console.log(test);
     	
-    	const opt_arr = test.split("/");
+    	//const opt_arr = test.split("/");
+    	
     	
     
     </script>
