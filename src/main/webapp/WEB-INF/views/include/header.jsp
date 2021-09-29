@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script type="text/javascript" src="<c:url value='/smartEditor/js/HuskyEZCreator.js'/>" charset="utf-8"></script>
-
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
     <!-- 헤더 영역-->
@@ -30,7 +30,7 @@
                     	</c:if>
                     	<c:if test="${login != null}">
 	                        <a href="<c:url value='/user/mypage' />" style="font-weight: normal;" id="mypage">마이페이지</a>
-	                        <a href="#" style="font-weight: normal;" id="logout">로그아웃</a>
+	                        <a href="<c:url value='/user/logout' />" style="font-weight: normal;" id="logout" onclick="return confirm('정말 로그아웃 하시겠습니까?');">로그아웃</a>
 							
                     	</c:if>
 	                        <a href=<c:url value='/sitemap'/> style="font-weight: normal;">사이트맵</a>                    	
@@ -110,7 +110,13 @@
   <%@ include file="../joinModal.jsp" %>
 
      <script>
-
+     /* 로그아웃 처리완료*/
+ 	const msg = '${msg}';
+ 	if(msg == "logout"){
+ 		alert("로그아웃 되었습니다!");
+ 	}
+ 	
+   
     const $logo = document.querySelector('.logo');
     const $header = document.querySelector('.header');
     // const $move = document.querySelector('.header_top_area>.left>a')
@@ -152,6 +158,7 @@
     	
     	$('#login_modal').show();
     	
+    	
     	$(document).mousedown(function(e) {
     		
     		if($('#login_modal').is(e.target)){
@@ -187,6 +194,9 @@
     		
     	});
 
+    	 
+        
+    	
     });
 
 	

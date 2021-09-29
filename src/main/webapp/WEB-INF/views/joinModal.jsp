@@ -69,9 +69,9 @@
                     <h5><label for="phone">휴대전화</label></h5>
                     <div class="joinform-phone clearfix">
                         <input type="text" name="phone" id="phone" placeholder="- 제외하고 입력해주세요!">
-                        <button onclick="sendSms();">인증번호받기</button>
+                        <button type="button">인증번호받기</button>
                         <input type="text" name="phone_check" id="phone_check" placeholder="인증번호를 입력해주세요!">
-                        <button class="check" onclick="phoneCheck();">인증번호확인</button>
+                        <button type="button" class="check">인증번호확인</button>
                     </div>
 
                     <h5><label for="address">주소</label></h5>
@@ -100,7 +100,7 @@
 $(document).ready(function() {
 	
 	const getIdCheck = RegExp(/^[a-zA-Z0-9]{5,20}$/);
-	const getPwCheck = RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
+	const getPwCheck = RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,/,&,*,?,_,~])|([!,@,#,$,/,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
 	const getNameCheck = RegExp(/^[가-힣]+$/);
 	const getEmailCheck = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
 	
@@ -213,14 +213,13 @@ $(document).ready(function() {
 	
 	$('.joinBtn').click(function(e) {
 		e.preventDefault();
-		
-		if(!chk1 && chk2 && chk3 && chk4 && chk5){
-			alert('입력정보를 확인하세요');
-			return;
-		}else{
+		if(chk1 && chk2 && chk3 && chk4 && chk5){
 			const birth = $('#year').val() + '-' + $('#month').val() + '-' + $('#day').val();
 			$('#birth').val(birth);
 			$('form').submit();
+		}else{
+			alert('입력정보를 확인하세요');
+			return;			
 		}
 		
 		

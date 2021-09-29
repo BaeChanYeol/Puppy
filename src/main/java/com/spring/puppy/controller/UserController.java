@@ -3,6 +3,7 @@ package com.spring.puppy.controller;
 import java.util.Date;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.WebUtils;
 
 import com.spring.puppy.command.UserVO;
 import com.spring.puppy.user.service.UserService;
@@ -112,6 +115,39 @@ public class UserController {
 			return "idFail";	
 		}			
 	}
+	
+	@GetMapping("/logout")
+	public ModelAndView logout(HttpSession session, RedirectAttributes ra,
+			   HttpServletRequest request,
+			   HttpServletResponse response) {
+
+			UserVO user = (UserVO) session.getAttribute("login");
+		
+			if(user != null) {
+	//			session.invalidate();
+				session.removeAttribute("login");
+				
+				Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+				if(loginCookie != null) {
+					loginCookie.setMaxAge(0);
+					loginCookie.setValue(null);
+					loginCookie.setPath("/"); //쿠키 생성 시 유효 url을 지정한 경우, 삭제할 때도 명시해 줍니다.
+					response.addCookie(loginCookie);
+					service.keepLogin("none", new Date(), user.getId());
+					
+				}
+			
+			ra.addFlashAttribute("msg", "logout");
+			}
+			return new ModelAndView("redirect:/");
+	}
+		
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/mypage")
 	public String mypage(HttpSession session, Model model) {		

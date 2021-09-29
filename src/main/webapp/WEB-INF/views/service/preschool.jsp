@@ -82,7 +82,7 @@
 
         <article class="main-container gray">
             <div class="wrap">
-                <h3 class="studioh3">BOWRAUM 이용 가격</h3>
+                <h3 class="studioh3">똑독 이용 가격</h3>
                 <div class="pres-padding">
                     <table class="pres-table">
                         <tr> 

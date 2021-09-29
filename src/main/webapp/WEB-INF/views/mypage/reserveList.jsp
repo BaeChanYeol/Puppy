@@ -3,7 +3,7 @@
     <%@ include file="../include/header.jsp" %>
 
 
-    <div class="mypage">
+    <div class="mypage clearfix">
         <aside class="side">
             <h2>마이페이지</h2>
             <ul class="mysidemenu">

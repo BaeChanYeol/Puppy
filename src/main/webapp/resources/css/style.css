@@ -420,25 +420,6 @@ footer {
 	margin: 0 auto;
 }
 
-.btn button {
-	font-size: 80px;
-	border: none;
-	background: none;
-	color: #996633;
-	cursor: pointer;
-}
-
-.prev {
-	position: absolute;
-	top: 35%;
-	left: 10%
-}
-
-.next {
-	position: absolute;
-	top: 35%;
-	right: 10%;
-}
 
 #banner {
 	width: 100%;
@@ -483,11 +464,42 @@ footer {
 .cnt .cnt_3 {
 	left: 300%;
 }
+.banner-btn {
+	position: absolute;
+	top:-10px;
+	width: 100%;
+	height: inherit;
+}
+.banner-btn .banner-btn-position {
+	position: relative;
+	margin: 0 auto;
+	width: 1140px;
+	height: inherit;
+}
+
+.btn button {
+	font-size: 80px;
+	border: none;
+	background: none;
+	color: #996633;
+	cursor: pointer;
+	position: absolute;	
+}
+
+.prev {
+	top: 250px;
+	left: -50px;
+}
+
+.next {
+	top: 250px;
+	right: -50px;
+}
 
 #list_num {
 	position: absolute;
-	top: 70%;
-	left: 45%;
+	bottom: 10%;
+    left: 45%;
 }
 
 #list_num .btn_brown {
@@ -850,7 +862,7 @@ footer {
 
 /*======= 전문진 소개 페이지 =======*/
 .comment {
-	padding-top: 50px;
+	padding-top: 100px;
 	font-size: 25px;
 	font-weight: bold;
 	margin-bottom: 130px;
@@ -1708,9 +1720,6 @@ aside h2 {
     width: 400px;
 }
 
-.myinfomodifyform-phone #phone {
-    width: 300px;
-}
 
 .myinfomodifyform-phone button {
     width: 100px;
@@ -1720,11 +1729,15 @@ aside h2 {
     border: none;
     color: white;
 }
+.myinfomodifyform-phone #myPhone {
+    width: 299px;
+    display: inline-block;
+}
 
-.myinfomodifyform-phone #phone_check {
+.myinfomodifyform-phone #myPhoneChk {
     display: inline-block;
     margin-top: 8px;
-    width: 300px;
+    width: 299px;
 }
 
 .myinfomodifyform-phone button[class="check"] {
@@ -1732,14 +1745,17 @@ aside h2 {
 }
 
 
-.myinfomodifyform #addNum {
-    width: 50%;
+.myinfomodifyform #myAddrNum {
+    width: 299px;
+    display: inline-block;
 }
 .myinfomodifyform-address {
     display: inline-block;
     width: 400px;
     text-align: right;
 }
+
+
 .myinfomodifyform-address button {
     width: 100px;
     height: 30px;
@@ -1747,11 +1763,10 @@ aside h2 {
     border: none;
     color: white;
     padding-bottom: 3px;
-    
+	float: right;    
 }
-.myinfomodifyform input[id="address"]{
+.myinfomodifyform #myAddrBasic,#myAddrDetail{
     margin-top: 8px;
-    margin-bottom: 8px;
 }
 .myinfomodifyBtn1, .myinfomodifyBtn2 {
     background: #996633;
@@ -3199,12 +3214,12 @@ aside h2 {
 	width: 500px;
 	padding-bottom: 30px;
 	position: absolute;
-	top: 40%;
+	top: 30%;
 	left: 50%;
 	margin: -250px 0 0 -250px;
 	background: rgb(255, 254, 254);
 	z-index: 21;
-	height:600px;
+	height:auto;
 	overflow: auto;
 }
 

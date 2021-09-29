@@ -62,6 +62,14 @@
 
 	$(document).ready(function() {
 		
+		$("#loginPw").on("keyup",function(key){
+	        if(key.keyCode==13) {
+	            $('.login-btn').click();
+	        }
+	    });
+
+		
+		
 		$('.login-btn').click(function() {
 			
 			if($('#loginId').val()==''){

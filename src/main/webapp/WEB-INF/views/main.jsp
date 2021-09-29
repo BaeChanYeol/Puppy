@@ -14,13 +14,21 @@
 					<ul>
 						<li class="cnt_0"><img src="./img/banner.jpg"
 							alt="강하지유치원은 보호자가 반려견과 함께 더 나은 삶을 가꾸어 나가는 것을 최선의 가치로 삼고있습니다. "></li>
-						<li class="cnt_1"><img src="./img/ex1.png"
+						<li class="cnt_1"><img src="./img/banner2.jpg"
 							alt="강하지유치원은 보호자가 반려견과 함께 더 나은 삶을 가꾸어 나가는 것을 최선의 가치로 삼고있습니다. "></li>
-						<li class="cnt_2"><img src="./img/banner.jpg"
+						<li class="cnt_2"><img src="./img/banner3.jpg"
 							alt="강하지유치원은 보호자가 반려견과 함께 더 나은 삶을 가꾸어 나가는 것을 최선의 가치로 삼고있습니다. "></li>
-						<li class="cnt_3"><img src="./img/ex1.png"
+						<li class="cnt_3"><img src="./img/banner4.jpg"
 							alt="강하지유치원은 보호자가 반려견과 함께 더 나은 삶을 가꾸어 나가는 것을 최선의 가치로 삼고있습니다. "></li>
 					</ul>
+				</div>
+			</div>
+			<div class="banner-btn">
+				<div class="banner-btn-position">
+					<div class="btn">
+						<button type="button" class="prev">&#10094;</button>
+						<button type="button" class="next">&#10095;</button>
+					</div>
 				</div>
 			</div>
 			<div id="list_num">
@@ -30,10 +38,6 @@
 					<li><a href="#"></a></li>
 					<li><a href="#"></a></li>
 				</ul>
-			</div>
-			<div class="btn">
-				<button type="button" class="prev">&#10094;</button>
-				<button type="button" class="next">&#10095;</button>
 			</div>
 		</div>
 	</article>
@@ -255,7 +259,8 @@
 		if(msg == "joinSuccess"){
 			alert('회원가입 완료!');
 		}
-	
+		
+		
 
 	});
 	

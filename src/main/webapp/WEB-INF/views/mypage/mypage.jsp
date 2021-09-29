@@ -20,7 +20,7 @@
                         <p class="name">${user.name}</p>
                         <p class="niname">${user.id}</p>
                         <p class="phon">${user.phone}</p>
-                        <p>가입날짜: <span class="ragdate">${user.regDate}</span></p>
+                        <p>가입날짜: <span class="ragdate"> <fmt:formatDate value="${user.regDate}" pattern="yyyy-MM-dd"/> </span></p>
                         <p class="email">${user.email}</p>
                     </div>
                     <div class="mypage-profile out">
