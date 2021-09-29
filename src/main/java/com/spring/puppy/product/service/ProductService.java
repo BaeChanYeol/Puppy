@@ -9,6 +9,7 @@ import com.spring.puppy.command.CartVO;
 import com.spring.puppy.command.OrderVO;
 import com.spring.puppy.command.ProductVO;
 import com.spring.puppy.product.mapper.IProductMapper;
+import com.spring.puppy.util.PageVO;
 
 @Service
 public class ProductService implements IProductService{
@@ -16,10 +17,10 @@ public class ProductService implements IProductService{
 	@Autowired
 	private IProductMapper mapper;
 
-	@Override
-	public List<ProductVO> productList() {
-		return mapper.productList();
-	}
+//	@Override
+//	public List<ProductVO> productList() {
+//		return mapper.productList();
+//	}
 
 	@Override
 	public ProductVO getContent(int pno) {
@@ -65,6 +66,18 @@ public class ProductService implements IProductService{
 	@Override
 	public ProductVO selectByPnum(int pnum) {
 		return mapper.selectByPnum(pnum);
+	}
+
+
+	@Override
+	public List<ProductVO> productList(PageVO vo) {
+		return mapper.productList(vo);
+	}
+
+
+	@Override
+	public int getTotal(PageVO vo) {
+		return mapper.getTotal(vo);
 	}
 
 }

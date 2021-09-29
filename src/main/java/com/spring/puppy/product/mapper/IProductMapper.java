@@ -5,10 +5,18 @@ import java.util.List;
 import com.spring.puppy.command.CartVO;
 import com.spring.puppy.command.OrderVO;
 import com.spring.puppy.command.ProductVO;
+import com.spring.puppy.command.ReserveBoardVO;
+import com.spring.puppy.util.PageVO;
 
 public interface IProductMapper {
 		// 상품 목록
-		List<ProductVO> productList(); 
+		//List<ProductVO> productList(); 
+	
+		//목록 요청
+		List<ProductVO> productList(PageVO vo); 
+			
+		//상품 수 카운트
+		int getTotal(PageVO vo);
 		
 		// 상품 정보 얻기
 		ProductVO getContent(int pno);

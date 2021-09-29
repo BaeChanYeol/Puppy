@@ -34,8 +34,41 @@
 
                 </ul>
             </div>
+            
+             <form action="<c:url value='/product/items' />" name="pageForm">
+                    <div class="text-center">
+                    
+                    
+	                    <!-- 페이지 관련 버튼들이 ul 태그로 감싸져 있다. -->
+	                    
+	                    <ul class="pagination" id="pagination">
+	                       <c:if test="${pc.prev}"> <!-- 이전  -->
+	                       		<a href="#" data-pageNum="${pc.beginPage-1}">&lt;</a>
+	                       </c:if>
+	                       
+	                       <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+	                       		<a href="#" data-pageNum="${num}" class="${pc.paging.pageNum == num ? 'active' : ''}">${num}</a>
+	                       </c:forEach>
+	                       
+	                        <c:if test="${pc.next}"> <!-- 다음  -->
+	                        	<a href="#" data-pageNum="${pc.endPage+1}">&gt;</a>
+	                        </c:if>                    
+	                    </ul>
+	                    
+	                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
+	                    <input type="hidden" name="countPerPage" value="${pc.paging.countPerPage}">
+                    
+                    </div>
+                    
+                    <div class="search">
+	                    <input type="text" placeholder="검색어 입력">
+	                    <button type="button" onclick="location.href='#'">검색</button>
+                	</div>
+                	
+                	<br><br><br><br><br>
+        	  </form>
 
-
+			<!-- 
             <div class="wrap">    
                 <div class="pagination">
 
@@ -60,9 +93,21 @@
                 </div>
                 <br><br><br><br><br>
             </div>
+             -->
 
         </article>
     </section>
     <%@ include file="../include/footer.jsp" %>
+    
+    <script>
+    
+	    const pagination = document.getElementById('pagination');
+		pagination.onclick = function(e) {
+			e.preventDefault(); 
+			const value = e.target.dataset.pagenum;
+			document.pageForm.pageNum.value = value;
+			document.pageForm.submit();
+		}
+    </script>
 
 

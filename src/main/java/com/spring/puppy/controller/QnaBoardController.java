@@ -1,5 +1,7 @@
 package com.spring.puppy.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.puppy.command.QnaBoardVO;
+import com.spring.puppy.command.ReserveBoardVO;
 import com.spring.puppy.qnaboard.service.IQnaBoardService;
+import com.spring.puppy.util.PageCreator;
+import com.spring.puppy.util.PageVO;
 
 @Controller
 @RequestMapping("/qnaBoard")
@@ -40,10 +45,24 @@ public class QnaBoardController {
 	}
 	
 	//qna 목록 화면 (링크는 모두 겟맵핑)
+//	@GetMapping("/qna")
+//	public String qnaList(Model model) {
+//			
+//		model.addAttribute("qnaList", service.getList());
+//		return "qnaBoard/qna";
+//	}
+	//qna 목록 화면
 	@GetMapping("/qna")
-	public String qnaList(Model model) {
-			
-		model.addAttribute("qnaList", service.getList());
+	public String qnaList(PageVO vo, Model model) {
+		
+		PageCreator pc = new PageCreator();
+		pc.setPaging(vo);
+		pc.setArticleTotalCount(service.getTotal(vo));
+		
+
+		model.addAttribute("qnaList", service.getList(vo));
+		model.addAttribute("pc", pc);
+		
 		return "qnaBoard/qna";
 	}
 	

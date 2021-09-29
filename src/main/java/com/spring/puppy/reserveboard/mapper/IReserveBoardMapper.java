@@ -13,6 +13,7 @@ public interface IReserveBoardMapper {
 		//목록 요청
 		List<ReserveBoardVO> getList(PageVO vo); 
 		
+		//예약 건 수 카운트
 		int getTotal(PageVO vo);
 		
 		//삭제 요청

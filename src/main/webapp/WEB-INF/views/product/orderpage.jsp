@@ -17,44 +17,45 @@
                 <table>
                     <tr class="orderPagetrtop">
                         <td class="orderPagetd">이름</td>
-                        <td>홍길동</td>
+                        <td>${users.name}</td>
                     </tr>
                     <tr>
                         <td class="orderPagetd">이메일</td>
-                        <td>asd@naver.com</td>
+                        <td>${users.email}</td>
                     </tr>
                     <tr class="orderPagetrbottom">
                         <td class="orderPagetd">휴대폰 번호</td>
-                        <td>010-1234-5678</td>
+                        <td id="ph">${users.phone}</td>
                     </tr>
                 </table>
             </div>
             <div class="wrap orderPage">
                 <h3 class="deliverytitle">받는사람정보</h3>
-                <a href="#" class="deliverybtn"> 배송지변경</a>
+                <a href="#" class="deliverybtn" onclick="goPopup();"> 배송지변경</a>
                 <table>
                     <tr class="orderPagetrtop">
                         <td class="orderPagetd">이름</td>
-                        <td>홍길동 <span class="order-basic">기본배송지</span></td>
+                        <td>${users.name} <span class="order-basic">기본배송지</span></td>
                     </tr>
                     <tr>
                         <td class="orderPagetd">배송주소</td>
-                        <td>서울특별시 마포구 흑석동 123-45 미래건물 304호</td>
+                        <td id="addr"> ${users.addrBasic} ${users.addrDetail} </td> <!-- ${user.addrBasic + user.addrDetail} -->
                     </tr>
                     <tr>
                         <td class="orderPagetd">연락처</td>
-                        <td>010-1234-5678</td>
+                        <td id="pho">${users.phone}</td>
                     </tr>
                     <tr class="orderPagetrbottom">
                         <td class="orderPagetd">배송 요청사항</td>
                         <td>
                             <select name="orderPage-require" required>
-                            <option value="orderPage-select1">배송시 요청사항 선택하기</option>
-                            <option value="orderPage-select2">직접 수령하겠습니다.</option>
-                            <option value="orderPage-select3">문 앞에 놓아주세요.</option>
-                            <option value="orderPage-select4">경비실에 맡겨주세요.</option>
-                            <option value="orderPage-select5">배송 전 휴대폰으로 연락주세요.</option>
-                            <option value="orderPage-select6">파손위험이 있는 상품이니 조심히 다뤄주세요.</option>
+	                            <option value="orderPage-select1">배송시 요청사항 선택하기</option>
+	                            <option value="orderPage-select2">직접 수령하겠습니다.</option>
+	                            <option value="orderPage-select3">문 앞에 놓아주세요.</option>
+	                            <option value="orderPage-select4">경비실에 맡겨주세요.</option>
+	                            <option value="orderPage-select5">배송 전 휴대폰으로 연락주세요.</option>
+	                            <option value="orderPage-select6">파손위험이 있는 상품이니 조심히 다뤄주세요.</option>
+                            </select>
                         </td>
                     </tr>
                 </table>
@@ -128,6 +129,7 @@
     	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
     
+        
     $(document).ready(function(){
     	var totalPrice = 0;
         var i = 1;
@@ -140,7 +142,33 @@
         document.querySelector('.total_price').textContent = numberWithCommas(totalPrice) + '원';
         document.querySelector('.final_price').textContent = numberWithCommas(totalPrice + 2500) + '원';
         
-    })
+        function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+        	document.getElementById("addr").value = roadAddrPart1 + addrDetail;
+        	//document.getElementById("addr").innerHTML = roadAddrPart1 + addrDetail;
+        };
+        
+        
+        var test = "<c:out value='${users.phone}' />";
+        console.log(test);
+        var testDate = test.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3");
+        console.log(testDate);
+        document.getElementById("ph").innerHTML = testDate;
+        document.getElementById("pho").innerHTML = testDate;
+        
+        //document.querySelectorAll('#ph, #phone').textContent = testDate;
+        
+        //$("#ph").textContent = testDate;
+        
+        //var phone_before = "<c:out value='${users.phone}' />";
+        	
+        	
+        /*
+        console.log(phone_before);
+        var phone_after = phone_before.substr(0,3) + '-' + phone_before.substr(3,7) + '-' + phone_before.substr(7,11);
+        console.log('hey: '+phone_after);
+        document.querySelector('#phone').textContent = phone_after;
+        */
+    });
     
 
     </script>

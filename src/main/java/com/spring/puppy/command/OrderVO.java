@@ -13,7 +13,9 @@ import lombok.ToString;
     pno NUMBER(8,0) not null,
     addr varchar2(500),
     regdate DATE DEFAULT SYSDATE,
-    amount NUMBER(8,0) not null
+    amount NUMBER(8,0) not null,
+    pname varchar2(50) not null,
+    price NUMBER(8,0) not null
 );
 
 CREATE SEQUENCE order_seq

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +20,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.puppy.command.CartVO;
 import com.spring.puppy.command.OrderVO;
 import com.spring.puppy.command.ProductVO;
+import com.spring.puppy.command.QnaBoardVO;
+import com.spring.puppy.command.UserVO;
 import com.spring.puppy.product.service.IProductService;
+import com.spring.puppy.util.PageCreator;
+import com.spring.puppy.util.PageVO;
 
 @Controller
 @RequestMapping("/product")
@@ -30,12 +35,27 @@ public class ProductController {
 	
 	
 	//상품 목록 화면 (링크는 모두 겟맵핑)
+//	@GetMapping("/item")
+//	public String itemList(Model model) {
+//				
+//		model.addAttribute("itemList", service.productList());
+//		return "product/items";
+//	}
 	@GetMapping("/item")
-	public String itemList(Model model) {
-				
-		model.addAttribute("itemList", service.productList());
+	public String itemList(PageVO vo, Model model) {
+		
+		PageCreator pc = new PageCreator();
+		pc.setPaging(vo);
+		pc.setArticleTotalCount(service.getTotal(vo));
+		
+
+		model.addAttribute("itemList", service.productList(vo));
+		model.addAttribute("pc", pc);
+		
 		return "product/items";
 	}
+	
+	
 	
 	//상세보기 화면
 	@GetMapping("/detail")
@@ -69,6 +89,7 @@ public class ProductController {
 		return "product/basket";
 	}
 	
+	
 	//장바구니 삭제
 	@ResponseBody
 	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
@@ -86,6 +107,17 @@ public class ProductController {
 		result = 1; 
 	  	return result;  
 	}
+	
+		//예약 삭제 처리
+		@RequestMapping(value="/itemDelete/{pno}", method=RequestMethod.GET)
+		public String reserveDelete(@PathVariable int pno, CartVO cart, RedirectAttributes ra) {
+			cart.setPno(pno);
+			service.delete(cart);
+			//ra.addFlashAttribute("msg", "해당 상품이 정상 삭제되었습니다.");
+			return "redirect:/product/basket";
+		}
+	
+	
 	
 		//선택 상품 가지고 주문 페이지로 이동
 		@RequestMapping("/orderpage")
@@ -107,10 +139,16 @@ public class ProductController {
 			}
 			
 			model.addAttribute("orderList",orderList);
+			
+			UserVO vo = (UserVO) session.getAttribute("login");
+			model.addAttribute("users", vo);
+			
 			//세션에도 저장
 			session.setAttribute("orderList", orderList);
 			return "product/orderpage";
 		}
+		
+		
 	
 
 }

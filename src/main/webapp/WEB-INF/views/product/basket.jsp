@@ -51,7 +51,7 @@
 					<c:forEach var="vo" items="${cartList}" varStatus="st">
 						<tr>
 							<td><input type="checkbox" name="buy" class="chBox"
-								id="pnum${st.count}" value="${vo.pno}" data-pno="${vo.pno}"></td>
+								id="pnum${st.count}" value="${vo.pno}" data-pno="${vo.pno}" onclick="javascript:basket.checkItem();"></td>
 							<td><img src="../img/basket1.jpg" alt="basketItem4"></td>
 							<td class="bas-second">
 								<p>
@@ -88,7 +88,7 @@
 								x++;
 							%>
 							<td>
-								<button class="barbtn">상품삭제</button>
+								<button type="button" class="barbtn" onclick="location.href='<c:url value="/product/itemDelete/${vo.pno} "/>'">상품삭제</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -109,8 +109,8 @@
 						<td><strong>총 상품 금액</strong></td>
 					</tr>
 					<tr>
-						<td id="sum_p_price">45,000원</td>
-						<td>3,000원</td>
+						<td id="sum_p_price"></td>
+						<td>2,500원</td>
 						<td id="final_price">48,000원</td>
 					</tr>
 				</table>
@@ -136,49 +136,80 @@
 <%@ include file="../include/footer.jsp"%>
 
 <script>
-$(document).ready(function() {
-
-	$(".basdel").click(function(e){
-		  //var confirm_val = confirm("정말 삭제하시겠습니까?");
-		  e.preventDefault();
-		  //if(confirm_val) {
-		   var checkArr = new Array();
-		   
-		   $("input[class='chBox']:checked").each(function(){
-		    checkArr.push($(this).attr("data-pno"));
-		   });
-		    
-		   $.ajax({
-			   
-		    url : "<c:url value='/product/deleteCart' />",
-		    type : "post",
-		    data : { chbox : checkArr },
-		    success : function(result){
-		    	if(result == 1){ location.href = "<c:url value='/product/basket' />"; }
-		    	else alert("삭제 실패");
-		    	
-		    }
-		   });
-		 });
-   
-		$("#allCheck").click(function(){
-			 var chk = $("#allCheck").prop("checked");
-			 if(chk) {
-			  $(".chBox").prop("checked", true);
-			 } else {
-			  $(".chBox").prop("checked", false);
-			 }
-			});
-			
-		$("#allCheck").click();
-		
-		
-    	$(".chBox").click(function(){
-    		$("#allCheck").prop("checked", false);
-    	});
-  
+	//숫자 3자리 콤마찍기
+	Number.prototype.formatNumber = function(){
+	    if(this==0) return 0;
+	    let regex = /(^[+-]?\d+)(\d{3})/;
+	    let nstr = (this + '');
+	    while (regex.test(nstr)) nstr = nstr.replace(regex, '$1' + ',' + '$2');
+	    return nstr;
+	};
 	
-});
+	$(document).ready(function() {
+		
+		
+		let orderTotal = 0;
+		$('b[id="sumPrice"]').each(function(i,item) {
+		    orderTotal += parseInt($(item).html().replace("원", ""));
+			console.log(orderTotal);	
+			$("#allCheck").click(function(){
+				 var chk = $("#allCheck").prop("checked");
+				 if(chk) {
+				  	$(".chBox").prop("checked", true);
+					$('#sum_p_price').html(orderTotal.formatNumber()+'원');
+					$('#final_price').html((orderTotal+2500).formatNumber()+'원');
+				  	
+				 } else {
+				  $(".chBox").prop("checked", false);
+				  	$('#sum_p_price').html('0원');
+					$('#final_price').html('0원');
+				  
+				 }
+			});
+		});
+			
+			$("#allCheck").click();
+			
+			
+		
+		
+		
+		
+		
+		// 선택 삭제 버튼 눌렀을 때
+		$(".basdel").click(function(e){
+			  //var confirm_val = confirm("정말 삭제하시겠습니까?");
+			  e.preventDefault();
+			  //if(confirm_val) {
+			   var checkArr = new Array();
+			   
+			   $("input[class='chBox']:checked").each(function(){
+			    checkArr.push($(this).attr("data-pno"));
+			   });
+			    
+			   $.ajax({
+				   
+			    url : "<c:url value='/product/deleteCart' />",
+			    type : "post",
+			    data : { chbox : checkArr },
+			    success : function(result){
+			    	if(result == 1){ location.href = "<c:url value='/product/basket' />"; }
+			    	else alert("삭제 실패");
+			    	
+			    }
+			   });
+		});
+	
+		
+		
+		
+	
+		$(".chBox").click(function(){
+			$("#allCheck").prop("checked", false);
+		});
+	
+	
+	});//ready function 끝
 	
 
 
@@ -270,11 +301,14 @@ $(document).ready(function() {
     	    //재계산
     	    
     	    reCalc: function(){
-    	        var sum =0;
+	    	        var sum =0;
     	        $('input[type="checkbox"]').each(function (i,item) {
+    	        	
+    	        	
 	    	        
     	            if($(item).is(":checked")){
-    	         		if($(item).attr('id') != 'allCheck'){
+    	            	//console.log($(item).attr('id'))
+    	         		if($(item).attr('id') != 'allCheck'){ 
     	         			
 	    	            	const $checkbox = $(item);
 	    	         		const $td = $checkbox.parent();    	         
@@ -282,7 +316,7 @@ $(document).ready(function() {
 	    	            	var total = $td.siblings('#sum').find('#sumPrice').html();
 	    	            	
 	    	            	total=total.replace("원","").replace(",","");
-	                		console.log(total);
+	                		console.log('total: '+total);
 	    	                //this.totalCount += count;
 	    	                //var price = "<c:out value='${item.price}' />";
 	    	                
@@ -293,8 +327,17 @@ $(document).ready(function() {
 	    	                sum += parseInt(total);
     	         		}
 					   	            	
-    	            }
+    	            } 
+    	            
+    	            //if($(item).is(":checked") ==false && $(item).attr('id') == 'allCheck'){
+    	            //	console.log('확인');
+        	        //    sum = 0;
+        	            
+    	            //}
+    	           
+    	            	
     	        }); 
+    	        
     	        this.totalPrice = sum;   	
    	            console.log(this.totalPrice);
     	    },
@@ -303,7 +346,7 @@ $(document).ready(function() {
     	        //document.querySelector('#sum_p_num').textContent = '상품갯수: ' + this.totalCount.formatNumber() + '개';
     	        
     	        document.querySelector('#sum_p_price').textContent = this.totalPrice.formatNumber() + '원';
-    	        var final_price = this.totalPrice + 3000;
+    	        var final_price = this.totalPrice + 2500;
     	        document.querySelector('#final_price').textContent = final_price.formatNumber() + '원';
     	        
     	    },
@@ -342,13 +385,11 @@ $(document).ready(function() {
     	    }
     	}
 
-    	// 숫자 3자리 콤마찍기
-    	Number.prototype.formatNumber = function(){
-    	    if(this==0) return 0;
-    	    let regex = /(^[+-]?\d+)(\d{3})/;
-    	    let nstr = (this + '');
-    	    while (regex.test(nstr)) nstr = nstr.replace(regex, '$1' + ',' + '$2');
-    	    return nstr;
-    	};
+    	
+    	
+    	
+    	
+    	
+    	
     
     </script>
