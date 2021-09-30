@@ -24,5 +24,13 @@ public interface IUserMapper {
 		
 		//자동로그인 처리
 		UserVO getUserWithSessionId(String sessionId);
-	
+		
+		//아이디 찾기
+		String selectId(UserVO vo);
+		
+		
+		//회원탈퇴
+		void delete(String id);
+		
+		
 }

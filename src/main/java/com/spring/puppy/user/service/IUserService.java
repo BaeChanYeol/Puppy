@@ -22,7 +22,13 @@ public interface IUserService {
 	//회원 정보 수정
 	void updateUser(UserVO vo);
 	
+	//아이디 찾기
+	String selectId(UserVO vo);
+	
 	//자동로그인 처리
 	UserVO getUserWithSessionId(String sessionId);
+	
+	//회원탈퇴
+	void delete(String id);
 
 }

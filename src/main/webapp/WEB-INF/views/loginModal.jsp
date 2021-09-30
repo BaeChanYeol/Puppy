@@ -46,10 +46,10 @@
 					<a href="#">회원가입</a>
 				</div>
 				<div class="modal-bottom">
-					<a href="#">아이디찾기</a>
+					<a href="<c:url value='/user/idFind'/>" class="idFind">아이디찾기</a>
 				</div>
 				<div class="modal-bottom">
-					<a href="#">비밀번호찾기</a>
+					<a href="<c:url value='/user/pwFind'/>" class="pwFind">비밀번호찾기</a>
 				</div>
 			</div>
 		</div>

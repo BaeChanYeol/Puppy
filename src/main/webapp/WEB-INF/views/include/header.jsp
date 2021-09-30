@@ -81,15 +81,15 @@
                             <a href="<c:url value='/product/items'/>" class="menu-li-a">애견샵</a>
                             <ul class="second">
                                 <li><a href="<c:url value='/product/item'/>">강아지용품</a></li>
-                                <li><a href="<c:url value='/product/basket'/>">의료기기</a></li>
-                                <li><a href="<c:url value='/product/orderpage'/>">간식,식품</a></li>
+                                <li><a href="<c:url value='/product/medicalDevice'/>">의료기기</a></li>
+                                <li><a href="<c:url value='/product/snack'/>">간식,식품</a></li>
                             </ul>
                         </li>
                         <li class="menu-li">
                             <a href="/community" class="menu-li-a">커뮤니티</a>                            
                             <ul class="second">
-                                <li><a href="<c:url value='/board/boardWrite'/>">자유게시판</a></li>
-                                <li><a href="/community/showboard">뽐내기게시판</a></li>
+                                <li><a href="<c:url value='/board/freeboard'/>">자유게시판</a></li>
+                                <li><a href="<c:url value='/board/boastboard'/>">뽐내기게시판</a></li>
                                 <li><a href="<c:url value='/qnaBoard/qna'/>">QnA</a></li>
                             </ul>
                         </li>
@@ -116,6 +116,15 @@
  		alert("로그아웃 되었습니다!");
  	}
  	
+ 
+	
+	if('${msg}' == 'fail'){
+		alert('입력정보로 가입하신 아이디가 없습니다.');
+	}
+	
+	if('${msg}' == 'pwFindFail'){
+		alert('이름, 아이디, 이메일 중 뭐가 틀렸거나 없는 회원이라 비밀번호도 찾을 수 없습니다.');
+	}
    
     const $logo = document.querySelector('.logo');
     const $header = document.querySelector('.header');

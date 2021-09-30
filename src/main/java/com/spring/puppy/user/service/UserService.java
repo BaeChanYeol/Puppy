@@ -69,6 +69,18 @@ public class UserService implements IUserService {
 		return mapper.getUserWithSessionId(sessionId);
 	}
 
+	@Override
+	public void delete(String id) {
+		mapper.delete(id);
+	}
+
+	@Override
+	public String selectId(UserVO vo) {
+		return mapper.selectId(vo);
+	}
+
+	
+
 	
 	
 	

@@ -37,6 +37,17 @@ public class ProductController {
 		return "product/items";
 	}
 	
+	//의료기기 화면
+	@GetMapping("/medicalDevice")
+	public String medicalDevice(){
+		return "product/medicalDevice";
+	}
+	
+	//간식 화면
+	@GetMapping("/snack")
+	public String snack() {
+		return "product/snack";
+	}
 	//상세보기 화면
 	@GetMapping("/detail")
 	public void getContent(@RequestParam int pno, Model model) {

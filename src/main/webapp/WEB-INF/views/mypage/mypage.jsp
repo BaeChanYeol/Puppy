@@ -24,7 +24,7 @@
                         <p class="email">${user.email}</p>
                     </div>
                     <div class="mypage-profile out">
-                        <a href="#">회원탈퇴</a>
+                        <a href="<c:url vlaue='/user/delete'/>" onclick="return confirm('정말 탈퇴하시겠습니까?');">회원탈퇴</a>
                     </div>
                 </div>
             </div>

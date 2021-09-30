@@ -48,6 +48,15 @@
 	 	SET pw=#{pw},name=#{name},email=#{email},phone=${phone},addr_basic=#{addrBasic},addr_detail=#{addrDetail},addr_zipnum=#{addrZipNum}
 	 	WHERE id=#{id}
 	 </update>
+	 
+	 <select id="selectId" resultType="java.lang.String">
+	 	SELECT id FROM users
+	 	WHERE name=#{name} AND email=#{email} AND birth=#{birth}
+	 </select>
+	 
+	 <delete id="delete">
+	 	DELETE FROM users WHERE id=#{id}
+	 </delete>
  
  
  </mapper>

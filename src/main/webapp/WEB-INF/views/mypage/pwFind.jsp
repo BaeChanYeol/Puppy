@@ -13,7 +13,7 @@
                 <h5>비밀번호는 이름, 가입한 아이디, 이메일을 통해 찾으실 수 있습니다.</h5>
             </div>
             <div class="pwFindform">
-                <form action="" method="POST">
+                <form action="<c:url value="/user/pwFind"/>" method="POST">
                     
                     <h5><label for="name">이름</label></h5>
                     <input type="text" name="name" id="" placeholder="이름을 입력해주세요~">

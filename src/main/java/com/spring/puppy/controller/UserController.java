@@ -54,6 +54,55 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/idFind")
+	public String idFind() {
+		System.out.println("아이디 찾기로 이동하기 test");
+		return "mypage/idFind";
+	}
+	
+	@GetMapping("/pwFind")
+	public String pwFind() {
+		System.out.println("비밀번호 찾기로 이동하기 test");
+		return "mypage/pwFind";
+	}
+	
+	@PostMapping("/idFind")
+	public String selectId(UserVO vo, RedirectAttributes ra, Model model) {
+		System.out.println("요청들어옴!!!!!");
+		System.out.println(vo);
+		String id = service.selectId(vo);
+		System.out.println(id);
+		
+		if(id == null) {
+			ra.addFlashAttribute("msg", "fail");
+			return "redirect:/user/idFind";
+			
+		}
+		model.addAttribute("id", id);
+		
+		return "mypage/idFindSuccess";
+		
+	}
+	
+	
+	@PostMapping("/pwFind")
+	public String selectPw(UserVO vo, RedirectAttributes ra, Model model) {
+		System.out.println("비밀번호 변경 요청!!!");
+		System.out.println(vo);	
+		UserVO user = service.selectOne(vo.getId());
+		
+		if(vo.getId().equals(user.getId()) && vo.getName().equals(user.getName()) && vo.getEmail().equals(user.getEmail())) {
+			
+			
+			return "mypage/passwordChange";
+		}else {
+			ra.addFlashAttribute("msg", "pwFindFail");
+			return "redirect:/user/pwFind";
+		}
+		
+		
+	}
+	
 	@PostMapping("/login")
 	@ResponseBody
 	public String login(@RequestBody UserVO inputData,
@@ -190,6 +239,18 @@ public class UserController {
 		session.setAttribute("login", service.selectOne(vo.getId())); 
 		ra.addFlashAttribute("msg", "updateSuccess");
 		return "redirect:/user/mypage";
+	}
+	
+	//회원탈퇴
+	@GetMapping("/delete")
+	public String delete(HttpSession session, RedirectAttributes ra) {
+		
+		UserVO vo = (UserVO) session.getAttribute("login");
+		service.delete(vo.getId());
+		
+		ra.addAttribute("delete", "success");
+		
+		return "redirect:/";
 	}
 	
 }
