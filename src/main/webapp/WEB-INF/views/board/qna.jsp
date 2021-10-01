@@ -6,7 +6,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
 
 
-
+////////////////////////////////////이거 왜 있는건지 모르겠음///////////////////////////////////////////
+//////////////실제로 쓰는건 qnaBoard에 qna.jsp 쓰는 중//////////////////////////////////////////////
 
     <section>
         <article class = "QNA main-container">

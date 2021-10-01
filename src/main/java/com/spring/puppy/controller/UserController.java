@@ -206,11 +206,8 @@ public class UserController {
 	
 	
 	@GetMapping("/mypage")
-	public String mypage(HttpSession session, Model model) {		
-		
-		UserVO vo = (UserVO) session.getAttribute("login");
-		model.addAttribute("user", vo);
-		
+	public String mypage() {		
+
 		return "mypage/mypage";		
 	}
 	
@@ -251,14 +248,30 @@ public class UserController {
 	
 	//회원탈퇴
 	@GetMapping("/delete")
-	public String delete(HttpSession session, RedirectAttributes ra) {
-		
-		UserVO vo = (UserVO) session.getAttribute("login");
-		service.delete(vo.getId());
-		
-		ra.addAttribute("delete", "success");
-		
-		return "redirect:/";
+	public String delete() {
+		return "mypage/withdraw";
 	}
+	
+	@PostMapping("/delete")
+	public String deleteUser(HttpSession session, String pw, RedirectAttributes ra) {
+		UserVO vo =  (UserVO) session.getAttribute("login");
+		UserVO dbData = service.selectOne(vo.getId());
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		
+		if(encoder.matches(pw, dbData.getPw())) {
+			service.delete(vo.getId());
+			session.removeAttribute("login");
+			ra.addAttribute("msg", "userDeleteSuccess");
+			return "redirect:/";
+		}else {
+			ra.addFlashAttribute("msg", "userDeleteFail");
+			return "redirect:/user/delete";			
+		}
+		
+	}
+	
+	
 	
 }

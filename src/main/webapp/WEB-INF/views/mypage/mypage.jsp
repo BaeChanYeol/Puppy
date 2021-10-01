@@ -17,14 +17,14 @@
                         <button> 프로필 편집</button>
                     </div>
                     <div class="mypage-profile profile-text">
-                        <p class="name">${user.name}</p>
-                        <p class="niname">${user.id}</p>
-                        <p class="phon">${user.phone}</p>
-                        <p>가입날짜: <span class="ragdate"> <fmt:formatDate value="${user.regDate}" pattern="yyyy-MM-dd"/> </span></p>
-                        <p class="email">${user.email}</p>
+                        <p class="name">${login.name}</p>
+                        <p class="niname">${login.id}</p>
+                        <p class="phon">${login.phone}</p>
+                        <p>가입날짜: <span class="ragdate"> <fmt:formatDate value="${login.regDate}" pattern="yyyy-MM-dd"/> </span></p>
+                        <p class="email">${login.email}</p>
                     </div>
                     <div class="mypage-profile out">
-                        <a href="<c:url value='/user/delete'/>" onclick="return confirm('정말 탈퇴하시겠습니까?');">회원탈퇴</a>
+                        <a href="<c:url value='/user/delete'/>">회원탈퇴</a>
                     </div>
                 </div>
             </div>
@@ -88,5 +88,6 @@
     	if('${msg}' == 'updateSuccess'){
     		alert('회원정보 수정이 완료되었습니다.');
     	}
+    	
     
     </script>

@@ -11,7 +11,7 @@
         <article class="main-container">
             <div class="wrap">
                 <div class="main_txt">
-                    <h2>“명문 유치원에서의 하루”</h2>
+                    <h2>“똑독 유치원에서의 하루”</h2>
                     <p>유치원에서 우리 아이는 어떤 하루를 보낼까요?</p>
                 </div>
             </div>
@@ -19,7 +19,7 @@
         <article class="main-container">
             <div class="wrap">
                 <div class="g-wrap clearfix">
-                <h3 class="studioh3">고품격의 명문유치원</h3>
+                <h3 class="studioh3">고품격의 똑독유치원</h3>
 
                     <div class="service-list">
                         <img src="../img/pres01.jpg" alt="책사진">
@@ -75,7 +75,7 @@
                 <h3 class="studioh3">국내 최고의 커리큘럼</h3> 
                 <div>
                     <img src="../img/curriculum.png" alt="시설사진">
-                    <h4>명문 유치원생의 하루 멍문 유치원만의 교육 커리큘럼을 살펴보세요</h4>
+                    <h4>똑독 유치원생의 하루 똑독 유치원만의 교육 커리큘럼을 살펴보세요</h4>
                 </div>
             </div>
         </article>
@@ -139,17 +139,17 @@
                     <div class="service-list">
                         <img src="../img/pres04.jpg" alt="증명서사진">
                         <h4>입학증서</h4>
-                        <p>유치원 등록 시,<br>프레스티지 강아지 유치원<br>강하지만의 유치원 등록증 제공</p>
+                        <p>유치원 등록 시,<br>프레스티지 강아지 유치원<br>똑독이만의 유치원 등록증 제공</p>
                     </div>
                     <div class="service-list">
                         <img src="../img/pres05.jpg" alt="산책줄 사진">
-                        <h4>강하지 MD</h4>
-                        <p>강하지 유치원 원아들만을 위한<br>특별제작 MD증정</p>
+                        <h4>똑독이 MD</h4>
+                        <p>똑독 유치원 원아들만을 위한<br>특별제작 MD증정</p>
                     </div>
                     <div class="service-list">
                         <img src="../img/pres06.jpg" alt="강아지사진찍는거">
                         <h4>이벤트</h4>
-                        <p>강하지 스튜디오<br>촬영권 증정</p>
+                        <p>똑독 스튜디오<br>촬영권 증정</p>
                     </div>
                 </div>
             </div>

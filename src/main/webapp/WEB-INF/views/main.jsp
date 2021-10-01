@@ -45,31 +45,25 @@
 		<div id="main-menu" class="wrap">
 			<h2 class="main-h2">Best World For My Dog</h2>
 			<ul class="clearfix">
-				<li><a href="#"> <img src="./img/hotel.png" alt="호텔&데이커어">
+				<li><a href="<c:url value='/service/hotel'/>"> <img src="./img/hotel.png" alt="호텔&데이커어">
 						<h3>호텔 & 데이커어</h3>
 						<p>HOTEL & DAYCARE</p>
 				</a></li>
-				<li><a href="#"> <img src="./img/kindergarten.png"
-						alt="유치원">
+				<li><a href="<c:url value='/service/preschool'/>"> <img src="./img/kindergarten.png" alt="유치원">
 						<h3>유치원</h3>
 						<p>KINDERGARTEN</p>
 				</a></li>
-				<li><a href="#"> <img src="./img/grooming.png" alt="그루밍">
+				<li><a href="<c:url value='/service/grooming'/>"> <img src="./img/grooming.png" alt="그루밍">
 						<h3>그루밍 & 스파</h3>
 						<p>GROOMING & SPA</p>
 				</a></li>
-				<li><a href="#"> <img src="./img/studio.png" alt="스튜디오">
+				<li><a href="<c:url value='/service/studio'/>"> <img src="./img/studio.png" alt="스튜디오">
 						<h3>스튜디오</h3>
 						<p>STUDIO</p>
 				</a></li>
-				<li><a href="#"> <img src="./img/medical.png" alt="메디컬센터">
+				<li><a href="<c:url value='/service/medicalCenter'/>"> <img src="./img/medical.png" alt="메디컬센터">
 						<h3>메디컬센터</h3>
 						<p>MEDICAL CENTER</p>
-				</a></li>
-				<li><a href="#"> <img src="./img/specialcare.png"
-						alt="스페셜케어">
-						<h3>스페셜케어</h3>
-						<p>SPECIAL CARE</p>
 				</a></li>
 			</ul>
 		</div>
@@ -170,7 +164,10 @@
 
 <script>
 	$(document).ready(function() {
-
+		if('${msg}' == 'userDeleteSuccess'){
+			alert('회원탈퇴가 완료되었습니다. 그동안 똑독유치원을 이용해주셔서 감사합니다!');
+		}
+		
 		/* ---------------------슬라이드(케럿)---------------------------*/
 		const cnt = $("#banner .cnt > ul > li");
 		const button = $("#list_num > ul > li");
@@ -263,6 +260,7 @@
 		if('${msg}' == 'pwChangeSuccess'){
 			alert('비밀번호가 변경되었습니다.');
 		}
+
 
 	});
 	
