@@ -87,13 +87,12 @@ public class UserController {
 	
 	@PostMapping("/pwFind")
 	public String selectPw(UserVO vo, RedirectAttributes ra, Model model) {
-		System.out.println("비밀번호 변경 요청!!!");
-		System.out.println(vo);	
 		UserVO user = service.selectOne(vo.getId());
 		
-		if(vo.getId().equals(user.getId()) && vo.getName().equals(user.getName()) && vo.getEmail().equals(user.getEmail())) {
-			
-			
+		
+		if(user !=null &&vo.getId().equals(user.getId()) && vo.getName().equals(user.getName()) && vo.getEmail().equals(user.getEmail())) {
+			model.addAttribute("user", user);
+			model.addAttribute("msg", "인증성공");
 			return "mypage/passwordChange";
 		}else {
 			ra.addFlashAttribute("msg", "pwFindFail");
@@ -102,6 +101,14 @@ public class UserController {
 		
 		
 	}
+	@PostMapping("/changePassword")
+	public String changePassword(String id,String newPw, HttpSession session, RedirectAttributes ra) {
+		
+		service.changePassword(id, newPw);
+		ra.addFlashAttribute("msg", "pwChangeSuccess");
+		return "redirect:/";
+	}
+	
 	
 	@PostMapping("/login")
 	@ResponseBody
@@ -206,6 +213,7 @@ public class UserController {
 		
 		return "mypage/mypage";		
 	}
+	
 	@GetMapping("/passwordCheck")
 	public String prevMyinfo() {
 		

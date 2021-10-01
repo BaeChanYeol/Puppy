@@ -57,6 +57,11 @@
 	 <delete id="delete">
 	 	DELETE FROM users WHERE id=#{id}
 	 </delete>
+	 
+	 <update id="changePassword">
+	 	UPDATE users SET pw = #{newPw}
+	 	WHERE id =#{id}
+	 </update>
  
  
  </mapper>

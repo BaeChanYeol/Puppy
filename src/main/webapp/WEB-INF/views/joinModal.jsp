@@ -39,7 +39,7 @@
                         <div class="joinform-wrap">
                             <select name="year" id="year">
                             	<c:forEach var="i" begin="1920" end="2020">
-	                                <option value="${i}">${i}년</option>                            	                            	
+	                                <option value="${i}년 ">${i}년</option>                            	                            	
                             	</c:forEach>
                             	
                             </select>
@@ -48,14 +48,14 @@
                             <div class="joinform-wrap-left">
                                 <select name="month" id="month" >
                                 	<c:forEach var="i" begin="1" end="12">
-                                    	<option value="${i}">${i}월</option>
+                                    	<option value="${i}월 ">${i}월</option>
                                     </c:forEach>
                                 </select>
                             </div>
                             <div class="joinform-wrap-right">
                                 <select name="day" id="day">
                                     <c:forEach var="i" begin="1" end="31">
-                                    	<option value="${i}">${i}일</option>
+                                    	<option value="${i}일 ">${i}일</option>
                                     </c:forEach>
                                 </select>
                             </div>
@@ -214,7 +214,7 @@ $(document).ready(function() {
 	$('.joinBtn').click(function(e) {
 		e.preventDefault();
 		if(chk1 && chk2 && chk3 && chk4 && chk5){
-			const birth = $('#year').val() + '-' + $('#month').val() + '-' + $('#day').val();
+			const birth = $('#year').val() + $('#month').val() + $('#day').val();
 			$('#birth').val(birth);
 			$('form').submit();
 		}else{

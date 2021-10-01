@@ -260,7 +260,9 @@
 			alert('회원가입 완료!');
 		}
 		
-		
+		if('${msg}' == 'pwChangeSuccess'){
+			alert('비밀번호가 변경되었습니다.');
+		}
 
 	});
 	

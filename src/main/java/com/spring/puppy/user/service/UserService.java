@@ -79,6 +79,16 @@ public class UserService implements IUserService {
 		return mapper.selectId(vo);
 	}
 
+	@Override
+	public void changePassword(String id,String newPw) {
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+				
+		String securePW = encoder.encode(newPw);		
+				
+		mapper.changePassword(id,securePW);
+	}
+
 	
 
 	

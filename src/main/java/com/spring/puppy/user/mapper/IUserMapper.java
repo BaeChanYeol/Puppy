@@ -2,6 +2,8 @@ package com.spring.puppy.user.mapper;
 
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.spring.puppy.command.UserVO;
 
 
@@ -32,5 +34,7 @@ public interface IUserMapper {
 		//회원탈퇴
 		void delete(String id);
 		
+		//비빌번호 변경
+		void changePassword(@Param("id") String id,@Param("newPw")String newPw);
 		
 }

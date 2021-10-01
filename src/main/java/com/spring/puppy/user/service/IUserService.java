@@ -30,5 +30,7 @@ public interface IUserService {
 	
 	//회원탈퇴
 	void delete(String id);
+	//비빌번호 변경
+	void changePassword(String id, String newPw);
 
 }
