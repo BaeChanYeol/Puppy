@@ -124,6 +124,8 @@
 	if('${msg}' == 'pwFindFail'){
 		alert('이름, 아이디, 이메일 중 뭐가 틀렸거나 없는 회원이라 비밀번호도 찾을 수 없습니다.');
 	}
+	
+	
    
     const $logo = document.querySelector('.logo');
     const $header = document.querySelector('.header');
@@ -163,6 +165,23 @@
     		$('#loginId').val('');
     		$("#idRemember").prop("checked", false);
     	}
+    	
+    	   /*네이버로그인*/
+        $.ajax({
+          type : "GET",
+          url : "<c:url value='/social1'/>",
+          headers: {
+             "Content-Type" : "application/json"
+          },
+          dataType: "text",
+          success: function(data) {
+             console.log(data);
+             $('#naver').attr('href', data);
+
+          },
+                   
+       });
+
     	
     	$('#login_modal').show();
     	

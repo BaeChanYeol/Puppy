@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="../include/header.jsp" %>
-	<style>
-		.se2_multy{
-			display:none;
-		}
-	</style>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="../include/header.jsp" %>
+
 
     <section>
         <article class="main-container">
@@ -15,76 +12,77 @@
         </article>
         <article class="main-container">
             <div class="wrap">
-                <form class="boardWrite clearfix" name="registForm">
+                <form action="<c:url value='/board/registForm' />" name="registForm" method="post" class="boardWrite clearfix" enctype="multipart/form-data">
+                    <!--  
                     <select class="form-control">
                         <option>자유게시판</option>
                         <option>뽐내기 게시판</option>
-                    </select>
-                    <input class="form-control" placeholder="제목을 입력하세요">
-                    <button type="button" class="photoBtn"> 사진첨부 </button>
-                    <div class="imgbox"></div>
-                    <textarea class="textArea" id="smartEditor" rows="15" style="margin-bottom: 10px;" placeholder="내용을 입력하세요"></textarea>                        
+                    </select> -->
+                    <input type="hidden" name="writer" value="${login.id}"/>
+                    <input class="form-control" placeholder="자유게시판 글쓰기" readonly>
+                    <input class="form-control" name="title" placeholder="제목을 입력하세요">
+                    <label for="file">사진첨부</label> 
+                    <input type="file" class="photoBtn" name="file" id="file" >
+                    <div class="imgbox">
+                    	<img id="file-img" src="" style="height: inherit">
+                    </div>
+                    <textarea class="textArea" name="content" rows="15" style="margin-bottom: 10px;" placeholder="내용을 입력하세요"></textarea>                        
                     <button type="button" class="listBtn">목록</button>
-                    <button type="button" class="regBtn">등록</button>
+                    <button type="submit" id="registBtn">등록</button>
                 </form>
             </div>
         </article>
     </section>
     
-    
     <%@ include file="../include/footer.jsp" %>
     
     <script>
-	    var oEditors = []; 
-	    nhn.husky.EZCreator.createInIFrame({ 
-		    	oAppRef : oEditors, elPlaceHolder : "smartEditor", //저는 textarea의 id와 똑같이 적어줬습니다. 
-		    	sSkinURI : "<c:url value='/smartEditor/SmartEditor2Skin.html'/>", //경로를 꼭 맞춰주세요! 
-		    	fCreator : "createSEditor2", 
-		    	htParams : { 
-		    		// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-		    		bUseToolbar : true, 
-		    		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
-		    		bUseVerticalResizer : false, 
-		    		// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-		    		bUseModeChanger : false 
-	    		} 
-	    }); 
-	    $(function() { 
-	    	$(".regBtn").click(function() { 
-		    	oEditors.getById["smartEditor"].exec("UPDATE_CONTENTS_FIELD", []); //textarea의 id를 적어줍니다. 
-		    	var selcatd = $("#selcatd > option:selected").val(); 
-		    	var title = $("#title").val(); 
-		    	var content = document.getElementById("smartEditor").value; 
-		    	if (selcatd == "") { 
-		    		alert("카테고리를 선택해주세요."); 
-		    		return; 
-		    	} 
-		    	if (title == null || title == "") { 
-		    		alert("제목을 입력해주세요."); 
-		    		$("#title").focus(); return; 
-		    	} 
-		    	if(content == "" || content == null || content == '&nbsp;' || content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>'){ 
-		    		alert("본문을 작성해주세요."); 
-		    		oEditors.getById["smartEditor"].exec("FOCUS"); //포커싱 return; 
-		    	} 
-		    	//이 부분은 스마트에디터 유효성 검사 부분이니 참고하시길 바랍니다. 
-		    	var result = confirm("발행 하시겠습니까?"); 
-		    	if(result){ 
-		    		alert("발행 완료!"); 
-		    		$("#noticeWriteForm").submit(); 
-		    	} else{ 
-		    		return; 
-		    	} 
-	    	}); 
-	    })
-
-
     
+			const registBtn = document.getElementById('registBtn');
+			registBtn.onclick = function() {
+				if(document.registForm.title.value === '') {
+					alert('제목은 필수 항목입니다.');
+					document.registForm.title.focus();
+					return; //이벤트함수종료
+				} else if(document.registForm.content.value === '') {
+					alert('내용은 필수 항목 입니다.');
+					document.registForm.content.focus();
+					return;
+				} else {
+					document.registForm.submit();
+				}
+			}
+    
+    
+		    $('.listBtn').click(function() {
+				if(confirm('목록으로 돌아가시겠습니까?')) {
+					location.href='<c:url value="/board/freeboard" />';
+				} else {
+					return;
+				}
+			});
+    
+		  //자바 스크립트 파일 미리보기 기능
+			function readURL(input) {
+	        	if (input.files && input.files[0]) {
+	        		
+	            	var reader = new FileReader(); //비동기처리를 위한 파일을 읽는 자바스크립트 객체
+	            	//readAsDataURL 메서드는 컨텐츠를 특정 Blob 이나 File에서 읽어 오는 역할 (MDN참조)
+		        	reader.readAsDataURL(input.files[0]); 
+	            	//파일업로드시 화면에 숨겨져있는 클래스fileDiv를 보이게한다
+		            $(".imgbox").css("display", "block");
+	            	
+	            	reader.onload = function(event) { //읽기 동작이 성공적으로 완료 되었을 때 실행되는 익명함수
+	                	$('#file-img').attr("src", event.target.result); 
+	                	console.log(event.target)//event.target은 이벤트로 선택된 요소를 의미
+		        	}
+	        	}
+		    }
+			$("#file").change(function() {
+		        readURL(this); //this는 #file자신 태그를 의미
+		        
+		    });
+    
+
+    	
 	</script>
-    
-    
-    
-    
-    
-    
-    

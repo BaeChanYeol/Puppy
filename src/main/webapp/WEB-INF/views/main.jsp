@@ -163,10 +163,12 @@
 <%@ include file="./include/footer.jsp"%>
 
 <script>
+	if('${deleteMsg}' == 'userDeleteSuccess'){
+		alert('회원탈퇴가 완료되었습니다. 그동안 똑독유치원을 이용해주셔서 감사합니다!');
+	}
+
 	$(document).ready(function() {
-		if('${msg}' == 'userDeleteSuccess'){
-			alert('회원탈퇴가 완료되었습니다. 그동안 똑독유치원을 이용해주셔서 감사합니다!');
-		}
+		
 		
 		/* ---------------------슬라이드(케럿)---------------------------*/
 		const cnt = $("#banner .cnt > ul > li");
@@ -252,8 +254,8 @@
 		/* ---------------------슬라이드(케럿끝)---------------------------*/
 
 		/* 회원가입 완료후 */
-		const msg = "${msg}";
-		if(msg == "joinSuccess"){
+		
+		if("${msg}" == "joinSuccess"){
 			alert('회원가입 완료!');
 		}
 		

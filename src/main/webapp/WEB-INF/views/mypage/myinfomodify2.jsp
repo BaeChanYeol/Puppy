@@ -73,9 +73,9 @@
                             <label for="myPhone">휴대전화</label>
                             <div class="myinfomodifyform-phone clearfix">
                                 <input type="text" name="phone" id="myPhone" value="${user.phone}">
-                                <button type="button">인증번호받기</button>
+                                <!-- <button type="button">인증번호받기</button>
                                 <input type="text" name="myPhoneChk" id="myPhoneChk" placeholder="인증번호를 입력해주세요!">
-                                <button type="button" class="check">인증번호확인</button>
+                                <button type="button" class="check">인증번호확인</button> -->
                             </div>
                         </div>
                         <div class="myarea myarea-top">

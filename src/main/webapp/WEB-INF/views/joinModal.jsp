@@ -39,8 +39,14 @@
                         <div>
                            <div class="joinform-wrap">
                                <select name="year" id="year">
+                           		
                                   <c:forEach var="i" begin="1920" end="2020">
-                                      <option value="${i}">${i}년</option>                                                              
+                                     <c:if test="${i != 2000}">
+                                      <option value="${i}년 ">${i}년</option>                                                              
+                                  	</c:if>
+                                     <c:if test="${i == 2000}">
+                                      <option value="${i}년 " selected>${i}년</option>                                                              
+                                  	</c:if>
                                   </c:forEach>
                                   
                                </select>
@@ -49,14 +55,14 @@
                                <div class="joinform-wrap-left">
                                    <select name="month" id="month" >
                                       <c:forEach var="i" begin="1" end="12">
-                                          <option value="${i}">${i}월</option>
+                                          <option value="${i}월 ">${i}월</option>
                                        </c:forEach>
                                    </select>
                                </div>
                                <div class="joinform-wrap-right">
                                    <select name="day" id="day">
                                        <c:forEach var="i" begin="1" end="31">
-                                          <option value="${i}">${i}일</option>
+                                          <option value="${i}일">${i}일</option>
                                        </c:forEach>
                                    </select>
                                </div>
@@ -110,7 +116,7 @@ $(document).ready(function() {
    const getPhoneCheck = RegExp(/(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/);
 
    
-   let chk1 = false, chk2 = false, chk3 = false, chk4 = false, chk5 = false, chk6 = false;
+   let chk1 = false, chk2 = false, chk3 = false, chk4 = false, chk5 = false, chk6 = false, chk7=false;
    
    $('#id').blur(function () {
       
@@ -196,77 +202,96 @@ $(document).ready(function() {
       
    }); //이름검증 끝
    
-   $('#email').blur(function() {
-      if(!getEmailCheck.test($(this).val())){
-         $('#email_check').html('<b style="color:red; font-size:12px ">*올바르지 않은 이메일형식입니다.</b>');            
-         chk5 = false;
-      }else{         
-         $('#email_check').html('<b style="color:green; font-size:12px ">*올바른 이메일형식입니다.</b>');            
-         chk5 = true;
-      }
-      
-   }); //이메일 검증 끝
+	$('#email').blur(function() {
+		if($('#email').val() == ''){
+	         $('#email_check').html('<b style="color:red; font-size:12px ">*이메일은 필수 정보입니다.</b>');            
+	         chk5 = false;			 	
+		}else if(!getEmailCheck.test($(this).val())){
+	         $('#email_check').html('<b style="color:red; font-size:12px ">*올바르지 않은 이메일형식입니다.</b>');            
+	         chk5 = false;
+	     }else{         
+	         $('#email_check').html('<b style="color:green; font-size:12px ">*올바른 이메일형식입니다.</b>');            
+	         chk5 = true; 
+	 	}
+		      
+	}); //이메일 검증 끝
+	
+	   
+	   let code="";
+	   $(".mail_check_button").click(function(){
+	      
+	      const email = $('#email').val(); //입력한 이메일
+	      	if(email == ''){
+		        alert('이메일을 입력해주세요');
+		        $('#email').focus();
+		        return;
+	    	}
+	      $.ajax({       
+	         type: "POST",
+	           url:"<c:url value='/user/mailCheck'/>",
+	         headers : {
+	            "Content-Type" : "application/json"
+	         },
+	         dataType : 'text',
+	         data : email,
+	         success : function(data) {
+	            alert('정상적으로 발송되었습니다.');   
+	            console.log("data : " + data);
+	            code=data;
+	         },
+	         error : function() {
+	            alert('관리자에게 문의하세요');
+	         }
+	                   
+	       });
+	   });
+   		$(".mail_ok_button").click(function() {   
+	      const checkBox = $('#email_ok').val();// 인증번호 입력란
+	     
+	      if(checkBox == code){
+	         alert('인증번호가 확인 되었습니다.');  
+	         chk6 = true;
+	      } else {
+	         alert('인증번호를 다시 확인해 주세요.');                  
+	         chk6 = false;
+	      }
+	    
+	   });
    
    $('#phone').blur(function() {
       if($(this).val() == ''){
          $('#phone_check').html('<b style="color:red; font-size:12px ">*핸드폰 번호는 필수 정보입니다.</b>');      
-         chk6=false;
+         chk7=false;
       }else if(!getPhoneCheck.test($(this).val())){
          $('#phone_check').html('<b style="color:red; font-size:12px ">*올바르지 않은 형식입니다.</b>');      
-         chk6=false;
+         chk7=false;
       }else{
          $('#phone_check').html('<b style="color:green; font-size:12px ">*올바른 형식입니다.</b>');      
-         chk6=true;
+         chk7=true;
       }
    });
    
    $('.joinBtn').click(function(e) {
       e.preventDefault();
-      if(chk1 && chk2 && chk3 && chk4 && chk5){
-         const birth = $('#year').val() + '년 ' + $('#month').val() + '월 ' + $('#day').val() + '일';
+      if(chk1 && chk2 && chk3 && chk4 && chk5 && chk6 && chk7){
+         const birth = $('#year').val() + $('#month').val() + $('#day').val();
          $('#birth').val(birth);
          $('form').submit();
       }else{
+    	 console.log('chk1' + 'chk2' + 'chk3' + 'chk4' + 'chk5' + 'chk6' + 'chk7');
+    	 if(chk6 == false){
+    		 alert('인증번호 인증을 받아주세요!');
+    		 return;
+    	 }
          alert('입력정보를 확인하세요');
          return;         
       }
       
       
    });
+
    
-   let code="";
-   $(".mail_check_button").click(function(){
-      
-      const email = $('#email').val(); //입력한 이메일
-      $.ajax({       
-         type: "POST",
-           url:"<c:url value='/user/mailCheck'/>",
-         headers : {
-            "Content-Type" : "application/json"
-         },
-         dataType : 'text',
-         data : email,
-         success : function(data) {
-            alert('정상적으로 발송되었습니다.');   
-            console.log("data : " + data);
-            code=data;
-         },
-         error : function() {
-            alert('관리자에게 문의하세요');
-         }
-                   
-       });
-   });
-   
-   $(".mail_ok_button").click(function() {   
-      const checkBox = $('#email_ok').val();        // 인증번호 입력란
-      if(checkBox == code){
-         alert('인증번호가 확인 되었습니다.');   
-      } else {
-         alert('인증번호를 다시 확인해 주세요.');                  
-      }
-    
-   });
+  
    
    
 }); // jquery 종료

@@ -154,26 +154,6 @@
     
             console.log($boastimg);
             
-            /*
-            $boastimg[1].addEventListener('mouseover', function () {
-                $hover[1].style.display = 'block';
-                $hover[1].addEventListener('mouseout', function () {
-                    $hover[1].style.display = 'none';
-                });
-            });
-            */
-            /*
-            for (let i=0; i<$boastimg.length; i++) {
-                console.log($boastimg[i]);
-                $boastimg[i].addEventListener('mouseover', function () {
-                    $hover[i].style.display = 'block';
-                    $hover[i].addEventListener('mouseout', function () {
-                        $hover[i].style.display = 'none';
-                    });
-                });
-                
-            }
-            */
             
             const $ul = document.querySelector('.boasthover');
 
