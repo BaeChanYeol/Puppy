@@ -70,6 +70,12 @@
       content=#{content}, updatedate = SYSDATE
       WHERE bno=#{bno}
    </update>
+   
+   <update id="update2">
+	  UPDATE freeboard
+      SET title=#{title}, content=#{content}, updatedate = SYSDATE, uploadpath=#{uploadPath},filerealname=#{fileRealName}, photosize=#{photoSize},fileLoca=#{fileLoca},fileExtension=#{fileExtension}
+      WHERE bno=#{bno}	  	
+   </update>
 
    <delete id="delete">
       DELETE FROM freeboard

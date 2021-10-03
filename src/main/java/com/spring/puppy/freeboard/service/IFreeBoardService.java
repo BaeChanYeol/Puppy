@@ -23,6 +23,7 @@ public interface IFreeBoardService {
 
 	//수정
 	void update(FreeBoardVO vo);
+	
 	//파일까지 수정
 	void update2(FreeBoardVO vo);
 	

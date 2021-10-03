@@ -39,7 +39,7 @@
 	                                	<a href="<c:url value='/board/boardDetail?bno=${vo.bno}' />">${vo.title}</a>
 	                                	&nbsp;&nbsp;&nbsp;
 	                                	<c:if test="${vo.newMark}">
-	                                		<img alt="newMark" src="<c:url value='/img/icon_new.gif' />">
+	                                		<img alt="newMark" src="<c:url value='/img/new_mark.gif' />">
 	                                	</c:if>
 	                                </td>
 	                                <td>${vo.writer}</td>

@@ -75,9 +75,6 @@ public class FreeBoardController {
 		 * 
 		 * }
 		 */
-
-	
-
 		return "board/freeboard";
 	}
 
@@ -209,8 +206,9 @@ public class FreeBoardController {
 
 	//글 수정 처리
 	@PostMapping("/freeUpdate")
-	public String freeUpdate(FreeBoardVO vo, RedirectAttributes ra, @RequestParam("file") MultipartFile file) {
+	public String freeUpdate(@RequestParam("file") MultipartFile file,FreeBoardVO vo, RedirectAttributes ra) {
 		System.out.println(vo);
+		
 		if(file.getOriginalFilename().equals("")) {
 			service.update(vo);
 			int bno = vo.getBno();

@@ -24,7 +24,7 @@
            
              <div class="wrap">
                 <div class="freecontent">
-                                <img src="<c:url value='/board/display?fileLoca=${article.fileLoca}&fileName=${article.fileRealName}' />" id="freeboardImg" style="width:400px" alt="사진">
+                                <img src="<c:url value='/board/display?fileLoca=${article.fileLoca}&fileName=${article.fileRealName}' />" id="freeboardImg" style="max-width:250px; padding-left:7px" alt="사진">
                     <p class="content">${article.content}</p>
                 </div>
 			<form action="<c:url value='/board/freeDelete' />" name="updateForm" method="post">

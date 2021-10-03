@@ -218,7 +218,11 @@
 <%@ include file="../include/footer.jsp"%>
 
 <script>
-
+		if('${msg}' == 'boastRegistSuccess'){
+			alert('멍스타그램 글등록이 완료 되었습니다.');
+		}else if('${msg}' == 'boastRegistFail' ){
+			alert('글등록에 실패하였습니다. 관리자에게 문의하세요.');
+		}
 	//////////////////////좋아요 누르면 하트 색깔 칠해지는거//////////////
 		$(".likearea").ready(function(){
 			/*

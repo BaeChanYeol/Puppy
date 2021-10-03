@@ -24,7 +24,7 @@
                     <label for="file">사진첨부</label> 
                     <input type="file" class="photoBtn" name="file" id="file" >
                     <div class="imgbox">
-                    	<img id="file-img" src="" style="height: inherit">
+                    	<img id="file-img" src="" style="height: 115px;">
                     </div>
                     <textarea class="textArea" name="content" rows="15" style="margin-bottom: 10px;" placeholder="내용을 입력하세요"></textarea>                        
                     <button type="button" class="listBtn">목록</button>
@@ -39,7 +39,8 @@
     <script>
     
 			const registBtn = document.getElementById('registBtn');
-			registBtn.onclick = function() {
+			registBtn.onclick = function(e) {
+				e.preventDefault();
 				if(document.registForm.title.value === '') {
 					alert('제목은 필수 항목입니다.');
 					document.registForm.title.focus();
@@ -79,6 +80,8 @@
 	        	}
 		    }
 			$("#file").change(function() {
+				$('.imgbox').css('display', 'block');
+				
 		        readURL(this); //this는 #file자신 태그를 의미
 		        
 		    });

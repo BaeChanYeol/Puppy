@@ -86,10 +86,10 @@
                             </ul>
                         </li>
                         <li class="menu-li">
-                            <a href="/community" class="menu-li-a">커뮤니티</a>                            
+                            <a href="<c:url value='/board/freeboard'/>" class="menu-li-a">커뮤니티</a>                            
                             <ul class="second">
                                 <li><a href="<c:url value='/board/freeboard'/>">자유게시판</a></li>
-                                <li><a href="<c:url value='/board/boastboard'/>">뽐내기게시판</a></li>
+                                <li><a href="<c:url value='/boast/boastboard'/>">뽐내기게시판</a></li>
                                 <li><a href="<c:url value='/qnaBoard/qna'/>">QnA</a></li>
                             </ul>
                         </li>
