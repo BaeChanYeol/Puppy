@@ -65,6 +65,11 @@ public class FreeBoardService implements IFreeBoardService {
 		return mapper.updateView_cnt(bno);
 	}
 
+	@Override
+	public void update2(FreeBoardVO vo) {
+		mapper.update2(vo);
+	}
+
 }
 
 

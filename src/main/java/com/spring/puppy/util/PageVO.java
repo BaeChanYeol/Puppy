@@ -2,9 +2,11 @@ package com.spring.puppy.util;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class PageVO {
 
 	//사용자가 선택한 페이지 정보를 담을 변수.
@@ -17,6 +19,6 @@ public class PageVO {
 	
 	public PageVO() {
 		this.pageNum = 1;
-		this.countPerPage = 5;
+		this.countPerPage = 10;
 	}
 }

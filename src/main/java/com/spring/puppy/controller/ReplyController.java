@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.puppy.command.ReplyVO;
+import com.spring.puppy.command.UserVO;
 import com.spring.puppy.reply.service.IReplyService;
 import com.spring.puppy.util.PageVO;
 
@@ -27,13 +30,20 @@ public class ReplyController {
 	
 	//댓글 등록
 	@PostMapping("/replyRegist")
-	public String replyRegist(@RequestBody ReplyVO vo) {
+	public String replyRegist(@RequestBody ReplyVO vo, HttpSession session) {
 		System.out.println("댓글 등록 요청이 들어옴!");
+		UserVO user = (UserVO) session.getAttribute("login");
 		
-		service.replyRegist(vo);
-		
-		return "regSuccess";
+		if(user != null) {
+			vo.setReplyId(user.getId());
+			
+			service.replyRegist(vo);
+			
+			return "regSuccess";		
+		}
+		return "fail";
 	}
+	
 	
 	/*
 	//일반 댓글 목록 (페이징 x)
@@ -60,7 +70,7 @@ public class ReplyController {
 		
 		PageVO vo = new PageVO();
 		vo.setPageNum(pageNum); //화면에서 전달되는 페이지 번호
-		vo.setCountPerPage(10); //댓글은 한 화면에 10개씩
+		vo.setCountPerPage(5); //댓글은 한 화면에 6개씩
 		
 		List<ReplyVO> list = service.getList(vo, bno); //댓글 데이터
 		int total = service.getTotal(bno); //전체 댓글 개수.
@@ -75,21 +85,20 @@ public class ReplyController {
 	}
 	
 	@PostMapping("/update")
+	@ResponseBody
 	public String update(@RequestBody ReplyVO vo) {
-		//비밀번호 확인
-		int result = service.pwCheck(vo);
 		
-		if(result == 1) { //비밀번호가 맞는 경우
-			service.update(vo);
-			return "modSuccess";
-		} else { //비밀번호가 틀린 경우
-			return "pwFail";
-		}
+		System.out.println("업데이트 요청 들어옴!" + vo);
+		service.update(vo);
+		
+		return "updateSuccess";
 		
 	}
 	
 	@PostMapping("/delete")
+	@ResponseBody
 	public String delete(@RequestBody ReplyVO vo) {
+		System.out.println("요청 들어옴!"+vo);
 		service.delete(vo.getRno());
 		return "delSuccess";
 	}

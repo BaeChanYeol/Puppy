@@ -8,11 +8,11 @@ import lombok.ToString;
 @Setter
 @ToString
 public class FileVO {
-   
-   private String userId;
-   private String uploadPath;
-   private String fileRealName;
-   private String fileLoca;
-   private String fileExtension;
-   
+	
+	private int bbno;
+	private String uploadPath;
+	private String fileRealName;
+	private String fileLoca;
+	private String fileExtension;
+	
 }

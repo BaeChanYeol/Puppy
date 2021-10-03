@@ -42,7 +42,7 @@
 	                                		<img alt="newMark" src="<c:url value='/img/icon_new.gif' />">
 	                                	</c:if>
 	                                </td>
-	                                <td>${vo.content}</td>
+	                                <td>${vo.writer}</td>
 	                                <td><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></td>
 	                              <!--    <td><fmt:formatDate value="${vo.updatedate}" pattern="yyyy-MM-dd"/></td>
 	                            --><td>${vo.viewCnt}<td/>
@@ -52,7 +52,7 @@
                     </table>
 
                     <div class="freeboard-write clearfix">
-                        <button class="freeboard-write-btn"><a href="<c:url value='/board/boardWrite'/>">글쓰기</a></button>
+                        <button class="freeboard-write-btn"><a href="<c:url value='/board/boardWrite'/>" class="writeBtn">글쓰기</a></button>
                     </div>
 
 					<form action="<c:url value='/board/freeboard' />" name="pageForm">
@@ -110,5 +110,9 @@
     
     <%@ include file="../include/footer.jsp" %>
     
-    
+    <script>
+    if('${msg}'== 'freeRegistSuccess'){
+    	alert('등록이 완료 되었습니다.');
+    }
+    </script>
 

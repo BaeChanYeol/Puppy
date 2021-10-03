@@ -5,11 +5,10 @@ import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /*
  -- 댓글
-CREATE TABLE freereply(
+CREATE TABLE boastreply(
     rno NUMBER(10, 0), --댓글번호 (PK)
     bno NUMBER(10, 0), --글번호 (FK)
     reply VARCHAR2(1000), -- 내용
@@ -19,14 +18,15 @@ CREATE TABLE freereply(
     update_date DATE DEFAULT NULL
 );
 
-CREATE SEQUENCE freereply_seq
+CREATE SEQUENCE boastreply_seq
     START WITH 1
     INCREMENT BY 1
     MAXVALUE 1000
     NOCYCLE
     NOCACHE;
 
-
+ALTER TABLE boastreply 
+ADD CONSTRAINT freereply_pk PRIMARY KEY(rno);
 
 
 
@@ -49,9 +49,9 @@ FOREIGN KEY를 설정하면, 참조 무결성 규칙이 발동됩니다.
  
  
 
-ALTER TABLE freereply
-ADD CONSTRAINT freereply_fk FOREIGN KEY(bno)
-REFERENCES freeboard(bno)
+ALTER TABLE boastreply
+ADD CONSTRAINT boastreply_fk FOREIGN KEY(bno)
+REFERENCES boastboard(bno)
 
 1.ON DELETE CASCADE;
 2.ON DELETE SET NULL;
@@ -59,18 +59,17 @@ REFERENCES freeboard(bno)
 
 @Getter
 @Setter
-@ToString
-public class ReplyVO {
-	
-	//	댓글 번호
-	private int rno;
-	//	게시글 번호 
-	private int bno;
-	
-	private String reply;
-	private String replyId;
-	private String replyPw;
-	private Timestamp replyDate;
-	private Timestamp updateDate;
+public class BoastBoardReplyVO {
+   
+   //   댓글 번호
+   private int rno;
+   //   게시글 번호 
+   private int bbno;
+   
+   private String reply;
+   private String replyId;
+   private String replyPw;
+   private Timestamp replyDate;
+   private Timestamp updateDate;
 
 }

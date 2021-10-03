@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,7 +54,6 @@ public class FreeBoardController {
 		pc.setPaging(vo);
 		pc.setArticleTotalCount(service.getTotal(vo));
 		List<FreeBoardVO> list = service.getList(vo);
-		List<FileVO> fileList = new ArrayList<>();
 		System.out.println(list.size());
 		System.out.println(list);
 		model.addAttribute("boardList",list);
@@ -76,7 +76,7 @@ public class FreeBoardController {
 		 * }
 		 */
 
-		System.out.println(fileList);
+	
 
 		return "board/freeboard";
 	}
@@ -88,18 +88,23 @@ public class FreeBoardController {
 
 	
 	@PostMapping("/registForm")
-	public String freeRegist(@RequestParam("file") MultipartFile file, FreeBoardVO vo) {
+	public String freeRegist(@RequestParam("file") MultipartFile file, FreeBoardVO vo, RedirectAttributes ra) {
 		System.out.println(vo);
 		System.out.println("파일 첨부 여부: " + file.getOriginalFilename());
+		if(file.getOriginalFilename().equals("")) {
+			service.regist(vo);
+			ra.addFlashAttribute("msg", "freeRegistSuccess");
+			return "redirect:/board/freeboard";
+			
+		}
 		try {
 				
-			if(!file.getOriginalFilename().equals("")) {
 				//날짜별로 폴더를 생성해서 파일을 관리.
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 				Date date = new Date();
 				String fileLoca = sdf.format(date);
 				//저장할 폴더 경로
-				String uploadPath = "C:\\upload\\freeboard" + fileLoca;
+				String uploadPath = "C:\\upload\\freeboard\\" + fileLoca;
 
 
 				File folder = new File(uploadPath);
@@ -150,15 +155,7 @@ public class FreeBoardController {
 				service.regist(fbvo);
 				System.out.println(fbvo);
 				return "redirect:/board/freeboard";
-			} else {
-				FreeBoardVO freeVO = new FreeBoardVO();
-				freeVO.setWriter(vo.getWriter());
-				freeVO.setTitle(vo.getTitle());
-				freeVO.setContent(vo.getContent());
-				System.out.println("파일 미첨부 시: " + freeVO);
-				service.regist(freeVO);
-				return "redirect:/board/freeboard";
-			}
+			
 
 			
 		}catch (Exception e) {
@@ -195,7 +192,7 @@ public class FreeBoardController {
 	           }
 	           
 	        }
-		
+	        
 			model.addAttribute("article", service.getContent(bno));
 			return "board/boardDetail";
 	}
@@ -205,20 +202,90 @@ public class FreeBoardController {
 
 	//글 수정 페이지 이동
 	@GetMapping("/boardModify")
-	public void modify(@RequestParam int bno, Model model) {
+	public void modify(@RequestParam int bno, Model model, PageVO vo) {
 		model.addAttribute("article", service.getContent(bno));
+		model.addAttribute("pc", vo);
 	}
 
 	//글 수정 처리
 	@PostMapping("/freeUpdate")
-	public String freeUpdate(FreeBoardVO vo, RedirectAttributes ra) {
+	public String freeUpdate(FreeBoardVO vo, RedirectAttributes ra, @RequestParam("file") MultipartFile file) {
 		System.out.println(vo);
-		service.update(vo);
-		ra.addFlashAttribute("msg", "updateSuccess");
+		if(file.getOriginalFilename().equals("")) {
+			service.update(vo);
+			int bno = vo.getBno();
+			ra.addFlashAttribute("msg", "updateSuccess");
+			
+			return "redirect:/board/boardDetail?bno="+bno;			
+		}
+		try {
+			
+			//날짜별로 폴더를 생성해서 파일을 관리.
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			Date date = new Date();
+			String fileLoca = sdf.format(date);
+			//저장할 폴더 경로
+			String uploadPath = "C:\\upload\\freeboard\\" + fileLoca;
 
-		return "redirect:/board/freeboard";
+
+			File folder = new File(uploadPath);
+			if(!folder.exists()) {
+				folder.mkdir(); //폴더가 존재하지 않는다면 생성해라.
+			}
+			
+			//업로드되는 파일의 진짜 이름
+			String fileRealName = file.getOriginalFilename();
+			//파일의 크기
+			long size = file.getSize();
+			
+			//중복된 파일 이름이 있을 수 있기 때문에 고유한 랜덤 문자열을 생성해서 파일명으로 지정할 것.
+			UUID uuid = UUID.randomUUID();
+			String uuids = uuid.toString().replaceAll("-", "");
+			
+			//확장자 뽑아내기.
+			String fileExtention = fileRealName.substring(fileRealName.indexOf("."), fileRealName.length());
+			
+			System.out.println("저장할 폴더 이름: " + uploadPath);
+			System.out.println("실제 파일명: " + fileRealName);
+			System.out.println("크기: " + size);
+			System.out.println("고유한 랜덤 문자: " + uuids);
+			System.out.println("확장자: " + fileExtention);
+			
+			String fileName = uuids + fileExtention;
+			System.out.println("변경해서 저장할 파일명: " + fileName);
+			
+			File saveFile = new File(uploadPath + "\\" + fileName);
+			file.transferTo(saveFile);
+
+			//DB에 insert 작업을 진행.
+
+			FreeBoardVO fbvo = new FreeBoardVO();
+			fbvo.setBno(vo.getBno());
+			fbvo.setWriter(vo.getWriter());
+			fbvo.setTitle(vo.getTitle());
+			fbvo.setContent(vo.getContent());
+			fbvo.setRegdate(null);
+			fbvo.setUpdatedate(null);
+			fbvo.setViewCnt(0);
+			fbvo.setUploadPath(uploadPath);
+			fbvo.setPhotoSize(size);
+			fbvo.setFileRealName(fileName);         
+			fbvo.setFileLoca(fileLoca);
+			fbvo.setFileExtension(fileExtention);
+
+			service.update2(fbvo);
+			System.out.println(fbvo);
+			ra.addFlashAttribute("msg", "updateSuccess");
+			return "redirect:/board/freeboard";
+		
+	}catch (Exception e) {
+		System.out.println("업로드 중 에러 발생: " + e.getMessage());
+		return "redirect:/board/freeboard"; //에러가 났을 시에는 실패 키워드를 반환.
 	}
-
+	
+	
+	}
+	//삭제 처리
 	@PostMapping("/freeDelete")
 	public String freeDelete(int bno, RedirectAttributes ra) {
 		System.out.println("동민: "+bno);
@@ -235,26 +302,27 @@ public class FreeBoardController {
 			@RequestParam("fileName") String fileName) {
 		System.out.println("fileName: " + fileName);
 		System.out.println("fileLoca: " + fileLoca);
-		File file = new File("C:\\upload\\freeboard" + fileLoca + "\\" + fileName + "\\");
+		File file = new File("C:\\upload\\freeboard\\" + fileLoca + "\\" + fileName + "\\");
 		System.out.println(file);
-
-		ResponseEntity<byte[]> result = null;
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			//probeContentType: 파라미터로 전달받은 파일의 타입을 문자열로 반환해 주는 메서드.
-			//사용자에게 보여주고자 하는 데이터가 어떤 파일인지를 검사해서 응답 상태 코드를 다르게 리턴할 수도 있습니다.
-			headers.add("Content-Type", Files.probeContentType(file.toPath()));
-			//ResponseEntity<>(바디에 담을 내용, 헤더에 담을 내용, 상태 메세지)
-			//FileCopyUtils: 파일 및 스트림 복사를 위한 간단한 유틸리티 메서드의 집합체.
-			//file 객체 안에 있는 내용을 복사해서 byte배열 형태로 바디에 담아서 전달.
-			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
-
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return result;
+			ResponseEntity<byte[]> result = null;
+			if(!fileLoca.equals("")) {
+			try {
+				HttpHeaders headers = new HttpHeaders();
+				//probeContentType: 파라미터로 전달받은 파일의 타입을 문자열로 반환해 주는 메서드.
+				//사용자에게 보여주고자 하는 데이터가 어떤 파일인지를 검사해서 응답 상태 코드를 다르게 리턴할 수도 있습니다.
+				headers.add("Content-Type", Files.probeContentType(file.toPath()));
+				//ResponseEntity<>(바디에 담을 내용, 헤더에 담을 내용, 상태 메세지)
+				//FileCopyUtils: 파일 및 스트림 복사를 위한 간단한 유틸리티 메서드의 집합체.
+				//file 객체 안에 있는 내용을 복사해서 byte배열 형태로 바디에 담아서 전달.
+				result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			}
+			
+			return result;		
 	}
 
 

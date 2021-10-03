@@ -16,7 +16,9 @@ body, html {
    min-width: 320px;
    font-family: "Nanum Gothic", sans-serif;
 }
-
+a{
+	color : black;
+}
 img {
    max-width: 100%; /*사이즈가 변해도 넓이를 유지*/
    height: auto; /* 사이즈가 변해도 비율을 유지 */
@@ -1279,7 +1281,10 @@ footer {
    cursor: pointer;
    margin-top: 15px;
 }
-
+.freeboard-write-btn .writeBtn{
+	color : white;
+	
+}
 .freeboard-btn {
    font-size: 14px;
    font-weight: 400;

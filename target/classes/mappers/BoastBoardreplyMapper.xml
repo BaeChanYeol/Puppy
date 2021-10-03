@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.spring.puppy.reply.mapper.IReplyMapper">
+<mapper namespace="com.spring.puppy.boastboard.mapper.IBoastBoardReplyMapper">
 
-   <resultMap type="com.spring.puppy.command.ReplyVO" id="replyMap">
+   <resultMap type="com.spring.puppy.command.BoastBoardReplyVO" id="replyMap">
       <result property="replyId" column="reply_id" />
       <result property="replyPw" column="reply_pw" />
       <result property="replyDate" column="reply_date" />
@@ -13,17 +13,17 @@
    </resultMap>
 
    <insert id="replyRegist">
-      INSERT INTO freereply(rno, bno, reply, reply_id)
-      VALUES(freereply_seq.NEXTVAL, #{bno}, #{reply}, #{replyId})
+      INSERT INTO boastreply(rno, bbno, reply)
+      VALUES(boastreply_seq.NEXTVAL, #{bbno}, #{reply})
    </insert>
-  
+   
    <select id="getList" resultMap="replyMap">
       SELECT * FROM   
          (
          SELECT ROWNUM AS rn, tbl.* FROM   
             (
-            SELECT * FROM freereply
-            WHERE bno = #{bno}
+            SELECT * FROM boastreply
+            WHERE bbno = #{bbno}
             ORDER BY rno DESC
             ) tbl
          )
@@ -33,24 +33,32 @@
       ]]>
    </select>
    
-   <select id="getTotal" resultType="int">
-      SELECT COUNT(*) FROM freereply
+   <!--  
+   <select id="getList" resultMap="replyMap">
+      SELECT * FROM freereply
       WHERE bno = #{bno}
+      ORDER BY rno DESC
+   </select>
+   -->
+   
+   <select id="getTotal" resultType="int">
+      SELECT COUNT(*) FROM boastreply
+      WHERE bbno = #{bbno}
    </select>
    
    <select id="pwCheck" resultType="int">
-      SELECT COUNT(*) FROM freereply
+      SELECT COUNT(*) FROM boastreply
       WHERE rno = #{rno} AND reply_pw = #{replyPw}
    </select>
    
    <update id="update">
-      UPDATE freereply
+      UPDATE boastreply
       SET reply = #{reply}, update_date = sysdate
       WHERE rno = #{rno}
    </update>
    
    <delete id="delete">
-      DELETE FROM freereply
+      DELETE FROM boastreply
       WHERE rno = #{rno}
    </delete>
    

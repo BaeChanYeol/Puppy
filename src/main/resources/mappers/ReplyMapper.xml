@@ -13,10 +13,10 @@
    </resultMap>
 
    <insert id="replyRegist">
-      INSERT INTO freereply(rno, bno, reply)
-      VALUES(freereply_seq.NEXTVAL, #{bno}, #{reply})
+      INSERT INTO freereply(rno, bno, reply, reply_id)
+      VALUES(freereply_seq.NEXTVAL, #{bno}, #{reply}, #{replyId})
    </insert>
-   
+  
    <select id="getList" resultMap="replyMap">
       SELECT * FROM   
          (
