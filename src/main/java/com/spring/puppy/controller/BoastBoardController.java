@@ -13,6 +13,7 @@ import java.util.UUID;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ import com.spring.puppy.boastboard.service.BoastBoardService;
 import com.spring.puppy.boastboard.service.IBoastBoardService;
 import com.spring.puppy.command.BoastBoardVO;
 import com.spring.puppy.command.FileVO;
+import com.spring.puppy.command.UserVO;
 import com.spring.puppy.util.PageCreator;
 import com.spring.puppy.util.PageVO;
 
@@ -60,11 +62,11 @@ public class BoastBoardController {
 
 	public String boastRegist(@RequestParam("file") List<MultipartFile> file,
 			@RequestParam("title") String title,
-			@RequestParam("content") String content, RedirectAttributes ra) {
+			@RequestParam("content") String content, RedirectAttributes ra, HttpSession session) {
 		try {
-			//			UserVO vo = (UserVO) session.getAttribute("login");
-			//			String writer = vo.getUserId();
-			String writer = "abc1234";
+			UserVO user = (UserVO) session.getAttribute("login");
+			String writer = user.getId();
+			
 
 			//날짜별로 폴더를 생성해서 파일을 관리.
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");

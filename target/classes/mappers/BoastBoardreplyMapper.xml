@@ -13,8 +13,8 @@
    </resultMap>
 
    <insert id="replyRegist">
-      INSERT INTO boastreply(rno, bbno, reply)
-      VALUES(boastreply_seq.NEXTVAL, #{bbno}, #{reply})
+      INSERT INTO boastreply(rno, bbno, reply, reply_id)
+      VALUES(boastreply_seq.NEXTVAL, #{bbno}, #{reply}, #{replyId})
    </insert>
    
    <select id="getList" resultMap="replyMap">

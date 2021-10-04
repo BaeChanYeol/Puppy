@@ -30,7 +30,7 @@ public class BoastBoardReplyController {
    @ResponseBody
    public String replyRegist(@RequestBody BoastBoardReplyVO vo) {
       System.out.println("댓글 등록 요청이 들어옴!");
-      
+      System.out.println(vo);
       service.replyRegist(vo);
       
       return "regSuccess";
@@ -77,13 +77,14 @@ public class BoastBoardReplyController {
    
    @PostMapping("/update")
    public String update(@RequestBody BoastBoardReplyVO vo) {
-    
+	  service.update(vo);
       
       return "";
       
    }
    
    @PostMapping("/delete")
+   @ResponseBody
    public String delete(@RequestBody BoastBoardReplyVO vo) {
       service.delete(vo.getRno());
       return "delSuccess";

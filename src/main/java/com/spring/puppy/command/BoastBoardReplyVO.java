@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /*
  -- 댓글
@@ -59,6 +60,7 @@ REFERENCES boastboard(bno)
 
 @Getter
 @Setter
+@ToString
 public class BoastBoardReplyVO {
    
    //   댓글 번호
@@ -68,7 +70,6 @@ public class BoastBoardReplyVO {
    
    private String reply;
    private String replyId;
-   private String replyPw;
    private Timestamp replyDate;
    private Timestamp updateDate;
 

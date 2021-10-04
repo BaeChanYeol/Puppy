@@ -186,10 +186,10 @@
                         strAdd += "<strong class='reply-left'>"+ replyList[i].replyId +"</strong>"; 
                   		strAdd += "<small class='reply-left'>"+ timeStamp(replyList[i].replyDate) +"</small>"
                         strAdd += "<p id='replycontent' >"+ replyList[i].reply +"</p>";
-                        /* if(replyList[i].replyId = '${login.id}'){ */
+                        if(replyList[i].replyId = '${login.id}'){ 
                         strAdd += "<a href='" + replyList[i].rno + "' class='reply-right' onclick='return false;'><span class='reply-modBtn'>수정</span></a>";
                         strAdd += "<a href='" + replyList[i].rno + "' class='reply-right'><span class='reply-delBtn commentRemove'>삭제</span></a>";                        	
-                        /* } */
+                        }
                         strAdd += "</div>";
                         strAdd += "</div>";
                } 

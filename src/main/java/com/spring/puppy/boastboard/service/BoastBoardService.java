@@ -66,7 +66,7 @@ public class BoastBoardService implements IBoastBoardService {
 
 	@Override
 	public void update(BoastBoardVO vo) {
-
+		
 	}
 
 

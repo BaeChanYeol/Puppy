@@ -34,7 +34,7 @@ public class ReserveBoardController {
 	//예약 DB 등록 요청
 	@PostMapping("/registForm")
 	public String registForm(ReserveBoardVO vo, RedirectAttributes ra) {
-	
+		
 		service.reserveRegist(vo);
 			
 		//등록 성공 여부를 1회용으로 전달하기 위한 ra객체의 메서드
