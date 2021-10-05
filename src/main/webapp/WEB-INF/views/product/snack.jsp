@@ -7,9 +7,10 @@
     <section>
 
         <article class="main-container">
-            <div class="wrap title">
-                <h2>간식, 식품</h2>
-            </div>
+            <div class="wrap mytitle">
+         <h2>간식, 식품</h2>
+      </div>
+
             
             <span id="count-per-page" style="float: right;">
                 <input class="btn btn-cpp" type="button" value="8">  

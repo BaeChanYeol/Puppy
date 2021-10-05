@@ -95,7 +95,9 @@ td {
    padding-top:80px;   
    padding-bottom:80px;   
 } 
-
+.mytitle>h2 {
+   font-size: 30px;
+}
 
 /* 해더 */
 .header {

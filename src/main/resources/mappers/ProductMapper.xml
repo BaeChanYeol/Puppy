@@ -14,8 +14,8 @@
 	 
 	 
 	 <insert id = "productRegist">
-	 	INSERT INTO product(pno, pname, price, cate, opt, type)
-	 	VALUES(product_seq.NEXTVAL, #{pname}, #{price}, #{cate}, #{opt}, #{type})
+	 	INSERT INTO product(pno, pname, price, cate, opt, type,uploadpath, filerealname, photosize, fileLoca, fileExtension)
+	 	VALUES(product_seq.NEXTVAL, #{pname}, #{price}, #{cate}, #{opt}, #{type},#{uploadPath}, #{fileRealName}, #{photoSize}, #{fileLoca}, #{fileExtension})
 	 
 	 </insert>
 	 

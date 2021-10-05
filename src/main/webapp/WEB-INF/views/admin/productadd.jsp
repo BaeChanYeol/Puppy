@@ -32,17 +32,20 @@
         </nav>
         <div class="adminbody">
             <div class="admincontent">
-                <form class="">
-                    <select class="admininput">
-                        <option>강아지용품</option>
-                        <option>의료기기</option>
-                        <option>간식식품</option>
+                <form class="" action="<c:url value='/product/productRegist'/>" method="post" enctype="multipart/form-data">
+                    <select class="admininput" name="type">
+                        <option value="i">강아지용품</option>
+                        
+                        <option value="m">의료기기</option>
+                        <option value="s">간식식품</option>
+                        
                     </select>
-                    <input class="admininput" placeholder="상품이름">
-                    <input class="admininput" placeholder="카테고리">
-                    <input class="admininput" placeholder="상품가격">
-                    <input class="admininput" placeholder="옵션  다중옵션 시 / 를 꼭 입력해주세요">
-                    <button type="button" class="adminbtn">상품 이미지 업로드</button>
+                    <input class="admininput" placeholder="상품이름" name="pname">
+                    <input class="admininput" placeholder="카테고리" name="cate">
+                    <input class="admininput" placeholder="상품가격" name="price">
+                    <input class="admininput" placeholder="옵션  다중옵션 시 / 를 꼭 입력해주세요" name="opt">
+                    <label for="file">사진첨부</label> 
+                    <input type="file" class="photoBtn" name="file" id="file" >
                                             
                     <button type="submit" class="adminbtn" style="display: block; margin-top: 30px;">등록</button>
                 </form>
@@ -56,3 +59,10 @@
 
 </body>
 </html>
+
+<script>
+	if('${msg}' == 'fileFail'){
+		alert('사진은 필수입니다');
+	}
+
+</script>

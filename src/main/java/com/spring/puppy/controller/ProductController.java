@@ -1,13 +1,22 @@
 package com.spring.puppy.controller;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,9 +24,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.puppy.command.CartVO;
+import com.spring.puppy.command.FreeBoardVO;
 import com.spring.puppy.command.OrderDetailVO;
 import com.spring.puppy.command.OrderVO;
 import com.spring.puppy.command.ProductQnaVO;
@@ -70,7 +81,111 @@ public class ProductController {
 		//model.addAttribute("itemList", service.productList(vo));
 		
 	}
+	
+	@PostMapping("/productRegist")
+	public String productRegist(@RequestParam("file")MultipartFile file, ProductVO vo, RedirectAttributes ra) {
+		
+		System.out.println(vo);
+		System.out.println("파일 첨부 여부: " + file.getOriginalFilename());
+		if(file.getOriginalFilename().equals("")) {
+			ra.addFlashAttribute("msg", "fileFail");
+			return "redirect:/admin/productadd";
+			
+		}
+		try {
+				
+				//날짜별로 폴더를 생성해서 파일을 관리.
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+				Date date = new Date();
+				String fileLoca = sdf.format(date);
+				//저장할 폴더 경로
+				String uploadPath = "C:\\upload\\product\\" + fileLoca;
 
+
+				File folder = new File(uploadPath);
+				if(!folder.exists()) {
+					folder.mkdir(); //폴더가 존재하지 않는다면 생성해라.
+				}
+				
+				//업로드되는 파일의 진짜 이름
+				String fileRealName = file.getOriginalFilename();
+				//파일의 크기
+				long size = file.getSize();
+				
+				//중복된 파일 이름이 있을 수 있기 때문에 고유한 랜덤 문자열을 생성해서 파일명으로 지정할 것.
+				UUID uuid = UUID.randomUUID();
+				String uuids = uuid.toString().replaceAll("-", "");
+				
+				//확장자 뽑아내기.
+				String fileExtention = fileRealName.substring(fileRealName.indexOf("."), fileRealName.length());
+				
+				System.out.println("저장할 폴더 이름: " + uploadPath);
+				System.out.println("실제 파일명: " + fileRealName);
+				System.out.println("크기: " + size);
+				System.out.println("고유한 랜덤 문자: " + uuids);
+				System.out.println("확장자: " + fileExtention);
+				
+				String fileName = uuids + fileExtention;
+				System.out.println("변경해서 저장할 파일명: " + fileName);
+				
+				File saveFile = new File(uploadPath + "\\" + fileName);
+				file.transferTo(saveFile);
+
+				//DB에 insert 작업을 진행.
+
+				ProductVO pvo = new ProductVO();
+				pvo.setType(vo.getType());
+				pvo.setPname(vo.getPname());
+				pvo.setCate(vo.getCate());
+				pvo.setPrice(vo.getPrice());	
+				pvo.setOpt(vo.getOpt());
+				pvo.setUploadPath(uploadPath);
+				pvo.setPhotoSize(size);
+				pvo.setFileRealName(fileName);         
+				pvo.setFileLoca(fileLoca);
+				pvo.setFileExtension(fileExtention);
+
+				service.productRegist(pvo);
+				
+				return "redirect:/admin/productadd";
+
+			
+		}catch (Exception e) {
+			System.out.println("업로드 중 에러 발생: " + e.getMessage());
+			return "redirect:/admin/productadd"; //에러가 났을 시에는 실패 키워드를 반환.
+		}
+	}
+		
+	@GetMapping("/display")
+	@ResponseBody
+	public ResponseEntity<byte[]> getFile(@RequestParam("fileLoca") String fileLoca,
+			@RequestParam("fileName") String fileName) {
+		System.out.println("fileName: " + fileName);
+		System.out.println("fileLoca: " + fileLoca);
+		File file = new File("C:\\upload\\freeboard\\" + fileLoca + "\\" + fileName + "\\");
+		System.out.println(file);
+			ResponseEntity<byte[]> result = null;
+			if(!fileLoca.equals("")) {
+			try {
+				HttpHeaders headers = new HttpHeaders();
+				//probeContentType: 파라미터로 전달받은 파일의 타입을 문자열로 반환해 주는 메서드.
+				//사용자에게 보여주고자 하는 데이터가 어떤 파일인지를 검사해서 응답 상태 코드를 다르게 리턴할 수도 있습니다.
+				headers.add("Content-Type", Files.probeContentType(file.toPath()));
+				//ResponseEntity<>(바디에 담을 내용, 헤더에 담을 내용, 상태 메세지)
+				//FileCopyUtils: 파일 및 스트림 복사를 위한 간단한 유틸리티 메서드의 집합체.
+				//file 객체 안에 있는 내용을 복사해서 byte배열 형태로 바디에 담아서 전달.
+				result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			}
+			
+			return result;		
+	}	
+	
+	
 	
 	
 	

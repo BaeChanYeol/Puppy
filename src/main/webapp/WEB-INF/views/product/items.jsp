@@ -10,9 +10,10 @@
     <section>
 
         <article class="main-container">
-            <div class="wrap title">
-                <h2>강아지용품</h2>
-            </div>
+            <div class="wrap mytitle">
+         		<h2>강아지 용품</h2>
+     		 </div>
+
             
             <span id="count-per-page" style="float: right;">
                 <input class="btn btn-cpp" type="button" value="8">  

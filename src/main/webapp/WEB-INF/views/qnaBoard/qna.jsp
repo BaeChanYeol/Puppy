@@ -43,7 +43,9 @@
     <section>
         <article class = "QNA main-container">
             
-            <h2>Q&A</h2>
+            <div class = "mytitle">
+               <h2>Q&A</h2>
+        	 </div> 
 
             <!--자주하는 질문-->
             <div class="FAQ wrap">

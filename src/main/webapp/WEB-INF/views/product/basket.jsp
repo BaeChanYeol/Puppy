@@ -29,7 +29,7 @@
 <section>
 	<!-- 장바구니헤더 및 이미지-->
 	<article class="main-container">
-		<div class="wrap title">
+		<div class="mytitle">
 			<h2>장바구니</h2>
 		</div>
 	</article>

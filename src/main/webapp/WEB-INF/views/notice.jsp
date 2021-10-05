@@ -6,9 +6,10 @@
 
 <section>
 	<article class="main-container">
-		<div class="wrap title">
-			<h2>이용안내</h2>
-		</div>
+		<div class="wrap mytitle">
+         <h2>이용안내</h2>
+      </div>
+
 	</article>
 
 	<article class="main-container">

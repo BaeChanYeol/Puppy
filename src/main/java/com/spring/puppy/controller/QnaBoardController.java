@@ -41,6 +41,7 @@ public class QnaBoardController {
 	@PostMapping("/registForm")
 	public String registForm(HttpSession session, QnaBoardVO vo, RedirectAttributes ra) {
 		UserVO user = (UserVO) session.getAttribute("login");	
+		vo.setWriter(user.getId());
 		service.qnaRegist(vo);
 			
 		//등록 성공 여부를 1회용으로 전달하기 위한 ra객체의 메서드

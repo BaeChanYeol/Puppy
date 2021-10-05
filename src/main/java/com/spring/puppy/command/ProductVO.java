@@ -41,5 +41,10 @@ public class ProductVO {
 	private int zzim;
 	private int amount;
 	private String opt;
+	private String uploadPath;
+    private String fileRealName;
+    private long photoSize;
+    private String fileLoca;
+    private String fileExtension;
 	
 }
