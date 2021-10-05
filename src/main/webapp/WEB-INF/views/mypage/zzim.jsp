@@ -8,16 +8,16 @@
 	<aside class="side">
 		<h2>마이페이지</h2>
 		<ul class="mysidemenu">
-			<li><a href="#"> 예약 내역</a></li>
+			<li><a href="<c:url value='/reserveBoard/reserveList'/>"> 예약 내역</a></li>
 			<li><a href="<c:url value='/user/passwordCheck'/>"> 회원정보 수정</a></li>
 			<li><a href="<c:url value='/user/myBoard'/>"> 내가 쓴 글</a></li>
 			<li><a href="<c:url value='/boast/likeList'/>"> 좋아요 누른글</a></li>
-			<li><a href="#"> 문의내역</a></li>
-			<li><a href="#"> 장바구니</a></li>
-			<li><a href="#" class="myhover"> <img
+			<li><a href="<c:url value='/qnaBoard/qna#myqna'/>"> 문의내역</a></li>
+			<li><a href="<c:url value='/product/basket'/>"> 장바구니</a></li>
+			<li><a href="<c:url value='/product/zzim'/>" class="myhover"> <img
 					src="../img/mypageheart.png" alt="구매내역">찜한 상품
 			</a></li>
-			<li><a href="#"> 구매 내역</a></li>
+			<li><a href="<c:url value='/product/buylist'/>"> 구매 내역</a></li>
 		</ul>
 	</aside>
 	<section class="side-content">

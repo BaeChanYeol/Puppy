@@ -162,7 +162,7 @@ public class ProductController {
 			@RequestParam("fileName") String fileName) {
 		System.out.println("fileName: " + fileName);
 		System.out.println("fileLoca: " + fileLoca);
-		File file = new File("C:\\upload\\freeboard\\" + fileLoca + "\\" + fileName + "\\");
+		File file = new File("C:\\upload\\product\\" + fileLoca + "\\" + fileName + "\\");
 		System.out.println(file);
 			ResponseEntity<byte[]> result = null;
 			if(!fileLoca.equals("")) {

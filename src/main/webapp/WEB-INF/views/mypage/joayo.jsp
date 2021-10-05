@@ -9,7 +9,7 @@
             <h2>마이페이지</h2>
             <ul class="mysidemenu">
                 <li>
-                    <a href="#"> 예약 내역</a>
+                    <a href="<c:url value='/reserveBoard/reserveList'/>"> 예약 내역</a>
                 </li>
                 <li>
                     <a href="<c:url value='/user/passwordCheck'/>"> 회원정보 수정</a>
@@ -21,16 +21,16 @@
                     <a href="<c:url value='/boast/likeList'/>" class="myhover"> <img src="../img/mylikelist.png" alt="구매내역">좋아요 누른글</a>
                 </li>
                 <li>
-                    <a href="#"> 문의내역</a>
+                    <a href="<c:url value='/qnaBoard/qna#myqna'/>"> 문의내역</a>
                 </li>
                 <li>
-                    <a href="#"> 장바구니</a>
+                    <a href="<c:url value='/product/basket'/>"> 장바구니</a>
                 </li>
                 <li>
-                    <a href="#"> 찜한 상품</a>
+                    <a href="<c:url value='/product/zzim'/>"> 찜한 상품</a>
                 </li>
                 <li>
-                    <a href="#"> 구매 내역</a>
+                    <a href="<c:url value='/product/buylist'/>"> 구매 내역</a>
                 </li>
             </ul>
         </aside>
