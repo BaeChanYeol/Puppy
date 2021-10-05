@@ -53,7 +53,7 @@
                 <div class="menu_area">
                     <ul class="menu">
                         <li class="menu-li">
-                            <a href="<c:url value='/reserve'/>" class="menu-li-a">예약하기</a>
+                            <a href="<c:url value='/reserveBoard/reserve'/>" class="menu-li-a">예약하기</a>
                         </li>
                         <li class="menu-li">
                             <a href="<c:url value='/notice'/>" class="menu-li-a">이용안내</a>
@@ -79,11 +79,11 @@
                             
                         </li>
                         <li class="menu-li">
-                            <a href="<c:url value='/product/items'/>" class="menu-li-a">애견샵</a>
+                            <a href="<c:url value='/product/items?type=i'/>" class="menu-li-a">애견샵</a>
                             <ul class="second">
-                                <li><a href="<c:url value='/product/item'/>">강아지용품</a></li>
-                                <li><a href="<c:url value='/product/basket'/>">의료기기</a></li>
-                                <li><a href="<c:url value='/product/orderpage'/>">간식,식품</a></li>
+                                <li><a href="<c:url value='/product/items?type=i'/>">강아지용품</a></li>
+                                <li><a href="<c:url value='/product/items?type=m'/>">의료기기</a></li>
+                                <li><a href="<c:url value='/product/items?type=s'/>">간식,식품</a></li>
                             </ul>
                         </li>
                         <li class="menu-li">

@@ -52,7 +52,9 @@
 	<mybatis-spring:scan base-package="com.spring.puppy.reserveboard.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.puppy.user.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.puppy.product.mapper"/>
-	<mybatis-spring:scan base-package="com.spring.puppy.cart.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.puppy.review.mapper"/>
+	
+
 
 	
 

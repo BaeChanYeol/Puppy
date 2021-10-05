@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../include/header.jsp"%>
 <style>
 .basket-cntBtn {
@@ -38,60 +39,64 @@
 			<form name="orderForm" id="orderForm"
 				action="<c:url value='/product/orderpage'/>">
 				<table class="basket-table">
-					<tr>
-						<th class="first"><input type="checkbox" id="allCheck"></th>
-						<th class="basket-img">상품 이미지</th>
-						<th class="basketcontent">상품 정보</th>
-						<th class="bas-hit">수량</th>
-						<th class="bas-hit">상품금액</th>
-						<th class="bas-del">상품삭제</th>
-					</tr>
 
 					<% int x = 1; %>
-					<c:forEach var="vo" items="${cartList}" varStatus="st">
-						<tr>
-							<td><input type="checkbox" name="buy" class="chBox"
-								id="pnum${st.count}" value="${vo.pno}" data-pno="${vo.pno}" onclick="javascript:basket.checkItem();"></td>
-							<td><img src="../img/basket1.jpg" alt="basketItem4"></td>
-							<td class="bas-second">
-								<p>
-									<span class="bastitle" id="pname">${vo.pname}</span><br>
-									옵션: <span>${vo.opt}</span><br> 
-									판매가: <span><input
-										type="hidden" name="p_price" id="price${st.count}"
-										class="p_price" value="${vo.price}">${vo.price}원</span>
-								</p>
-							</td>
-							<td>
-								<div class="basket-cntBtn">
-									<div class="basket-cntBtn1" class="down">
-										<a onclick="javascript:basket.changePNum(<%=x%>);"
-											class="down">-</a>
-									</div>
-									<!-- <input type="text" class="basket-cntBtn2 cnt" name="amount" id="cnt<%=x%>"  value="${vo.amount}" onkeyup="javascript:basket.changePNum(<%=x%>);" readonly="readonly" style="text-align: center; float: left; width:20px;height: 20px;">
-			                        	 -->
-									<input type="text" class="basket-cntBtn2 cnt" class="amount"
-										name="amount" id="amount${st.count}" value="${vo.amount}"
-										onkeyup="javascript:basket.changePNum(<%=x%>);"
-										readonly="readonly"
-										style="text-align: center; float: left; width: 20px; height: 20px;">
-									<div class="basket-cntBtn3" class="up">
-										<a onclick="javascript:basket.changePNum(<%=x%>);" class="up">+</a>
-									</div>
-								</div>
-							</td>
-							<td id="sum"><div class="sum<%=x%>"
-									style="text-align: center;">
-									<b id="sumPrice">${vo.amount*vo.price}원</b>
-								</div></td>
-							<%
-								x++;
-							%>
-							<td>
-								<button type="button" class="barbtn" onclick="location.href='<c:url value="/product/itemDelete/${vo.pno} "/>'">상품삭제</button>
-							</td>
-						</tr>
-					</c:forEach>
+					
+							<tr>
+								<th class="first"><input type="checkbox" id="allCheck"></th>
+								<th class="basket-img">상품 이미지</th>
+								<th class="basketcontent">상품 정보</th>
+								<th class="bas-hit">수량</th>
+								<th class="bas-hit">상품금액</th>
+								<th class="bas-del">상품삭제</th>
+							</tr>
+						
+							<c:forEach var="vo" items="${cartList}" varStatus="st">
+							
+								<tr>
+									<td><input type="checkbox" name="buy" class="chBox"
+										id="pnum${st.count}" value="${vo.pno}" data-pno="${vo.pno}" onclick="javascript:basket.checkItem();"></td>
+									<td><img src="../img/basket1.jpg" alt="basketItem4"></td>
+									<td class="bas-second">
+										<p>
+											<span class="bastitle" id="pname">${vo.pname}</span><br>
+											옵션: <span>${vo.opt}</span><br> 
+											판매가: <span><input
+												type="hidden" name="p_price" id="price${st.count}"
+												class="p_price" value="${vo.price}">${vo.price}원</span>
+										</p>
+									</td>
+									<td>
+										<div class="basket-cntBtn">
+											<div class="basket-cntBtn1" class="down">
+												<a onclick="javascript:basket.changePNum(<%=x%>);"
+													class="down">-</a>
+											</div>
+											<!-- <input type="text" class="basket-cntBtn2 cnt" name="amount" id="cnt<%=x%>"  value="${vo.amount}" onkeyup="javascript:basket.changePNum(<%=x%>);" readonly="readonly" style="text-align: center; float: left; width:20px;height: 20px;">
+					                        	 -->
+											<input type="text" class="basket-cntBtn2 cnt" class="amount"
+												name="amount" id="amount${st.count}" value="${vo.amount}"
+												onkeyup="javascript:basket.changePNum(<%=x%>);"
+												readonly="readonly"
+												style="text-align: center; float: left; width: 20px; height: 20px;">
+											<div class="basket-cntBtn3" class="up">
+												<a onclick="javascript:basket.changePNum(<%=x%>);" class="up">+</a>
+											</div>
+										</div>
+									</td>
+									<td id="sum"><div class="sum<%=x%>"
+											style="text-align: center;">
+											<b id="sumPrice">${vo.amount*vo.price}원</b>
+										</div></td>
+									<%
+										x++;
+									%>
+									<td>
+										<button type="button" class="barbtn" onclick="location.href='<c:url value="/product/itemDelete/${vo.pno} "/>'">상품삭제</button>
+									</td>
+								</tr>
+							</c:forEach>
+							
 				</table>
 			</form>
 			<button class="basdel">선택삭제</button>
@@ -109,9 +114,9 @@
 						<td><strong>총 상품 금액</strong></td>
 					</tr>
 					<tr>
-						<td id="sum_p_price"></td>
+						<td id="sum_p_price">0원</td>
 						<td>2,500원</td>
-						<td id="final_price">48,000원</td>
+						<td id="final_price">0원</td>
 					</tr>
 				</table>
 			</div>

@@ -7,14 +7,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 /*
- * create table orderboard(
-    ono NUMBER(8,0) PRIMARY KEY,
+ * create table productqna(
+    pqno number(8,0) primary key,
+    pno number(8,0) not null, 
     writer varchar2(50),
-    addr varchar2(500),
-    regdate DATE DEFAULT SYSDATE
+    content varchar2(1000),
+    regdate date default sysdate
 );
 
-CREATE SEQUENCE order_seq
+CREATE SEQUENCE productqna_seq
     start with 1
     increment by 1
     maxvalue 5000
@@ -23,10 +24,10 @@ CREATE SEQUENCE order_seq
 @Getter
 @Setter
 @ToString
-public class OrderVO {
-	
-	private int ono;
+public class ProductQnaVO {
+	private int pqno;
+	private int pno;
 	private String writer;
-	private String addr;
+	private String content;
 	private Timestamp regdate;
 }

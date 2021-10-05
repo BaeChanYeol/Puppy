@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     <%@ include file="../include/header.jsp" %>
 
 
@@ -16,11 +17,12 @@
                         <img src="../img/default_profile.png" alt="프로필">
                         <button> 프로필 편집</button>
                     </div>
+                    
                     <div class="mypage-profile profile-text">
                         <p class="name">${user.name}</p>
                         <p class="niname">${user.id}</p>
                         <p class="phon">${user.phone}</p>
-                        <p>가입날짜: <span class="ragdate">${user.regDate}</span></p>
+                        <p>가입날짜: <span class="ragdate"><fmt:formatDate value="${user.regDate}" pattern="yyyy-MM-dd"/></span></p>
                         <p class="email">${user.email}</p>
                         
                         
@@ -56,25 +58,25 @@
                     </a>
                 </div>
                 <div class="mypage-menu">
-                    <a href="">
+                    <a href="<c:url value='/qnaBoard/qna#myqna'/>">
                         <img src="../img/myinquiry.png" alt="문의내역">
                         <h5>문의내역</h5>
                     </a>
                 </div>
                 <div class="mypage-menu">
-                    <a href="">
+                    <a href="<c:url value='/product/basket'/>">
                         <img src="../img/mybasket.png" alt="회원탈퇴">
                         <h5>장바구니</h5>
                     </a>
                 </div>
                 <div class="mypage-menu">
-                    <a href="">
+                    <a href="<c:url value='/product/zzim'/>">
                         <img src="../img/mypageheart.png" alt="찜한 상품">
                         <h5>찜한 상품</h5>
                     </a>
                 </div>
                 <div class="mypage-menu">
-                    <a href="">
+                    <a href="<c:url value='/product/buylist'/>">
                         <img src="../img/mybuylist.png" alt="구매 내역">
                         <h5>구매 내역</h5>
                     </a>

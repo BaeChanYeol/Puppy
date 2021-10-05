@@ -11,8 +11,9 @@ import lombok.ToString;
     price NUMBER(8,0) not null,
     cate varchar2(300) not null,
     amount NUMBER(8,0),
-    view_cnt NUMBER(5,0), 
-    opt varchar2(50)
+    zzim NUMBER(5,0), 
+    opt varchar2(50),
+    type varchar2(30)
 );
 
 insert into product(pno, pname, price, cate, opt)
@@ -33,10 +34,11 @@ CREATE SEQUENCE product_seq
 @ToString
 public class ProductVO {
 	private int pno;
+	private String type;
 	private String pname;
 	private int price;
 	private String cate;
-	private int viewCnt;
+	private int zzim;
 	private int amount;
 	private String opt;
 	

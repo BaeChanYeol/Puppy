@@ -2,6 +2,46 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ include file="../include/header.jsp" %>
+    
+<style>
+	.reviews .review-nonclick {
+	font-size: 18px;
+	height: 50px;
+	border-bottom: #996633 1px solid;
+	padding: 14px 5px;
+	margin: 20px 0;
+}
+
+	.reviews .review-click {
+	display: none;
+	background-color: #fafafa;
+	font-size: 18px;
+	height: auto;
+	padding: 14px 20px;
+}
+
+.pagination2 a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border:1px solid #ccc ;
+    color: #000;
+    padding: 5px;
+}
+.pagination2 a:hover {
+    color: #fff;
+    background: #996633;
+}
+.pagination2 button {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border:1px solid #ccc ;
+    color: #fff;
+    padding: 5px;
+    background: #996633;
+}
+</style>    
 
     <section>
         <article class="main-container">
@@ -13,6 +53,8 @@
                     </div>
                     <div class="detail-explan">
                     	<input type="hidden" name="pno" value="${item.pno}">
+                    	<input type="hidden" name="pname" value="${item.pname}">
+                    	<input type="hidden" name="price" value="${item.price}">
                         <div class="detail-explan-item">
                             <h4>${item.pname}</h4>
                             <div class="right-sort">
@@ -46,7 +88,19 @@
                             </select>
                         </div>
                         <div class="detail-explan-zzim clearfix">
-                            <button class="heart-zzim"></button>
+                            <%-- <button type="button" class="heart-zzim" onclick="location.href='<c:url value='/product/zzimRegistForm'/>'"></button> --%>
+                            
+                            <c:choose>
+							    <c:when test="${item.zzim eq '0'}"> <!-- 찜이 안 되어 있는 상태일 때 -->
+							        <button type="button" id="zzim" value="${item.zzim}" class="heart-zzim" onclick="return goZzim(this.form);"><img alt="" id="test" src="../img/heart2.png"></button>
+							    </c:when>
+							    <c:otherwise> <!-- 찜이 되어 있는 상태일 때 -->
+							        <button type="button" id="zzim" value="${item.zzim}" class="heart-zzim" onclick="return goZzim(this.form);"><img alt="" id="test" src="../img/heart3.png"></button>
+							    </c:otherwise>
+							</c:choose>
+                            
+                            <%-- <button type="button" id="zzim" value="${item.zzim}" class="heart-zzim" onclick="return goZzim(this.form);"><img alt="" id="test" src="../img/heart2.png"></button> --%>
+                        	<!-- <img alt="" id="test" src="../img/heart2.png"> -->
                         </div>
                         <div class="detail-explan-exe">
                             <p><b>택배배송 3,000원</b>(주문시 결제)</p>
@@ -57,8 +111,9 @@
                                 <div class="detail-cntBtn2">1</div>
                                 <input type="hidden" name="amount" id="cnt" value="1">
                         		<div class="detail-cntBtn3"><a href="javascript:change_cnt('p')">+</a></div>
+                            	
                             </div>
-                            <p>강아지 실리콘 칫솔</p>
+                            <p>${item.pname}</p>
                         </div>
                         <div class="detail-explan-item3 clearfix">
                             <div class="detail-total">
@@ -71,7 +126,8 @@
                                 <button type="submit" class="detail-btn1" id="res_btn">장바구니</button>
                             </div>
                             <div>
-                                <button type="submit" class="detail-btn2" >바로구매</button>
+                                <%-- <button type="button" class="detail-btn2" onclick="location.href='<c:url value='/product/orderpage?buy=${item.pno}&p_price=${item.price}&amount=$("#cnt").val();'/>'">바로구매</button> --%>
+                                <button type="button" class="detail-btn2" onclick="goDirect()">바로구매</button>
                             </div>
                         </div>
                     </div>
@@ -80,15 +136,15 @@
        				
        		</form>
         </article>
-        <c:out value="${item.opt}"/>
+        <!--  <c:out value="${item.opt}"/> -->
 
         <article class="main-container">
             <div class="wrap">
                 <div class="detail-menu clearfix">
                     <button>상품정보</button>
-                    <button>리뷰</button>
-                    <button>Q&A</button>
-                    <button>반품/교환정보</button>
+                    <button id="reviewBtn">리뷰</button>
+                    <button id="qnaBtn">Q&A</button>
+                    <button id="refundBtn">반품/교환정보</button>
                 </div>
                 <div>
                     <div class="detail-product">
@@ -102,99 +158,105 @@
                     </div>
 
                 </div>
-                <div class="reviews">
-
+                
+                <div class="reviews" id="reviews">
+					
                     <div class="label">
                         <h3>상품 리뷰</h3>
                     </div>
 
+					
                     <table>
-                        <th>번호</th>
-                        <th>제목</th>
+<!--                    <th>번호</th> -->                        
+						<th>제목</th>
                         <th>작성자</th>
                         <th>작성일</th>
-                        <th>별점</th>
+                        
+                        
+                        <c:forEach var="vo" items="${reviewList}">
+	                        <tr class="review-nonclick">
+	                            <%-- <td>${vo.revno}</td> --%>
+	                            <td class="review-title" id="review-title" style="padding-left:40px;">${vo.content}</td>
+	                            <td>ooo2***</td>
+	                            <td><fmt:formatDate value="${vo.reviewDate}" pattern="yyyy-MM-dd" /></td>
+	                            
+	                            
+	                        </tr>
+	                        <tr class="review-click">
+	                        	
+	                        	<td colspan="3" style="text-align:left; padding-left:40px;">${vo.content}</td>
+	                        </tr>
+                        </c:forEach>
 
-                        <tr>
-                            <td>4</td>
-                            <td class="review-title">빠른 배송 좋네요</td>
-                            <td>ooo2***</td>
-                            <td>2021.09.07</td>
-                            <td>★★★★★</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td class="review-title">쏘쏘하네요</td>
-                            <td>parj***</td>
-                            <td>2021.09.05</td>
-                            <td>★★★★☆</td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td class="review-title">택배 박스가 찢어져서 왔어요</td>
-                            <td>kim6***</td>
-                            <td>2021.09.04</td>
-                            <td>★★★☆☆</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td class="review-title">잘 쓰고 있어요</td>
-                            <td>dbs2***</td>
-                            <td>2021.09.04</td>
-                            <td>★★★★☆</td>
-                        </tr>
+                        
+                        
+                        
 
                     </table>
-
+					
                 </div>
+                
 
-                <div class="pagination">
+                <form action="<c:url value='/product/detail#reviews' />" name="pageForm">
+                    <div class="text-center">
+                    
+                    <input type="hidden" name="pno" value="${item.pno}">
+                    <!-- 페이지 관련 버튼들이 ul 태그로 감싸져 있다. -->
+                    
+                    <ul class="pagination" id="pagination">
+                       <c:if test="${pc.prev}"> <!-- 이전  -->
+                       		<a href="#" data-pageNum="${pc.beginPage-1}">&lt;</a>
+                       </c:if>
+                       
+                       <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+                       		<a href="#" data-pageNum="${num}" class="${pc.paging.pageNum == num ? 'active' : ''}">${num}</a>
+                       </c:forEach>
+                       
+                        <c:if test="${pc.next}"> <!-- 다음  -->
+                        	<a href="#" data-pageNum="${pc.endPage+1}">&gt;</a>
+                        </c:if>                    
+                    </ul>
+                    
+                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
+                    <input type="hidden" name="countPerPage" value="${pc.paging.countPerPage}">
+                    
+                    </div>
+         		</form>
+         		
+         		
+                <form action="<c:url value='/product/reviewRegistForm' />" name="reviewRegistForm" method="post">
+	                <article class="main-contaier">
+	                	<!-- 리뷰 입력창 -->   
+		                <div class="review-content wrap clearfix">
+		                	<!-- <input type="text" class="" name="title"> -->
+		                	<input type="hidden" name="pno" value="${item.pno}">
+		                	
+		                    <textarea class="reviewArea" id="review" name="content" rows="5" cols="130"></textarea>
+		                    <button type="submit" id="reg_review">등록하기</button>
+		                </div>
+	        		</article>
+				</form>
+				
 
-                    <button type="button" onclick="location.href='#'">&#10094;</button>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <button type="button" onclick="location.href='#'">&#10095;</button>
 
-                </div>
-
-
-
-                <div class="qna">
+                <div class="qna" id="qna">
                     <div class="label">
                         <h3>Q&A</h3>
                     </div>
                     <div class="qna-area">
 
 
-                        <button class="p-qna">상품문의</button>
+                        <!-- <button class="p-qna">상품문의</button> -->
                         <table>
-
-                            <tr>
-                                <td><button>답변대기</button></td>
-                                <td class="qna-title">제품 문의</td>
-                                <td>dbs2***</td>
-                                <td>2021.09.07</td>
-                            </tr>
-
-                            <tr>
-                                <td><button>답변완료</button></td>
-                                <td class="qna-title">포장 문의</td>
-                                <td>kim5***</td>
-                                <td>2021.09.06</td>
-                            </tr>
-
-                            <tr>
-                                <td><button>답변완료</button></td>
-                                <td class="qna-title">문의</td>
-                                <td>park***</td>
-                                <td>2021.09.04</td>
-                            </tr>
+							<c:forEach var="vo" items="${qnaList}">
+	                            <tr>
+	                                <td><button>답변대기</button></td>
+	                                <td class="qna-title" id="qna-title" style="padding-left:40px;">${vo.content}</td>
+	                                <td>dbs2***</td>
+	                                <td><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd" /></td>
+	                            </tr>
+							</c:forEach>
+	                           
 
 
 
@@ -202,8 +264,49 @@
                         </table>
 
                     </div>
+                    
+                    <form action="<c:url value='/product/detail#qna' />" name="pageForm2">
+	                    <div class="text-center">
+	                    
+	                    <input type="hidden" name="pno" value="${item.pno}">
+	                    <!-- 페이지 관련 버튼들이 ul 태그로 감싸져 있다. -->
+	                    
+	                    <ul class="pagination2" id="pagination2">
+	                       <c:if test="${pc2.prev}"> <!-- 이전  -->
+	                       		<a href="#" data-pageNum="${pc2.beginPage-1}">&lt;</a>
+	                       </c:if>
+	                       
+	                       <c:forEach var="num" begin="${pc2.beginPage}" end="${pc2.endPage}">
+	                       		<a href="#" data-pageNum="${num}" class="${pc2.paging.pageNum2 == num ? 'active' : ''}">${num}</a>
+	                       </c:forEach>
+	                       
+	                        <c:if test="${pc2.next}"> <!-- 다음  -->
+	                        	<a href="#" data-pageNum="${pc2.endPage+1}">&gt;</a>
+	                        </c:if>                    
+	                    </ul>
+	                    
+	                    <input type="hidden" name="pageNum2" value="${pc2.paging.pageNum2}">
+	                    <input type="hidden" name="countPerPage2" value="${pc2.paging.countPerPage2}">
+	                    
+	                    </div>
+         			</form>
+         			
+         			<form action="<c:url value='/product/qnaRegistForm' />" name="qnaRegistForm" method="post">
+		                <article class="main-contaier">
+		                	<!-- qna 입력창 -->   
+			                <div class="review-content wrap clearfix">
+			                	<!-- <input type="text" class="" name="title"> -->
+			                	<input type="hidden" name="pno" value="${item.pno}">
+			                	
+			                    <textarea class="qnaArea" id="qna" name="content" rows="5" cols="130"></textarea>
+			                    <button type="submit" id="reg_qna">등록하기</button>
+			                </div>
+		        		</article>
+					</form>
+         			
+         			
 
-                    <div class="pagination">
+                    <!-- <div class="pagination">
 
                         <button type="button" onclick="location.href='#'">&#10094;</button>
                         <a href="#" class="active">1</a>
@@ -213,7 +316,7 @@
                         <a href="#">5</a>
                         <button type="button" onclick="location.href='#'">&#10095;</button>
 
-                    </div>
+                    </div> -->
 
 
 
@@ -221,7 +324,7 @@
 
 
 
-                <div class="refund">
+                <div class="refund" id="refund">
                     <div class="refund-area">
 
                         <div class="label">
@@ -308,12 +411,128 @@
 	
 	var sel_op = $("#opt option:selected").val();
 	console.log('a '+ sel_op);
+	
+	
+	function goDirect(){
+		location.href="<c:url value='/product/orderpage?buy=${item.pno}&p_price=${item.price}&amount="+$("#cnt").val();+"'/>";
+			
+	}
+	
+	function goZzim(frm){
+		frm.action="<c:url value='/product/zzimRegistForm'/>";
+		frm.submit();
+		return true;	
+	}
+	
+	$(document).ready(function(){
+	    $(".review-click").click(function(){
+	        $(this).next().toggle("fast");
+        });
+	    
+	    
+	   
+	    
+	    $(function() {
+		    var zzim_status = "<c:out value='${item.zzim}' />"; 
+		    $("#test").on("click", function() {
+				if(zzim_status == 0){
+					console.log("찜 누름!");
+					//$(this).attr("src", "../img/heart3.png");
+					//$(this).attr.replace("heart2.png", "heart3.png");
+					$(this).attr("src", "../img/heart3.png");
+					zzim_status = 1;
+				} else {
+					console.log("찜 해제!");
+					//$(this).attr("src", "../img/heart2.png");
+					//$(this).attr.replace("heart3.png", "heart2.png");
+					$(this).attr("src", "../img/heart2.png");
+					zzim_status = 0;
+				}
+		    });    
+	    }); 
+		
+	    
+	    
+	  
+	    $('.review-title').each(function(i,item){
+	    	//console.log($(item).html());
+	    	//console.log("content확인:"+ $(item).html().length);
+	    	var content = "";
+	    	if($(item).html().length > 7){
+	    		content = $(item).html().substring(0,7) + "...";
+	    		console.log("content: "+content);
+				$(item).html(content);
+	    	} else{
+	    		$(item).html();
+	    	}
+	    });
+	    
+	    
+	    $("#reviewBtn").on("click",function(event){
+	          // 이동 버튼을 클릭시 pre 태그로 스크롤의 위치가 이동되도록 한다.
+	          // 1. pre태그의 위치를 가지고 있는 객체를 얻어온다. => offset 객체
+	          var offset = $("#reviews").offset();
+	 
+	          // offset은 절대 위치를 가져온다. offset.top을 통해 상단의 좌표를 가져온다.
+	          // position은 부모를 기준으로한 상대위치를 가져온다.
+	          $("html, body").animate({scrollTop:offset.top},600);
+	 
+	        });
+	    
+	    $("#qnaBtn").on("click",function(event){
+	          var offset = $("#qna").offset();
+	          $("html, body").animate({scrollTop:offset.top},600);
+	        });
+	    
+	    $("#refundBtn").on("click",function(event){
+	          var offset = $("#refund").offset();
+	          $("html, body").animate({scrollTop:offset.top},600);
+	        });
+
+
+	    
+    });
+
+	$(document).ready(function(){
+	    $(".review-nonclick").click(function(){
+	        $(this).next().toggle("fast");
+        });
+    });
     
+
+	
     const registBtn = document.getElementById('res_btn');
-    registBtn.onclick = function() {
-    	
+    registBtn.onclick = function(e) {
+    	e.preventDefault(); 
     	document.registForm.submit();
     }
+    
+    
+    const registBtn2 = document.getElementById('reg_review');
+    registBtn2.onclick = function() {
+    	document.reviewRegistForm.submit();
+    }
+    
+    const registBtn3 = document.getElementById('reg_qna');
+    registBtn3.onclick = function() {
+    	document.qnaRegistForm.submit();
+    }
+    
+    const pagination = document.getElementById('pagination');
+	pagination.onclick = function(e) {
+		e.preventDefault(); 
+		const value = e.target.dataset.pagenum;
+		document.pageForm.pageNum.value = value;
+		document.pageForm.submit();
+	}
+	
+    const pagination2 = document.getElementById('pagination2');
+	pagination2.onclick = function(e) {
+		e.preventDefault(); 
+		const value = e.target.dataset.pagenum;
+		document.pageForm2.pageNum2.value = value;
+		document.pageForm2.submit();
+	}
     
     
     Number.prototype.format = function(){ 
@@ -355,7 +574,7 @@
 	    	$("#cnt").val(this_cnt); 
 	    	$('.detail-cntBtn2').html(this_cnt);
 	    	$("#total_amount").val(show_total_amount); 
-	    	$("#total_amount").html(show_total_amount.format()); 
+	    	$("#total_amount").html(show_total_amount.format()+"원"); 
 	    }
 		/////////////////////////////////////////////////////////////////////
 		

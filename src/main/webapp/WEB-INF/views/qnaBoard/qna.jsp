@@ -91,7 +91,7 @@
     
         <article>
             <!-- <h2 style="text-align:center;">문의내역</h2>  -->
-            <div class="myQnA wrap">
+            <div class="myQnA wrap" id="myqna">
                 <div class="myQnA-minititle">
                     <h3>문의내역</h3>
                 </div>
@@ -119,7 +119,7 @@
                 </div>
             </div>
             
-            <form action="<c:url value='/qnaBoard/qna' />" name="pageForm">
+            <form action="<c:url value='/qnaBoard/qna#myqna' />" name="pageForm">
                     <div class="text-center">
                     
                     
