@@ -11,7 +11,8 @@ import lombok.ToString;
     pno NUMBER(8,0) not null,
     pname varchar2(50) not null,
     price NUMBER(8,0) not null,
-    amount NUMBER(8,0) not null
+    amount NUMBER(8,0) not null,
+    opt varchar2(50)
 );
 CREATE SEQUENCE basket_seq
     start with 1

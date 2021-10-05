@@ -29,57 +29,59 @@
 	                <th>상태</th>
 				</tr>
 				<c:forEach var="vo" items="${reserveList}" varStatus="s">
-				
-	                <tr>
-	                    <td>${vo.resNo}</td>
-	                    <td>${vo.chkIn}</td>
-	                    <td>${vo.chkOut}</td>
-	                    <td>${vo.service}</td>
-	                    <td>&nbsp;${vo.breed}&nbsp;</td>
-	                    
-	                    <c:choose>
-	                    	<c:when test="${vo.service == '호텔&데이케어'}"><td>42,000원</td></c:when>
-	                    	<c:when test="${vo.service == '유치원'}"><td>30,000원</td></c:when>
-	                    	<c:when test="${vo.service == '그루밍'}"><td>55,000원</td></c:when>
-	                    	<c:when test="${vo.service == '스튜디오'}"><td>60,000원</td></c:when>
-	                    	<c:when test="${vo.service == '메디컬센터'}"><td>50,000원</td></c:when>
-	                    	<c:when test="${vo.service == '스페셜케어'}"><td>45,000원</td></c:when>
-	                    	<c:otherwise><td>0원</td></c:otherwise>
-	                    </c:choose>
-	                    
-	                   
-	                    
-	                    	<jsp:useBean id="today" class="java.util.Date" />
-							<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="nowTime" />
-				
-							<fmt:parseDate var="cdate" value="${vo.chkIn}" pattern="yyyy-MM-dd" />
-							<fmt:formatDate var="cdate" value="${cdate}" pattern="yyyy-MM-dd" />
-							
-							
-							
-							<c:set var="dayago" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
-							<fmt:formatDate value="${dayago}" pattern="yyyy-MM-dd" var="dayago"/>
-	                 	
-
-	                    <c:choose>
-	                    	<c:when test="${cdate == nowTime}">
-	                    		<td>${dayago} 23:59까지</td>
-	                    		<td>취소불가</td>
-	                    	</c:when>
-	                    	<c:when test="${cdate > nowTime}">
-	                    		<td>${chkList[s.index]} 23:59까지</td>
-	                    		<td><button id="cancel"  onclick="location.href='<c:url value="/reserveBoard/reserveDelete/${vo.resNo} "/>'">취소</button></td>
-	                    	</c:when>
-	                    	<c:when test="${cdate < nowTime}">
-	                    		<td>-</td>
-	                    		<td>이용완료</td>
-	                    	</c:when>
-	                    	<c:otherwise></c:otherwise>
-	                    </c:choose>
-	                    
-	                    
-	                  
-	                </tr>
+					<c:if test="${login.id == vo.writer }">
+		                <tr>
+		                    <td>${vo.resNo}</td>
+		                    <td>${vo.chkIn}</td>
+		                    <td>${vo.chkOut}</td>
+		                    <td>${vo.service}</td>
+		                    <td>&nbsp;${vo.breed}&nbsp;</td>
+		                    
+		                    <c:choose>
+		                    	<c:when test="${vo.service == '호텔&데이케어'}"><td>42,000원</td></c:when>
+		                    	<c:when test="${vo.service == '유치원'}"><td>30,000원</td></c:when>
+		                    	<c:when test="${vo.service == '그루밍'}"><td>55,000원</td></c:when>
+		                    	<c:when test="${vo.service == '스튜디오'}"><td>60,000원</td></c:when>
+		                    	<c:when test="${vo.service == '메디컬센터'}"><td>50,000원</td></c:when>
+		                    	<c:when test="${vo.service == '스페셜케어'}"><td>45,000원</td></c:when>
+		                    	<c:otherwise><td>0원</td></c:otherwise>
+		                    </c:choose>
+		                    
+		                   
+		                    
+		                    	<jsp:useBean id="today" class="java.util.Date" />
+								<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="nowTime" />
+					
+								<fmt:parseDate var="cdate" value="${vo.chkIn}" pattern="yyyy-MM-dd" />
+								<fmt:formatDate var="cdate" value="${cdate}" pattern="yyyy-MM-dd" />
+								
+								
+								
+								<c:set var="dayago" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
+								<fmt:formatDate value="${dayago}" pattern="yyyy-MM-dd" var="dayago"/>
+		                 	
+	
+		                    <c:choose>
+		                    	<c:when test="${cdate == nowTime}">
+		                    		<td>${dayago} 23:59까지</td>
+		                    		<td>취소불가</td>
+		                    	</c:when>
+		                    	<c:when test="${cdate > nowTime}">
+		                    		<td>${chkList[s.index]} 23:59까지</td>
+		                    		<td><button id="cancel"  onclick="location.href='<c:url value="/reserveBoard/reserveDelete/${vo.resNo} "/>'">취소</button></td>
+		                    	</c:when>
+		                    	<c:when test="${cdate < nowTime}">
+		                    		<td>-</td>
+		                    		<td>이용완료</td>
+		                    	</c:when>
+		                    	<c:otherwise></c:otherwise>
+		                    </c:choose>
+		                    
+		                    
+		                  
+		                </tr>
+	                
+	                </c:if>
 	            </c:forEach>
 
                 

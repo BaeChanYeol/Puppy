@@ -47,9 +47,9 @@
                         <h4>애견샵</h4>
                     </div>
                     <ul class="sitemap-map-block">
-                        <li><a href="<c:url value='/product/item'/>">강아지용품</a></li>
-                        <li><a href="<c:url value='/product/medicalDevice'/>">의료기기</a></li>
-                        <li><a href="<c:url value='/product/snack'/>">간식</a></li>
+                        <li><a href="<c:url value='/product/items?type=i'/>">강아지용품</a></li>
+                        <li><a href="<c:url value='/product/items?type=m'/>">의료기기</a></li>
+                        <li><a href="<c:url value='/product/items?type=s'/>">간식</a></li>
                     </ul>
                 </div>
                 <div class="sitemap-map-group">

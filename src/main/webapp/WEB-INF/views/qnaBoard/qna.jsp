@@ -75,7 +75,8 @@
 	                   최대한 빠른 시일 내에 정성껏 답변 드리도록 노력하겠습니다. 
 	                </p>
 	
-	                <div class="personal-txt">           
+	                <div class="personal-txt">       
+	                	<input type="hidden" name="writer" value="${login.id}">    
 	                    <input type="text" class="input" id="qnaTitle" name="title" placeholder="제목">
 	                    <textarea class="personal-area" id="" rows="7" name="content" placeholder="내용"></textarea>
 	                </div>
@@ -91,7 +92,7 @@
     
         <article>
             <!-- <h2 style="text-align:center;">문의내역</h2>  -->
-            <div class="myQnA wrap">
+            <div class="myQnA wrap" id="myqna">
                 <div class="myQnA-minititle">
                     <h3>문의내역</h3>
                 </div>
@@ -99,6 +100,7 @@
                     	<div class="list">
 		                    <ul>
                     <c:forEach var="vo" items="${qnaList}">
+                    	<c:if test="${login.id == vo.writer }">
 		                        <li class="question-title">
 		                        	${vo.title}<span style="float:right; margin-right:15px;"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd" /></span>
 		                        </li>
@@ -112,12 +114,41 @@
 		                        	<br><br>
 		                        	답변 영역이다!
 		                        </li>
+		                </c:if>
                     </c:forEach>
 
 		                    </ul>
                 		</div>     
                 </div>
             </div>
+            
+            <form action="<c:url value='/qnaBoard/qna#myqna' />" name="pageForm">
+                    <div class="text-center">
+                    
+                    
+                    <!-- 페이지 관련 버튼들이 ul 태그로 감싸져 있다. -->
+                    
+                    <ul class="pagination" id="pagination">
+                       <c:if test="${pc.prev}"> <!-- 이전  -->
+                       		<a href="#" data-pageNum="${pc.beginPage-1}">&lt;</a>
+                       </c:if>
+                       
+                       <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+                       		<a href="#" data-pageNum="${num}" class="${pc.paging.pageNum == num ? 'active' : ''}">${num}</a>
+                       </c:forEach>
+                       
+                        <c:if test="${pc.next}"> <!-- 다음  -->
+                        	<a href="#" data-pageNum="${pc.endPage+1}">&gt;</a>
+                        </c:if>                    
+                    </ul>
+                    
+                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
+                    <input type="hidden" name="countPerPage" value="${pc.paging.countPerPage}">
+                    
+                    </div>
+         </form>
+            
+            
         </article>
     </section>
     
@@ -159,5 +190,14 @@
 		        $(this).next().toggle("fast");
 	        });
         });
+		
+		
+		const pagination = document.getElementById('pagination');
+		pagination.onclick = function(e) {
+			e.preventDefault(); 
+			const value = e.target.dataset.pagenum;
+			document.pageForm.pageNum.value = value;
+			document.pageForm.submit();
+		}
     </script>
     
