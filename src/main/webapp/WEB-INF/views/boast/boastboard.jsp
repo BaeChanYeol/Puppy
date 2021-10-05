@@ -4,22 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <style>
-	.boast-del-btn {
-		display: inline-block;
-		float: right;
-		color: #996633;
-		font-size: 12px;
-		padding:6px;
-	}
-	.boast-mod-btn {
-		display: inline-block;
-		float: right;
-		color: #996633;
-		font-size: 12px;
-		padding:6px;
 	
-	}
-
 </style>
 
 <section>
@@ -171,8 +156,8 @@
 				</p>
 				<p class="bright" id="writer"></p>
 				
-					<button class="boastdelBtn" style="display: none">삭제</button>
-					<button class="boastmodBtn" style="display: none">수정</button>
+					<button class="boastdelBtn" style="display: none" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
+					<button class="boastmodBtn" style="display: none" onclick="return confirm('글을 수정하시겠습니까?');">수정</button>
 				
 			</div>
 			
@@ -222,6 +207,9 @@
     ///////////////////게시물에 호버했을때///////////
 window.onload = function(){
             
+    	if('${msg}' == 'boastUpdateSucess'){
+    		alert('글 수정이 완료되었습니다.');
+    	}
 	   
             
             const $boastimg = $('.boastimg');
@@ -317,8 +305,45 @@ window.onload = function(){
 	        	  	
 				$(".boast-modal-wrap").show();
 				
-			
-				console.log($("#boast-close"));
+				$('.boastdelBtn').click(function() {
+					const bbno = $('#bbno').html();
+					
+					$.ajax({
+						type: "post",
+		                url: "<c:url value='/boast/delete' />",
+		                data: JSON.stringify(
+		                   {
+		                      bbno: bbno,
+		                      
+		                   }      
+		                ),
+		                dataType: "text", //서버로부터 어떤 형식으로 받을지 (생략 가능)
+		                headers: {
+		                   "Content-Type" : "application/json"
+		                },
+		                success: function(data) {
+		                  if(data == 'delSuccess'){
+			                  alert('글삭제가 완료되었습니다.');
+		                	  location.reload();
+		                  }else{
+		                	  alert('관리자에게 문의하세요');
+		                  }
+		                   
+		                 
+		                },
+		                error: function() {
+		                   alert('삭제에 실패했습니다. 관리자에게 문의하세요.');
+		                }
+					});
+					
+				});
+				
+				$('.boastmodBtn').click(function() {
+					const bbno = $('#bbno').html();
+					const url = "<c:url value='/boast/update?bbno="+bbno+"'/>"
+					location.replace(url)
+				});
+				
 				$("#boast-close").click(function() {
 					$('.boast-pic').children().remove();
 					$(".boast-modal-wrap").hide();
@@ -452,6 +477,7 @@ window.onload = function(){
 	             
 	          } //end getList()
 
+	          
 //	               자세히 설명드리면
 	          //   댓글 삭제 처리 함수
 	          function replyDaleteAction(rno){
@@ -559,21 +585,7 @@ window.onload = function(){
 	          	setTimeout(function() {
 	          		$('.bosat-btn-l').click(function() {
 	          			
-	          			/* console.log($('#boast-detail-img').eq(i).attr('class')); */
-	          			/* for(let i=0; i<imgCnt; i++){
-	          				if($('#boast-detail-img').eq(i).attr('class')=='img-zindex'){
-	          					
-	          					$('#boast-detail-img').eq(i-1).attr('class', 'img-zindex');
-	          					$('#boast-detail-img').eq(i).attr('class', '');
-	          					
-	          				}
-	          				if($('#boast-detail-img').eq(i).attr('class')=='img-zindex' && i==0){
-	          					$('#boast-detail-img').eq(imgCnt-1).attr('class', 'img-zindex');
-	          					$('#boast-detail-img').eq(i).attr('class', '');
-	          				}
-	          			} */
-	          			
-	          			
+	
 	          			$('.boast-pic').children().each(function(i, item) {
 	          				console.log($('.boast-pic').children().length);
 	          				console.log($(item).css('display'));

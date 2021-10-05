@@ -5,7 +5,7 @@
 
    <section>
         <article class="main-container">
-            <div class="wrap title">
+            <div class="wrap mytitle">
                 <h2>마이 페이지</h2>
             </div>
         </article>
@@ -42,13 +42,13 @@
                     </a>
                 </div>
                 <div class="mypage-menu">
-                    <a href="">
+                    <a href="<c:url value='/user/myBoard'/>">
                         <img src="../img/mytext.png" alt="내가 쓴글">
                         <h5>내가 쓴글</h5>
                     </a>
                 </div>
                 <div class="mypage-menu">
-                    <a href="">
+                    <a href="<c:url value='/boast/likeList'/>">
                         <img src="../img/mylikelist.png" alt="좋아요 누른글">
                         <h5>좋아요 누른글</h5>
                     </a>
@@ -87,6 +87,9 @@
     <script>
     	if('${msg}' == 'updateSuccess'){
     		alert('회원정보 수정이 완료되었습니다.');
+    	}
+    	if('${msg}' == 'likeNoCount'){
+    		alert('좋아요 누른 글이 없습니다.');
     	}
     	
     

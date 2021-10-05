@@ -70,6 +70,15 @@ public class FreeBoardService implements IFreeBoardService {
 		mapper.update2(vo);
 	}
 
+	@Override
+	public List<FreeBoardVO> getMyList(String id,  PageVO page) {
+		return mapper.getMyList(id, page);
+	}
+	@Override
+	public int getMyTotal(String id, PageVO page) {
+		return mapper.getMyTotal(id, page);
+	}
+
 }
 
 

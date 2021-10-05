@@ -6,28 +6,48 @@
 
     <section>
         <article class="main-container">
-            <div class="wrap">   
-                <h3 class="writetitle">수정하기</h3>
+            <div class="wrap">
+            	<c:if test="${boast.title == ''}">
+                	<h3 class="writetitle">자유게시판 수정하기</h3>
+            	</c:if>	
+               	<c:if test="${boast.title != ''}">
+                	<h3 class="writetitle">멍스타그램 수정하기</h3>
+                </c:if>
             </div>
         </article>
         <article class="main-container">
             <div class="wrap">
+                 <c:if test="${boast.title == ''}">
                 <form class="boardWrite clearfix" action="<c:url value='/board/freeUpdate' />" method="post" name="updateForm" enctype="multipart/form-data">
+                </c:if>	
+                <c:if test="${boast.title != ''}">
+                <form class="boardWrite clearfix" action="<c:url value='/boast/update' />" method="post" name="updateForm" enctype="multipart/form-data">
+                </c:if>
                 	<input type="hidden" name="bno" value="${article.bno}">
+                	<input type="hidden" name="bbno" value="${boast.bbno}">
                 	<input type="hidden" name="wrtier" value="${login.id}">
-                    <select class="form-control">
-                        <option>자유게시판</option>
-                        <option>뽐내기 게시판</option>
-                    </select>
-                    <input class="form-control" placeholder="제목을 입력하세요" value="${article.title}" name="title" readonly>
-                    <label for="file">사진첨부</label> 
-                    <input type="file" class="photoBtn" name="file" id="file" >
-                    <div class="imgbox">
-                    	<img id="file-img" src="" style="height: 115px;">
-                    </div>
-                    <textarea name="content" class="textArea" rows="15" style="margin-bottom: 10px;" placeholder="내용을 입력하세요">${article.content}</textarea>                        
-                    <button type="button" class="listBtn" onclick="location.href='<c:url value='/board/freeboard'/>'">목록</button>
+                    
+                    <input class="form-control" placeholder="제목을 입력하세요" value="${article.title}${boast.title}" name="title" readonly>
+                    <c:if test="${boast.title == ''}">
+	                    <label for="file">사진첨부</label> 
+	                    <input type="file" class="photoBtn" name="file" id="file" >
+	                    <div class="imgbox">
+	                    	<img id="file-img" src="" style="height: 115px;">
+	                    </div>
+                     </c:if>
+                    <textarea name="content" class="textArea" rows="15" style="margin-bottom: 10px;" placeholder="내용을 입력하세요">${article.content}${boast.content}</textarea>                        
+                    <c:if test="${boast.title == ''}">
+                   		<button type="button" class="listBtn" onclick="location.href='<c:url value='/board/freeboard'/>'">목록</button>
+                    </c:if>
+                    <c:if test="${boast.title != ''}">
+	                    <button type="button" class="listBtn" onclick="location.href='<c:url value='/boast/boastboard'/>'">목록</button>
+                    </c:if>
+                    <c:if test="${boast.title == ''}">
                     <button type="submit" class="updateBtn" id="updateBtn">수정</button>
+                	</c:if>
+                	<c:if test="${boast.title != ''}">
+                    <button type="submit" class="updateBtn" id="updateBtn2">수정</button>
+                	</c:if>
                 </form>
             </div>
         </article>
@@ -59,7 +79,7 @@
 							
 						}
 				};
-				
+			
 				 //자바 스크립트 파일 미리보기 기능
 				function readURL(input) {
 		        	if (input.files && input.files[0]) {

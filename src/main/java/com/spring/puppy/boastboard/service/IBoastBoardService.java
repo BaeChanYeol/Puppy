@@ -38,11 +38,14 @@ public interface IBoastBoardService {
 	
 	//글번호 얻기
 	int getBbno();
-//
-//	
-	BoastBoardVO getTotal(int bno);
-//
-	void delete(int bno);
+	
+	//내가 쓴글 리스트
+	List<BoastBoardVO> getMyList(String id,PageVO page);
+		
+	//내가 쓴글 개수
+	int getMyTotal(String id,PageVO page);
+
+	void delete(int bbno);
 
 //	void delete(BoastBoardVO vo);
 	
@@ -54,9 +57,16 @@ public interface IBoastBoardService {
 	void likeSave(String id,int bbno);
 	//좋아요 정보 삭제
 	void likeDelete(String id, int bbno);
+	//테이블 삭제시 좋아요 정보 삭제
+	void likeDelete2(int bbno);
 	//좋아요 체크
 	int likeCheck(String id,int bbno);
+	
+	//좋아요 누른 글번호 리스트
+	List<Integer> likeList(String id);
 	//조회수 올리기
 	public int updateView_cnt(int bbno);
+
+	
 	
 }

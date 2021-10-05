@@ -16,10 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.Response;
 
+import org.apache.ibatis.javassist.bytecode.LineNumberAttribute.Pc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.server.authentication.RedirectServerAuthenticationEntryPoint;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -52,8 +54,9 @@ public class BoastBoardController {
 
 	//글쓰기
 	@GetMapping("/boastboardWrite")
-	public String boastWrite() {
+	public String boastWrite(Model model) {
 		System.out.println("BoastBoardController.boardRegist()");
+		model.addAttribute("boast", "ddd");
 		return "boast/boardWrite";
 	}
 
@@ -77,7 +80,7 @@ public class BoastBoardController {
 			//String uploadPath = "C:\\Users\\custom\\Desktop\\upload\\" + fileLoca;
 			String uploadPath = "C:\\upload\\boastboard\\" + fileLoca;
 
-
+			
 			File folder = new File(uploadPath);
 			if(!folder.exists()) {
 				folder.mkdirs(); //폴더가 존재하지 않는다면 생성해라.
@@ -168,8 +171,8 @@ public class BoastBoardController {
 	@GetMapping("/boastboard")
 	public String boastList(PageVO vo, Model model) {
 
+		vo.setCountPerPage(9);
 		System.out.println(vo);
-
 		PageCreator pc = new PageCreator();
 		pc.setPaging(vo);
 		pc.setArticleTotalCount(service.getTotal(vo));
@@ -265,7 +268,31 @@ public class BoastBoardController {
 
 
 	}
-
+	
+	//글삭제
+	@PostMapping("/delete")
+	@ResponseBody
+	public String delete(@RequestBody BoastBoardVO vo, HttpSession session) {
+		
+		service.delete(vo.getBbno());
+		service.likeDelete2(vo.getBbno());
+		return "delSuccess";			
+	
+	}
+	@GetMapping("/update")
+	public String update(@RequestParam int bbno,Model model) {
+		model.addAttribute("boast", service.getContent(bbno));
+		
+		return "board/boardModify";
+	}
+	@PostMapping("/update")
+	public String update(BoastBoardVO vo, RedirectAttributes ra) {
+		System.out.println("글 수정 요청!!!!!!!!"+vo);
+		service.update(vo);
+		ra.addFlashAttribute("msg", "boastUpdateSucess");
+		
+		return "redirect:/boast/boastboard";
+	}
 
 
 	@GetMapping()
@@ -302,6 +329,34 @@ public class BoastBoardController {
 		int bbno = Integer.parseInt(info.get("bbno"));
 		return service.likeCheck(id, bbno);
 
+	}
+	
+	@GetMapping("/likeList")
+	public String likeList(PageVO vo, HttpSession session, Model model, RedirectAttributes ra) {
+		UserVO user = (UserVO) session.getAttribute("login");
+		System.out.println(service.likeList(user.getId()));
+		List<Integer> bbnoList = service.likeList(user.getId());
+		List<BoastBoardVO> list = new ArrayList<>();
+		
+		if(bbnoList.size() != 0) {
+			for(int num : bbnoList) {	
+				list.add(service.getContent(num));
+			}
+			
+			System.out.println(service.getContent(5));
+			PageCreator pc = new PageCreator();
+			
+			pc.setPaging(vo);
+			pc.getPaging().setCountPerPage(6);;
+			pc.setArticleTotalCount(list.size());
+			
+			model.addAttribute("pc", pc);
+			model.addAttribute("likeList", list);
+			return "mypage/joayo";
+		}
+		ra.addFlashAttribute("msg", "likeNoCount");
+		return "redirect:/user/mypage";
+		
 	}
 
 }

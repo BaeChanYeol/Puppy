@@ -2,6 +2,7 @@ package com.spring.puppy.freeboard.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 
 import com.spring.puppy.util.PageVO;
 import com.spring.puppy.command.FreeBoardVO;
@@ -33,4 +34,9 @@ public interface IFreeBoardService {
 	//조회수 올리기
 	public int updateView_cnt(int bno);
 	
+	//내가 쓴글 리스트
+	List<FreeBoardVO> getMyList(@Param("id") String id,@Param("page") PageVO page);
+	
+	//내가 쓴글 개수
+	int getMyTotal(String id, PageVO page);
 }

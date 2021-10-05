@@ -91,10 +91,10 @@ td {
     background: rgb(250, 250, 250);
 }
 
-.title {
-   padding-top:100px;   
+.mytitle {
+   padding-top:80px;   
    padding-bottom:80px;   
-}
+} 
 
 
 /* 해더 */
@@ -1060,6 +1060,21 @@ footer {
    margin-top: 100px;
    padding-bottom: 80px;
 }
+.boast-del-btn {
+		display: inline-block;
+		float: right;
+		color: #996633;
+		font-size: 12px;
+		padding:6px;
+	}
+.boast-mod-btn {
+	display: inline-block;
+	float: right;
+	color: #996633;
+	font-size: 12px;
+	padding:6px;
+
+}
 
 #boast-products h2 {
    padding: 50px;
@@ -1375,7 +1390,8 @@ aside h2 {
     width: 220px;
 }
 
-.mytitle {
+
+ {
     padding: 50px;
     margin: 0 50px;
 }
@@ -1544,12 +1560,39 @@ aside h2 {
  
   .myArticle {
       margin-bottom: 30px;
+      margin-left:10px;
   }
 
   .myArticle table tr td {
       padding: 15px 10px;
   }
 
+#boast-products .myboard-boast {
+   display: inline-block;
+   width: 250px;
+   height: 380px;
+   margin: 30px 10px;
+   position: relative;
+}
+
+#boast-products .myboard-boast .hover {
+   display: none;
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 250px;
+   width: 250px;
+   background-color: rgba(153, 102, 51, 0.6);
+}
+#boast-products .myboard-boast .boastimg {
+   height: 250px;
+   width: 250px;
+   aspect-ratio: auto 1/1;
+}
+.myboard-b-like{
+	text-align: left;
+   margin-top: 5px;
+}
 
 /*======= 마이페이지 - 예약 내역 =======*/
 
@@ -2226,6 +2269,11 @@ img[alt="newMark"]{
    /* border-bottom: solid 1px #ccc; */
    height: 40px;
    position: relative;
+}
+.boast-content .form-group .form-control {
+	font-size:20px;
+	font-weight: bold;
+	margin-left: 10px;	
 }
 
 .boast-content .likearea img {

@@ -16,10 +16,10 @@
                     <a href="#" class="myhover"> <img src="../img/mymember.png" alt="구매내역"> 회원정보 수정</a>
                 </li>
                 <li>
-                    <a href="#"> 내가 쓴 글</a>
+                    <a href="<c:url value='/user/myBoard'/>"> 내가 쓴 글</a>
                 </li>
                 <li>
-                    <a href="#"> 좋아요 누른글</a>
+                    <a href="<c:url value='/boast/likeList'/>"> 좋아요 누른글</a>
                 </li>
                 <li>
                     <a href="#"> 문의내역</a>
@@ -37,8 +37,8 @@
         </aside>
         <section class="side-content">
             <article class="main-container">
-                <div class="mytitle">
-                    <h2>회원 정보 수정</h2>
+                <div class="myInfotitle" style="margin-top:100px">
+                    <h2>회원 정보 수정</h2>     
                 </div>
             </article>
             <article class ="main-container">

@@ -66,7 +66,7 @@ public class BoastBoardService implements IBoastBoardService {
 
 	@Override
 	public void update(BoastBoardVO vo) {
-		
+		mapper.update(vo);
 	}
 
 
@@ -82,15 +82,11 @@ public class BoastBoardService implements IBoastBoardService {
 		return mapper.getBbno();
 	}
 	//
-	@Override
-	public BoastBoardVO getTotal(int bno) {
-		//	// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
-	public void delete(int bno) {
-		//	mapper.delete(bno);
+	public void delete(int bbno) {
+			mapper.delete(bbno);
 
 	}
 	@Override
@@ -119,5 +115,25 @@ public class BoastBoardService implements IBoastBoardService {
 	public int updateView_cnt(int bbno) {
 		return mapper.updateView_cnt(bbno);
 	}
+	@Override
+	public List<BoastBoardVO> getMyList(String id, PageVO page) {
+		
+		return mapper.getMyList(id,page);
+	}
+	@Override
+	public int getMyTotal(String id, PageVO page) {
+		
+		return mapper.getMyTotal(id, page);
+	}
+	@Override
+	public List<Integer> likeList(String id) {
+		return mapper.likeList(id);
+	}
+	@Override
+	public void likeDelete2(int bbno) {
+		mapper.likeDelete2(bbno);
+	}
+	
+	
 
 }

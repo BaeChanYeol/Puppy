@@ -23,13 +23,18 @@ public interface IBoastBoardMapper {
 	
 	//���ƿ䴩����
 	BoastBoardVO getCount(int like_cnt);
-
+	
+	//내가 쓴글 리스트t
+	List<BoastBoardVO> getMyList(@Param("id") String id, @Param("page")PageVO page);
+	
+	//내가 쓴글 개수
+	int getMyTotal(@Param("id") String id, @Param("page")PageVO page);
 	
 	//수정
 	void update(BoastBoardVO vo);
 	
-//	//삭제
-//	void delete(int bno);
+
+	void delete(int bbno);
 
 	void fileRegist(FileVO fvo);
 	//파일 얻기
@@ -46,9 +51,12 @@ public interface IBoastBoardMapper {
 	void likeSave(@Param("id") String id,@Param("bbno") int bbno);
 	//좋아요 정보 삭제
 	void likeDelete(@Param("id") String id,@Param("bbno") int bbno);
+	//테이블 삭제시 좋아요 정보 삭제
+	void likeDelete2(int bbno);
 	//좋아요 체크
 	int likeCheck(@Param("id") String id,@Param("bbno") int bbno);
-	
+	//좋아요 누른 글번호 리스트
+	List<Integer> likeList(String id);
 	//조회수 올리기
 	public int updateView_cnt(int bbno);
 }

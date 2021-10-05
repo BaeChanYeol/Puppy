@@ -22,6 +22,21 @@
          OR content LIKE '%'||#{keyword}||'%'
       </if>
    </sql>
+   <sql id="mySearch">
+      <if test="page.condition == 'title'">
+         AND title LIKE '%'||#{page.keyword}||'%'
+      </if>
+      <if test="page.condition == 'content'">
+         AND content LIKE '%'||#{page.keyword}||'%'
+      </if>
+      <if test="page.condition == 'writer'">
+         AND writer LIKE '%'||#{page.keyword}||'%'
+      </if>
+      <if test="page.condition == 'titleContent'">
+         AND title LIKE '%'||#{page.keyword}||'%'
+         OR content LIKE '%'||#{page.keyword}||'%'
+      </if>
+   </sql>
 
 
    <insert id="regist">
@@ -44,7 +59,28 @@
       AND rn <= #{pageNum} * #{countPerPage}
       ]]>
    </select>
+   <select id="getMyList" resultType="com.spring.puppy.command.FreeBoardVO">
+      SELECT * FROM
+         (
+         SELECT ROWNUM as rn, tbl.* FROM
+            (
+            SELECT * FROM freeboard
+            WHERE writer = #{id}<include refid="mySearch" />
+            ORDER BY bno DESC
+            ) tbl
+         )
+      <![CDATA[
+      WHERE rn > (#{page.pageNum} - 1) * #{page.countPerPage}
+      AND rn <= #{page.pageNum} * #{page.countPerPage}
+      ]]>
+   </select>
 
+   <select id="getMyTotal" resultType="int">
+      SELECT COUNT(*)
+      FROM freeboard
+      WHERE writer = #{id}
+      <include refid="mySearch" />
+   </select>
    <select id="getTotal" resultType="int">
       SELECT COUNT(*)
       FROM freeboard

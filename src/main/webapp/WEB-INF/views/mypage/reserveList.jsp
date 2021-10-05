@@ -11,13 +11,13 @@
                     <a href="#"  class="myhover"> <img src="../img/myreserve.png" alt="구매내역"> 예약 내역</a>
                 </li>
                 <li>
-                    <a href="#"> 회원정보 수정</a>
+                    <a href="<c:url value='/user/passwordCheck'/>"> 회원정보 수정</a>
                 </li>
                 <li>
-                    <a href="#"> 내가 쓴 글</a>
+                    <a href="<c:url value='/user/myBoard'/>"> 내가 쓴 글</a>
                 </li>
                 <li>
-                    <a href="#"> 좋아요 누른글</a>
+                    <a href="<c:url value='/boast/likeList'/>"> 좋아요 누른글</a>
                 </li>
                 <li>
                     <a href="#"> 문의내역</a>

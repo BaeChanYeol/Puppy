@@ -25,8 +25,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
+import com.spring.puppy.boastboard.service.BoastBoardService;
 import com.spring.puppy.command.UserVO;
+import com.spring.puppy.freeboard.service.FreeBoardService;
 import com.spring.puppy.user.service.UserService;
+import com.spring.puppy.util.PageCreator;
+import com.spring.puppy.util.PageVO;
 
 @Controller
 @RequestMapping("/user")
@@ -34,6 +38,10 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
+	@Autowired
+	private FreeBoardService boardService;
+	@Autowired
+	private BoastBoardService  boastService;
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -322,6 +330,30 @@ public class UserController {
 	        return Integer.toString(checkNum);
 	    }
 	   
+	    @GetMapping("/myBoard")
+	    public String myBoard(Model model, PageVO page, HttpSession session) {
+	    	
+	    	UserVO vo = (UserVO) session.getAttribute("login");
+	    	String id = vo.getId();
+	    	PageCreator freePc = new PageCreator();
+	    	page.setPageNum(page.getPageNum());
+	    	page.setCountPerPage(5);
+	    	freePc.setPaging(page);
+	    	freePc.setArticleTotalCount(boardService.getMyTotal(id, page));
+	    	model.addAttribute("freeList", boardService.getMyList(id, page));
+	    	
+	    	
+	    	PageCreator boastPc = new PageCreator();
+	    	page.setPageNum(page.getPageNum());
+	    	page.setCountPerPage(6);
+	    	boastPc.setPaging(page);
+	    	boastPc.setArticleTotalCount(boastService.getMyTotal(id, page));
+	    	model.addAttribute("freePc", freePc);
+	    	model.addAttribute("boastPc", boastPc);
+	    	model.addAttribute("boastList", boastService.getMyList(id, page));
+	    	
+	    	return "mypage/myBoard";
+	    }
 	
 	
 	

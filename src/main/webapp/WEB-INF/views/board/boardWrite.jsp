@@ -5,8 +5,7 @@
 
 
     <section>
-        <article class="main-container">
-            <div class="wrap">   
+        <article class="main-container">     	  
                 <h3 class="writetitle">글쓰기</h3>
             </div>
         </article>
@@ -19,7 +18,7 @@
                         <option>뽐내기 게시판</option>
                     </select> -->
                     <input type="hidden" name="writer" value="${login.id}"/>
-                    <input class="form-control" placeholder="자유게시판 글쓰기" readonly>
+                    
                     <input class="form-control" name="title" placeholder="제목을 입력하세요">
                     <label for="file">사진첨부</label> 
                     <input type="file" class="photoBtn" name="file" id="file" >
