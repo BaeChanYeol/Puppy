@@ -86,6 +86,7 @@
                 <div class="right">
                     <form class="reserve_form" action="<c:url value='/reserveBoard/registForm' />" name="registForm" method="post">
                         <label for="">희망서비스</label>
+                        <input type="hidden" name="writer" value="${login.id}">
                         <div class="reserve_input">
                             <select name="service" id="">
                                 <option value="호텔&데이케어">호텔&데이케어</option>

@@ -25,9 +25,12 @@
 	
 	<context:component-scan base-package="com.spring.puppy" />
 	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 --> 
+   <beans:bean id="naverLoginBO" class="com.spring.puppy.user.naverLogin.NaverLoginBO" />
+	
 	<beans:bean id="autoLogin" class="com.spring.puppy.util.interceptor.AutoLoginInterceptor" />
 	   <interceptors>
-	     
+
 	      <!-- 미리 등록한 인터셉터의 빈을 주입하는 방식 -->
 	      <interceptor>
 	         <mapping path="/"/>
@@ -35,5 +38,16 @@
 	      </interceptor>
   
 	   </interceptors>
+		   <!-- 파일업로드 -->
+   <!-- 반드시 꼭 백번 id를 multipartResolver선언  -->
+   <beans:bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+         <!-- 최대업로드 가능한 바이트크기 -->
+         <beans:property name="maxUploadSize" value="52428800" />
+         <!-- 디스크에 임시 파일을 생성하기 전에 메모리에 보관할수있는 최대 바이트 크기 -->
+         <!-- property name="maxInMemorySize" value="52428800" / -->
+         <!-- defaultEncoding -->
+         <beans:property name="defaultEncoding" value="utf-8" />
+   </beans:bean>
+   
 		
 </beans:beans>

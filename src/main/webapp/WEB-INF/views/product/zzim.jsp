@@ -37,19 +37,21 @@
 						<th>삭제</th>
 					</tr>
 					<c:forEach var="vo" items="${zzimList}">
-						<tr>
-							
-							<td id="left"><img src="../img/snack1.jpg" alt="zzimItem4"></td>
-							<td id="right">
-								<!--상품정보-->
-								<p>
-									<span><a href="<c:url value='/product/detail?pno=${vo.pno}'/>">${vo.pname}</a><br>${vo.price}원<br> 무료배송
-									</span>
-								</p>
-	
-							</td>
-							<td id="delete"><img src="../img/delete.png" id="delBtn" alt="delete-btn" onclick="location.href='<c:url value="/product/zzimDelete/${vo.pno} "/>'"></td>
-						</tr>
+						<c:if test="${ login.id == vo.writer }"> 
+							<tr>
+								
+								<td id="left"><img src="../img/snack1.jpg" alt="zzimItem4"></td>
+								<td id="right">
+									<!--상품정보-->
+									<p>
+										<span><a href="<c:url value='/product/detail?pno=${vo.pno}'/>">${vo.pname}</a><br>${vo.price}원<br> 무료배송
+										</span>
+									</p>
+		
+								</td>
+								<td id="delete"><img src="../img/delete.png" id="delBtn" alt="delete-btn" onclick="location.href='<c:url value="/product/zzimDelete/${vo.pno} "/>'"></td>
+							</tr>
+						</c:if>
 					</c:forEach>
 
 

@@ -55,6 +55,7 @@
                     	<input type="hidden" name="pno" value="${item.pno}">
                     	<input type="hidden" name="pname" value="${item.pname}">
                     	<input type="hidden" name="price" value="${item.price}">
+                    	<input type="hidden" name="writer" value="${login.id}">
                         <div class="detail-explan-item">
                             <h4>${item.pname}</h4>
                             <div class="right-sort">
@@ -93,9 +94,11 @@
                             <c:choose>
 							    <c:when test="${item.zzim eq '0'}"> <!-- 찜이 안 되어 있는 상태일 때 -->
 							        <button type="button" id="zzim" value="${item.zzim}" class="heart-zzim" onclick="return goZzim(this.form);"><img alt="" id="test" src="../img/heart2.png"></button>
+							    	<input type="hidden" name="writer" value="${login.id}">
 							    </c:when>
 							    <c:otherwise> <!-- 찜이 되어 있는 상태일 때 -->
 							        <button type="button" id="zzim" value="${item.zzim}" class="heart-zzim" onclick="return goZzim(this.form);"><img alt="" id="test" src="../img/heart3.png"></button>
+							    	<input type="hidden" name="writer" value="${login.id}">
 							    </c:otherwise>
 							</c:choose>
                             
@@ -177,7 +180,8 @@
 	                        <tr class="review-nonclick">
 	                            <%-- <td>${vo.revno}</td> --%>
 	                            <td class="review-title" id="review-title" style="padding-left:40px;">${vo.content}</td>
-	                            <td>ooo2***</td>
+	                            
+	                            <td>${vo.writer}</td>
 	                            <td><fmt:formatDate value="${vo.reviewDate}" pattern="yyyy-MM-dd" /></td>
 	                            
 	                            
@@ -186,6 +190,7 @@
 	                        	
 	                        	<td colspan="3" style="text-align:left; padding-left:40px;">${vo.content}</td>
 	                        </tr>
+	                        
                         </c:forEach>
 
                         
@@ -230,7 +235,7 @@
 		                <div class="review-content wrap clearfix">
 		                	<!-- <input type="text" class="" name="title"> -->
 		                	<input type="hidden" name="pno" value="${item.pno}">
-		                	
+		                	<input type="hidden" value="${users.id}" name="writer">
 		                    <textarea class="reviewArea" id="review" name="content" rows="5" cols="130"></textarea>
 		                    <button type="submit" id="reg_review">등록하기</button>
 		                </div>
@@ -252,7 +257,7 @@
 	                            <tr>
 	                                <td><button>답변대기</button></td>
 	                                <td class="qna-title" id="qna-title" style="padding-left:40px;">${vo.content}</td>
-	                                <td>dbs2***</td>
+	                                <td>${vo.writer}</td>
 	                                <td><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd" /></td>
 	                            </tr>
 							</c:forEach>
@@ -297,7 +302,9 @@
 			                <div class="review-content wrap clearfix">
 			                	<!-- <input type="text" class="" name="title"> -->
 			                	<input type="hidden" name="pno" value="${item.pno}">
+			                	<input type="hidden" name="pname" value="${item.pname}">
 			                	
+			                	<input type="hidden" value="${login.id}" name="writer">
 			                    <textarea class="qnaArea" id="qna" name="content" rows="5" cols="130"></textarea>
 			                    <button type="submit" id="reg_qna">등록하기</button>
 			                </div>

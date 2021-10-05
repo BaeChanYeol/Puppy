@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="<c:url value='/smartEditor/js/HuskyEZCreator.js'/>" charset="utf-8"></script>
-
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
     <!-- 헤더 영역-->
@@ -25,16 +25,21 @@
             <div class="header_top">
                 <div class="header_top_area">
                     <div class="hright">
-                    	<c:if test="${login == null}">
-	                        <a href="#" style="font-weight: normal;" id="join">회원가입</a>
-	                        <a href="#" style="font-weight: normal;" id="login">로그인</a>
-                    	</c:if>
-                    	<c:if test="${login != null}">
-	                        <a href="<c:url value='/user/mypage' />" style="font-weight: normal;" id="mypage">마이페이지</a>
-	                        <a href="#" style="font-weight: normal;" id="logout">로그아웃</a>
-							
-                    	</c:if>
-	                        <a href=<c:url value='/sitemap'/> style="font-weight: normal;">사이트맵</a>                    	
+                       <c:if test="${login == null}">
+                           <a href="#" style="font-weight: normal;" id="join">회원가입</a>
+                           <a href="#" style="font-weight: normal;" id="login">로그인</a>
+                       </c:if>
+                       <c:if test="${login != null}">
+                          <c:if test="${login.id == 'admin'}">
+                              <a href="<c:url value='/admin/membertable' />" style="font-weight: normal;" id="admin">admin</a>
+                              <a href="<c:url value='/user/logout' />" style="font-weight: normal;" id="logout" onclick="return confirm('정말 로그아웃 하시겠습니까?');">로그아웃</a>
+                          </c:if>
+                          <c:if test="${login.id != 'admin'}">
+                              <a href="<c:url value='/user/mypage' />" style="font-weight: normal;" id="mypage">마이페이지</a>
+                              <a href="<c:url value='/user/logout' />" style="font-weight: normal;" id="logout" onclick="return confirm('정말 로그아웃 하시겠습니까?');">로그아웃</a>
+                     </c:if>
+                       </c:if>
+                           <a href=<c:url value='/sitemap'/> style="font-weight: normal;">사이트맵</a>                       
                     </div>
                     <div class="hleft">
 
@@ -81,16 +86,18 @@
                         <li class="menu-li">
                             <a href="<c:url value='/product/items?type=i'/>" class="menu-li-a">애견샵</a>
                             <ul class="second">
+
                                 <li><a href="<c:url value='/product/items?type=i'/>">강아지용품</a></li>
                                 <li><a href="<c:url value='/product/items?type=m'/>">의료기기</a></li>
                                 <li><a href="<c:url value='/product/items?type=s'/>">간식,식품</a></li>
+
                             </ul>
                         </li>
                         <li class="menu-li">
-                            <a href="/community" class="menu-li-a">커뮤니티</a>                            
+                            <a href="<c:url value='/board/freeboard'/>" class="menu-li-a">커뮤니티</a>                            
                             <ul class="second">
-                                <li><a href="<c:url value='/board/boardWrite'/>">자유게시판</a></li>
-                                <li><a href="/community/showboard">뽐내기게시판</a></li>
+                                <li><a href="<c:url value='/board/freeboard'/>">자유게시판</a></li>
+                                <li><a href="<c:url value='/boast/boastboard'/>">뽐내기게시판</a></li>
                                 <li><a href="<c:url value='/qnaBoard/qna'/>">QnA</a></li>
                             </ul>
                         </li>
@@ -111,7 +118,23 @@
   <%@ include file="../joinModal.jsp" %>
 
      <script>
-
+     /* 로그아웃 처리완료*/
+ 	 
+ 	if('${msg}' == "logout"){
+ 		alert("로그아웃 되었습니다!");
+ 	}
+ 	
+	
+	if('${msg}' == 'fail'){
+		alert('입력정보로 가입하신 아이디가 없습니다.');
+	}
+	
+	if('${msg}' == 'pwFindFail'){
+		alert('이름, 아이디, 이메일 중 뭐가 틀렸거나 없는 회원이라 비밀번호도 찾을 수 없습니다.');
+	}
+	
+	
+   
     const $logo = document.querySelector('.logo');
     const $header = document.querySelector('.header');
     // const $move = document.querySelector('.header_top_area>.left>a')
@@ -151,7 +174,25 @@
     		$("#idRemember").prop("checked", false);
     	}
     	
+    	   /*네이버로그인*/
+        $.ajax({
+          type : "GET",
+          url : "<c:url value='/social1'/>",
+          headers: {
+             "Content-Type" : "application/json"
+          },
+          dataType: "text",
+          success: function(data) {
+             console.log(data);
+             $('#naver').attr('href', data);
+
+          },
+                   
+       });
+
+    	
     	$('#login_modal').show();
+    	
     	
     	$(document).mousedown(function(e) {
     		
@@ -188,9 +229,12 @@
     		
     	});
 
+    	 
+        
+    	
     });
 
-	
+
 
    
   

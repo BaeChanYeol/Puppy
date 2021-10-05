@@ -12,7 +12,9 @@ import lombok.ToString;
     pno number(8,0) not null, 
     writer varchar2(50),
     content varchar2(1000),
-    regdate date default sysdate
+    regdate date default sysdate,
+    pname varchar2(50),
+    answer varchar2(2000)
 );
 
 CREATE SEQUENCE productqna_seq
@@ -30,4 +32,6 @@ public class ProductQnaVO {
 	private String writer;
 	private String content;
 	private Timestamp regdate;
+	private String pname;
+	private String answer;
 }

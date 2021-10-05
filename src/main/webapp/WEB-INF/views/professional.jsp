@@ -7,7 +7,7 @@
         
         <article class="main-container">
             <div class="wrap comment">
-                <p>“댕댕 유치원은 다년간의 경험과 노하우를 보유한<br>국내 최고의 반려견 전문가들이 함께 합니다.”</p>
+                <p>“똑독 유치원은 다년간의 경험과 노하우를 보유한<br>국내 최고의 반려견 전문가들이 함께 합니다.”</p>
             </div>
         </article>
         <article class="main-container">

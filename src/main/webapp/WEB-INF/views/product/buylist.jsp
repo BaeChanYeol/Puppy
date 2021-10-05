@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="java.util.Date" %>
 
     <%@ include file="../include/header.jsp" %>
@@ -69,54 +70,58 @@
 	                        <th>구매확정</th>
 	                    </tr>
 	                    <c:forEach var = "ovo" items="${buyList2}" varStatus="s">
-	                    		<tr class= "buyDate">
-	                    			<td colspan="3">
-	                    				<p class="buydate"><fmt:formatDate value="${ovo.regdate}" pattern="yyyy.MM.dd"/> / 주문번호: ${ovo.ono}</p>
-	                    			</td>
-	                    		</tr>
-	                    		
-	                    	
-	
-								<c:set var="dayAfter1" value="<%=System.currentTimeMillis()%>"/>
-								
-	                    		
-			                    <c:forEach var="vo" items="${buyList}" >
-			                      <c:if test="${ovo.ono == vo.ono}"> 
-				                    <tr>
-				                        <td class="buylist-img">
-				                            <img src="../img/basket1.jpg" alt="껌">
-				                        </td>
-				                        <td class="buylist-content">
-				                                
-				                                <p class="buytitle"><a href="<c:url value='/product/detail?pno=${vo.pno}'/>">${vo.pname}</a></p>
-				                                <p class="buyprice" style="display: inline;">${vo.price}</p>
-				                                <p class="buyamount" style="font-size:small;">원/${vo.amount}개</p>
-				                                
-				                                <c:choose>
-							                    	<c:when test="${ dayAfter1 - dateList[s.index] < 60*60*24*1000 }"> <!-- 10.2, 10.3, 10.4 -->
-							                    		<p class="buy">상품준비중</p>
-							                    	</c:when>	
-							                    	<c:when test="${ dayAfter1 - dateList[s.index] > 3*60*60*24*1000 }">  <!-- 10.7 -->
-							                    		<p class="buy">배송완료</p>
-							                    	</c:when>
-							                    	<c:otherwise>
-							                    		<p class="buy">배송중</p>
-							                    	</c:otherwise>
-							                    	
-							                    </c:choose>
-				                                
-				                                
-				                        </td>	
-				          				   <td class="buylist-btn">
-				                            <button class="buylist-btn">반품/교환</button>
-				                            <button class="buylist-btn review-btn" onclick="location.href='<c:url value='/product/detail?pno=${vo.pno}#reviews'/>'">리뷰쓰기</button>
-				                            <!-- buy=116&p_price=4800&amount=4 -->
-				                            <button class="buylist-btn rebuy" onclick="location.href='<c:url value='/product/orderpage?buy=${vo.pno}&p_price=${vo.price}&amount=${vo.amount}'/>'">재구매</button>
-				                            
-				                        </td>
-				                    </tr>
-					              </c:if>
-			                    </c:forEach>
+	                    	<%-- <c:out value="${ovo.writer}"></c:out> --%>
+		                    <%-- <c:if test="${ login.id == ovo.writer }"> --%>
+		                    <c:if test="${ fn:contains(ovo.writer, login.id) }">
+		                    		<tr class= "buyDate">
+		                    			<td colspan="3">
+		                    				<p class="buydate"><fmt:formatDate value="${ovo.regdate}" pattern="yyyy.MM.dd"/> / 주문번호: ${ovo.ono}</p>
+		                    			</td>
+		                    		</tr>
+		                    		
+		                    	
+		
+									<c:set var="dayAfter1" value="<%=System.currentTimeMillis()%>"/>
+									
+		                    		
+				                    <c:forEach var="vo" items="${buyList}" >
+				                      <c:if test="${ovo.ono == vo.ono}"> 
+					                    <tr>
+					                        <td class="buylist-img">
+					                            <img src="../img/basket1.jpg" alt="껌">
+					                        </td>
+					                        <td class="buylist-content">
+					                                
+					                                <p class="buytitle"><a href="<c:url value='/product/detail?pno=${vo.pno}'/>">${vo.pname}</a></p>
+					                                <p class="buyprice" style="display: inline;">${vo.price}</p>
+					                                <p class="buyamount" style="font-size:small;">원/${vo.amount}개</p>
+					                                
+					                                <c:choose>
+								                    	<c:when test="${ dayAfter1 - dateList[s.index] < 60*60*24*1000 }"> <!-- 10.2, 10.3, 10.4 -->
+								                    		<p class="buy">상품준비중</p>
+								                    	</c:when>	
+								                    	<c:when test="${ dayAfter1 - dateList[s.index] > 3*60*60*24*1000 }">  <!-- 10.7 -->
+								                    		<p class="buy">배송완료</p>
+								                    	</c:when>
+								                    	<c:otherwise>
+								                    		<p class="buy">배송중</p>
+								                    	</c:otherwise>
+								                    	
+								                    </c:choose>
+					                                
+					                                
+					                        </td>	
+					          				   <td class="buylist-btn">
+					                            <button class="buylist-btn">반품/교환</button>
+					                            <button class="buylist-btn review-btn" onclick="location.href='<c:url value='/product/detail?pno=${vo.pno}#reviews'/>'">리뷰쓰기</button>
+					                            <!-- buy=116&p_price=4800&amount=4 -->
+					                            <button class="buylist-btn rebuy" onclick="location.href='<c:url value='/product/orderpage?buy=${vo.pno}&p_price=${vo.price}&amount=${vo.amount}'/>'">재구매</button>
+					                            
+					                        </td>
+					                    </tr>
+						              </c:if>
+				                    </c:forEach>
+		                    </c:if>
 	                    </c:forEach>
 	                </table>
                 <!-- </form> -->

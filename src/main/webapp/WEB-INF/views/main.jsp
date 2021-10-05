@@ -14,13 +14,21 @@
 					<ul>
 						<li class="cnt_0"><img src="./img/banner.jpg"
 							alt="강하지유치원은 보호자가 반려견과 함께 더 나은 삶을 가꾸어 나가는 것을 최선의 가치로 삼고있습니다. "></li>
-						<li class="cnt_1"><img src="./img/ex1.png"
+						<li class="cnt_1"><img src="./img/banner2.jpg"
 							alt="강하지유치원은 보호자가 반려견과 함께 더 나은 삶을 가꾸어 나가는 것을 최선의 가치로 삼고있습니다. "></li>
-						<li class="cnt_2"><img src="./img/banner.jpg"
+						<li class="cnt_2"><img src="./img/banner3.jpg"
 							alt="강하지유치원은 보호자가 반려견과 함께 더 나은 삶을 가꾸어 나가는 것을 최선의 가치로 삼고있습니다. "></li>
-						<li class="cnt_3"><img src="./img/ex1.png"
+						<li class="cnt_3"><img src="./img/banner4.jpg"
 							alt="강하지유치원은 보호자가 반려견과 함께 더 나은 삶을 가꾸어 나가는 것을 최선의 가치로 삼고있습니다. "></li>
 					</ul>
+				</div>
+			</div>
+			<div class="banner-btn">
+				<div class="banner-btn-position">
+					<div class="btn">
+						<button type="button" class="prev">&#10094;</button>
+						<button type="button" class="next">&#10095;</button>
+					</div>
 				</div>
 			</div>
 			<div id="list_num">
@@ -31,41 +39,31 @@
 					<li><a href="#"></a></li>
 				</ul>
 			</div>
-			<div class="btn">
-				<button type="button" class="prev">&#10094;</button>
-				<button type="button" class="next">&#10095;</button>
-			</div>
 		</div>
 	</article>
 	<article class="main-container">
 		<div id="main-menu" class="wrap">
 			<h2 class="main-h2">Best World For My Dog</h2>
 			<ul class="clearfix">
-				<li><a href="#"> <img src="./img/hotel.png" alt="호텔&데이커어">
+				<li><a href="<c:url value='/service/hotel'/>"> <img src="./img/hotel.png" alt="호텔&데이커어">
 						<h3>호텔 & 데이커어</h3>
 						<p>HOTEL & DAYCARE</p>
 				</a></li>
-				<li><a href="#"> <img src="./img/kindergarten.png"
-						alt="유치원">
+				<li><a href="<c:url value='/service/preschool'/>"> <img src="./img/kindergarten.png" alt="유치원">
 						<h3>유치원</h3>
 						<p>KINDERGARTEN</p>
 				</a></li>
-				<li><a href="#"> <img src="./img/grooming.png" alt="그루밍">
+				<li><a href="<c:url value='/service/grooming'/>"> <img src="./img/grooming.png" alt="그루밍">
 						<h3>그루밍 & 스파</h3>
 						<p>GROOMING & SPA</p>
 				</a></li>
-				<li><a href="#"> <img src="./img/studio.png" alt="스튜디오">
+				<li><a href="<c:url value='/service/studio'/>"> <img src="./img/studio.png" alt="스튜디오">
 						<h3>스튜디오</h3>
 						<p>STUDIO</p>
 				</a></li>
-				<li><a href="#"> <img src="./img/medical.png" alt="메디컬센터">
+				<li><a href="<c:url value='/service/medicalCenter'/>"> <img src="./img/medical.png" alt="메디컬센터">
 						<h3>메디컬센터</h3>
 						<p>MEDICAL CENTER</p>
-				</a></li>
-				<li><a href="#"> <img src="./img/specialcare.png"
-						alt="스페셜케어">
-						<h3>스페셜케어</h3>
-						<p>SPECIAL CARE</p>
 				</a></li>
 			</ul>
 		</div>
@@ -165,8 +163,13 @@
 <%@ include file="./include/footer.jsp"%>
 
 <script>
-	$(document).ready(function() {
+	if('${deleteMsg}' == 'userDeleteSuccess'){
+		alert('회원탈퇴가 완료되었습니다. 그동안 똑독유치원을 이용해주셔서 감사합니다!');
+	}
 
+	$(document).ready(function() {
+		
+		
 		/* ---------------------슬라이드(케럿)---------------------------*/
 		const cnt = $("#banner .cnt > ul > li");
 		const button = $("#list_num > ul > li");
@@ -251,11 +254,15 @@
 		/* ---------------------슬라이드(케럿끝)---------------------------*/
 
 		/* 회원가입 완료후 */
-		const msg = "${msg}";
-		if(msg == "joinSuccess"){
+		
+		if("${msg}" == "joinSuccess"){
 			alert('회원가입 완료!');
 		}
-	
+		
+		if('${msg}' == 'pwChangeSuccess'){
+			alert('비밀번호가 변경되었습니다.');
+		}
+
 
 	});
 	

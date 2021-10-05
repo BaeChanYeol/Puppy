@@ -21,9 +21,9 @@ public class ReserveBoardService implements IReserveBoardService{
 	}
 
 	@Override
-	public List<ReserveBoardVO> getList(PageVO vo) {
+	public List<ReserveBoardVO> getList(PageVO vo, String writer) {
 
-		return mapper.getList(vo);
+		return mapper.getList(vo, writer);
 	}
 
 	@Override
@@ -38,8 +38,18 @@ public class ReserveBoardService implements IReserveBoardService{
 	}
 
 	@Override
-	public int getTotal(PageVO vo) {
-		return mapper.getTotal(vo);
+	public int getTotal(PageVO vo, String writer) {
+		return mapper.getTotal(vo, writer);
+	}
+
+	@Override
+	public List<ReserveBoardVO> getAdminList(PageVO vo) {
+		return mapper.getAdminList(vo);
+	}
+
+	@Override
+	public int getAdminTotal(PageVO vo) {
+		return mapper.getAdminTotal(vo);
 	}
 
 	 

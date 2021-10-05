@@ -7,8 +7,8 @@
      <section>   
         <article class="main-contanier">
             <div class="pick-title">
-                <h2>멍멍택시 픽업 서비스</h2>
-                <p>바우라움 회원님들에게는 저렴한 가격으로 제공됩니다.</p>
+                <h2>똑독택시 픽업 서비스</h2>
+                <p>똑독유치원 회원님들에게는 저렴한 가격으로 제공됩니다.</p>
             </div>
         </article>
         
@@ -22,7 +22,7 @@
                             </div>
                             <div class="info_block">
                                 <h4>픽업 제휴업체</h4>
-                                <p>멍멍택시</p>
+                                <p>똑독택시</p>
                             </div>
                         </li>
                         <li class="info clearfix">
@@ -44,7 +44,7 @@
                             </div>
                             <div class="pick-margin clearfix">
                                 <img src="./img/plus.png" alt="플러스친구" class="pick-img f-left">
-                                <p class="f-left">멍멍택시" 플러스친구로 예약가능</p>
+                                <p class="f-left">똑독택시" 플러스친구로 예약가능</p>
                             </div>
                             <div class="pick-margin clearfix">
                                 <img src="./img/email.png" alt="이메일" class="pick-img f-left">
@@ -71,7 +71,7 @@
                             </div>
                             <div class="info_block">
                                 <h4>주의사항</h4>
-                                <p>멍멍택시 이용시 주의사항</p>
+                                <p>똑독택시 이용시 주의사항</p>
                             </div>
                         </li>
                     </ul>
@@ -100,7 +100,7 @@
                         </li>
                     </ul>
                     <ul class="list-group">
-                        <li class="list-group-item">목적지와 출발지가 바우라움 서울숲 캠퍼스인 경우에만 할인이 적용됩니다.</li>
+                        <li class="list-group-item">목적지와 출발지가 똑독유치원인 경우에만 할인이 적용됩니다.</li>
                         <li class="list-group-item">요금은 현장에서 현금(계좌이체) 및 카드 결제 가능합니다.</li>
                     </ul>
                     <ul>

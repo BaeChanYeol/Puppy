@@ -69,6 +69,28 @@ public class UserService implements IUserService {
 		return mapper.getUserWithSessionId(sessionId);
 	}
 
+	@Override
+	public void delete(String id) {
+		mapper.delete(id);
+	}
+
+	@Override
+	public String selectId(UserVO vo) {
+		return mapper.selectId(vo);
+	}
+
+	@Override
+	public void changePassword(String id,String newPw) {
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+				
+		String securePW = encoder.encode(newPw);		
+				
+		mapper.changePassword(id,securePW);
+	}
+
+	
+
 	
 	
 	

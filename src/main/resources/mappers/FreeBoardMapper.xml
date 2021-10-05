@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="com.spring.puppy.freeboard.mapper.IFreeBoardMapper">
+   
+
+   <sql id="search">
+      <if test="condition == 'title'">
+         WHERE title LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'content'">
+         WHERE content LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'writer'">
+         WHERE writer LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'titleContent'">
+         WHERE title LIKE '%'||#{keyword}||'%'
+         OR content LIKE '%'||#{keyword}||'%'
+      </if>
+   </sql>
+
+
+   <insert id="regist">
+      INSERT INTO freeboard(bno, writer, title, content, viewcnt, uploadpath, filerealname, photosize, fileLoca, fileExtension)
+      VALUES(freeboard_seq.NEXTVAL, #{writer}, #{title}, #{content}, #{viewCnt}, #{uploadPath}, #{fileRealName}, #{photoSize}, #{fileLoca}, #{fileExtension})
+   </insert>
+
+   <select id="getList" resultType="com.spring.puppy.command.FreeBoardVO">
+      SELECT * FROM
+         (
+         SELECT ROWNUM as rn, tbl.* FROM
+            (
+            SELECT * FROM freeboard
+            <include refid="search" />
+            ORDER BY bno DESC
+            ) tbl
+         )
+      <![CDATA[
+      WHERE rn > (#{pageNum} - 1) * #{countPerPage}
+      AND rn <= #{pageNum} * #{countPerPage}
+      ]]>
+   </select>
+
+   <select id="getTotal" resultType="int">
+      SELECT COUNT(*)
+      FROM freeboard
+      <include refid="search" />
+   </select>
+
+<!-- 조회수 올리기 -->
+   <update id="updateView_cnt">
+      UPDATE freeboard SET viewcnt = viewcnt + 1
+      WHERE bno = #{bno}
+   </update>
+
+
+   <select id="getContent"
+      resultType="com.spring.puppy.command.FreeBoardVO">
+      SELECT * FROM freeboard
+      WHERE bno = #{bno}
+   </select>
+
+   <update id="update">
+      UPDATE freeboard
+      SET title=#{title},
+      content=#{content}, updatedate = SYSDATE
+      WHERE bno=#{bno}
+   </update>
+   
+   <update id="update2">
+	  UPDATE freeboard
+      SET title=#{title}, content=#{content}, updatedate = SYSDATE, uploadpath=#{uploadPath},filerealname=#{fileRealName}, photosize=#{photoSize},fileLoca=#{fileLoca},fileExtension=#{fileExtension}
+      WHERE bno=#{bno}	  	
+   </update>
+
+   <delete id="delete">
+      DELETE FROM freeboard
+      WHERE bno=#{bno}
+   </delete>
+
+
+
+
+</mapper>

@@ -80,9 +80,20 @@ public class ProductController {
 		return "product/paySuccess";
 	}
 	
+	//의료기기 화면
+	@GetMapping("/medicalDevice")
+	public String medicalDevice(){
+		return "product/medicalDevice";
+	}
+	
+	//간식 화면
+	@GetMapping("/snack")
+	public String snack() {
+		return "product/snack";
+	}
 	//상세보기 화면
 	@GetMapping("/detail")
-	public void getContent(@RequestParam int pno, PageVO vo, PageVO vo2, Model model) {
+	public void getContent(@RequestParam int pno, HttpSession session, PageVO vo, PageVO vo2, Model model) {
       	
 		model.addAttribute("item", service.getContent(pno));
       	System.out.println("pno: "+pno);
@@ -105,22 +116,25 @@ public class ProductController {
 		model.addAttribute("qnaList", service.pqnaList(vo2, pno));
 		model.addAttribute("pc2", pc2);
 			
+	
 			
 	}
 	
 	//찜 목록
 	@GetMapping("/zzim")
-	public String zzimList(Model model) {
-			
-		model.addAttribute("zzimList", service.zzimList());
+	public String zzimList(HttpSession session, Model model) {
+		UserVO user = (UserVO) session.getAttribute("login");	
+		model.addAttribute("zzimList", service.zzimList(user.getId()));
 		return "product/zzim";
 	}
 	
 	//찜 DB 등록 요청
 	@PostMapping("/zzimRegistForm")
-	public String zzimRegistForm(ZzimVO vo, ProductVO provo, PageVO pvo, Model model, RedirectAttributes ra) {
-		int pno = vo.getPno();
+	public String zzimRegistForm(HttpSession session, ZzimVO vo, ProductVO provo, PageVO pvo, Model model, RedirectAttributes ra) {
+		UserVO user = (UserVO) session.getAttribute("login");
 		
+		int pno = vo.getPno();
+		vo.setWriter(user.getId());
 		
 		if(service.zzimCheck(vo) == 0) { //찜이 안된 상태일 때 찜하기 
 			service.zzimRegist(vo);
@@ -130,6 +144,7 @@ public class ProductController {
 		} else { //찜 취소하기
 			//ra.addFlashAttribute("msg", "이미 찜한 상품입니다!");
 			service.zzimModify(provo);
+			
 			service.zzimdelete(vo);
 			return "redirect:/product/detail?pno="+pno;
 		}
@@ -143,8 +158,10 @@ public class ProductController {
 	
 	//찜 상품 삭제 처리
 	@RequestMapping(value="/zzimDelete/{pno}", method=RequestMethod.GET)
-	public String zzimDelete(@PathVariable int pno, ZzimVO vo, RedirectAttributes ra) {
+	public String zzimDelete(HttpSession session, @PathVariable int pno, ZzimVO vo, RedirectAttributes ra) {
+		UserVO user = (UserVO) session.getAttribute("login");
 		vo.setPno(pno);
+		vo.setWriter(user.getId());
 		service.zzimdelete(vo);
 		//ra.addFlashAttribute("msg", "해당 상품이 정상 삭제되었습니다.");
 		return "redirect:/product/zzim";
@@ -200,9 +217,11 @@ public class ProductController {
 	
 	//장바구니 목록 화면
 	@GetMapping("/basket")
-	public String cartList(Model model) {
+	public String cartList(HttpSession session, Model model) {
 			
-		model.addAttribute("cartList", service.cartList());
+		UserVO user = (UserVO) session.getAttribute("login");
+		
+		model.addAttribute("cartList", service.cartList(user.getId()));
 		return "product/basket";
 	}
 	
@@ -212,13 +231,14 @@ public class ProductController {
 	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
 	public int deleteCart(HttpSession session,
 	     @RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception {
-	 
+		UserVO user = (UserVO) session.getAttribute("login");
 		int result = 0;
 		int cartNum = 0;
 		for(String i : chArr) {   //상품 번호 이용
 			cartNum = Integer.parseInt(i);
 			cart.setPno(cartNum);
 //			System.out.println(cartNum);
+			cart.setWriter(user.getId());
 			service.delete(cart);
 		}   
 		result = 1; 
@@ -227,8 +247,11 @@ public class ProductController {
 	
 	//단일 상품 삭제 처리
 	@RequestMapping(value="/itemDelete/{pno}", method=RequestMethod.GET)
-	public String reserveDelete(@PathVariable int pno, CartVO cart, RedirectAttributes ra) {
+	public String singleDelete(HttpSession session, @PathVariable int pno, CartVO cart, RedirectAttributes ra) {
+		UserVO user = (UserVO) session.getAttribute("login");
 		cart.setPno(pno);
+		cart.setWriter(user.getId());
+//		service.delete(cart, user.getId());
 		service.delete(cart);
 		//ra.addFlashAttribute("msg", "해당 상품이 정상 삭제되었습니다.");
 		return "redirect:/product/basket";
@@ -259,7 +282,7 @@ public class ProductController {
 		model.addAttribute("orderList",orderList);
 		
 		UserVO vo = (UserVO) session.getAttribute("login");
-		model.addAttribute("users", vo);
+		//model.addAttribute("users", vo);
 		
 		//세션에도 저장
 		session.setAttribute("orderList", orderList);
@@ -282,6 +305,7 @@ public class ProductController {
 		
 		// 주문 번호는 하나만 생성하기
 		service.orderRegist(ovo);
+		
 		//OrderVO OVO = (OrderVO) model.addAttribute(ovo);
 		//System.out.println("ono: "+ service.getOrderno(ovo) );
 		

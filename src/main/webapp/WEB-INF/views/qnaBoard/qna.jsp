@@ -75,7 +75,8 @@
 	                   최대한 빠른 시일 내에 정성껏 답변 드리도록 노력하겠습니다. 
 	                </p>
 	
-	                <div class="personal-txt">           
+	                <div class="personal-txt">       
+	                	<input type="hidden" name="writer" value="${login.id}">    
 	                    <input type="text" class="input" id="qnaTitle" name="title" placeholder="제목">
 	                    <textarea class="personal-area" id="" rows="7" name="content" placeholder="내용"></textarea>
 	                </div>
@@ -99,6 +100,7 @@
                     	<div class="list">
 		                    <ul>
                     <c:forEach var="vo" items="${qnaList}">
+                    	<c:if test="${login.id == vo.writer }">
 		                        <li class="question-title">
 		                        	${vo.title}<span style="float:right; margin-right:15px;"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd" /></span>
 		                        </li>
@@ -112,6 +114,7 @@
 		                        	<br><br>
 		                        	답변 영역이다!
 		                        </li>
+		                </c:if>
                     </c:forEach>
 
 		                    </ul>

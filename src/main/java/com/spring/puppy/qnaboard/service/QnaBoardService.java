@@ -31,14 +31,14 @@ public class QnaBoardService implements IQnaBoardService{
 
 
 	@Override
-	public List<QnaBoardVO> getList(PageVO vo) {
-		return mapper.getList(vo);
+	public List<QnaBoardVO> getList(PageVO vo, String writer) {
+		return mapper.getList(vo, writer);
 	}
 
 
 	@Override
-	public int getTotal(PageVO vo) {
-		return mapper.getTotal(vo);
+	public int getTotal(PageVO vo, String writer) {
+		return mapper.getTotal(vo, writer);
 	}
 
 

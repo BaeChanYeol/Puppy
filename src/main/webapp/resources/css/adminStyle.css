@@ -1,0 +1,237 @@
+@charset "UTF-8";
+
+      
+		/*======= 웹 폰트 선언 =======*/
+		@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+		
+		/* 디자인 시작 시 기본적으로 선언하는 문법 */
+		* {
+		    /* 기본 선언: 마진, 패딩 0, 요소 크기를 border를 기준으로.*/
+		    padding: 0;
+		    margin: 0;
+		    box-sizing: border-box;
+		}
+		
+		body, html {
+		    width: 100%;
+		    min-width: 320px;
+		    font-family: "Nanum Gothic", sans-serif;
+		}
+		
+		img {
+		    max-width: 100%; /*사이즈가 변해도 넓이를 유지*/
+		    height: auto; /* 사이즈가 변해도 비율을 유지 */
+		}
+		
+		/*
+		input, textarea, button, select {
+		     고유하게 적용되어있는 form 관련 요소들을 제거해서
+		     여러 브라우저에서 동일한 디자인을 얻게 함.
+		    -webkit-appearance: none; 크롬, 사파리
+		    -moz-appearance: none; 파이어폭스
+		    appearance: none; ie, edge
+		    border: none;
+		}
+		*/
+		
+		
+		
+		ul, ol, dl, li {
+		    /*리스트 스타일은 사용할 일이 많지 않아요.*/
+		    list-style: none; 
+		}
+		
+		.btn {
+		    border-radius: 0px;
+		}
+		
+		a {
+		    text-decoration: none;
+		}
+		
+		/* 공통 스타일 */
+		.clearfix::after {
+		    content: '';
+		    display: block;
+		    clear: both;
+		}
+	
+	
+        .adminwrap {
+            background: #777;
+            min-height: 100%;
+        }
+        .adminwrap aside {
+            width: 250px;
+            height: 100%;
+            float: left;
+        }
+        .adminwrap aside h1 {
+            margin: 10px auto;
+            width: 200px;
+        }
+        .adminwrap aside .adminmenu li a {
+            display: block;
+            width: 250px;
+            color: #fff;
+            font-size: 20px;
+            height: 50px;
+            text-align: right;
+            padding-top: 15px;
+            padding-right: 15px;
+        }
+        .adminwrap aside .adminmenu .outside {
+            width: 250px;
+            color: #fff;
+            font-size: 20px;
+            height: 120px;
+            text-align: right;
+            padding-top: 15px;
+            padding-right: 15px;
+        }
+        .adminwrap aside .adminmenu li a:hover {
+            background: #996633;
+        }
+        .adminwrap aside .adminhover {
+            font-weight: bold;
+        }
+        .adminwrap aside .adminmenu .inside {
+            font-size: 15px;
+            padding: 10px 15px;
+            height: 40px;
+        }
+
+        .adminwrap nav {
+            max-width: 100%;
+            height: 70px;
+            margin-left: 250px;
+            background: #fff;
+            padding: 20px;
+            border-bottom: 3px solid #ccc;
+        }
+        .adminbody{
+            background: #fff;
+            max-width: 100%;
+            margin-left: 250px;
+        }
+     
+        .adminbody table{
+            border-collapse : collapse;
+            width: 950px;
+        }
+        .admintable {
+            padding: 80px;
+        }
+        .adminbody table th {
+            /* border-top: 3px #ccc solid; 
+            border-bottom: 3px #ccc solid;  */
+            padding: 13px;
+            color: #fff;
+            background: #996633;
+           
+        }
+        .adminbody table td {
+            border-bottom: 1px #ccc solid; 
+            height: 50px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .adminpagination{
+            margin: 50px auto;
+            padding-bottom: 50px ;
+            margin-bottom: 30px;
+        }
+
+        .adminpagination a {
+            text-align: center;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border:1px solid #ccc ;
+            color: #000;
+            padding: 5px;
+        }
+        .adminpagination a:hover {
+            color: #fff;
+            background: #996633;
+        }
+        .adminpagination button {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border:1px solid #ccc ;
+            color: #fff;
+            padding: 5px;
+            background: #996633;
+        }
+        .adminfooter {
+        	background: #999;
+        	height: 60px;
+        	max-width: 100%;
+        }
+        .adminfooter p {
+        	color : #fff;
+        	padding-top: 15px;
+        	text-align: center;
+        }
+        /*===========상품등록==================*/
+        
+       .admininput {
+            width: 100%;
+            display: block;
+            height: 30px;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+        .admintext {
+            padding: 5px;
+            width: 100%;
+            display: block;
+        }
+        .admincontent {
+            width: 800px;
+            padding: 80px;
+        }
+        .adminbtn {
+            padding: 5px;
+            background-color: #996633;
+            border: 0px;
+            border-radius: 3px;
+            font-weight: bold;
+            color:#fff;  
+            cursor: pointer;
+        }
+        
+        /*문의 답변하기*/
+           .admininput {
+            width: 100%;
+            display: block;
+            height: 30px;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+        .admintext {
+            padding: 5px;
+            width: 100%;
+            display: block;
+        }
+        .admincontent {
+            width: 800px;
+            padding: 80px;
+        }
+        .adminbtn {
+            width: 50px;
+            background-color: #996633;
+            border: 0px;
+            border-radius: 3px;
+            height: 25px;
+            font-weight: bold;
+            color:#fff;  
+            cursor: pointer;
+        }
+        
+        
+        
+        
+        

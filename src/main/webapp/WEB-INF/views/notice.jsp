@@ -23,7 +23,7 @@
 		</div>
 		<div class="wrap">
 			<ul class="list-group">
-				<li class="list-group-item">ㅇㅇ유치원은 연중 무휴로 운영됩니다.</li>
+				<li class="list-group-item">똑독유치원은 연중 무휴로 운영됩니다.</li>
 				<li class="list-group-item">모든 서비스는 100% 예약제로 운영됩니다.</li>
 				<li class="list-group-item">호텔과 유치원은 사전예약 시 8시부터 입실이 가능합니다.</li>
 				<li class="list-group-item">사전 예약 시 개인상담이 어려우니 양해해 주시기 바랍니다.</li>
@@ -60,7 +60,7 @@
 				</div>
 				<div class="notice-text">
 					<h3>오시는 길</h3>
-					<p>ㅇㅇ유치원 위치 이대역 9번출구 ㅁㅁ건물</p>
+					<p>똑독유치원 위치 이대역 9번출구 똑독건물</p>
 				</div>
 			</div>
 		</div>

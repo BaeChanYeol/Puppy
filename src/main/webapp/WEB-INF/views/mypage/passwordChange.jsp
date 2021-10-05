@@ -13,23 +13,21 @@
             </div>
 
             <div class="pwChangeform">
-                <form action="" method="POST">
+                <form action="<c:url value='/user/changePassword'/>" method="POST" id="pwChangeForm">
                     
-                    <h5><label for="">기존 비밀번호</label></h5>
-                    <input type="password" name="pw" id="" placeholder="기존 비밀번호를 입력해주세요~">
+                    <input type="hidden" value="${user.id}" name="id">
+                    <h5><label for="newPw">새 비밀번호</label></h5>
+                    <input type="password" name="newPw" id="newPw" placeholder="새 비밀번호를 입력해주세요~">
                     <span></span>
-                    <h5><label for="">새 비밀번호</label></h5>
-                    <input type="password" name="pw_check" id="" placeholder="새 비밀번호를 입력해주세요~">
-                    <span></span>
-                    <h5><label for="">새 비밀번호 확인</label></h5>
-                    <input type="password" name="name" id="" placeholder="새 비빌번호를 입력해주세요~">
+                    <h5><label for="newPwCheck">새 비밀번호 확인</label></h5>
+                    <input type="password" name="newPwCheck" id="newPwCheck" placeholder="새 비빌번호를 입력해주세요~">
                 
                     <div class="pwChange-bottom clearfix">
                         <div class="pwChange-bottom1">
                             <button type="submit" class="pwChangeBtn1">변경하기</button>
                         </div>
                         <div class="pwChange-bottom2">
-                            <button type="submit" class="pwChangeBtn2">취소하기</button>
+                            <button type="button" class="pwChangeBtn2">취소하기</button>
                         </div>
                     </div>
                     
@@ -41,4 +39,36 @@
 
 <%@ include file="../include/footer.jsp" %>
 
-    
+    <script>
+    	if('${msg}' == '인증성공'){
+    		alert('인증성공!');
+    	}
+    	
+    	const getPwCheck = RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,/,&,*,?,_,~])|([!,@,#,$,/,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
+
+    	$('.pwChangeBtn1').click(function(e) {
+			e.preventDefault();
+			
+			if($('#newPw').val() == '' ){
+				alert('비밀번호는 필수정보입니다.');
+				$('#newPw').focus();
+				return;
+			}else if(!getPwCheck.test($('#newPw').val()) && $('#newPw').length < 9 ){
+				alert('비밀번호는 특수문자포함 9자이상입니다.');
+				$('#newPw').focus();				
+				return;
+			}else if($('#newPw').val() !== $('#newPwCheck').val()) {
+				alert('비밀번호가 일치하지 않습니다.');
+				$('#newPwCheck').focus();
+				return;
+			}else{
+				$('#pwChangeForm').submit();
+			}
+		});
+    	$('.pwChangeBtn2').click(function() {
+			if(confirm('정말 취소하시겠습니까?')){
+				location.href="<c:url value='/'/>"
+			}
+		});
+    	
+    </script>

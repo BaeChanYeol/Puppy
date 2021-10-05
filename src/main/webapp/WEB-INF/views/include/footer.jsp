@@ -11,7 +11,7 @@
             <div class="address">
                 <h5 class="f-title">ADDRESS</h5>
                 <p class="explain">
-	                <span class="f-size">서울특별시 마포구 신촌로 17 강아지유치원</span><br><br>
+	                <span class="f-size">서울특별시 마포구 신촌로 17 똑독유치원</span><br><br>
 	                (주) 잡아(JAVA)조<br>
 			                대표이사 : 배찬열<br>
 			                사업자번호 : 318-85-46770<br>
@@ -22,7 +22,7 @@
             <div class="about">
                 <h5 class="f-title">ABOUT US</h5>
                 <p class="explain">
-			                    저희 멍멍이 유치원은 반려견과의<br> 
+			                    저희 똑독 유치원은 반려견과의<br> 
 			                    교감교육을 중시요시합니다. 반려견의<br>
 			                    잘못된 행동에는 모두 이유가 있습니다.<br>
 			                    무작정 혼내기 보다는 마음을 읽는<br>

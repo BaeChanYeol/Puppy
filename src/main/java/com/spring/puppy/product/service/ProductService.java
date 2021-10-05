@@ -38,6 +38,27 @@ public class ProductService implements IProductService{
 	}
 	
 	@Override
+	public List<ProductQnaVO> adminPQna(PageVO vo) {
+		return mapper.adminPQna(vo);
+	}
+	
+	@Override
+	public int getAdminTotal(PageVO vo) {
+		return mapper.getAdminTotal(vo);
+	}
+	
+	@Override
+	public ProductQnaVO getAdminPqna(int pno) {
+		return mapper.getAdminPqna(pno);
+	}
+	
+	@Override
+	public void registAnswer(int pno, String writer) {
+		mapper.registAnswer(pno, writer);
+		
+	}
+	
+	@Override
 	public void pqdelete(int pqno) {
 		mapper.pqdelete(pqno);
 	}
@@ -78,8 +99,8 @@ public class ProductService implements IProductService{
 	}
 	
 	@Override
-	public List<ZzimVO> zzimList() {
-		return mapper.zzimList();
+	public List<ZzimVO> zzimList(String writer) {
+		return mapper.zzimList(writer);
 	}
 	
 	@Override
@@ -104,8 +125,8 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
-	public List<CartVO> cartList() {
-		return mapper.cartList();
+	public List<CartVO> cartList(String writer) {
+		return mapper.cartList(writer);
 	}
 
 	@Override
@@ -138,24 +159,10 @@ public class ProductService implements IProductService{
 		return mapper.productList(vo, type);
 	}
 	
-//	@Override
-//	public List<ProductVO> itemList(PageVO vo) {
-//		return mapper.itemList(vo);
-//	}
 	@Override
 	public int getpTotal(PageVO vo, String type) {
 		return mapper.getpTotal(vo, type);
 	}
-
-//	@Override
-//	public int getTotalItems(PageVO vo) {
-//		return mapper.getTotalItems(vo);
-//	}
-//	
-//	@Override
-//	public int getTotalSnack(PageVO vo) {
-//		return mapper.getTotalSnack(vo);
-//	}
 
 
 	@Override

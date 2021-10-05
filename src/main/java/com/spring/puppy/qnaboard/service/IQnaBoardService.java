@@ -11,9 +11,9 @@ public interface IQnaBoardService {
 	//List<QnaBoardVO> getList(); //목록 요청
 	
 	//목록 요청
-	List<QnaBoardVO> getList(PageVO vo); 
+	List<QnaBoardVO> getList(PageVO vo, String writer); 
 			
 	//글 개수 카운트
-	int getTotal(PageVO vo);
+	int getTotal(PageVO vo , String writer);
 
 }

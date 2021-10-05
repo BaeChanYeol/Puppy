@@ -18,11 +18,10 @@
                 </div>
     
                 <div class="withdrawform">
-                    <form action="" method="POST">
+                    <form action="<c:url value='/user/delete'/>" method="POST" id="deleteForm">
                         
-                        <h5><label for="pw">비밀번호</label></h5>
-                        <input type="text" name="name" id="" placeholder="비밀번호 입력해주세요.">
-                        <span></span>
+                        <h5><label for="deletePw">비밀번호</label></h5>
+                        <input type="password" name="pw" id="deletePw" placeholder="비밀번호 입력해주세요.">
 
                         <h5><label for="reasons">탈퇴사유</label></h5>
                         <div class="reason-list">
@@ -38,7 +37,7 @@
                     
                         <div class="withdraw-bottom clearfix">
                             <div class="withdraw-bottom1">
-                                <button type="submit" class="withdrawBtn1">회원탈퇴</button>
+                                <button type="button" class="withdrawBtn1">회원탈퇴</button>
                             </div>
                         </div>
                         
@@ -51,4 +50,22 @@
 
 
 <%@ include file="../include/footer.jsp" %>
+
+<script>
+	$(function() {
+		$('.withdrawBtn1').click(function(e) {
+			e.preventDefault();
+			if($('#deletePw').val()==''){
+				alert('비밀번호는 필수 항목입니다.');
+			}else{
+				$('#deleteForm').submit();
+			}
+		});
+		
+		if('${msg}' =='userDeleteFail'){
+			alert('비밀번호가 틀렸습니다.');
+		}
+	});
+</script>
+
     

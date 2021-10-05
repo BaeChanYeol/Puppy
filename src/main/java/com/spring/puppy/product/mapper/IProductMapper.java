@@ -29,12 +29,19 @@ public interface IProductMapper {
 		void pqnaRegist(ProductQnaVO vo);
 		//상품 qna 목록
 		List<ProductQnaVO> pqnaList(@Param("vo") PageVO vo, @Param("pno")int pno);
+		
+		List<ProductQnaVO> adminPQna(PageVO vo);
+		int getAdminTotal(PageVO vo);
+		ProductQnaVO getAdminPqna(int pno);
+		void registAnswer(@Param("pno") int pno, @Param("answer") String answer);
+		
+		
 		//상품 qna 개수
 		int getpqTotal(@Param("vo") PageVO vo, @Param("pno") int pno);
 		//상품 qna 삭제
 		void pqdelete(int pqno);
 		
-
+		
 		//상품 등록하기
 		void productRegist(ProductVO vo);
 	
@@ -51,7 +58,7 @@ public interface IProductMapper {
 		void zzimRegist(ZzimVO vo);
 		
 		//장바구니 목록
-		List<ZzimVO> zzimList();
+		List<ZzimVO> zzimList(String writer);
 		
 		//장바구니 상품 삭제
 		void zzimdelete(ZzimVO vo);
@@ -69,7 +76,7 @@ public interface IProductMapper {
 		int cartCheck(CartVO vo);
 		
 		//장바구니 목록
-		List<CartVO> cartList();
+		List<CartVO> cartList(String writer);
 		
 		//장바구니 상품 삭제
 		void delete(CartVO vo);

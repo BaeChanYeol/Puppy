@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="../include/header.jsp" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
     <section>
-
+	
         <article class="main-container">
             <div class="wrap">
                 <div class="freeboard-title">
@@ -32,68 +32,69 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="freenum">1</td>
-                                <td>테스트</td>
-                                <td class="freewrite">테스트</td>
-                                <td class="freeregdate">2021-09-06</td>
-                                <td class="freehit">3216</td>
-                            </tr>
-                            <tr>
-                                <td class="freenum">2</td>
-                                <td>테스트</td>
-                                <td class="freewrite">테스트</td>
-                                <td class="freeregdate">2021-09-06</td>
-                                <td class="freehit">3216</td>
-                            </tr>
-                            <tr>
-                                <td class="freenum">3</td>
-                                <td>테스트</td>
-                                <td class="freewrite">테스트</td>
-                                <td class="freeregdate">2021-09-06</td>
-                                <td class="freehit">3216</td>
-                            </tr>
-                            <tr>
-                                <td class="freenum">4</td>
-                                <td>테스트</td>
-                                <td class="freewrite">테스트</td>
-                                <td class="freeregdate">2021-09-06</td>
-                                <td class="freehit">3216</td>
-                            </tr>
+                            <c:forEach var="vo" items="${boardList}">
+	                            <tr>
+	                                <td>${vo.bno}</td>
+	                                <td>
+	                                	<a href="<c:url value='/board/boardDetail?bno=${vo.bno}' />">${vo.title}</a>
+	                                	&nbsp;&nbsp;&nbsp;
+	                                	<c:if test="${vo.newMark}">
+	                                		<img alt="newMark" src="<c:url value='/img/new_mark.gif' />">
+	                                	</c:if>
+	                                </td>
+	                                <td>${vo.writer}</td>
+	                                <td><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></td>
+	                              <!--    <td><fmt:formatDate value="${vo.updatedate}" pattern="yyyy-MM-dd"/></td>
+	                            --><td>${vo.viewCnt}<td/>
+	                            </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
 
                     <div class="freeboard-write clearfix">
-                        <button class="freeboard-write-btn">글쓰기</button>
+                        <button class="freeboard-write-btn"><a href="<c:url value='/board/boardWrite'/>" class="writeBtn">글쓰기</a></button>
                     </div>
 
-                    <!-- 페이징 공간-->
-                    <div class="freeboard-paging">
-
-                        <button class="freeboard-btn"> 이전 </button>
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">7</a>
-                        <a href="#">8</a>
-                        <a href="#">9</a>
-                        <a href="#">10</a>
-                        <button class="freeboard-btn"> 다음 </button>
-
+					<form action="<c:url value='/board/freeboard' />" name="pageForm">
+                    <div class="text-center">
+                    
+                    
+                    <!-- 페이지 관련 버튼들이 ul 태그로 감싸져 있다. -->
+                    <div class="pagination" id="pagination">
+                       <c:if test="${pc.prev}">
+                       		<button type="button" onclick="location.href='/puppy/board/freeboard?pageNum=${pc.beginPage-1}&countPerPage=${pc.paging.countPerPage}'" data-pageNum="${pc.beginPage-1}">&#10094;</button>
+                       </c:if>
+                       
+                       <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+                        <a class="${pc.paging.pageNum == num ? 'active' : ''}" href="<c:url value='/board/freeboard?pageNum=${num}&countPerPage=${pc.paging.countPerPage}' />" data-pageNum="${num}">${num}</a>
+                       </c:forEach>
+                    
+                        <c:if test="${pc.next}">
+                        	<button type="button" onclick="location.href='/puppy/board/freeboard?pageNum=${pc.endPage+1}&countPerPage=${pc.paging.countPerPage}'" data-pageNum="${pc.endPage+1}">&#10095;</button>
+                        </c:if>
+                                               
                     </div>
+                    
+                    <!-- 페이지 관련 버튼을 클릭시 숨겨서 보낼 값 -->
+                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
+                    <input type="hidden" name="countPerPage" value="${pc.paging.countPerPage}">
+                    <input type="hidden" name="keyword" value="${pc.paging.keyword}">
+                    <input type="hidden" name="condition" value="${pc.paging.condition}">
+                    
+                   
+                    </div>
+		    </form>
 
+                   
                 </div>
 
                 <div class="freeboard-search">
-                    <form action="#">
-                        <select name="condision">
-                            <option value="title">제목</option>
-                            <option value="content">내용</option>
-                            <option value="writer">작성자</option>
-                            <option value="titleContent">제목+내용</option>
+                    <form action="<c:url value='/board/freeboard' />">
+                        <select name="condition">
+                            <option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
+                            <option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
+                            <option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
+                            <option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
                         </select>
 
                         <input type="text" name="keyword">
@@ -108,4 +109,10 @@
     </section>
     
     <%@ include file="../include/footer.jsp" %>
+    
+    <script>
+    if('${msg}'== 'freeRegistSuccess'){
+    	alert('등록이 완료 되었습니다.');
+    }
+    </script>
 

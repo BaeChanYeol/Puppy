@@ -14,41 +14,45 @@
                 </div>
     
                 <div class="idFindform">
-                    <form action="" method="POST">
+                    <form action="<c:url value='/user/idFind'/>" method="POST" id="idFindForm">
                         <div class="clearfix">
                             <h5>생년월일</h5>
                             <div class="idFindform-wrap">
-                                <select name="year" id="">
-                                    <option value="">1994</option>
+                                <select name="year" id="selectYear">
+                                    <c:forEach var="i" begin="1920" end="2020">
+	                                	<option value="${i}년 ">${i}년</option>                            	                            	
+                            		</c:forEach>
                                 </select>
                             </div>
                             <div class="idFindform-wrap">
                                 <div class="idFindform-wrap-left">
-                                    <select name="month" id="">
-                                        <option value="">12</option>
+                                    <select name="manth" id="selectMonth">
+                                       <c:forEach var="i" begin="1" end="12">
+                                    	<option value="${i}월 ">${i}월</option>
+                                    </c:forEach>
                                     </select>
                                 </div>
                                 <div class="idFindform-wrap-right">
-                                    <select name="day" id="">
-                                        <option value="">27</option>
+                                    <select name="day" id="selectDay">
+                                        <c:forEach var="i" begin="1" end="31">
+                                    		<option value="${i}일 ">${i}일</option>
+                                    	</c:forEach>
                                     </select>
                                 </div>
                             </div>
+                            <input type="hidden" name="birth" id="selectBirth">
                         </div>
-                        <h5><label for="name">이름</label></h5>
-                        <input type="text" name="name" id="" placeholder="이름을 입력해주세요~">
-                        <span></span>
-                        <h5><label for="email">이메일</label></h5>
-                        <input type="text" name="email" id="email" placeholder="이메일형식에 맞게 입력해주세요~">
-                        <span></span>
-                    
+                        <h5><label for="selectName">이름</label></h5>
+                        <input type="text" name="name" id="selectName" placeholder="이름을 입력해주세요~">
+                        <h5><label for="selectemail">이메일</label></h5>
+                        <input type="text" name="email" id="selectEmail" placeholder="이메일형식에 맞게 입력해주세요~">
                     
                         <div class="idFind-bottom clearfix">
                             <div class="idFind-bottom1">
                                 <button type="submit" class="idFindBtn1">아이디 찾기</button>
                             </div>
                             <div class="idFind-bottom2">
-                                <button type="submit" class="idFindBtn2">취소하기</button>
+                                <button type="button" class="idFindBtn2" >취소하기</button>
                             </div>
                         </div>
                         
@@ -60,4 +64,32 @@
 
 <%@ include file="../include/footer.jsp" %>
 
+<script>
+	
+	
+	$('.idFindBtn1').click(function(e) {
+		e.preventDefault();
+		
+		if($('#selectName').val() == ''){
+			alert('이름은 필수 항목입니다.');
+			$('#selectName').focus();
+		}else if($('#selectEmail').val()==''){
+			alert('이메일은 필수 항목입니다.');
+			$('#selectEmail').focus();
+		}else{
+			const birth = $('#selectYear').val() +  $('#selectMonth').val() + $('#selectDay').val();
+			$('#selectBirth').val(birth);
+			$('#idFindForm').submit();
+		}
+	
+	});
+	
+	$('.idFindBtn2').click(function(e) {
+		e.preventDefault();
+		if(confirm('정말 취소하시겠습니까?')){
+			window.history.back();
+		}
+	});
+	
+</script>
 

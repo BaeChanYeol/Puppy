@@ -26,15 +26,15 @@
 	                <table>
 	                    <tr class="orderPagetrtop">
 	                        <td class="orderPagetd">이름</td>
-	                        <td>${users.name}</td>
+	                        <td>${login.name}</td>
 	                    </tr>
 	                    <tr>
 	                        <td class="orderPagetd">이메일</td>
-	                        <td>${users.email}</td>
+	                        <td>${login.email}</td>
 	                    </tr>
 	                    <tr class="orderPagetrbottom">
 	                        <td class="orderPagetd">휴대폰 번호</td>
-	                        <td id="ph">${users.phone}</td>
+	                        <td id="ph">${login.phone}</td>
 	                    </tr>
 	                </table>
 	            </div>
@@ -44,15 +44,15 @@
 	                <table>
 	                    <tr class="orderPagetrtop">
 	                        <td class="orderPagetd">이름</td>
-	                        <td>${users.name} <span class="order-basic">기본배송지</span></td>
+	                        <td>${login.name} <span class="order-basic">기본배송지</span></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="orderPagetd">배송주소</td>
-	                        <td id="addr"> ${users.addrBasic} ${users.addrDetail} </td> <!-- ${user.addrBasic + user.addrDetail} -->
+	                        <td id="addr"> ${login.addrBasic} ${login.addrDetail} </td> <!-- ${user.addrBasic + user.addrDetail} -->
 	                    </tr>
 	                    <tr>
 	                        <td class="orderPagetd">연락처</td>
-	                        <td id="pho">${users.phone}</td>
+	                        <td id="pho">${login.phone}</td>
 	                    </tr>
 	                    <tr class="orderPagetrbottom">
 	                        <td class="orderPagetd">배송 요청사항</td>
@@ -83,14 +83,17 @@
 	                    
 	                    
 	                    <c:forEach var = "vo" items="${orderList}" varStatus="st">
-		                    <tr class="orderPagetrbottom">
-		                        <td class="order_img"><img src="../img/snack1.jpg" alt="#"></td>
-		                        <td class="items">${vo.pname}</td>
-		                        <td>${vo.amount}개</td>
-		                        <td>${vo.price}원</td>
-		                    </tr>
-		                        <input type="hidden" id="part_sum${st.count}" name="part_sum" value="${vo.amount * vo.price}">
-		                        
+	                    	<%--  <c:if test="${ login.id == vo.writer }">  --%>
+	                    	
+			                    <tr class="orderPagetrbottom">
+			                        <td class="order_img"><img src="../img/snack1.jpg" alt="#"></td>
+			                        <td class="items">${vo.pname}</td>
+			                        <td>${vo.amount}개</td>
+			                        <td>${vo.price}원</td>
+			                    </tr>
+			                    <input type="hidden" id="part_sum${st.count}" name="part_sum" value="${vo.amount * vo.price}">
+		                        <input type="hidden" name="writer" value="${login.id}"> 
+		                     <%-- </c:if>  --%>
 						</c:forEach>
 	                </table>
 	              	<input type="hidden" id="length" value="${fn:length(orderList)}">
@@ -221,7 +224,7 @@
         };
         
         
-        var test = "<c:out value='${users.phone}' />";
+        var test = "<c:out value='${login.phone}' />";
         console.log(test);
         var testDate = test.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3");
         console.log(testDate);

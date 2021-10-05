@@ -2,6 +2,8 @@ package com.spring.puppy.user.mapper;
 
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.spring.puppy.command.UserVO;
 
 
@@ -24,5 +26,15 @@ public interface IUserMapper {
 		
 		//자동로그인 처리
 		UserVO getUserWithSessionId(String sessionId);
-	
+		
+		//아이디 찾기
+		String selectId(UserVO vo);
+		
+		
+		//회원탈퇴
+		void delete(String id);
+		
+		//비빌번호 변경
+		void changePassword(@Param("id") String id,@Param("newPw")String newPw);
+		
 }

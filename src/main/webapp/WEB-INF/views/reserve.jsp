@@ -22,7 +22,7 @@
                                 <img src="./img/phone.png" alt="call">
                             </div>
                             <div class="info_block">
-                                <h4>댕댕이 서울숲 캠퍼스</h4>
+                                <h4>똑독 유치원</h4>
                                 <p>1566-4508</p>
                             </div>
                         </li>
@@ -96,25 +96,25 @@
                                 <option value="#">스페셜케어</option>
                             </select>
                         </div>
-                        <label for="">체크인</label>
+                        <label for="checkIn">체크인</label>
                         <div class="reserve_input">
                             <input type="text" id="datepicker1" name="checkIn">
                         </div>
-                        <label for="">체크아웃</label>
+                        <label for="checkOut">체크아웃</label>
                         <div class="reserve_input">
                             <input type="text" id="datepicker2" name="checkOut">
                         </div>
-                        <label for="">반려견종</label>
+                        <label for="kinds">반려견종</label>
                         <div class="reserve_input">
                             <input type="text" id="" name="kinds">
                         </div>
-                        <label for="">반려견나이</label>
+                        <label for="dogAge">반려견나이</label>
                         <div class="reserve_input">
                             <input type="text" id="" name="dogAge">
                         </div>
-                        <label for="">기타</label>
+                        <label for="etc">기타</label>
                         <div class="reserve_input">
-                            <textarea name="etc" id=""
+                            <textarea name="etc" id="etc"
                                 placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등 자세한 사항을 작성해 주세요."></textarea>
                         </div>
                         <div class="reserve_input">

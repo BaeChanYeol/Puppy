@@ -23,6 +23,7 @@ CREATE SEQUENCE reserveboard_seq
     maxvalue 5000
     nocycle
     nocache;*/
+
 @Getter
 @Setter
 @ToString

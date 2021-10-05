@@ -67,8 +67,8 @@
 	</resultMap>
 	
 	<insert id="reviewRegist">
-		INSERT INTO reviewboard(revno, pno, content)
-		VALUES(reviewboard_seq.NEXTVAL, #{pno}, #{content})
+		INSERT INTO reviewboard(revno, pno, content, writer)
+		VALUES(reviewboard_seq.NEXTVAL, #{pno}, #{content}, #{writer})
 	</insert>
 	
 	<select id="getTotal" resultType="int">
@@ -97,8 +97,8 @@
 	
 	<!-- 상품 qna(pqna) 관련 -->
 	<insert id="pqnaRegist">
-		INSERT INTO productqna(pqno, pno, content)
-		VALUES(productqna_seq.NEXTVAL, #{pno}, #{content})
+		INSERT INTO productqna(pqno, pno, content, writer, pname)
+		VALUES(productqna_seq.NEXTVAL, #{pno}, #{content}, #{writer}, #{pname})
 	</insert>
 	
 	<select id="getpqTotal" resultType="int">
@@ -123,6 +123,48 @@
 		]]>
 		
 	</select>
+	
+	<select id="adminPQna" resultType="com.spring.puppy.command.ProductQnaVO">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM	
+				(
+				SELECT * FROM productqna
+				ORDER BY pqno DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{pageNum} - 1) * #{countPerPage}
+		AND rn <= #{pageNum} * #{countPerPage} 	
+		]]>
+		
+	</select>
+	
+	<select id="getAdminTotal" resultType="int">
+		SELECT COUNT(*) 
+		FROM productqna
+		
+	</select>
+	
+	<update id="registAnswer">
+		<!-- INSERT INTO productqna(answer)
+		VALUES(#{answer}, ) -->
+		<!-- WHERE pno =#{pno} -->
+		
+		
+		<!-- INSERT INTO productqna(SELECT answer from productqna WHERE pno=#{pno}) VALUES(#{answer}) -->
+		
+		UPDATE productqna
+		SET answer=#{answer}
+		WHERE pno=#{pno}
+	</update>
+	
+	
+	<select id="getAdminPqna" resultType="com.spring.puppy.command.ProductQnaVO">
+		SELECT * from productqna
+		WHERE pno=#{pno}
+		
+	</select>
 	 
 	
 	<select id="getContent"
@@ -134,25 +176,26 @@
 	
 	
 	<insert id="zzimRegist">
-		INSERT INTO zzim(zno, pno, pname, price)
-		VALUES(zzim_seq.NEXTVAL, #{pno}, #{pname}, #{price})
+		INSERT INTO zzim(zno, pno, pname, price, writer)
+		VALUES(zzim_seq.NEXTVAL, #{pno}, #{pname}, #{price}, #{writer})
 	</insert>
 	
 	<select id="zzimList" resultType="com.spring.puppy.command.ZzimVO">
 		SELECT * FROM zzim
+		WHERE writer=#{writer}
 		ORDER BY zno DESC
 	</select>
 	
 	<delete id="zzimdelete">
 		DELETE FROM zzim
-		WHERE pno = #{pno}
+		WHERE pno = #{pno} AND writer=#{writer}
 	</delete>
 	
 	
 	<select id="zzimCheck" resultType="int">
 		SELECT count(*) 
 		FROM zzim
-		WHERE pno = #{pno}
+		WHERE pno = #{pno} AND writer=#{writer}
 	</select>
 	
 	<update id="zzimModify">
@@ -170,23 +213,24 @@
 	<select id="cartCheck" resultType="int">
 		SELECT count(*) 
 		FROM basket 
-		WHERE pno = #{pno}
+		WHERE pno = #{pno} AND writer=#{writer}
 	</select>
 	
 	<insert id="regist">
-		INSERT INTO basket(jno, pname, price, pno, amount, opt)
+		INSERT INTO basket(jno, pname, price, pno, amount, opt, writer)
 		VALUES(basket_seq.NEXTVAL, 
 				(SELECT p.pname
 				FROM product p
        			WHERE p.pno=#{pno}), 
         		(SELECT p.price
 				FROM product p
-        		WHERE p.pno=#{pno}),#{pno}, #{amount}, #{opt})	
+        		WHERE p.pno=#{pno}),#{pno}, #{amount}, #{opt}, #{writer})	
     </insert>
 
 	<select id="cartList" resultType="com.spring.puppy.command.CartVO">
 		SELECT * FROM basket
-		ORDER BY jno DESC
+		WHERE writer = #{writer}
+		ORDER BY jno DESC 
 	</select>
 	
 	<!--  
@@ -199,20 +243,20 @@
 	
 	<delete id="delete">
 		DELETE FROM basket
-		WHERE pno = #{pno}
+		WHERE pno = #{pno} AND writer=#{writer}
 	</delete>
 	
     
     <select id="selectByPnum" resultType="com.spring.puppy.command.ProductVO">
     
     	SELECT * FROM product
-    	WHERE pno = #{pno}
+    	WHERE pno = #{pno} 
     
     </select>
     
     <insert id="orderRegist">
-		INSERT INTO orderboard(ono)
-		VALUES(order_seq.NEXTVAL)	
+		INSERT INTO orderboard(ono, writer)
+		VALUES(order_seq.NEXTVAL, #{writer})	
     </insert>
     
     <select id="getOrderno" resultType="int">
@@ -250,7 +294,7 @@
 	 -->
 	 
 	 <select id = "orderDateList" resultType="com.spring.puppy.command.OrderVO">
-	 	SELECT regdate, ono
+	 	SELECT regdate, ono, writer
 	 	FROM orderboard
 	 	ORDER BY ono DESC
 	 </select>
@@ -277,7 +321,7 @@
 	
 	<delete id="cartReset">
 		DELETE FROM basket
-		WHERE pno in (select o.pno from orderdetail o)
+		WHERE pno in (select o.pno from orderdetail o) AND writer=#{writer}
 	</delete>
 	
 	

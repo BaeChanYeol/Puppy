@@ -18,8 +18,8 @@
                         <h4>이용안내</h4>
                     </div>
                     <ul class="sitemap-map-block">
-                        <li><a href="#">이용안내</a></li>
-                        <li><a href="#">픽업서비스</a></li>
+                        <li><a href="<c:url value='/notice'/>">이용안내</a></li>
+                        <li><a href="<c:url value='/pickupService'/>">픽업서비스</a></li>
                     </ul>
                 </div>
                 <div class="sitemap-map-group">
@@ -27,11 +27,11 @@
                         <h4>주요서비스</h4>
                     </div>
                     <ul class="sitemap-map-block">
-                        <li><a href="#">호텔&데이케어</a></li>
-                        <li><a href="#">유치원</a></li>
-                        <li><a href="#">그루밍</a></li>
-                        <li><a href="#">스튜디오</a></li>
-                        <li><a href="#">메디컬센터</a></li>
+                        <li><a href="<c:url value='/service/hotel'/>">호텔&데이케어</a></li>
+                        <li><a href="<c:url value='/service/preschool'/>">유치원</a></li>
+                        <li><a href="<c:url value='/service/grooming'/>">그루밍</a></li>
+                        <li><a href="<c:url value='/service/studio'/>">스튜디오</a></li>
+                        <li><a href="<c:url value='/service/medicalCenter'/>">메디컬센터</a></li>
                 	</ul>
                 </div>
                 <div class="sitemap-map-group">
@@ -39,7 +39,7 @@
                         <h4>예약하기</h4>
                     </div>
                     <ul class="sitemap-map-block">
-                        <li><a href="#">예약하기</a></li>
+                        <li><a href="<c:url value='/reserve'/>">예약하기</a></li>
                     </ul>
                 </div>
                 <div class="sitemap-map-group">
@@ -47,9 +47,9 @@
                         <h4>애견샵</h4>
                     </div>
                     <ul class="sitemap-map-block">
-                        <li><a href="#">강아지용품</a></li>
-                        <li><a href="#">의료기기</a></li>
-                        <li><a href="#">간식</a></li>
+                        <li><a href="<c:url value='/product/items?type=i'/>">강아지용품</a></li>
+                        <li><a href="<c:url value='/product/items?type=m'/>">의료기기</a></li>
+                        <li><a href="<c:url value='/product/items?type=s'/>">간식</a></li>
                     </ul>
                 </div>
                 <div class="sitemap-map-group">
@@ -57,9 +57,9 @@
                         <h4>커뮤니티</h4>
                     </div>
                     <ul class="sitemap-map-block">
-                        <li><a href="#">Q&A</a></li>
-                        <li><a href="#">뽐내기게시판</a></li>
-                        <li><a href="#">자유게시판</a></li>
+                        <li><a href="<c:url value='/qnaBoard/qna'/>">Q&A</a></li>
+                        <li><a href="<c:url value='/board/boastboard'/>">뽐내기게시판</a></li>
+                        <li><a href="<c:url value='/board/freeboard'/>">자유게시판</a></li>
                     </ul>
                 </div>
                 <div class="sitemap-map-group">
@@ -67,7 +67,7 @@
                         <h4>전문진 소개</h4>
                     </div>
                     <ul class="sitemap-map-block">
-                        <li><a href="#">전문진소개</a></li>
+                        <li><a href="<c:url value='/professional'/>">전문진소개</a></li>
                     </ul>
                 </div>
             </div>

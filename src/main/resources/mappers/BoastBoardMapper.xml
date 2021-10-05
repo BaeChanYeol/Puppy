@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.spring.puppy.boastboard.mapper.IBoastBoardMapper">
+	
+	<sql id="search">
+      <if test="condition == 'title'">
+         WHERE title LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'content'">
+         WHERE content LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'writer'">
+         WHERE writer LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'titleContent'">
+         WHERE title LIKE '%'||#{keyword}||'%'
+         OR content LIKE '%'||#{keyword}||'%'
+      </if>
+   </sql>
+	
+	
+	<insert id="boastRegist">
+		INSERT INTO boastboard(bbno, title, writer, content, view_cnt, like_cnt, uploadPath, fileRealName, photoSize, fileLoca, fileExtension)
+		VALUES(boastboard_seq.NEXTVAL, #{title}, #{writer}, #{content}, #{view_cnt}, #{like_cnt}, #{uploadPath}, #{fileRealName}, #{photoSize}, #{fileLoca}, #{fileExtension})
+	</insert>
+	
+	<insert id="fileRegist">
+		INSERT INTO boastfile(bbno, uploadPath, fileRealName, fileLoca, fileExtension)
+		VALUES(#{bbno}, #{uploadPath}, #{fileRealName}, #{fileLoca}, #{fileExtension})
+	</insert>
+	
+	<update id="likeup">
+		UPDATE boastboard SET like_cnt = like_cnt + 1
+		WHERE bbno = #{bbno}
+	</update>
+	<update id="likedown">
+		UPDATE boastboard SET like_cnt = like_cnt - 1
+		WHERE bbno = #{bbno}
+	</update>
+	
+	<!-- 조회수 올리기 -->
+	<update id="updateView_cnt">
+		UPDATE boastboard SET view_cnt = view_cnt + 1
+		WHERE bbno = #{bbno}
+	</update>
+	
+	<!-- 
+	<select id="getList"
+		resultType="com.spring.puppy.command.BoastBoardVO">
+		SELECT * FROM boastboard
+		ORDER BY bbno DESC
+			
+	</select>
+	 -->
+	<select id="getContent" resultType="com.spring.puppy.command.BoastBoardVO">
+		SELECT * FROM boastboard
+		WHERE bbno = #{bbno}
+	</select>
+	
+	<select id="getFile" resultType="com.spring.puppy.command.FileVO">
+		SELECT * FROM boastfile
+		WHERE bbno = #{bbno}
+	</select>
+		
+	<select id="getList" resultType="com.spring.puppy.command.BoastBoardVO">
+      SELECT * FROM
+         (
+         SELECT ROWNUM as rn, tbl.* FROM
+            (
+            SELECT * FROM boastboard          
+		      <include refid="search" />
+            ORDER BY bbno DESC
+            ) tbl
+         )
+      <![CDATA[
+      WHERE rn > (#{pageNum} - 1) * #{countPerPage}
+      AND rn <= #{pageNum} * #{countPerPage}
+      ]]>
+   </select>
+	
+	<select id="getTotal" resultType="int">
+      SELECT COUNT(*)
+      FROM boastboard
+      <include refid="search" />
+   </select>
+	
+	<select id="getBbno" resultType="int">
+		SELECT boastboard_seq.CURRVAL FROM dual
+	</select>
+	
+	<!--  
+	<delete id="delete">
+		DELETE FROM boastboard
+		WHERE bbno = #{bbno}
+	</delete>
+	-->
+	<insert id="likeSave">
+		INSERT INTO user_like VALUES(#{id}, #{bbno})
+	</insert>
+	
+	<select id="likeCheck" resultType="int">
+		SELECT COUNT(*) FROM user_like WHERE id=#{id} AND bbno=#{bbno}
+	</select>
+	
+	<delete id="likeDelete">
+		DELETE FROM user_like WHERE id=#{id} AND bbno=#{bbno}
+	</delete>
+	
+</mapper>

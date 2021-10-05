@@ -1,28 +1,28 @@
 /*======= 웹 폰트 선언 =======*/
 @import
-	url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap')
-	;
+   url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap')
+   ;
 
 /* 디자인 시작 시 기본적으로 선언하는 문법 */
 * {
-	/* 기본 선언: 마진, 패딩 0, 요소 크기를 border를 기준으로.*/
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+   /* 기본 선언: 마진, 패딩 0, 요소 크기를 border를 기준으로.*/
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
 }
 
 body, html {
-	width: 100%;
-	min-width: 320px;
-	font-family: "Nanum Gothic", sans-serif;
+   width: 100%;
+   min-width: 320px;
+   font-family: "Nanum Gothic", sans-serif;
 }
 
 img {
-	max-width: 100%; /*사이즈가 변해도 넓이를 유지*/
-	height: auto; /* 사이즈가 변해도 비율을 유지 */
+   max-width: 100%; /*사이즈가 변해도 넓이를 유지*/
+   height: auto; /* 사이즈가 변해도 비율을 유지 */
 }
 button{
-	cursor: pointer;
+   cursor: pointer;
 }
 /*
 input, textarea, button, select {
@@ -35,38 +35,40 @@ input, textarea, button, select {
 }
 */
 ul, ol, dl, li {
-	/*리스트 스타일은 사용할 일이 많지 않아요.*/
-	list-style: none;
+   /*리스트 스타일은 사용할 일이 많지 않아요.*/
+   list-style: none;
 }
 
 .btn {
-	border-radius: 0px;
+   border-radius: 0px;
 }
 
 a {
-	text-decoration: none;
+   text-decoration: none;
+   color : black;
 }
+
 
 /* 공통 스타일 */
 .clearfix::after {
-	content: '';
-	display: block;
-	clear: both;
+   content: '';
+   display: block;
+   clear: both;
 }
 
 section {
-	margin-top: 290px;
+   margin-top: 290px;
 }
 
 .wrap {
-	width: 1140px;
-	height: auto;
-	margin: 0 auto;
+   width: 1140px;
+   height: auto;
+   margin: 0 auto;
 }
 
 .main-container {
-	width: 100%;
-	text-align: center;
+   width: 100%;
+   text-align: center;
 }
 
 table{
@@ -90,599 +92,611 @@ td {
 }
 
 .title {
-	padding-top:100px;	
-	padding-bottom:80px;	
+   padding-top:100px;   
+   padding-bottom:80px;   
 }
 
 
 /* 해더 */
 .header {
-	position: fixed;
-	height: 290px;
-	top: 0;
-	width: 100%;
-	background: rgba(255, 255, 255, 0.8);
-	border-bottom: 1px solid #c6c6c6;
-	box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.1);
-	z-index: 10;
+   position: fixed;
+   height: 290px;
+   top: 0;
+   width: 100%;
+   background: rgba(255, 255, 255, 0.8);
+   border-bottom: 1px solid #c6c6c6;
+   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.1);
+   z-index: 10;
 }
 
 .header_top {
-	height: 50px;
-	color: #996633;
-	font-size: 12px;
-	font-weight: 600;
-	line-height: 30px;
+   height: 50px;
+   color: #996633;
+   font-size: 12px;
+   font-weight: 600;
+   line-height: 30px;
 }
 
 .header_top a {
-	color: #996633;
+   color: #996633;
 }
 
 .header_top a:hover {
-	color: #000;
+   color: #000;
 }
 
 .header_top_area {
-	position: relative;
-	width: 70%;
-	margin: 0 auto;
-	text-align: center;
+   position: relative;
+   width: 70%;
+   margin: 0 auto;
+   text-align: center;
 }
 
 .header_top_area .hright {
-	position: absolute;
-	right: 0;
-	top: 10px;
+   position: absolute;
+   right: 0;
+   top: 10px;
 }
 
 .header_top_area .hright a {
-	display: inline-block;
-	padding: 0px 10px;
+   display: inline-block;
+   padding: 0px 10px;
 }
 
 .header_top_area .hleft {
-	position: absolute;
-	left: 0;
-	top: 10px;
+   position: absolute;
+   left: 0;
+   top: 10px;
 }
 
 .header_top_area .hleft a {
-	display: inline-block;
-	width: 25px;
-	margin-right: 3px;
+   display: inline-block;
+   width: 25px;
+   margin-right: 3px;
 }
 
 .logo {
-	width: 350px;
-	margin: 0 auto;
-	padding: 20px 0 40px;
-	text-align: center;
+   width: 350px;
+   margin: 0 auto;
+   padding: 20px 0 40px;
+   text-align: center;
 }
 
 .menu_area {
-	position: relative;
-	width: 1080px;
-	margin: 0 auto;
+   position: relative;
+   width: 1080px;
+   margin: 0 auto;
 }
 
 .menu_area .menu {
-	display: table;
-	margin: 0 auto;
+   display: table;
+   margin: 0 auto;
 }
 
 .menu .menu-li {
-	float: left;
+   float: left;
 }
 
 .menu .menu-li .menu-li-a {
-	display: inline-block;
-	padding-bottom: 20px;
-	margin: 5px 26px 0px;
-	color: #555;
-	font-size: 20px;
-	font-weight: 600;
+   display: inline-block;
+   padding-bottom: 20px;
+   margin: 5px 26px 0px;
+   color: #555;
+   font-size: 20px;
+   font-weight: 600;
 }
 
 .menu .menu-li .menu-li-a:hover {
-	padding-bottom: 10px;
-	color: #996633;
-	border-bottom: 3px solid #996633;
+   padding-bottom: 10px;
+   color: #996633;
+   border-bottom: 3px solid #996633;
 }
 
 .second {
-	position: absolute;
-	top: 90%;
-	display: none;
-	z-index: 10;
+   position: absolute;
+   top: 90%;
+   display: none;
+   z-index: 10;
 }
 
 .menu li:hover .second {
-	display: block;
-	background-color: rgba(255, 255, 255, 0.9);
+   display: block;
+   background-color: rgba(255, 255, 255, 0.9);
 }
 
 .menu {
-	display: inline-block;
-	margin-top: 10px;
-	vertical-align: top;
+   display: inline-block;
+   margin-top: 10px;
+   vertical-align: top;
 }
 
 .menu .second a {
-	display: block;
-	font-size: 14px;
-	color: #555;
-	font-weight: 600;
-	line-height: 27px;
-	width: 100px;
-	height: 40px;
-	margin: 5px 20px;
+   display: block;
+   font-size: 14px;
+   color: #555;
+   font-weight: 600;
+   line-height: 27px;
+   width: 100px;
+   height: 40px;
+   margin: 5px 20px;
 }
 
 .menu .second a:hover {
-	color: #996633;
-	border-bottom: 3px solid #996633;
+   color: #996633;
+   border-bottom: 3px solid #996633;
 }
 
 /* 바디 */
 section {
-	margin-top: 290px;
-	width: 100%;
+   margin-top: 290px;
+   width: 100%;
 }
 
 .wrap {
-	width: 1140px;
-	margin: 0 auto;
+   width: 1140px;
+   margin: 0 auto;
 }
 
 .main-container {
-	width: 100%;
+   width: 100%;
 }
 
 .main-h2 {
-	padding: 150px;
-	font-size: 35px;
-	color: #996633;
+   padding: 150px;
+   font-size: 35px;
+   color: #996633;
 }
 
 #main-menu {
-	margin: 100px auto 150px;
-	text-align: center;
+   margin: 100px auto 150px;
+   text-align: center;
 }
 
 #main-menu ul {
-	width: 100%;
+   width: 100%;
 }
 
 #main-menu li {
-	display: inline-block;
-	width: 145px;
-	margin: 20px;
+   display: inline-block;
+   width: 165px;
+   margin: 20px;
 }
 
 #main-menu li a {
-	color: black;
+   color: black;
 }
 
 #main-menu li a p {
-	font-size: 15px;
-	padding-top: 5px;
+   font-size: 15px;
+   padding-top: 5px;
 }
 
 #main-menu li a:hover {
-	color: #996633;
-	text-decoration: underline;
+   color: #996633;
+   text-decoration: underline;
 }
 
 #main-menu li img {
-	margin-bottom: 30px;
+   margin-bottom: 30px;
 }
 
 #main-products {
-	width: 100%;
-	text-align: center;
-	margin: 50px auto;
-	background: rgb(240, 240, 240);
-	padding-bottom: 80px;
+   width: 100%;
+   text-align: center;
+   margin: 50px auto;
+   background: rgb(240, 240, 240);
+   padding-bottom: 80px;
 }
 
 #main-products li {
-	display: inline-block;
-	margin: 0 40px 50px 40px;
+   display: inline-block;
+   margin: 0 40px 50px 40px;
 }
 
 #main-products li a {
-	color: #000;
+   color: #000;
 }
 
 #main-products li a:hover {
-	color: #996633;
+   color: #996633;
 }
 
 #main-products li img {
-	padding-bottom: 10px;
+   padding-bottom: 10px;
 }
 
 #main-products li .align {
-	text-align: left;
+   text-align: left;
 }
 
 #main-products li .p-title {
-	font-size: 20px;
-	padding-bottom: 5px;
+   font-size: 20px;
+   padding-bottom: 5px;
 }
 
 #main-products li .p-price {
-	font-size: 18px;
-	font-weight: bold;
-	color: #636363;
+   font-size: 18px;
+   font-weight: bold;
+   color: #636363;
 }
 
 #main-notice {
-	margin: 100px auto;
-	text-align: center;
+   margin: 100px auto;
+   text-align: center;
 }
 
 #main-notice .main-h2 {
-	padding-bottom: 50px;
+   padding-bottom: 50px;
 }
 
 #main-notice .no-p {
-	font-size: 23px;
-	padding-bottom: 100px;
-	color: #555;
+   font-size: 23px;
+   padding-bottom: 100px;
+   color: #555;
 }
 
 #main-notice ul {
-	width: 100%;
-	margin: 50px auto;
+   width: 100%;
+   margin: 50px auto;
 }
 
 #main-notice li {
-	display: inline-block;
-	width: 350px;
-	margin: 0 10px 20px;
+   display: inline-block;
+   width: 350px;
+   margin: 0 10px 20px;
 }
 
 #main-notice li p {
-	display: block;
-	font-size: 15px;
-	margin-top: 10px;
-	height: 80px;
-	color: #000;
+   display: block;
+   font-size: 15px;
+   margin-top: 10px;
+   height: 80px;
+   color: #000;
 }
 
 #main-notice li img {
-	border: 1px #996633 solid;
-	width: 300px;
+   border: 1px #996633 solid;
+   width: 300px;
 }
 
 /* 푸터 */
 footer {
-	background-color: #5c5c5c;
-	text-align: center;
+   background-color: #5c5c5c;
+   text-align: center;
 }
 
 .footer-container {
-	text-align: left;
-	color: white;
-	padding: 20px 0;
-	display: inline-block;
-	width: 1140px;
+   text-align: left;
+   color: white;
+   padding: 20px 0;
+   display: inline-block;
+   width: 1140px;
 }
 
 .footer-logo {
-	margin: 50px 30px 0px;
-	width: 120px;
-	float: left;
+   margin: 50px 30px 0px;
+   width: 120px;
+   float: left;
 }
 
 .address {
-	float: left;
-	padding: 30px;
-	margin-left: 60px;
+   float: left;
+   padding: 30px;
+   margin-left: 60px;
 }
 
 .about {
-	padding: 30px;
-	float: left;
-	margin-left: 280px;
+   padding: 30px;
+   float: left;
+   margin-left: 280px;
 }
 
 .f-title {
-	padding-bottom: 15px;
-	color: rgb(161, 160, 160);
-	font-size: 14px;
+   padding-bottom: 15px;
+   color: rgb(161, 160, 160);
+   font-size: 14px;
 }
 
 .explain {
-	font-size: 12px;
+   font-size: 12px;
 }
 
 #copyrights {
-	width: 100%;
-	text-align: center;
-	background: #000;
-	padding: 20px 0;
-	color: #fff;
-	font-size: 12px;
+   width: 100%;
+   text-align: center;
+   background: #000;
+   padding: 20px 0;
+   color: #fff;
+   font-size: 12px;
 }
 
 .f-size {
-	font-size: 16px;
+   font-size: 16px;
 }
 
 
 /* 슬라이더 */
 #main-wrap {
-	width: 100%;
-	position: relative;
-	margin: 0 auto;
+   width: 100%;
+   position: relative;
+   margin: 0 auto;
 }
 
-.btn button {
-	font-size: 80px;
-	border: none;
-	background: none;
-	color: #996633;
-	cursor: pointer;
-}
-
-.prev {
-	position: absolute;
-	top: 35%;
-	left: 10%
-}
-
-.next {
-	position: absolute;
-	top: 35%;
-	right: 10%;
-}
 
 #banner {
-	width: 100%;
-	overflow: hidden;
-	height: 714px;
-	position: relative;
+   width: 100%;
+   overflow: hidden;
+   height: 714px;
+   position: relative;
 }
 
 #banner .cnt {
-	width: 100%;
-	position: relative;
-	margin: 0 auto;
-	overflow: hidden;
-	height: 714px;
+   width: 100%;
+   position: relative;
+   margin: 0 auto;
+   overflow: hidden;
+   height: 714px;
 }
 
 .cnt ul {
-	float: left;
-	position: relative;
-	width: 100%;
-	height: 714px;
+   float: left;
+   position: relative;
+   width: 100%;
+   height: 714px;
 }
 
 .cnt li {
-	width: 100%;
-	position: absolute;
-	height: 714px;
+   width: 100%;
+   position: absolute;
+   height: 714px;
 }
 
 .cnt .cnt_0 {
-	left: 0px;
+   left: 0px;
 }
 
 .cnt .cnt_1 {
-	left: 100%;
+   left: 100%;
 }
 
 .cnt .cnt_2 {
-	left: 200%;
+   left: 200%;
 }
 
 .cnt .cnt_3 {
-	left: 300%;
+   left: 300%;
+}
+.banner-btn {
+   position: absolute;
+   top:-10px;
+   width: 100%;
+   height: inherit;
+}
+.banner-btn .banner-btn-position {
+   position: relative;
+   margin: 0 auto;
+   width: 1140px;
+   height: inherit;
+}
+
+.btn button {
+   font-size: 80px;
+   border: none;
+   background: none;
+   color: #996633;
+   cursor: pointer;
+   position: absolute;   
+}
+
+.prev {
+   top: 250px;
+   left: -50px;
+}
+
+.next {
+   top: 250px;
+   right: -50px;
 }
 
 #list_num {
-	position: absolute;
-	top: 70%;
-	left: 45%;
+   position: absolute;
+   bottom: 10%;
+    left: 45%;
 }
 
 #list_num .btn_brown {
-	width: 120px;
-	height: 20px;
+   width: 120px;
+   height: 20px;
 }
 
 #list_num .btn_brown li {
-	float: left;
-	width: 20px;
-	height: 20px;
-	background-color: #fff;
-	border-radius: 10px;
-	margin-left: 10px;
-	cursor: pointer;
+   float: left;
+   width: 20px;
+   height: 20px;
+   background-color: #ccc;
+   border-radius: 10px;
+   margin-left: 10px;
+   cursor: pointer;
 }
 
 #list_num .btn_brown li a {
-	display: block;
+   display: block;
 }
 
 #list_num ul li.on {
-	background-color: #417dd6;
+   background-color: #417dd6;
 }
 
 /*======= 예약안내/이용안내 페이지 =======*/
 .reserve-title {
-	padding-top: 120px;
-	line-height: 40px;
-	margin-bottom: 50px;
+   padding-top: 120px;
+   line-height: 40px;
+   margin-bottom: 50px;
 }
 
 .mainBody {
-	text-align: left;
-	padding-bottom: 100px;
+   text-align: left;
+   padding-bottom: 100px;
 }
 
 .left, .right {
-	width: 49%;
+   width: 49%;
 }
 
 .left {
-	float: left;
+   float: left;
 }
 
 .right {
-	float: right;
-	padding-left: 20px;
+   float: right;
+   padding-left: 20px;
 }
 
 .list-group {
-	border: 1px #996633 solid;
-	font-size: 14px;
+   border: 1px #996633 solid;
+   font-size: 14px;
 }
 
 .list-group-item {
-	border-bottom: 1px #996633 solid;
-	padding: 1em;
-	line-height: 20px;
+   border-bottom: 1px #996633 solid;
+   padding: 1em;
+   line-height: 20px;
 }
 
 .list-group-item:last-child {
-	border-bottom: none;
+   border-bottom: none;
 }
 
 .list-group-item img {
-	width: 24px;
-	padding-right: 5px;
+   width: 24px;
+   padding-right: 5px;
 }
 
 .list-group-item .pick-margin {
-	margin: 10px 5px;
+   margin: 10px 5px;
 }
 
 .info {
-	margin-bottom: 30px;
-	margin-top: 30px;
+   margin-bottom: 30px;
+   margin-top: 30px;
 }
 
 .noti-info {
-	margin: 29px 0;
+   margin: 29px 0;
 }
 
 .reserve_form input, .reserve_form select {
-	width: 100%;
-	padding-left: 5px;
+   width: 100%;
+   padding-left: 5px;
 }
 
 .reserve_form input, .reserve_form select {
-	height: 30px;
+   height: 30px;
 }
 
 .reserve_form textarea {
-	height: 170px;
-	padding: 5px;
-	width: 100%;
+   height: 170px;
+   padding: 5px;
+   width: 100%;
 }
 
 .reserve_btn {
-	width: 100%;
-	background-color: #996633;
-	border: 0px;
-	border-radius: 5px;
-	height: 40px;
-	font-weight: bold;
-	color: #fff;
+   width: 100%;
+   background-color: #996633;
+   border: 0px;
+   border-radius: 5px;
+   height: 40px;
+   font-weight: bold;
+   color: #fff;
 }
 
 .reserve_input {
-	margin-top: 10px;
-	margin-bottom: 30px;
+   margin-top: 10px;
+   margin-bottom: 30px;
 }
 
 .img_block {
-	float: left;
-	margin-right: 20px;
+   float: left;
+   margin-right: 20px;
 }
 
 .img_block img {
-	width: 65px;
+   width: 65px;
 }
 
 .info_block {
-	float: left;
-	margin-left: 10px;
-	width: 75%;
+   float: left;
+   margin-left: 10px;
+   width: 75%;
 }
 
 .notice-text {
-	line-height: 30px;
-	float: left;
-	text-align: left;
-	padding-bottom: 30px;
+   line-height: 30px;
+   float: left;
+   text-align: left;
+   padding-bottom: 30px;
 }
 
 .title>h2 {
-	font-size: 30px;
+   font-size: 30px;
 }
 
 .info_block>h3 {
-	font-weight: bold;
-	font-size: 1.5rem;
+   font-weight: bold;
+   font-size: 1.5rem;
 }
 
 .f-left {
-	float: left;
+   float: left;
 }
 
 .list-group {
-	border: 1px #996633 solid;
-	text-align: left;
+   border: 1px #996633 solid;
+   text-align: left;
 }
 
 .list-group-item:last-child {
-	border-bottom: 0px;
-	padding: 1em;
+   border-bottom: 0px;
+   padding: 1em;
 }
 
 
 /*================ 픽업서비스 ==================*/
 .pick-title {
-	width: 1140px;
-	margin: 0 auto;
-	text-align: center;
-	line-height: 40px;
-	padding: 100px 0 50px;
+   width: 1140px;
+   margin: 0 auto;
+   text-align: center;
+   line-height: 40px;
+   padding: 100px 0 50px;
 }
 
 .list-group-item {
-	border-bottom: 1px #996633 solid;
-	padding: 1em;
+   border-bottom: 1px #996633 solid;
+   padding: 1em;
 }
 
 .pick-title h2 {
-	font-size:30px;
-	padding-bottom: 10px;
+   font-size:30px;
+   padding-bottom: 10px;
 }
 .pick-title p {
-	font-size:20px;
-	color: #666;
+   font-size:20px;
+   color: #666;
 }
 
 .info_block h4 {
-	font-size: 20px;
-	font-weight: bold;
-	padding-bottom: 0.5em;
+   font-size: 20px;
+   font-weight: bold;
+   padding-bottom: 0.5em;
 }
 
 .all {
-	width: 70%;
-	margin: 0 auto;
+   width: 70%;
+   margin: 0 auto;
 }
 
 .reservation {
-	padding-left: 5px;
+   padding-left: 5px;
 }
 /*======= 서비스 - 그루밍 페이지, 메디컬센터,스튜디오, 호텔 =======*/
 
@@ -850,462 +864,467 @@ footer {
 
 /*======= 전문진 소개 페이지 =======*/
 .comment {
-	padding-top: 50px;
-	font-size: 25px;
-	font-weight: bold;
-	margin-bottom: 130px;
-	color: #996633;
+   padding-top: 100px;
+   font-size: 25px;
+   font-weight: bold;
+   margin-bottom: 130px;
+   color: #996633;
 }
 
 .person {
-	margin: 80px auto;
+   margin: 80px auto;
 }
 
 .person img {
-	float: left;
-	width: 45%;
-	height: auto;
-	padding-right: 50px;
+   float: left;
+   width: 45%;
+   height: auto;
+   padding-right: 50px;
 }
 
 .person h3 {
-	font-weight: bold;
-	width: 180px;
-	text-align: left;
-	margin-bottom: 30px;
-	font-size: 20px;
-	line-height: 28px;
-	border-left: #996633 3px solid;
-	padding-left: 10px;
+   font-weight: bold;
+   width: 180px;
+   text-align: left;
+   margin-bottom: 30px;
+   font-size: 20px;
+   line-height: 28px;
+   border-left: #996633 3px solid;
+   padding-left: 10px;
 }
 
 .person ul {
-	padding-bottom: 20px;
-	margin-left: 20px;
-	float: right;
-	width: 50%;
-	border-top: 1px #996633 solid;
+   padding-bottom: 20px;
+   margin-left: 20px;
+   float: right;
+   width: 50%;
+   border-top: 1px #996633 solid;
 }
 
 .person ul li {
-	text-align: left;
-	height: 50px;
-	border: 1px #996633 solid;
-	border-top: none;
-	padding: 15px 20px;
+   text-align: left;
+   height: 50px;
+   border: 1px #996633 solid;
+   border-top: none;
+   padding: 15px 20px;
 }
 
 ;
 
 /*================사이트 맵====================*/
 .sitemap-title {
-	margin-top: 100px;
+   margin-top: 100px;
 }
 
 .sitemap-title h2 {
-	font-size: 30px;
-	font-weight: bold;
+   font-size: 30px;
+   font-weight: bold;
 }
 .sitemap-map-group {
-	margin-top: 100px;
-	float: left;
-	width: 16.6%;
-	height: 500px;
+   margin-top: 100px;
+   float: left;
+   width: 16.6%;
+   height: 500px;
 }
 
 .sitemap-map-group-item {
-	margin: 5px 20px;
-	padding-top: 15px;
-	text-align: left;
-	border-top: 10px #996633 solid;
-	color: #996633;
-	font-weight: bolder;
+   margin: 5px 20px;
+   padding-top: 15px;
+   text-align: left;
+   border-top: 10px #996633 solid;
+   color: #996633;
+   font-weight: bolder;
 }
 
 .sitemap-map-group-item h4 {
-	font-size: 1.2rem;
+   font-size: 1.2rem;
 }
 
 .sitemap-map-block {
-	border-top: none;
-	margin: 5px 20px;
-	padding-top: 30px;
-	height: 300px;
-	line-height: 3em;
-	text-align: left;
+   border-top: none;
+   margin: 5px 20px;
+   padding-top: 30px;
+   height: 300px;
+   line-height: 3em;
+   text-align: left;
 }
 
 .sitemap-map-block li a {
-	color: #000;
+   color: #000;
 }
 
 .sitemap-map-block li a:hover {
-	color: #996633;
+   color: #996633;
 }
 
 /*======= QnA 페이지 =======*/
 .FAQ {
-	text-align: left;
-	height: 100%;
+   text-align: left;
+   height: 100%;
 }
 
 .FAQ .list ul {
-	padding-left: 20px;
+   padding-left: 20px;
 }
 
 .FAQ .question {
-	font-size: 18px;
-	height: 50px;
-	border-bottom: #996633 1px solid;
-	padding: 14px 5px;
+   font-size: 18px;
+   height: 50px;
+   border-bottom: #996633 1px solid;
+   padding: 14px 5px;
 }
 
 .FAQ .answer {
-	display: none;
-	font-size: 18px;
-	height: 50px;
-	padding: 14px 20px;
+   display: none;
+   font-size: 18px;
+   height: 50px;
+   padding: 14px 20px;
 }
 
 .personal {
-	padding-top: 50px;
-	text-align: left;
+   padding-top: 50px;
+   text-align: left;
 }
 
 .personal p {
-	font-size: 17px;
-	padding-bottom: 10px;
-	padding-left: 20px;
+   font-size: 17px;
+   padding-bottom: 10px;
+   padding-left: 20px;
 }
 
 /*======= 공동구매 - 강아지용품 =======*/
 .product {
-	margin-top: 50px;
-	margin-bottom: 50px;
-	text-align: left;
+   margin-top: 50px;
+   margin-bottom: 50px;
+   text-align: left;
 }
 
 .item {
-	display: inline-block;
-	width: 250px;
-	margin: 15px;
+   display: inline-block;
+   width: 250px;
+   margin: 15px;
 }
 
 .item .align {
-	text-align: left;
+   text-align: left;
 }
 
 .item .category {
-	color: #996633;
-	font-size: 15px;
-	margin: 10px 0;
-	font-weight: bold;
+   color: #996633;
+   font-size: 15px;
+   margin: 10px 0;
+   font-weight: bold;
 }
 
 .item .p-title {
-	font-size: 18px;
-	margin-bottom: 5px;
-	font-weight: 500;
+   font-size: 18px;
+   margin-bottom: 5px;
+   font-weight: 500;
 }
 
 .item .p-price {
-	font-weight: 800;
-	font-size: 15px;
+   font-weight: 800;
+   font-size: 15px;
 }
 
 .item .p-price .cost {
-	font-weight: 500;
-	font-size: 13px;
-	padding-left: 10px;
-	color: grey;
-	text-decoration: line-through;
+   font-weight: 500;
+   font-size: 13px;
+   padding-left: 10px;
+   color: grey;
+   text-decoration: line-through;
 }
 
 .item a {
-	color: #000;
+   color: #000;
 }
 
 .item a:hover .p-title {
-	color: #996633;
+   color: #996633;
 }
 
 .item img {
-	width: 250px;
-	height: 250px;
-	padding-bottom: 15px;
+   width: 250px;
+   height: 250px;
+   padding-bottom: 15px;
 }
 
 .search {
-	float: right;
-	padding-bottom: 30px;
+   float: right;
+   padding-bottom: 30px;
 }
 
 /*==================== 뽐내기게시판 =======================*/
 #boast-products {
-	text-align: center;
-	margin-top: 100px;
-	padding-bottom: 80px;
+   text-align: center;
+   margin-top: 100px;
+   padding-bottom: 80px;
 }
 
 #boast-products h2 {
-	padding: 50px;
-	font-size: 35px;
-	color: #996633;
+   padding: 50px;
+   font-size: 35px;
+   color: #996633;
 }
 
 #boast-products li {
-	display: inline-block;
-	width: 350px;
-	height: 400px;
-	margin: 30px 10px;
-	position: relative;
+   display: inline-block;
+   width: 350px;
+   height: 400px;
+   margin: 30px 10px;
+   position: relative;
 }
 
 #boast-products li .hover {
-	display: none;
-	position: absolute;
-	top: 0px;
-	left: 25px;
-	height: 300px;
-	width: 300px;
-	background-color: rgba(153, 102, 51, 0.6);
+   display: none;
+   position: absolute;
+   top: 0px;
+   left: 25px;
+   height: 300px;
+   width: 300px;
+   background-color: rgba(153, 102, 51, 0.6);
 }
 
 #boast-products li .hover img {
-	width: 22px;
+   width: 22px;
 }
 
 #boast-products li .hover span {
-	font-size: 20px;
-	font-weight: bold;
-	color: #fff;
+   font-size: 20px;
+   font-weight: bold;
+   color: #fff;
 }
 
 #boast-products li .hover .span-left {
-	position: absolute;
-	top: 48%;
-	left: 40%;
+   position: absolute;
+   top: 48%;
+   left: 40%;
 }
 
 #boast-products li .hover .span-right {
-	position: absolute;
-	top: 48%;
-	left: 65%;
+   position: absolute;
+   top: 48%;
+   left: 65%;
 }
 
 #boast-products li .hover .hover-left {
-	position: absolute;
-	top: 48%;
-	left: 30%;
+   position: absolute;
+   top: 48%;
+   left: 30%;
 }
 
 #boast-products li .hover .hover-right {
-	position: absolute;
-	top: 48%;
-	left: 55%;
+   position: absolute;
+   top: 48%;
+   left: 55%;
 }
 
 #boast-products li a {
-	color: #000;
+   color: #000;
 }
 
 #boast-products li a:hover {
-	color: #996633;
+   color: #996633;
 }
 
 #boast-products li .boastimg {
-	height: 300px;
-	width: 300px;
-	aspect-ratio: auto 1/1;
+   height: 300px;
+   width: 300px;
+   aspect-ratio: auto 1/1;
 }
 
 #boast-products li .align {
-	text-align: left;
-	margin: 0 auto;
+   text-align: left;
+   margin: 0 auto;
 }
 
 #boast-products li .p-title {
-	padding-top: 10px;
-	font-size: 18px;
-	width: 300px;
-	height: 50px;
+   padding-top: 10px;
+   font-size: 18px;
+   width: 300px;
+   height: 50px;
 }
 
 #boast-products li .p-price {
-	font-size: 15px;
-	font-weight: bold;
-	color: #636363;
-	width: 300px;
-	height: 20px;
-	margin-top: 5px;
+   font-size: 15px;
+   font-weight: bold;
+   color: #636363;
+   width: 300px;
+   height: 20px;
+   margin-top: 5px;
 }
 
 #boast-products li .like {
-	text-align: left;
-	margin-left: 25px;
-	margin-top: 5px;
+   text-align: left;
+   margin-left: 25px;
+   margin-top: 5px;
 }
 
 #boast-products li .num {
-	padding-left: 5px;
+   padding-left: 5px;
 }
 
 .boast-paging {
-	margin: 0 auto;
-	text-align: center;
+   margin: 0 auto;
+   text-align: center;
 }
 
 .boast-page {
-	display: inline;
+   display: inline;
 }
 
 .boast-write-btn {
-	width: 120px;
-	height: 30px;
-	float: right;
-	margin-right: 45px;
-	margin-bottom: 20px;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
+   width: 120px;
+   height: 30px;
+   float: right;
+   margin-right: 45px;
+   margin-bottom: 20px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
+   line-height: 28px;
 }
 
 .boast-paging button {
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
-	padding: 3px 5px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
+   padding: 3px 5px;
 }
 
 .boast-comment-btn {
-	width: 30px;
-	height: 30px;
-	float: right;
-	border: white;
-	margin-right: 5px;
+   width: 30px;
+   height: 30px;
+   float: right;
+   border: white;
+   margin-right: 5px;
 }
 
 .boast-like-btn {
-	width: 35px;
-	height: 30px;
-	float: right;
-	border: white;
+   width: 35px;
+   height: 30px;
+   float: right;
+   border: white;
 }
 
 /*=========== 자유게시판 ==============*/
 .freeboard-title {
-	font-size: 25px;
-	color: #996633;
+   font-size: 25px;
+   color: #996633;
+   padding-top: 70px;
 }
 
 .freeboard-sort {
-	text-align: right;
-	margin: 100px auto 0;
+   text-align: right;
+   margin: 100px auto 0;
 }
 
 .freeboard-list {
-	margin: 20px auto 0;
+   margin: 20px auto 0;
 }
 
 .freeboard-table {
-	width: 100%;
+   width: 100%;
 }
 
 .freeboard-table th {
-	background-color: #996633;
-	color: #fff;
-	padding: 15px;
+   background-color: #996633;
+   color: #fff;
+   padding: 15px;
 }
 
 .freeboard-table td {
-	padding: 20px 0;
+   padding: 20px 0;
 }
 
 .freeboard-paging {
-	margin: 0 auto;
+   margin: 0 auto;
 }
 
 .freeboard-page {
-	display: inline;
+   display: inline;
 }
 
 .freeboard-search {
-	margin-top: 50px;
+   margin-bottom: 50px;
 }
 
 .freeboard-search select {
-	height: 25px;
+   height: 25px;
 }
 
 .freeboard-search input {
-	width: 300px;
-	height: 25px;
-	margin: auto 20px;
+   width: 300px;
+   height: 25px;
+   margin: auto 20px;
 }
 
 .freeboard-write-btn {
-	float: right;
-	margin: 20px 0;
-	padding: 6px 15px;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
-	margin-top: 15px;
+   float: right;
+   margin: 20px 0;
+   padding: 6px 15px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
+   margin-top: 15px;
 }
-
+.freeboard-write-btn .writeBtn{
+	color : white;
+	
+}
 .freeboard-btn {
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
-	padding: 3px 5px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
+   padding: 3px 5px;
 }
 
 .serch-btn {
-	padding: 4px 15px;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
+   padding: 4px 15px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
 }
 
 .freenum {
-	width: 90px;
+   width: 90px;
 }
 
 .freehit {
-	width: 120px;
+   width: 120px;
 }
 
 .freeregdate {
-	width: 150px;
+   width: 150px;
 }
 
 .freewrite {
-	width: 200px;
+   width: 200px;
 }
 
 /* ==============마이페이지 사이드메뉴=================== */
@@ -1345,14 +1364,14 @@ aside h2 {
 
 }
 .side-content {
-	float:left;
+   float:left;
     width: 910px;
     border-left: #ccc 3px solid; 
     padding-bottom: 100px;
 }
 .side {
-	float:left;
-	margin-top:290px;
+   float:left;
+   margin-top:290px;
     width: 220px;
 }
 
@@ -1584,7 +1603,7 @@ aside h2 {
 .pagination{
     text-align: center;
     padding-bottom: 50px ;
-    margin-bottom: 30px;
+   
 }
 
 
@@ -1708,9 +1727,6 @@ aside h2 {
     width: 400px;
 }
 
-.myinfomodifyform-phone #phone {
-    width: 300px;
-}
 
 .myinfomodifyform-phone button {
     width: 100px;
@@ -1720,11 +1736,15 @@ aside h2 {
     border: none;
     color: white;
 }
+.myinfomodifyform-phone #myPhone {
+    width: 400px;
+    display: inline-block;
+}
 
-.myinfomodifyform-phone #phone_check {
+.myinfomodifyform-phone #myPhoneChk {
     display: inline-block;
     margin-top: 8px;
-    width: 300px;
+    width: 299px;
 }
 
 .myinfomodifyform-phone button[class="check"] {
@@ -1732,14 +1752,17 @@ aside h2 {
 }
 
 
-.myinfomodifyform #addNum {
-    width: 50%;
+.myinfomodifyform #myAddrNum {
+    width: 299px;
+    display: inline-block;
 }
 .myinfomodifyform-address {
     display: inline-block;
     width: 400px;
     text-align: right;
 }
+
+
 .myinfomodifyform-address button {
     width: 100px;
     height: 30px;
@@ -1747,11 +1770,10 @@ aside h2 {
     border: none;
     color: white;
     padding-bottom: 3px;
-    
+   float: right;    
 }
-.myinfomodifyform input[id="address"]{
+.myinfomodifyform #myAddrBasic,#myAddrDetail{
     margin-top: 8px;
-    margin-bottom: 8px;
 }
 .myinfomodifyBtn1, .myinfomodifyBtn2 {
     background: #996633;
@@ -1842,853 +1864,897 @@ aside h2 {
 }
 /*======= 자유게시판 - 상세보기 페이지 =======*/
 .writetitle {
-	padding: 100px;
-	font-size: 30px;
-	color: #996633;
+   padding: 100px;
+   font-size: 30px;
+   color: #996633;
+}
+img[alt="newMark"]{
+	width:35px;
 }
 
 .freetitle {
-	border-bottom: #996633 1px solid;
-	padding-bottom: 10px;
+   border-bottom: #996633 1px solid;
+   padding-bottom: 10px;
 }
 
 .freetitle h4 {
-	font-size: 25px;
-	padding-bottom: 10px;
+   font-size: 25px;
+   padding-bottom: 10px;
 }
 
 .freetitle p .hit {
-	padding-left: 20px;
+   padding-left: 20px;
 }
 
 .freecontent {
-	margin: 10px 0;
-	width: 1140px;
-	height: 350px;
-	border: #ccc 1px solid;
+   margin: 10px 0;
+   width: 1140px;
+   min-height: 350px;
+   border: #ccc 1px solid;
 }
 
 .freecontent .content {
-	padding: 8px;
+   padding: 8px;
 }
 
 .freeBtn {
-	margin-right: 5px;
-	display: inline-block;
-	padding: 6px 15px;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
+   margin-right: 5px;
+   display: inline-block;
+   padding: 6px 15px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
 }
 
 .btnright {
-	float: right;
-	margin-right: 0px;
+   float: right;
+   margin-right: 0px;
 }
 
 .commentArea { /*댓글 입력창*/
-	width: 880px;
-	height: 80px;
-	border: none;
-	/* margin-left: 52px; */
+   width: 880px;
+   height: 80px;
+   border: none;
+   /* margin-left: 52px; */
 }
 
 #replyList {
-	margin-top: 50px;
+   margin-top: 50px;
 }
 
 .reply-image {
-	float: left;
-	width: 35px;
-	height: 35px;
+   float: left;
+   width: 35px;
+   height: 35px;
 }
 
 /* 댓글 목록 */
 .reply-group {
-	border-top: 1px solid #eee;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	width: 1140px;
-	/* margin-left: -40px; */
-	border-bottom: 1px solid #eee;
-	margin-bottom: 10px;
+   border-top: 1px solid #eee;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   width: 1140px;
+   /* margin-left: -40px; */
+   border-bottom: 1px solid #eee;
+   margin-bottom: 10px;
 }
 
 .reply-group .reply-left {
-	float: left;
-	margin-left: 10px;
+   float: left;
+   margin-left: 10px;
 }
 
 .reply-group .reply-right { /*댓글 수정, 삭제 버튼*/
-	float: right;
-	width: 40px;
-	height: 30px;
-	margin-right: 5px;
+   float: right;
+   width: 40px;
+   height: 30px;
+   margin-right: 5px;
 }
 
 .reply-group p {
-	float: left;
-	margin-left: 30px;
+   float: left;
+   margin-left: 30px;
 }
 
 .reply-content {
-	margin-bottom: 30px;
+   margin-bottom: 30px;
 }
 
 .commentArea {
-	float: left;
-	width: 1050px;
-	height: 100px;
-	border: 1px solid #996633;
-	padding: 10px;
+   float: left;
+   width: 1050px;
+   height: 100px;
+   border: 1px solid #996633;
+   padding: 10px;
 }
 
 .registCom { /*댓글 등록하기 버튼*/
-	width: 80px;
-	height: 100px;
-	margin-left: 10px;
-	display: block;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
-	float: left;
+   width: 80px;
+   height: 100px;
+   margin-left: 10px;
+   display: block;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
+   float: left;
 }
 
 /* ================boardModify================*/
 .writetitle {
-	padding: 100px;
-	font-size: 30px;
-	color: #996633;
+   padding: 100px;
+   font-size: 30px;
+   color: #996633;
 }
 
 .boardWrite {
-	text-align: left;
-	margin-bottom: 100px;
+   text-align: left;
+   margin-bottom: 100px;
 }
 
 .wrap .boardWrite button {
-	display: inline-block;
-	padding: 6px 15px;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
+   display: inline-block;
+   padding: 6px 15px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
 }
 
-.wrap .boardWrite button:hover {
-	
-}
+
 
 .wrap .boardWrite .regBtn {
-	margin-right: 5px;
-	float: right;
+   margin-right: 5px;
+   float: right;
 }
 
 .wrap .boardWrite .listBtn {
-	margin-right: 5px;
-	float: right;
+   margin-right: 5px;
+   float: right;
 }
 
 .wrap .boardWrite .photoBtn {
-	margin-top: 10px;
-	padding: 8px 20px;
+   margin-top: 10px;
+   padding: 8px 20px;
 }
 
 .boardWrite .form-control {
-	width: 1140px;
-	height: 35px;
-	margin-top: 10px;
-	padding: 5px;
+   width: 1140px;
+   height: 35px;
+   margin-top: 10px;
+   padding: 5px;
 }
 
-.boardWrite .imgbox {
-	border: 1px #000 solid;
-	width: 1140px;
-	height: 120px;
-	margin-top: 10px;
-}
 
 .boardWrite .textArea {
-	width: 1140px;
-	margin-top: 10px;
-	padding: 15px;
+   width: 1140px;
+   margin-top: 10px;
+   padding: 15px;
 }
 
 .boardWrite td.t-title {
-	width: 150px;
-	height: 50px;
-	font-size: 15px;
+   width: 150px;
+   height: 50px;
+   font-size: 15px;
 }
 
 .boardWrite td {
-	padding: 7px;
+   padding: 7px;
 }
 
 /* 글쓰기 */
 .writetitle {
-	padding: 100px;
-	font-size: 30px;
-	color: #996633;
+   padding: 100px;
+   font-size: 30px;
+   color: #996633;
 }
 
 .boardWrite {
-	text-align: left;
-	margin-bottom: 100px;
+   text-align: left;
+   margin-bottom: 100px;
 }
 
 .wrap .boardWrite button {
-	display: inline-block;
-	padding: 6px 15px;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
+   display: inline-block;
+   padding: 6px 15px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
 }
 
-.wrap .boardWrite button:hover {
-	box-shadow: 0 9px #999;;
-}
 
 .wrap .boardWrite .regBtn {
-	margin-right: 5px;
-	float: right;
+   margin-right: 5px;
+   float: right;
 }
 
 .wrap .boardWrite .listBtn {
-	margin-right: 5px;
-	float: right;
+   margin-right: 5px;
+   float: right;
 }
 
 .wrap .boardWrite .photoBtn {
-	margin-top: 10px;
-	padding: 8px 20px;
+   margin-top: 10px;
+   padding: 8px 20px;
 }
 
 .boardWrite .form-control {
-	width: 1140px;
-	height: 35px;
-	margin-top: 10px;
-	padding: 5px;
+   width: 1140px;
+   height: 35px;
+   margin-top: 10px;
+   padding: 5px;
 }
 
 .boardWrite .imgbox {
-	border: 1px #000 solid;
-	width: 1140px;
-	height: 120px;
-	margin-top: 10px;
+   border: 1px #000 solid;
+   max-width: 150px;
+   height: 130px;
+   margin-top: 10px;
+   display: none;
+   padding-left: 8px
 }
 
 .boardWrite .textArea {
-	width: 1138px;
-	margin-top: 10px;
-	padding: 15px;
+   width: 1138px;
+   margin-top: 10px;
+   padding: 15px;
 }
 
 .boardWrite td.t-title {
-	width: 150px;
-	height: 50px;
-	font-size: 15px;
+   width: 150px;
+   height: 50px;
+   font-size: 15px;
 }
 
 .boardWrite td {
-	padding: 7px;
+   padding: 7px;
 }
 
 /* boastDetail*/
 .boast-modal-wrap {
-	display: none;
-	position: absolute;
-	content: "";
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	top: 0;
-	left: 0;
-	z-index: 20;
+   display: none;
+   position: fixed;
+   content: "";
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   top: 0;
+   left: 0;
+   z-index: 20;
 }
 
 .boast-modal {
-	width: 1000px;
-	height: 600px;
-	position: absolute;
-	top: 45%;
-	left: 35%;
-	margin: -250px 0 0 -250px;
-	background: #fff;
-	z-index: 21;
+   /*display: none;*/
+   width: 1000px;
+   height: 600px;
+   position: absolute;
+   top: 45%;
+   left: 35%;
+   margin: -250px 0 0 -250px;
+   background: #fff;
+   z-index: 22;
 }
 
-.modal_close {
-	width: 15px;
-	height: 15px;
-	position: absolute;
-	top: 10px;
-	right: 10px;
+.boast-modal_close {
+   width: 15px;
+   height: 15px;
+   position: absolute;
+   top: -30px;
+   right: 10px;
 }
 
 .boast-pic {
-	width: 600px;
-	height: 100%;
+   width: 600px;
+   height: 100%;
 }
 
 .boast-pic img {
-	width: 600px;
-	height: 600px;
+   width: 600px;
+   height: 600px;
+   position:absolute;
+}
+.boastimg-btn {
+   font-size:60px;
+   color:#996633;
+   cursor: pointer;
+   border: none;
+   background: none;
+   position: absolute;
+   top:250px;
+   font-weight: bold;
+   z-index: 10000;
+}
+
+.bosat-btn-l {
+   left:30px;
+}
+.bosat-btn-r {
+   right:430px;
 }
 
 .boast-content {
-	width: 390px;
-	height: 600px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 10px 0;
-	margin-left: 10px;
-	border-left: solid 1px #ccc;
+   width: 390px;
+   height: 600px;
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 10px 0;
+   margin-left: 10px;
+   border-left: solid 1px #ccc;
 }
 
 .boast-content .boast-writer {
-	width: 385px;
-	padding: 5px 10px 10px;
-	border-bottom: solid 1px #ccc;
-	font-weight: bold;
+   width: 385px;
+   padding: 5px 10px 10px;
+   border-bottom: solid 1px #ccc;
+   font-weight: bold;
 }
 
 .boast-text {
-	font-size: 12px;
+   font-size: 12px;
 }
 
 .boast-text .text {
-	margin-top: 10px;
-	width: 385px;
-	height: 180px;
-	border: none;
-	border-bottom: solid 1px #ccc;
-	padding: 5px 10px;
+   margin-top: 10px;
+   width: 385px;
+   height: 180px;
+   border: none;
+   border-bottom: solid 1px #ccc;
+   padding: 5px 10px;
 }
 
 .boast-content .likearea {
-	width: 385px;
-	/* border-bottom: solid 1px #ccc; */
-	height: 40px;
-	position: relative;
+   width: 385px;
+   /* border-bottom: solid 1px #ccc; */
+   height: 40px;
+   position: relative;
 }
 
 .boast-content .likearea img {
-	width: 25px;
-	margin: 10px 10px 0;
+   width: 25px;
+   margin: 10px 10px 0;
 }
 
 .boast-content .likearea P {
-	margin-left: 10px;
+   margin-left: 10px;
 }
 
 .boast-content .likearea .bright {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	font-weight: bold;
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   font-weight: bold;
+}
+.boast-content .likearea button {
+   padding: 4px 8px;
+   font-size: 12px;
+   font-weight: 300;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
+   position: absolute;
+   bottom: -20px
+}
+.boastdelBtn {
+   right: 10px;
+}
+.boastmodBtn {
+   right: 55px;   
 }
 
 .boast-comment {
-	padding-top: 30px;
-	width: 385px;
-	height: 265px;
-	border-bottom: solid 1px #ccc;
+   padding-top: 30px;
+   width: 385px;
+   height: 265px;
+   overflow : auto;
+   border-bottom: solid 1px #ccc;
 }
 
-.commentwrap {
-	height: 30px;
-}
 
 .boast-comment .commentwrap .boast-img {
-	width: 40px;
-	height: 30px;
-	float: left;
+   width: 40px;
+   height: 30px;
+   float: left;
 }
 
 .boast-comment .commentwrap .boast-id {
-	float: left;
-	padding: 5px;
-	font-weight: bold;
+   float: left;
+   padding: 5px;
+   font-weight: bold;
 }
 
 .boast-comment .commentwrap .boast-dat {
-	float: left;
-	padding: 5px;
+   float: left;
+   padding: 5px;
+   width: 200px;
+   word-break: break-all;
+   
 }
 
 .boasr-commentadd button {
-	display: inline-block;
-	padding: 6px 15px;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 3px;
-	background: #996633;
-	outline: 0;
-	border: 0;
-	color: #fff;
-	cursor: pointer;
-	margin-top: 15px;
+   display: inline-block;
+   padding: 6px 15px;
+   font-size: 14px;
+   font-weight: 400;
+   border-radius: 3px;
+   background: #996633;
+   outline: 0;
+   border: 0;
+   color: #fff;
+   cursor: pointer;
+   margin-top: 15px;
 }
 
 .boasr-commentadd .boasr-comadd {
-	float: left;
+   float: left;
 }
 
 .boasr-commentadd input {
-	width: 300px;
-	height: 30px;
-	padding: 3px;
-	margin: 15px 5px;
+   width: 300px;
+   height: 30px;
+   padding: 3px;
+   margin: 15px 5px;
 }
-
+.reply-updateBtn{
+	display: inline-block;
+    float: right;
+    color: #996633;
+    font-size: 12px;
+    padding: 6px;
+    }
 /*======= QnA 페이지 =======*/
 .QNA h2 {
-	text-align: center;
-	font-size: 35px;
-	margin-bottom: 100px;
+   text-align: center;
+   font-size: 35px;
+   margin-bottom: 100px;
 }
 
 .FAQ h3, .personal h3 {
-	padding-top: 20px;
-	padding-bottom: 40px;
-	font-size: 25px;
+   padding-top: 20px;
+   padding-bottom: 40px;
+   font-size: 25px;
 }
 
 .personal-txt .personal-area, #qnaTitle {
-	width: 1140px;
-	padding: 10px;
+   width: 1140px;
+   padding: 10px;
 }
 
 #counsel {
-	padding: 5px;
-	display: block;
-	margin: 0 auto;
-	margin-top: 30px;
-	margin-bottom: 50px;
+   padding: 5px;
+   display: block;
+   margin: 0 auto;
+   margin-top: 30px;
+   margin-bottom: 50px;
+}
+
+.img-zindex{
+	z-index: 1000;
 }
 
 /* buylist*/
 .buylist-wrap {
-	width: 80%;
-	margin: 150px auto 0;
-	border-bottom: 1px gray solid;
-	padding-bottom: 70px;
-	box-sizing: border-box;
+   width: 80%;
+   margin: 150px auto 0;
+   border-bottom: 1px gray solid;
+   padding-bottom: 70px;
+   box-sizing: border-box;
 }
 
 .buylist-title {
-	text-align: center;
-	display: inline-block;
-	margin-left: 50px;
+   text-align: center;
+   display: inline-block;
+   margin-left: 50px;
 }
 
 .buylist-title h2 {
-	font-size: 32px;
-	float: left;
-	height: 60px;
-	line-height: 70px;
-	padding-right: 5px;
+   font-size: 32px;
+   float: left;
+   height: 60px;
+   line-height: 70px;
+   padding-right: 5px;
 }
 
 .buylist-title img {
-	width: 50px;
-	text-align: center;
-	float: left;
-	display: block;
-	height: 60px;
+   width: 50px;
+   text-align: center;
+   float: left;
+   display: block;
+   height: 60px;
 }
 
 .buylist-wrap1 {
-	width: 80%;
-	margin: 20px auto 0;
-	border-bottom: 1px gray solid;
-	padding-bottom: 20px;
-	box-sizing: border-box;
+   width: 80%;
+   margin: 20px auto 0;
+   border-bottom: 1px gray solid;
+   padding-bottom: 20px;
+   box-sizing: border-box;
 }
 
 .buylist-main1 h2 {
-	font-size: 17px;
-	line-height: 30px;
-	margin-left: 50px;
+   font-size: 17px;
+   line-height: 30px;
+   margin-left: 50px;
 }
 
 .buylist-list1 h5 {
-	font-size: 17px;
-	line-height: 30px;
+   font-size: 17px;
+   line-height: 30px;
 }
 
 .buylist-list1 h6 {
-	font-size: 17px;
-	line-height: 30px;
+   font-size: 17px;
+   line-height: 30px;
 }
 
 .buylist-main2 img {
-	margin: 20px auto 0;
-	width: 200px;
-	float: left;
+   margin: 20px auto 0;
+   width: 200px;
+   float: left;
 }
 
 .buylist-main2 h2 {
-	font-size: 17px;
-	float: left;
-	margin-top: 110px;
-	padding: 0 80px;
+   font-size: 17px;
+   float: left;
+   margin-top: 110px;
+   padding: 0 80px;
 }
 
 .buylist-button {
-	float: right;
+   float: right;
 }
 
 .buylist-btn {
-	width: 120px;
-	margin-top: 180px;
-	height: 60px;
+   width: 120px;
+   margin-top: 180px;
+   height: 60px;
 }
 
 .buylist1-1 {
-	width: 170px;
-	float: left;
-	padding-left: 40px;
-	text-align: center;
+   width: 170px;
+   float: left;
+   padding-left: 40px;
+   text-align: center;
 }
 
 .buylist-list1 h6 {
-	float: left;
-	margin-left: 300px;
+   float: left;
+   margin-left: 300px;
 }
 
 /* idFind */
 .idFind {
-	width: 60%;
-	margin: 0 auto 70px;
+   width: 60%;
+   margin: 0 auto 70px;
 }
 
 .idFind-title {
-	text-align: center;
+   text-align: center;
 }
 
 .idFind-title h2 {
-	font-size: 35px;
+   font-size: 35px;
 }
 
 .idFind-logo {
-	margin: 20px 0;
+   margin: 20px 0;
 }
 
 .idFind-logo img {
-	width: 35px;
-	height: 35px;
+   width: 35px;
+   height: 35px;
 }
 
 .idFindform {
-	width: 60%;
-	margin: 0 auto;
+   width: 60%;
+   margin: 0 auto;
 }
 
 .idFindform h5 {
-	padding: 20px 5px 10px;
-	font-size: 16px;
+   padding: 20px 5px 10px;
+   font-size: 16px;
 }
 
 .idFindform-wrap {
-	width: 50%;
-	height: 30px;
-	float: left;
-	box-sizing: border-box;
+   width: 50%;
+   height: 30px;
+   float: left;
+   box-sizing: border-box;
 }
 
 .idFindform-wrap select {
-	width: 100%;
-	height: 30px;
-	text-align: left;
+   width: 100%;
+   height: 30px;
+   text-align: left;
 }
 
 .idFindform-wrap-left {
-	width: 50%;
-	float: left;
-	padding: 0 0 0 10px;
+   width: 50%;
+   float: left;
+   padding: 0 0 0 10px;
 }
 
 .idFindform-wrap-right {
-	width: 50%;
-	float: left;
-	padding: 0 0 0 10px;
+   width: 50%;
+   float: left;
+   padding: 0 0 0 10px;
 }
 
 .idFindform input[type="text"] {
-	width: 100%;
-	height: 30px;
-	padding-left: 5px;
+   width: 100%;
+   height: 30px;
+   padding-left: 5px;
 }
 
 .idFindBtn1, .idFindBtn2 {
-	background: #996633;
-	border: none;
-	color: white;
-	font-size: 18px;
+   background: #996633;
+   border: none;
+   color: white;
+   font-size: 18px;
 }
 
 .idFind-bottom {
-	margin-top: 30px;
-	box-sizing: border-box;
-	width: 100%;
+   margin-top: 30px;
+   box-sizing: border-box;
+   width: 100%;
 }
 
 .idFind-bottom div {
-	width: 50%;
-	float: left;
+   width: 50%;
+   float: left;
 }
 
 .idFind-bottom1 {
-	padding: 0 5px 0 0;
+   padding: 0 5px 0 0;
 }
 
 .idFind-bottom2 {
-	padding: 0 0 0 5px;
+   padding: 0 0 0 5px;
 }
 
 .idFind-bottom .idFindBtn1, .idFind-bottom .idFindBtn2 {
-	width: 100%;
-	height: 40px;
+   width: 100%;
+   height: 40px;
 }
 
 
 
 /* =============passwordChange==============*/
 .pwChange {
-	width: 60%;
-	margin: 0 auto 70px;
+   width: 60%;
+   margin: 0 auto 70px;
 }
 
 .pwChange-title {
-	text-align: center;
+   text-align: center;
 }
 
 .pwChange-title h2 {
-	font-size: 35px;
+   font-size: 35px;
 }
 
 .pwChange-logo {
-	margin: 20px 0;
+   margin: 20px 0;
 }
 
 .pwChange-logo img {
-	width: 35px;
-	height: 35px;
+   width: 35px;
+   height: 35px;
 }
 
 .pwChangeform {
-	width: 60%;
-	margin: 0 auto;
+   width: 60%;
+   margin: 0 auto;
 }
 
 .pwChangeform h5 {
-	padding: 20px 5px 10px;
-	font-size: 16px;
+   padding: 20px 5px 10px;
+   font-size: 16px;
 }
 
 .pwChangeform input[type="password"] {
-	width: 100%;
-	height: 30px;
-	padding-left: 5px;
+   width: 100%;
+   height: 30px;
+   padding-left: 5px;
 }
 
 .pwChangeBtn1, .pwChangeBtn2 {
-	background: #996633;
-	border: none;
-	color: white;
-	font-size: 18px;
+   background: #996633;
+   border: none;
+   color: white;
+   font-size: 18px;
 }
 
 .pwChange-bottom {
-	margin-top: 30px;
-	box-sizing: border-box;
-	width: 100%;
+   margin-top: 30px;
+   box-sizing: border-box;
+   width: 100%;
 }
 
 .pwChange-bottom div {
-	width: 50%;
-	float: left;
+   width: 50%;
+   float: left;
 }
 
 .pwChange-bottom1 {
-	padding: 0 5px 0 0;
+   padding: 0 5px 0 0;
 }
 
 .pwChange-bottom2 {
-	padding: 0 0 0 5px;
+   padding: 0 0 0 5px;
 }
 
 .pwChange-bottom .pwChangeBtn1, .pwChange-bottom .pwChangeBtn2 {
-	width: 100%;
-	height: 40px;
+   width: 100%;
+   height: 40px;
 }
 
 /*============ pwFind================= */
 .pwFind {
-	width: 60%;
-	margin: 0 auto 70px;
+   width: 60%;
+   margin: 0 auto 70px;
 }
 
 .pwFind-title {
-	text-align: center;
+   text-align: center;
 }
 
 .pwFind-title h2 {
-	font-size: 35px;
+   font-size: 35px;
 }
 
 .pwFind-logo {
-	margin: 20px 0;
+   margin: 20px 0;
 }
 
 .pwFind-logo img {
-	width: 35px;
-	height: 35px;
+   width: 35px;
+   height: 35px;
 }
 
 .pwFindform {
-	width: 60%;
-	margin: 0 auto;
+   width: 60%;
+   margin: 0 auto;
 }
 
 .pwFindform h5 {
-	padding: 20px 5px 10px;
-	font-size: 16px;
+   padding: 20px 5px 10px;
+   font-size: 16px;
 }
 
 .pwFindform input[type="text"] {
-	width: 100%;
-	height: 30px;
-	padding-left: 5px;
+   width: 100%;
+   height: 30px;
+   padding-left: 5px;
 }
 
 .pwFindBtn1, .pwFindBtn2 {
-	background: #996633;
-	border: none;
-	color: white;
-	font-size: 18px;
+   background: #996633;
+   border: none;
+   color: white;
+   font-size: 18px;
 }
 
 .pwFind-bottom {
-	margin-top: 30px;
-	box-sizing: border-box;
-	width: 100%;
+   margin-top: 30px;
+   box-sizing: border-box;
+   width: 100%;
 }
 
 .pwFind-bottom div {
-	width: 50%;
-	float: left;
+   width: 50%;
+   float: left;
 }
 
 .pwFind-bottom1 {
-	padding: 0 5px 0 0;
+   padding: 0 5px 0 0;
 }
 
 .pwFind-bottom2 {
-	padding: 0 0 0 5px;
+   padding: 0 0 0 5px;
 }
 
 .pwFind-bottom .pwFindBtn1, .pwFind-bottom .pwFindBtn2 {
-	width: 100%;
-	height: 40px;
+   width: 100%;
+   height: 40px;
 }
 
 /*============== withdraw=======================*/
 .withdraw {
-	width: 60%;
-	margin: 0 auto 70px;
+   width: 60%;
+   margin: 0 auto 70px;
 }
 
 .withdraw-title {
-	text-align: center;
+   text-align: center;
 }
 
 .withdraw-title h2 {
-	font-size: 35px;
+   font-size: 35px;
 }
 
 .withdraw-logo {
-	margin: 20px 0;
+   margin: 20px 0;
 }
 
 .withdraw-logo img {
-	width: 35px;
-	height: 35px;
+   width: 35px;
+   height: 35px;
 }
 
 .withdrawform {
-	width: 60%;
-	margin: 0 auto;
+   width: 60%;
+   margin: 0 auto;
 }
 
 .withdrawform h5 {
-	padding: 20px 5px 20px;
-	font-size: 16px;
+   padding: 20px 5px 20px;
+   font-size: 16px;
 }
 
 .withdrawform-wrap {
-	width: 50%;
-	height: 30px;
-	float: left;
-	box-sizing: border-box;
+   width: 50%;
+   height: 30px;
+   float: left;
+   box-sizing: border-box;
 }
 
 .withdrawform-wrap select {
-	width: 100%;
-	height: 30px;
-	text-align: left;
+   width: 100%;
+   height: 30px;
+   text-align: left;
 }
 
 .withdrawform-wrap-left {
-	width: 50%;
-	float: left;
-	padding: 0 0 0 10px;
+   width: 50%;
+   float: left;
+   padding: 0 0 0 10px;
 }
 
 .withdrawform-wrap-right {
-	width: 50%;
-	float: left;
-	padding: 0 0 0 10px;
+   width: 50%;
+   float: left;
+   padding: 0 0 0 10px;
 }
 
 .withdrawform input[type="text"] {
-	width: 100%;
-	height: 30px;
-	padding-left: 5px;
+   width: 100%;
+   height: 30px;
+   padding-left: 5px;
 }
 
 .withdrawBtn1, .withdrawBtn2 {
-	background: #996633;
-	border: none;
-	color: white;
-	font-size: 18px;
+   background: #996633;
+   border: none;
+   color: white;
+   font-size: 18px;
 }
 
 .withdraw-bottom {
-	margin-top: 30px;
-	box-sizing: border-box;
-	width: 100%;
+   margin-top: 30px;
+   box-sizing: border-box;
+   width: 100%;
 }
 /* .withdraw-bottom div{
             width: 50%;
@@ -2696,20 +2762,20 @@ aside h2 {
                
         } */
 .withdraw-bottom1 {
-	padding: 0 5px 0 0;
+   padding: 0 5px 0 0;
 }
 
 .withdraw-bottom .withdrawBtn1, .withdraw-bottom .withdrawBtn2 {
-	width: 100%;
-	height: 40px;
+   width: 100%;
+   height: 40px;
 }
 
 .withdrawform .reason-list label {
-	font-size: 14.5px;
+   font-size: 14.5px;
 }
 
 .withdrawform .reason-list label input[type="radio"] {
-	margin-bottom: 10px;
+   margin-bottom: 10px;
 }
 
 
@@ -2881,7 +2947,7 @@ aside h2 {
     outline: 0;
     border: 0;
     width: 30px;
-    height: 30px;
+    height: 30px; 
     display: block;
     float: right;
     cursor: pointer;
@@ -3182,256 +3248,257 @@ aside h2 {
 
 /*joinModal*/
 .joinModal-wrap {
-	display: none;
-	position: fixed;
-	content: "";
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	top: 0;
-	left: 0;
-	z-index: 20;
-	
+   display: none;
+   position: fixed;
+   content: "";
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   top: 0;
+   left: 0;
+   z-index: 20;
+   
 }
 
 .joinModal {
-	/*display: none;*/
-	width: 500px;
-	padding-bottom: 30px;
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	margin: -250px 0 0 -250px;
-	background: rgb(255, 254, 254);
-	z-index: 21;
-	height:600px;
-	overflow: auto;
+   /*display: none;*/
+   width: 500px;
+   padding-bottom: 30px;
+   position: absolute;
+   top: 30%;
+   left: 50%;
+   margin: -250px 0 0 -250px;
+   background: rgb(255, 254, 254);
+   z-index: 21;
+   height:auto;
+   overflow: auto;
 }
 
 .joinModal_close {
-	width: 15px;
-	height: 15px;
-	position: absolute;
-	top: 10px;
-	right: 10px;
+   width: 15px;
+   height: 15px;
+   position: absolute;
+   top: 10px;
+   right: 10px;
 }
 
 .join-title {
-	text-align: center;
-	padding: 40px 0 20px;
+   text-align: center;
+   padding: 40px 0 20px;
 }
 
 .join-title h2 {
-	font-size: 30px;
+   font-size: 30px;
 }
 
 .join-logo {
-	margin: 5px 0;
+   margin: 5px 0;
 }
 
 .join-logo img {
-	width: 35px;
-	height: 35px;
+   width: 35px;
+   height: 35px;
 }
 
 .joinform {
-	width: 80%;
-	margin: 0 auto;
+   width: 80%;
+   margin: 0 auto;
 }
 
 .joinform h5 {
-	padding: 8px 5px;
+   padding: 8px 5px;
+   display: inline-block;
 }
 
 .joinform input[type="text"], .joinform input[type="password"] {
-	width: 100%;
-	height: 25px;
-	padding-left: 5px;
+   width: 100%;
+   height: 25px;
+   padding-left: 5px;
 }
 
 
 
 .joinform-wrap {
-	width: 50%;
-	height: 25px;
-	float: left;
-	box-sizing: border-box;
+   width: 50%;
+   height: 25px;
+   float: left;
+   box-sizing: border-box;
 }
 
 .joinform-wrap select {
-	width: 100%;
-	height: 25px;
-	text-align: left;
+   width: 100%;
+   height: 25px;
+   text-align: left;
 }
 
 .joinform-wrap-left {
-	width: 50%;
-	float: left;
-	padding: 0 0 0 10px;
+   width: 50%;
+   float: left;
+   padding: 0 0 0 10px;
 }
 
 .joinform-wrap-right {
-	width: 50%;
-	float: left;
-	padding: 0 0 0 10px;
+   width: 50%;
+   float: left;
+   padding: 0 0 0 10px;
 }
 
-.joinform-phone #phone {
-	width: 75%;
+.joinform-email #email {
+   width: 74%;
 }
 
-.joinform-phone button {
-	width: 25%;
-	height: 25px;
-	float: right;
-	background: #996633;
-	border: none;
-	color: white;
+.joinform-email button {
+   width: 25%;
+   height: 25px;
+   float: right;
+   background: #996633;
+   border: none;
+   color: white;
 }
 
-.joinform-phone #phone_check {
-	display: inline-block;
-	margin-top: 8px;
-	width: 75%;
+.joinform-email #email_ok {
+   display: inline-block;
+   margin-top: 8px;
+   width: 74%;
 }
 
-.joinform-phone button[class="check"] {
-	margin-top: 8px;
+.joinform-email button[class="mail_ok_button"] {
+   margin-top: 8px;
 }
 
 .joinform #addNum {
-	width: 50%;
+   width: 50%;
 }
 
 .joinform-address button {
-	width: 25%;
-	height: 25px;
-	background: #996633;
-	border: none;
-	color: white;
-	padding-bottom: 2px;
-	cursor : pointer;
+   width: 25%;
+   height: 25px;
+   background: #996633;
+   border: none;
+   color: white;
+   padding-bottom: 2px;
+   cursor : pointer;
 }
 
 .joinform-address #address1 {
-	margin-top: 8px;
-	margin-bottom: 8px;
+   margin-top: 8px;
+   margin-bottom: 8px;
 }
 
 .joinBtn {
-	width: 100%;
-	height: 40px;
-	margin-top: 20px;
-	background: #996633;
-	border: none;
-	color: white;
-	font-size: 18px;
-	cursor: pointer;
+   width: 100%;
+   height: 40px;
+   margin-top: 20px;
+   background: #996633;
+   border: none;
+   color: white;
+   font-size: 18px;
+   cursor: pointer;
 }
 
 /*loginModal*/
 
 .loginModal-wrap {
-	display: none;
-	position: fixed;
-	content: "";
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	top: 0;
-	left: 0;
-	z-index: 20;
+   display: none;
+   position: fixed;
+   content: "";
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   top: 0;
+   left: 0;
+   z-index: 20;
 }
 
 .loginModal {
-	/*display: none;*/
-	width: 500px;
-	height: 500px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -250px 0 0 -250px;
-	background: rgb(255, 254, 254);
-	z-index: 30;
+   /*display: none;*/
+   width: 500px;
+   height: 500px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin: -250px 0 0 -250px;
+   background: rgb(255, 254, 254);
+   z-index: 30;
 }
 
 .loginModal_close {
-	width: 15px;
-	height: 15px;
-	position: absolute;
-	top: 10px;
-	right: 10px;
+   width: 15px;
+   height: 15px;
+   position: absolute;
+   top: 10px;
+   right: 10px;
 }
 
 .loginModal h2 {
-	text-align: center;
-	padding: 50px;
-	margin-bottom: 25px;
-	font-size: 26px;
+   text-align: center;
+   padding: 50px;
+   margin-bottom: 25px;
+   font-size: 26px;
 }
 
 .loginform-wrap {
-	width: 70%;
-	margin: 0 auto;
-	text-align: center;
+   width: 70%;
+   margin: 0 auto;
+   text-align: center;
 }
 
 .loginform-wrap input[type="text"], .loginform-wrap input[type="password"]
-	{
-	width: 100%;
-	height: 40px;
-	font-size: 16px;
-	padding-left: 5px;
+   {
+   width: 100%;
+   height: 40px;
+   font-size: 16px;
+   padding-left: 5px;
 }
 
 .logininput-wrap {
-	margin-bottom: 10px;
+   margin-bottom: 10px;
 }
 
 .login-checkbox {
-	width: 50%;
-	float: left;
-	text-align: left;
-	padding-left: 5px;
+   width: 50%;
+   float: left;
+   text-align: left;
+   padding-left: 5px;
 }
 
 .logininput-wrap-btn {
-	margin-top: 20px;
+   margin-top: 20px;
 }
 
 .logininput-wrap button {
-	width: 100%;
-	height: 40px;
-	font-size: 16px;
+   width: 100%;
+   height: 40px;
+   font-size: 16px;
 }
 
 .login-btn {
-	background-color: #996633;
-	color: white;
-	border: none;
+   background-color: #996633;
+   color: white;
+   border: none;
 }
 
 .naver-btn {
-	border: none;
-	background-color: rgb(65, 185, 65);
-	color: white;
+   border: none;
+   background-color: rgb(65, 185, 65);
+   color: white;
 }
 
 .kakao-btn {
-	border: none;
-	background-color: rgb(252, 248, 52);
-	color: black;
+   border: none;
+   background-color: rgb(252, 248, 52);
+   color: black;
 }
 
 .login-modal-bottom {
-	margin-top: 25px;
+   margin-top: 25px;
 }
 
 .modal-bottom {
-	width: 33%;
-	float: left;
+   width: 33%;
+   float: left;
 }
 
 .modal-bottom a {
-	color: black;
+   color: black;
 }
