@@ -5,39 +5,232 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.puppy.product.mapper.IProductMapper">
-
+	<!-- 
 	<select id="productList" resultType="com.spring.puppy.command.ProductVO">
 		SELECT * FROM product
 		ORDER BY pno DESC
 	</select>
+	 -->
+	 
+	 
+	 <insert id = "productRegist">
+	 	INSERT INTO product(pno, pname, price, cate, opt, type)
+	 	VALUES(product_seq.NEXTVAL, #{pname}, #{price}, #{cate}, #{opt}, #{type})
+	 
+	 </insert>
+	 
+	  
+	 <select id="productList" resultType="com.spring.puppy.command.ProductVO">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM	
+				(
+				SELECT * FROM product
+				WHERE type LIKE #{type}		
+				ORDER BY pno DESC	
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{vo.pageNum} - 1) * #{vo.countPerPage}
+		AND rn <= #{vo.pageNum} * #{vo.countPerPage} 	
+		]]>
+	</select>
+	
+	<!-- <select id="itemList" resultType="com.spring.puppy.command.ProductVO">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM	
+				(
+				SELECT * FROM product
+				WHERE type like 'i'
+				ORDER BY pno DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{pageNum} - 1) * #{countPerPage}
+		AND rn <= #{pageNum} * #{countPerPage} 	
+		]]>
+		
+	</select> -->
+	
+	
+	<select id="getpTotal" resultType="int">
+		SELECT COUNT(*) FROM product
+		WHERE type LIKE #{type}		
+		
+	</select>
+	
+	
+	<!-- 리뷰 관련  -->
+	<resultMap type="com.spring.puppy.command.ReviewVO" id="reviewMap">
+		<result property="reviewDate" column="review_date" />
+	</resultMap>
+	
+	<insert id="reviewRegist">
+		INSERT INTO reviewboard(revno, pno, content, writer)
+		VALUES(reviewboard_seq.NEXTVAL, #{pno}, #{content}, #{writer})
+	</insert>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM reviewboard
+		WHERE pno= #{pno}
+		
+	</select>
+	
+	<select id="getList" resultMap="reviewMap">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM	
+				(
+				SELECT * FROM reviewboard
+				WHERE pno = #{pno}
+				ORDER BY revno DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{vo.pageNum} - 1) * #{vo.countPerPage}
+		AND rn <= #{vo.pageNum} * #{vo.countPerPage} 	
+		]]>
+		
+	</select>
+	
+	
+	<!-- 상품 qna(pqna) 관련 -->
+	<insert id="pqnaRegist">
+		INSERT INTO productqna(pqno, pno, content, writer, pname)
+		VALUES(productqna_seq.NEXTVAL, #{pno}, #{content}, #{writer}, #{pname})
+	</insert>
+	
+	<select id="getpqTotal" resultType="int">
+		SELECT COUNT(*) FROM productqna
+		WHERE pno= #{pno}
+		
+	</select>
+	
+	<select id="pqnaList" resultType="com.spring.puppy.command.ProductQnaVO">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM	
+				(
+				SELECT * FROM productqna
+				WHERE pno = #{pno}
+				ORDER BY pqno DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{vo.pageNum2} - 1) * #{vo.countPerPage2}
+		AND rn <= #{vo.pageNum2} * #{vo.countPerPage2} 	
+		]]>
+		
+	</select>
+	
+	<select id="adminPQna" resultType="com.spring.puppy.command.ProductQnaVO">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM	
+				(
+				SELECT * FROM productqna
+				ORDER BY pqno DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{pageNum} - 1) * #{countPerPage}
+		AND rn <= #{pageNum} * #{countPerPage} 	
+		]]>
+		
+	</select>
+	
+	<select id="getAdminTotal" resultType="int">
+		SELECT COUNT(*) 
+		FROM productqna
+		
+	</select>
+	
+	<update id="registAnswer">
+		<!-- INSERT INTO productqna(answer)
+		VALUES(#{answer}, ) -->
+		<!-- WHERE pno =#{pno} -->
+		
+		
+		<!-- INSERT INTO productqna(SELECT answer from productqna WHERE pno=#{pno}) VALUES(#{answer}) -->
+		
+		UPDATE productqna
+		SET answer=#{answer}
+		WHERE pno=#{pno}
+	</update>
+	
+	
+	<select id="getAdminPqna" resultType="com.spring.puppy.command.ProductQnaVO">
+		SELECT * from productqna
+		WHERE pno=#{pno}
+		
+	</select>
+	 
 	
 	<select id="getContent"
 		resultType="com.spring.puppy.command.ProductVO">
 		SELECT * FROM product
-		WHERE pno = #{pno}
+		WHERE pno = #{pno} 
+		
 	</select>
+	
+	
+	<insert id="zzimRegist">
+		INSERT INTO zzim(zno, pno, pname, price, writer)
+		VALUES(zzim_seq.NEXTVAL, #{pno}, #{pname}, #{price}, #{writer})
+	</insert>
+	
+	<select id="zzimList" resultType="com.spring.puppy.command.ZzimVO">
+		SELECT * FROM zzim
+		WHERE writer=#{writer}
+		ORDER BY zno DESC
+	</select>
+	
+	<delete id="zzimdelete">
+		DELETE FROM zzim
+		WHERE pno = #{pno} AND writer=#{writer}
+	</delete>
+	
+	
+	<select id="zzimCheck" resultType="int">
+		SELECT count(*) 
+		FROM zzim
+		WHERE pno = #{pno} AND writer=#{writer}
+	</select>
+	
+	<update id="zzimModify">
+		UPDATE product
+		SET zzim =
+		CASE 
+			WHEN zzim = 0 THEN 1
+			WHEN zzim = 1 THEN 0
+		END
+		WHERE pno=#{pno}
+		
+	</update>
+	
 	
 	<select id="cartCheck" resultType="int">
 		SELECT count(*) 
 		FROM basket 
-		WHERE pno = #{pno}
-		
+		WHERE pno = #{pno} AND writer=#{writer}
 	</select>
 	
 	<insert id="regist">
-		INSERT INTO basket(jno, pname, price, pno, amount, opt)
+		INSERT INTO basket(jno, pname, price, pno, amount, opt, writer)
 		VALUES(basket_seq.NEXTVAL, 
 				(SELECT p.pname
 				FROM product p
        			WHERE p.pno=#{pno}), 
         		(SELECT p.price
 				FROM product p
-        		WHERE p.pno=#{pno}),#{pno}, #{amount}, #{opt})	
+        		WHERE p.pno=#{pno}),#{pno}, #{amount}, #{opt}, #{writer})	
     </insert>
 
 	<select id="cartList" resultType="com.spring.puppy.command.CartVO">
 		SELECT * FROM basket
-		ORDER BY jno DESC
+		WHERE writer = #{writer}
+		ORDER BY jno DESC 
 	</select>
 	
 	<!--  
@@ -50,36 +243,88 @@
 	
 	<delete id="delete">
 		DELETE FROM basket
-		WHERE pno = #{pno}
+		WHERE pno = #{pno} AND writer=#{writer}
 	</delete>
 	
-	<insert id="orderRegist">
-		INSERT INTO orderboard(ono, pname, price,  amount)
-		VALUES(order_seq.NEXTVAL, 
-				
-				(SELECT b.pname
-				FROM basket b
-       			WHERE b.pno=#{pno}), 
-        		
-        		(SELECT b.price
-				FROM basket b
-        		WHERE b.pno=#{pno}),
-        		
-        		 
-        	
-        		)	
-    </insert>
     
     <select id="selectByPnum" resultType="com.spring.puppy.command.ProductVO">
     
     	SELECT * FROM product
-    	WHERE pno = #{pno}
+    	WHERE pno = #{pno} 
     
     </select>
+    
+    <insert id="orderRegist">
+		INSERT INTO orderboard(ono, writer)
+		VALUES(order_seq.NEXTVAL, #{writer})	
+    </insert>
+    
+    <select id="getOrderno" resultType="int">
+    	SELECT ono FROM(
+    					SELECT * 
+    					FROM orderboard
+    					ORDER BY orderboard.ono DESC)
+		WHERE ROWNUM = 1
+    </select>
+    
+    <insert id="orderDetailRegist">
+    	INSERT INTO orderDetail(odno, ono, pno, pname, price, amount)
+    	VALUES(orderDetail_seq.NEXTVAL, #{ono}, #{pno}, #{pname}, #{price}, #{amount})
+    
+    </insert>
+    
+    <select id="getOrderTotal" resultType="int">
+		SELECT COUNT(*) FROM orderdetail
+		
+	</select> 
 
-	<select id="orderList" resultType="com.spring.puppy.command.CartVO">
-		SELECT * FROM basket
+	<!-- 
+	<select id="orderList" resultType="com.spring.puppy.command.OrderVO">
+		SELECT * FROM orderboard
+		ORDER BY ono DESC
 	</select>
+	 -->
+	 <!--  
+	 <select id="orderList" resultType="com.spring.puppy.command.OrderVO, com.spring.puppy.command.OrderDetailVO">
+	 	SELECT o.regdate, od.ono, od.pname, od.price, od.amount
+		FROM orderboard o, orderDetail od
+		WHERE o.ono = od.ono
+		ORDER BY ono DESC
+	 </select>
+	 -->
+	 
+	 <select id = "orderDateList" resultType="com.spring.puppy.command.OrderVO">
+	 	SELECT regdate, ono, writer
+	 	FROM orderboard
+	 	ORDER BY ono DESC
+	 </select>
+	
+	<select id="orderDetailList" resultType="com.spring.puppy.command.OrderDetailVO">
+		SELECT  ono, pno, pname, price, amount
+		FROM  orderDetail 
+		ORDER BY ono DESC
+	</select> 
+	 <!-- <select id="orderDetailList" resultType="com.spring.puppy.command.OrderDetailVO">
+		SELECT * FROM	
+				(
+				SELECT ROWNUM AS rn, tbl.* FROM	
+					(
+					SELECT * FROM orderdetail
+					ORDER BY ono DESC
+					) tbl
+				)
+			<![CDATA[
+			WHERE rn > (#{pageNum} - 1) * #{countPerPage}
+			AND rn <= #{pageNum} * #{countPerPage} 	
+			]]>
+	</select>  -->
+	
+	<delete id="cartReset">
+		DELETE FROM basket
+		WHERE pno in (select o.pno from orderdetail o) AND writer=#{writer}
+	</delete>
+	
+	
 	
 
 </mapper>

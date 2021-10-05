@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring.puppy.admin.mapper.IAdminMapper">
+  	<resultMap type="com.spring.puppy.command.UserVO" id="UserMap">
+       <result property="addrBasic" column="addr_basic"/>
+       <result property="addrDetail" column="addr_detail"/>
+       <result property="addrZipNum" column="addr_zipnum"/>
+       <result property="sessionId" column="session_id" />
+      <result property="limitTime" column="limit_time" />
+    </resultMap>
+  <!-- 	<select id="getmemberlist" resultType="com.spring.puppy.command.UserVO">
+  		SELECT id, name, email, phone FROM users
+  	</select> -->
+  	<sql id="search">
+      <if test="condition == 'id'">
+         WHERE id LIKE '%'||#{keyword}||'%'
+      </if>
+     </sql>
+  	
+  	<select id="getmemberlist"
+		resultMap="UserMap">
+		SELECT * FROM
+			(
+			SELECT ROWNUM as rn, tbl.* FROM
+				(
+				SELECT * FROM users
+				<include refid="search" />
+				ORDER BY id DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{pageNum} - 1) * #{countPerPage}
+		AND rn <= #{pageNum} * #{countPerPage}
+		]]>
+	</select>
+  	
+  	<delete id="getmemberdel" >
+		DELETE FROM users
+		WHERE id = #{id}
+	</delete>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM users
+		<include refid="search" />
+	</select>
+  
+  </mapper>

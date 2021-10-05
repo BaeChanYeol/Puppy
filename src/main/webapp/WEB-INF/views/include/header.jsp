@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="<c:url value='/smartEditor/js/HuskyEZCreator.js'/>" charset="utf-8"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -24,16 +25,21 @@
             <div class="header_top">
                 <div class="header_top_area">
                     <div class="hright">
-                    	<c:if test="${login == null}">
-	                        <a href="#" style="font-weight: normal;" id="join">회원가입</a>
-	                        <a href="#" style="font-weight: normal;" id="login">로그인</a>
-                    	</c:if>
-                    	<c:if test="${login != null}">
-	                        <a href="<c:url value='/user/mypage' />" style="font-weight: normal;" id="mypage">마이페이지</a>
-	                        <a href="<c:url value='/user/logout' />" style="font-weight: normal;" id="logout" onclick="return confirm('정말 로그아웃 하시겠습니까?');">로그아웃</a>
-							
-                    	</c:if>
-	                        <a href=<c:url value='/sitemap'/> style="font-weight: normal;">사이트맵</a>                    	
+                       <c:if test="${login == null}">
+                           <a href="#" style="font-weight: normal;" id="join">회원가입</a>
+                           <a href="#" style="font-weight: normal;" id="login">로그인</a>
+                       </c:if>
+                       <c:if test="${login != null}">
+                          <c:if test="${login.id == 'admin'}">
+                              <a href="<c:url value='/admin/membertable' />" style="font-weight: normal;" id="admin">admin</a>
+                              <a href="<c:url value='/user/logout' />" style="font-weight: normal;" id="logout" onclick="return confirm('정말 로그아웃 하시겠습니까?');">로그아웃</a>
+                          </c:if>
+                          <c:if test="${login.id != 'admin'}">
+                              <a href="<c:url value='/user/mypage' />" style="font-weight: normal;" id="mypage">마이페이지</a>
+                              <a href="<c:url value='/user/logout' />" style="font-weight: normal;" id="logout" onclick="return confirm('정말 로그아웃 하시겠습니까?');">로그아웃</a>
+                     </c:if>
+                       </c:if>
+                           <a href=<c:url value='/sitemap'/> style="font-weight: normal;">사이트맵</a>                       
                     </div>
                     <div class="hleft">
 
@@ -52,7 +58,7 @@
                 <div class="menu_area">
                     <ul class="menu">
                         <li class="menu-li">
-                            <a href="<c:url value='/reserve'/>" class="menu-li-a">예약하기</a>
+                            <a href="<c:url value='/reserveBoard/reserve'/>" class="menu-li-a">예약하기</a>
                         </li>
                         <li class="menu-li">
                             <a href="<c:url value='/notice'/>" class="menu-li-a">이용안내</a>
@@ -78,11 +84,13 @@
                             
                         </li>
                         <li class="menu-li">
-                            <a href="<c:url value='/product/items'/>" class="menu-li-a">애견샵</a>
+                            <a href="<c:url value='/product/items?type=i'/>" class="menu-li-a">애견샵</a>
                             <ul class="second">
-                                <li><a href="<c:url value='/product/item'/>">강아지용품</a></li>
-                                <li><a href="<c:url value='/product/medicalDevice'/>">의료기기</a></li>
-                                <li><a href="<c:url value='/product/snack'/>">간식,식품</a></li>
+
+                                <li><a href="<c:url value='/product/items?type=i'/>">강아지용품</a></li>
+                                <li><a href="<c:url value='/product/items?type=m'/>">의료기기</a></li>
+                                <li><a href="<c:url value='/product/items?type=s'/>">간식,식품</a></li>
+
                             </ul>
                         </li>
                         <li class="menu-li">

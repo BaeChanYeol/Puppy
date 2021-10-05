@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.puppy.command.QnaBoardVO;
 import com.spring.puppy.qnaboard.mapper.IQnaBoardMapper;
+import com.spring.puppy.util.PageVO;
 
 @Service
 public class QnaBoardService implements IQnaBoardService{
@@ -22,17 +23,26 @@ public class QnaBoardService implements IQnaBoardService{
 	}
 	
 	
+//	@Override
+//	public List<QnaBoardVO> getList() {
+//		
+//		return mapper.getList();
+//	}
+
+
 	@Override
-	public List<QnaBoardVO> getList() {
-		
-		return mapper.getList();
+	public List<QnaBoardVO> getList(PageVO vo, String writer) {
+		return mapper.getList(vo, writer);
 	}
 
 
 	@Override
-	public int getTotal(int qno) {
-		return 0;
+	public int getTotal(PageVO vo, String writer) {
+		return mapper.getTotal(vo, writer);
 	}
+
+
+	
 	
 	
 	

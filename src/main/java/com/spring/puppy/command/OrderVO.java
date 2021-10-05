@@ -10,10 +10,8 @@ import lombok.ToString;
  * create table orderboard(
     ono NUMBER(8,0) PRIMARY KEY,
     writer varchar2(50),
-    pno NUMBER(8,0) not null,
     addr varchar2(500),
-    regdate DATE DEFAULT SYSDATE,
-    amount NUMBER(8,0) not null
+    regdate DATE DEFAULT SYSDATE
 );
 
 CREATE SEQUENCE order_seq
@@ -29,8 +27,6 @@ public class OrderVO {
 	
 	private int ono;
 	private String writer;
-	private int pno;
 	private String addr;
 	private Timestamp regdate;
-	private int amount;
 }

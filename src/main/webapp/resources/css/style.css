@@ -2941,7 +2941,7 @@ img[alt="newMark"]{
     margin-top: 5px;
 }
 .detail-explan-zzim .heart-zzim {
-    background-image: url(../img/heart2.png);
+    /* background-image: url(../img/heart2.png); */
     background-size: cover;
     background-color:#fff;
     outline: 0;
@@ -2953,7 +2953,7 @@ img[alt="newMark"]{
     cursor: pointer;
 }
 .detail-explan-zzim .heart-zzim:hover {
-    background-image: url(../img/heart3.png);
+    /* background-image: url(../img/heart3.png); */
     background-size: cover;
     background-color:#fff;
 }
