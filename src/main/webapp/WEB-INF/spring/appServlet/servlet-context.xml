@@ -30,7 +30,32 @@
 	
 	<beans:bean id="autoLogin" class="com.spring.puppy.util.interceptor.AutoLoginInterceptor" />
 	   <interceptors>
-
+		  <interceptor>
+		  	
+		  	 <mapping path="/board/boardModify"/>
+		  	 <mapping path="/board/freeDelete"/>
+		  	 <mapping path="/boast/delete"/>
+		  	 <mapping path="/boast/update"/>
+		  	 <mapping path="/boast/freeDelete"/>
+		  	 
+			<beans:bean class="com.spring.puppy.util.interceptor.BoardAuthLoginHandler"/>			  	 		  	 
+		  </interceptor>	
+		  <interceptor>
+		  	 <mapping path="/product/orderpage"/>
+		  	 <mapping path="/product/basket"/>
+		  	 <mapping path="/product/pay"/>
+		  	 <mapping path="/product/zzim"/>
+		  	 <mapping path="/user/mypage"/>
+		  	 <mapping path="/user/delete"/>
+		  	 <mapping path="/user/myBoard"/>
+		  	 <mapping path="/reserve/registForm"/>
+		  	 <mapping path="/reserve//reserveList"/>
+		  	 <mapping path="/qnaBoard/qna"/>
+		  	  <mapping path="/board/boardWrite"/>
+		  	   	 
+			<beans:bean class="com.spring.puppy.util.interceptor.AuthLoginInterceptor"/>			  	 		  	 
+		  </interceptor>	
+		  
 	      <!-- 미리 등록한 인터셉터의 빈을 주입하는 방식 -->
 	      <interceptor>
 	         <mapping path="/"/>

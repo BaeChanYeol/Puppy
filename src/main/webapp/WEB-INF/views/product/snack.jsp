@@ -9,14 +9,14 @@
         <article class="main-container">
             <div class="wrap mytitle">
          <h2>간식, 식품</h2>
-      </div>
 
             
             <span id="count-per-page" style="float: right;">
-                <input class="btn btn-cpp" type="button" value="8">  
-                <input class="btn btn-cpp" type="button" value="16">   
-                <input class="btn btn-cpp" type="button" value="24">
+                <input class="btn btn-cpp serch-btn" type="button" value="8">  
+                <input class="btn btn-cpp serch-btn" type="button" value="16">   
+                <input class="btn btn-cpp serch-btn" type="button" value="24">
             </span>
+      </div>
         </article>
         
         <article class="main-container">

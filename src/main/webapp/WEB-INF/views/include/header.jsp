@@ -97,7 +97,7 @@
                             <a href="<c:url value='/board/freeboard'/>" class="menu-li-a">커뮤니티</a>                            
                             <ul class="second">
                                 <li><a href="<c:url value='/board/freeboard'/>">자유게시판</a></li>
-                                <li><a href="<c:url value='/boast/boastboard'/>">뽐내기게시판</a></li>
+                                <li><a href="<c:url value='/boast/boastboard'/>">멍스타그램</a></li>
                                 <li><a href="<c:url value='/qnaBoard/qna'/>">QnA</a></li>
                             </ul>
                         </li>

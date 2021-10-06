@@ -13,12 +13,16 @@
 	 -->
 	 
 	 
-	 <insert id = "productRegist">
+	 <!-- <insert id = "productRegist">
 	 	INSERT INTO product(pno, pname, price, cate, opt, type,uploadpath, filerealname, photosize, fileLoca, fileExtension)
 	 	VALUES(product_seq.NEXTVAL, #{pname}, #{price}, #{cate}, #{opt}, #{type},#{uploadPath}, #{fileRealName}, #{photoSize}, #{fileLoca}, #{fileExtension})
 	 
-	 </insert>
+	 </insert> -->
+	 <insert id = "productRegist">
+	 	INSERT INTO product(pno, pname, price, cate, opt, type)
+	 	VALUES(product_seq.NEXTVAL, #{pname}, #{price}, #{cate}, #{opt}, #{type})
 	 
+	 </insert>
 	  
 	 <select id="productList" resultType="com.spring.puppy.command.ProductVO">
 		SELECT * FROM	

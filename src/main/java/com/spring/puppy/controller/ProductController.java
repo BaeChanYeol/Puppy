@@ -251,6 +251,7 @@ public class ProductController {
 		int pno = vo.getPno();
 		vo.setWriter(user.getId());
 		
+		
 		if(service.zzimCheck(vo) == 0) { //찜이 안된 상태일 때 찜하기 
 			service.zzimRegist(vo);
 			service.zzimModify(provo);
@@ -285,9 +286,14 @@ public class ProductController {
 	
 	//리뷰 DB 등록 요청
 	@PostMapping("/reviewRegistForm")
-	public String reviewRegistForm(ReviewVO vo, PageVO pvo, Model model, RedirectAttributes ra) {
+	public String reviewRegistForm(HttpSession session, ReviewVO vo, PageVO pvo, Model model, RedirectAttributes ra) {
+		UserVO user = (UserVO) session.getAttribute("login");
+		vo.setWriter(user.getId());
+		
 		int pno = vo.getPno();
 		service.reviewRegist(vo);
+		
+		
 		
 		
 		//등록 성공 여부를 1회용으로 전달하기 위한 ra객체의 메서드
@@ -297,7 +303,10 @@ public class ProductController {
 	
 	//상품 qna DB 등록 요청
 	@PostMapping("/qnaRegistForm")
-	public String qnaRegistForm(ProductQnaVO vo, PageVO pvo, Model model, RedirectAttributes ra) {
+	public String qnaRegistForm(HttpSession session, ProductQnaVO vo, PageVO pvo, Model model, RedirectAttributes ra) {
+		UserVO user = (UserVO) session.getAttribute("login");
+		vo.setWriter(user.getId());
+		
 		int pno = vo.getPno();
 		service.pqnaRegist(vo);
 		
@@ -313,8 +322,11 @@ public class ProductController {
 	
 	//상품 장바구니 담기 처리
 	@PostMapping("/registForm")
-	public String registForm(CartVO vo, RedirectAttributes ra) {
+	public String registForm(HttpSession session, CartVO vo, RedirectAttributes ra) {
+		UserVO user = (UserVO) session.getAttribute("login");
+		vo.setWriter(user.getId());
 		int pno = vo.getPno();
+		
 		
 		if(service.cartCheck(vo) == 0) {
 			service.regist(vo);

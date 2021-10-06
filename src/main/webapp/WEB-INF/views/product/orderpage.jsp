@@ -16,7 +16,7 @@
     
        <form name="orderRegistForm" id="orderRegistForm" action="<c:url value='/product/orderRegistForm'/>" method="post">
 	        <article class="main-container">
-	            <div class="wrap title">
+	            <div class="wrap mytitle">
 	                <h2>주문하기</h2>
 	            </div>
 	        </article>

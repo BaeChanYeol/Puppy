@@ -237,7 +237,7 @@
 		                	<input type="hidden" name="pno" value="${item.pno}">
 		                	<input type="hidden" value="${users.id}" name="writer">
 		                    <textarea class="reviewArea" id="review" name="content" rows="5" cols="130"></textarea>
-		                    <button type="submit" id="reg_review">등록하기</button>
+		                    <button type="submit" id="reg_review" class="serch-btn">등록하기</button>
 		                </div>
 	        		</article>
 				</form>
@@ -306,7 +306,7 @@
 			                	
 			                	<input type="hidden" value="${login.id}" name="writer">
 			                    <textarea class="qnaArea" id="qna" name="content" rows="5" cols="130"></textarea>
-			                    <button type="submit" id="reg_qna">등록하기</button>
+			                    <button type="submit" id="reg_qna serch-btn">등록하기</button>
 			                </div>
 		        		</article>
 					</form>
